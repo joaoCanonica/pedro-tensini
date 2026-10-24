@@ -9,7 +9,9 @@
   },
   "packageManager": "pnpm@10.28.0",
   "scripts": {
+    "predev": "pnpm media:prepare",
     "dev": "astro dev",
+    "prebuild": "pnpm media:prepare",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check && eslint . && prettier --check .",
@@ -20,7 +22,9 @@
     "audit-lighthouse": "node scripts/audit-lighthouse.mjs",
     "audit-seo": "node scripts/audit-seo.mjs",
     "audit-contraste": "node scripts/audit-contraste.mjs",
-    "media:prepare": "node scripts/media-prepare.mjs",
+    "media:prepare": "node scripts/prepare-media.mjs",
+    "media:stills": "node scripts/extract-stills.mjs",
+    "media:catalogo": "node scripts/prepare-media.mjs --catalogo",
     "capturar": "node scripts/capturar.mjs"
   },
   "dependencies": {
@@ -30,6 +34,7 @@
     "@astrojs/check": "0.9.12",
     "@eslint/js": "10.0.1",
     "@types/node": "^24.19.2",
+    "ajv": "8.20.0",
     "eslint": "10.13.0",
     "eslint-plugin-astro": "3.2.1",
     "globals": "17.13.0",

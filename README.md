@@ -25,4 +25,4 @@ Astro estático, TypeScript strict, pnpm. Contexto completo em `CLAUDE.md`; pend
 - `src/` config, componentes, layouts, páginas, estilos, scripts, conteúdo.
 - `scripts/` utilitários de build, mídia e auditoria.
 - `docs/` contexto, investigação, mapa de mídia, prompts, pendências, capturas e dados.
-- `assets/`, `videos/` originais atuais (vão para `media-originais/` na sessão 1).
+- `media-originais/` originais intactos; `media.manifest.json` descreve cada um e cada derivado (schema em `media.manifest.schema.json`).

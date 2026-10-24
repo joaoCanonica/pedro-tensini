@@ -6,3 +6,4 @@ docs/capturas/**/*.png
 .env*
 .DS_Store
 *.log
+.cache/
