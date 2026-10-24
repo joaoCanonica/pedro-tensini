@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+public/media/
+docs/capturas/**/*.png
+.env*
+.DS_Store
+*.log
