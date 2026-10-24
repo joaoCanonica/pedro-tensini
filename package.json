@@ -28,7 +28,8 @@
     "media:prepare": "node scripts/prepare-media.mjs",
     "media:stills": "node scripts/extract-stills.mjs",
     "media:catalogo": "node scripts/prepare-media.mjs --catalogo",
-    "capturar": "node scripts/capturar.mjs"
+    "capturar": "node scripts/capturar.mjs",
+    "capturar:entrada": "node scripts/capturar-entrada.mjs"
   },
   "dependencies": {
     "astro": "7.4.2"

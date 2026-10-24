@@ -1,16 +1,39 @@
 ---
-// Página temporária da fundação. Será substituída na sessão 6A.
+// Home. Sessão 4: só a entrada e o hero; o resto vem na sessão 6A.
+import Cabeca from '../components/base/Cabeca.astro';
+import PreviewBanner from '../components/PreviewBanner.astro';
+import EntradaInicio from '../components/entrada/EntradaInicio.astro';
+import Hero from '../components/hero/Hero.astro';
+import { obterMidia } from '../components/base/midia.ts';
+import { SIZES_POSTER } from '../components/hero/hero.ts';
+
+const poster = obterMidia('loop-hero').poster;
+const preload = poster?.avif.map((v) => `${v.src} ${v.largura}w`).join(', ');
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="escuro">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>Tensini Barbieri</title>
+    <Cabeca
+      titulo="Tensini Barbieri · Pedro Tensini, barbeiro no Centro de Lages"
+      descricao="Degradê, barba e acabamento no detalhe com Pedro Tensini, na Galeria Augusta, Rua Hercílio Luz, Centro de Lages/SC. Agende pelo WhatsApp."
+    />
+    {preload && (
+      <link
+        rel="preload"
+        as="image"
+        type="image/avif"
+        imagesrcset={preload}
+        imagesizes={SIZES_POSTER}
+        fetchpriority="high"
+      />
+    )}
   </head>
   <body>
-    <h1>Tensini Barbieri</h1>
+    <EntradaInicio />
+    <PreviewBanner />
+    <main>
+      <Hero />
+    </main>
   </body>
 </html>

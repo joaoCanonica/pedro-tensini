@@ -1,0 +1,70 @@
+---
+// Tabela de horário compacta (base da coluna de texto no desktop). Mesmos ganchos da
+// TabelaHorario (data-tabela-horario, tr[data-dia]) para o "hoje" vir do vivo.ts.
+import { linhasSemana, faixa } from '../base/semana.ts';
+
+const CURTO = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'] as const;
+---
+
+<table class="compacta" data-tabela-horario>
+  <caption class="rotulo">Horário</caption>
+  <tbody>
+    {linhasSemana.map((l) => (
+      <tr data-dia={l.dia}>
+        <th scope="row" class="rotulo">
+          <abbr title={l.nome}>{CURTO[l.dia]}</abbr>
+          <span class="tabela__hoje" hidden>
+            hoje
+          </span>
+        </th>
+        <td class="num">{l.janela ? faixa(l.janela) : 'Fechado'}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<script src="../base/vivo.ts"></script>
+
+<style>
+  .compacta {
+    border-collapse: collapse;
+    font-size: var(--fs-pequeno);
+  }
+  caption {
+    text-align: start;
+    padding-bottom: var(--e-2);
+    color: var(--acento-texto);
+  }
+  tr {
+    border-top: 1px solid var(--linha);
+  }
+  th,
+  td {
+    padding: 0.28rem 0;
+    vertical-align: baseline;
+  }
+  th {
+    text-align: start;
+    padding-inline: var(--e-3) var(--e-6);
+    color: var(--texto-2);
+    font-weight: 600;
+  }
+  abbr {
+    text-decoration: none;
+  }
+  td {
+    text-align: end;
+  }
+  .tabela__hoje {
+    margin-inline-start: 0.5em;
+    color: var(--acento-texto);
+  }
+  tr[aria-current='date'] th {
+    color: var(--texto);
+    background: linear-gradient(var(--acento), var(--acento)) left center / 2px 70% no-repeat;
+  }
+  tr[aria-current='date'] td {
+    color: var(--texto);
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,139 @@
+---
+// "A Passada": entrada da home (≤ 2,4 s, uma vez por sessão).
+// Este componente vai logo no início do <body>. O script inline decide se a entrada roda e cria
+// a camada + o botão "Pular" ANTES do primeiro quadro. Sem JS, com movimento reduzido,
+// em visitas seguintes ou com ?entrada=0: nada é criado e o hero aparece no estado final.
+// ?entrada=1 força a entrada (testes e capturas).
+---
+
+<script is:inline>
+  (() => {
+    const d = document.documentElement;
+    let rodar;
+    try {
+      const q = new URLSearchParams(location.search).get('entrada');
+      const vista = sessionStorage.getItem('tb-entrada') === '1';
+      const reduzir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      rodar = q === '1' || (q !== '0' && !vista && !reduzir && !location.hash);
+      if (rodar) sessionStorage.setItem('tb-entrada', '1');
+    } catch {
+      rodar = false;
+    }
+    if (!rodar) return;
+    d.dataset.entrada = 'ativa';
+    const camada = document.createElement('div');
+    camada.className = 'entrada';
+    camada.setAttribute('aria-hidden', 'true');
+    const pular = document.createElement('button');
+    pular.type = 'button';
+    pular.className = 'entrada__pular';
+    pular.textContent = 'Pular';
+    pular.setAttribute('aria-label', 'Pular a abertura');
+    document.body.prepend(camada, pular);
+    // Segurança: se o módulo não assumir, mostra o estado final.
+    setTimeout(() => {
+      if (d.dataset.entrada === 'ativa' && !camada.dataset.rodando) {
+        camada.remove();
+        pular.remove();
+        d.dataset.entrada = 'feita';
+        document.dispatchEvent(new Event('tb:entrada-fim'));
+      }
+    }, 2500);
+  })();
+</script>
+
+<script src="./entrada.ts"></script>
+
+<style is:global>
+  html[data-entrada='ativa'] {
+    overflow: hidden;
+  }
+  html[data-entrada='ativa'] [data-entra] {
+    opacity: 0;
+  }
+  html[data-entrada='ativa'] [data-entrada-alvo] {
+    visibility: hidden;
+  }
+  .entrada {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--carvao);
+    overflow: hidden;
+    contain: strict;
+  }
+  .entrada > * {
+    position: absolute;
+  }
+  .entrada__pular {
+    position: fixed;
+    z-index: 1001;
+    right: var(--margem);
+    bottom: max(1.25rem, env(safe-area-inset-bottom));
+    min-height: 2.75rem;
+    padding: 0 1rem;
+    border: 1px solid rgb(238 240 239 / 0.5);
+    border-radius: var(--raio);
+    background: transparent;
+    color: var(--giz);
+    font: 600 0.75rem/1 var(--fonte-texto);
+    letter-spacing: var(--tracking-rotulo);
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .entrada__pular:focus-visible {
+    outline: 2px solid var(--latao-claro);
+    outline-offset: 3px;
+  }
+  .entrada__img {
+    object-fit: cover;
+    object-position: 50% 40%;
+    opacity: 0;
+  }
+  .entrada__desfocado {
+    filter: blur(16px) brightness(0.42) saturate(0.8);
+  }
+  .entrada__revelado {
+    inset: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+  .entrada__revelado > * {
+    position: absolute;
+  }
+  .entrada__mono {
+    color: var(--latao);
+    height: auto;
+  }
+  .entrada__mono-dim {
+    opacity: 0.16;
+    filter: blur(6px);
+  }
+  .entrada__nome {
+    display: flex;
+    justify-content: center;
+    color: var(--latao);
+    font-family: var(--fonte-titulo);
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+  }
+  .entrada__nome {
+    letter-spacing: 0.24em;
+  }
+  .entrada__nome span {
+    display: inline-block;
+    opacity: 0;
+  }
+  .entrada__linha {
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    margin-top: -1px;
+    background: var(--latao);
+    box-shadow:
+      0 0 6px rgb(210 176 115 / 0.75),
+      0 0 22px 2px rgb(184 146 82 / 0.4);
+    opacity: 0;
+  }
+</style>

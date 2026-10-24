@@ -33,6 +33,11 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 - [ ] **Nomes dos avaliadores** (Vinicius Farias, Diogo Amaral): ficam literais na config; conferir na passada de normas (sessão 9) se exibe nome completo.
 - [ ] Rodar `pnpm validate-config` depois de cada dado novo: a seção automática abaixo se atualiza sozinha.
 
+## Home (sessão 4)
+
+- [ ] Links do hero apontam para `/como-chegar/` e `/como-chegar/#horario`, que nascem na sessão 6C (até lá dão 404 no preview).
+- [ ] H1 provisório ("Degradê, barba e acabamento no detalhe."): a sessão 5 refina.
+
 ## Ambiente (sessão 0)
 
 - O Astro estável atual (7.4.2) exige Node ≥ 22.23.4. O projeto foi fixado em Node 24.22.1 (LTS "Krypton"), ver `.nvmrc`.
