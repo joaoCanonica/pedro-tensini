@@ -1,0 +1,543 @@
+---
+// Página /_estilo (noindex): o design system inteiro, claro e escuro.
+// Publicada por src/pages/[interna].astro (o Astro não roteia arquivos com "_").
+import Cabeca from '../components/base/Cabeca.astro';
+import Botao from '../components/base/Botao.astro';
+import Link from '../components/base/Link.astro';
+import Rotulo from '../components/base/Rotulo.astro';
+import Citacao from '../components/base/Citacao.astro';
+import TabelaHorario from '../components/base/TabelaHorario.astro';
+import StatusAoVivo from '../components/base/StatusAoVivo.astro';
+import MolduraVideo from '../components/base/MolduraVideo.astro';
+import Poster from '../components/base/Poster.astro';
+import Monograma from '../components/marca/Monograma.astro';
+import Assinatura from '../components/marca/Assinatura.astro';
+import Passada from '../components/marca/Passada.astro';
+import EscalaPente from '../components/marca/EscalaPente.astro';
+import BordaDegrade from '../components/marca/BordaDegrade.astro';
+import PreviewBanner from '../components/PreviewBanner.astro';
+import { cores } from '../config/tema.ts';
+import { links, telefone } from '../config/contato.ts';
+import { resumoSemana } from '../components/base/semana.ts';
+import original from '../../media-originais/marca/tensini-monograma-tb.svg?raw';
+import limpo from '../components/marca/tensini-monograma-tb.limpo.svg?raw';
+
+const caminhoOriginal = original.match(/ d="([^"]+)"/)?.[1] ?? '';
+const caminhoLimpo = limpo.match(/ d="([^"]+)"/)?.[1] ?? '';
+const NOMES: Record<string, string> = {
+  carvao: 'Carvão',
+  navy: 'Navy capa',
+  latao: 'Latão',
+  giz: 'Giz',
+  aco: 'Aço',
+  musgo: 'Musgo',
+  acoEscuro: 'Aço escuro',
+  lataoEscuro: 'Latão escuro',
+  lataoClaro: 'Latão claro',
+};
+const amostras = Object.entries(cores).map(([k, hex]) => [NOMES[k] ?? k, hex] as const);
+const tel = `tel:+55${telefone.valor.replace(/\D/g, '')}`;
+const provas = [
+  { id: 'a', nome: 'A · Libre Caslon Display + Schibsted Grotesk', escolhida: true },
+  { id: 'b', nome: 'B · DM Serif Display + Inter Tight', escolhida: false },
+];
+---
+
+<!doctype html>
+<html lang="pt-BR" data-theme="escuro">
+  <head>
+    <Cabeca titulo="Design system · Tensini Barbieri" noindex alternativas />
+    <script is:inline>
+      // Tema por parâmetro (?tema=claro) para revisar; o padrão do site é escuro.
+      (() => {
+        const t = new URLSearchParams(location.search).get('tema');
+        if (t === 'claro' || t === 'escuro') document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <PreviewBanner />
+
+    <header class="topo envelope">
+      <div>
+        <Rotulo acento>Design system · sessão 3</Rotulo>
+        <h1 class="t-1">O Degradê</h1>
+        <p class="medida secundario">
+          Tokens, tipografia, monograma, componentes base e os quatro usos da assinatura. Página
+          interna, fora do índice.
+        </p>
+      </div>
+      <button class="botao-tema rotulo" type="button" data-alternar-tema>
+        Alternar claro / escuro
+      </button>
+    </header>
+
+    <!-- 1 · Cores -->
+    <section class="bloco envelope" aria-labelledby="t-cores">
+      <EscalaPente valor="3" rotulo="Cores" />
+      <h2 id="t-cores" class="t-2">
+        Paleta calibrada
+      </h2>
+      <ul class="amostras" role="list">
+        {amostras.map(([nome, hex]) => (
+          <li class="amostra">
+            <span class="amostra__cor" style={`background:${hex}`} />
+            <span class="rotulo">{nome}</span>
+            <span class="num pequeno secundario">{hex}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="pequeno secundario medida">
+        Navy das capas (#1A2146, antes #15233F), latão chapado no matiz do monograma (37°), giz frio
+        e musgo da parede verde. Pares de texto e fundo validados em AA por{' '}
+        <code>pnpm audit-contraste</code>.
+      </p>
+    </section>
+
+    <BordaDegrade de="base" para="contraste" />
+
+    <!-- 2 · Tipografia -->
+    <section class="bloco" data-superficie="contraste" aria-labelledby="t-tipo">
+      <div class="envelope">
+        <EscalaPente valor="2" rotulo="Tipografia" />
+        <h2 id="t-tipo" class="t-2">
+          Escala
+        </h2>
+        <div class="escala-tipo">
+          <p class="display">Tensini</p>
+          <p class="t-1">Imagem e presença não são por acaso.</p>
+          <p class="t-2">Precisão nos acabamentos, elegância no resultado.</p>
+          <p class="t-3">Atendimento focado em detalhe e resultado.</p>
+          <p class="medida">
+            Texto corrido em 17–18 px. Mais que um corte, uma experiência: toalha quente,
+            esfoliação, creme e massagem, navalha e o acabamento na shaver.
+          </p>
+          <p>
+            <Rotulo>Rótulo em caixa alta espaçada</Rotulo>
+          </p>
+          <p class="num t-3">8h30 – 20h · 3 · 2 · 1½ · 1 · ½ · 0</p>
+        </div>
+      </div>
+    </section>
+
+    <BordaDegrade de="contraste" para="base" />
+
+    <!-- 2b · Provas tipográficas -->
+    <section class="bloco envelope" id="provas" aria-labelledby="t-provas">
+      <EscalaPente valor="1½" rotulo="Provas tipográficas" />
+      <h2 id="t-provas" class="t-2">
+        A contra B, em três provas
+      </h2>
+      <div class="provas">
+        {provas.map((p) => (
+          <article class:list={['prova', `prova--${p.id}`]} data-prova={p.id}>
+            <p class="rotulo prova__nome">
+              {p.nome}
+              {p.escolhida && <span class="prova__escolha"> · escolhida</span>}
+            </p>
+            <div class="prova__hero">
+              <p class="prova__display">Tensini Barbieri</p>
+              <p class="prova__lide">
+                Seu visual fala antes de qualquer palavra. Faça ele transmitir confiança.
+              </p>
+              <p class="rotulo secundario">Galeria Augusta · Rua Hercílio Luz · Centro, Lages</p>
+            </div>
+            <table class="prova__tabela">
+              <tbody>
+                <tr>
+                  <th class="rotulo">Segunda a sexta</th>
+                  <td>8h30 – 20h</td>
+                </tr>
+                <tr>
+                  <th class="rotulo">Sábado</th>
+                  <td>8h30 – 18h</td>
+                </tr>
+                <tr>
+                  <th class="rotulo">Domingo</th>
+                  <td>Fechado</td>
+                </tr>
+              </tbody>
+            </table>
+            <blockquote class="prova__citacao">
+              <p>“Se você repara nos detalhes, já sabe onde vir.”</p>
+            </blockquote>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <BordaDegrade de="base" para="navy" />
+
+    <!-- 3 · Monograma -->
+    <section class="bloco" data-superficie="navy" aria-labelledby="t-mono">
+      <div class="envelope">
+        <EscalaPente valor="1" rotulo="Monograma" />
+        <h2 id="t-mono" class="t-2">
+          TB, chapado
+        </h2>
+        <div class="mono-linha">
+          <Monograma tamanho="9rem" />
+          <Assinatura tamanho="g" />
+          <div class="mono-giz">
+            <Monograma tamanho="5rem" titulo="Monograma TB em giz" />
+          </div>
+        </div>
+        <h3 class="t-3">Limpeza dos entalhes da barra</h3>
+        <div class="mono-comparacao">
+          <figure>
+            <svg
+              viewBox="185 205 175 50"
+              class="mono-zoom"
+              role="img"
+              aria-label="Original: barra com dois entalhes"
+            >
+              <path fill="currentColor" fill-rule="evenodd" d={caminhoOriginal}></path>
+            </svg>
+            <figcaption class="pequeno secundario">
+              Original (vetorizado do raster com bevel)
+            </figcaption>
+          </figure>
+          <figure>
+            <svg
+              viewBox="185 205 175 50"
+              class="mono-zoom"
+              role="img"
+              aria-label="Limpo: barra sem entalhes"
+            >
+              <path fill="currentColor" fill-rule="evenodd" d={caminhoLimpo}></path>
+            </svg>
+            <figcaption class="pequeno secundario">Limpo: nós ajustados, desenho igual</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <BordaDegrade de="navy" para="base" />
+
+    <!-- 4 · Assinatura O Degradê -->
+    <section class="bloco envelope" aria-labelledby="t-degrade">
+      <EscalaPente valor="½" rotulo="O Degradê" />
+      <h2 id="t-degrade" class="t-2">
+        Os quatro usos
+      </h2>
+
+      <div class="grade-2">
+        <div>
+          <h3 class="t-3">(a) Passada</h3>
+          <p class="secundario medida pequeno">
+            Linha de latão de 2 px desce e revela por clip-path. Uma vez, 600 ms, WAAPI. Base da
+            entrada e das revelações de imagem.
+          </p>
+          <Passada desfoque class="demo-passada">
+            <Poster
+              id="quadro-maquina-vinho"
+              alt="Máquina vinho na mão de luva preta"
+              sizes="(min-width: 900px) 360px, 80vw"
+            />
+          </Passada>
+        </div>
+        <div>
+          <h3 class="t-3">(b) Escala de pente</h3>
+          <p class="secundario medida pequeno">
+            Com e sem o marcador, no mesmo cabeçalho de seção.
+          </p>
+          <div class="cabecalhos">
+            <div class="cabecalho">
+              <EscalaPente valor="3" rotulo="A barbearia" />
+              <p class="t-2">Imagem e presença não são por acaso.</p>
+            </div>
+            <div class="cabecalho cabecalho--sem">
+              <p class="t-2">Imagem e presença não são por acaso.</p>
+            </div>
+            <div class="cabecalho">
+              <EscalaPente valor="0" rotulo="Acabamento e agendar" />
+              <p class="t-2">Precisão nos acabamentos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="t-3 espaco">(c) Borda em degradê</h3>
+      <p class="secundario medida pequeno">
+        Linhas paralelas que engrossam até fechar a cor seguinte, como o fade na nuca. Estática;
+        acende uma vez ao entrar na tela. Está entre todas as seções desta página.
+      </p>
+
+      <h3 class="t-3 espaco">(d) Links e foco</h3>
+      <p class="medida prosa">
+        Um <a href="#t-degrade">link no meio do texto</a> tem sublinhado cheio; no hover e no foco a
+        linha cheia recolhe e entra a hachura. O foco usa anel de alto contraste com recuo. Veja
+        também <Link href={links.googleRota}>Como chegar</Link>.
+      </p>
+    </section>
+
+    <BordaDegrade de="base" para="contraste" />
+
+    <!-- 5 · Componentes base -->
+    <section class="bloco" data-superficie="contraste" aria-labelledby="t-comp">
+      <div class="envelope">
+        <EscalaPente valor="0" rotulo="Componentes" />
+        <h2 id="t-comp" class="t-2">
+          Base
+        </h2>
+        <div class="botoes">
+          <Botao>Agendar no WhatsApp</Botao>
+          <Botao variante="secundario" href={links.googleRota}>
+            Como chegar
+          </Botao>
+          <Botao variante="secundario" href={tel}>
+            Ligar
+          </Botao>
+        </div>
+        <div class="grade-2 espaco">
+          <Citacao
+            texto="Seu visual fala antes de qualquer palavra. Faça ele transmitir confiança."
+            fonte="Instagram @tensinibarbiere_ (post fixado)"
+          />
+          <div class="pilha">
+            <StatusAoVivo />
+            <TabelaHorario />
+            <p class="pequeno secundario">Sem JS: {resumoSemana()}.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <BordaDegrade de="contraste" para="base" />
+
+    <!-- 6 · Vídeo e pôster -->
+    <section class="bloco envelope" aria-labelledby="t-video">
+      <h2 id="t-video" class="t-2">
+        Vídeo vertical e pôster
+      </h2>
+      <div class="videos">
+        <MolduraVideo
+          id="loop-hero"
+          tipo="loop"
+          descricao="Macro da máquina na barba"
+          legenda="Loop decorativo, mudo (loop-hero, 6 s)."
+        />
+        <MolduraVideo
+          id="resultado-1"
+          descricao="Resultado do degradê girando: perfil, nuca e perfil."
+        />
+        <figure class="poster-demo">
+          <Poster
+            id="quadro-cafe-coado"
+            alt="Café sendo coado na barbearia"
+            sizes="(min-width: 900px) 300px, 80vw"
+          />
+          <figcaption class="pequeno secundario">Pôster com LQIP (AVIF/WebP, lazy).</figcaption>
+        </figure>
+      </div>
+      <h3 class="t-3 espaco">Movimento</h3>
+      <p class="num pequeno secundario">
+        160 ms · 320 ms · 600 ms · cubic-bezier(0.7, 0, 0.18, 1). Com movimento reduzido nada se
+        move e ficam os estados finais.
+      </p>
+    </section>
+
+    <script is:inline>
+      document.querySelector('[data-alternar-tema]')?.addEventListener('click', () => {
+        const r = document.documentElement;
+        r.dataset.theme = r.dataset.theme === 'claro' ? 'escuro' : 'claro';
+      });
+    </script>
+
+    <style>
+      .envelope {
+        width: min(100% - 2 * var(--margem), 78rem);
+        margin-inline: auto;
+      }
+      .topo {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        gap: var(--e-5);
+        padding-block: var(--e-8) var(--e-6);
+      }
+      .botao-tema {
+        padding: 0.6rem 0.9rem;
+        background: none;
+        border: 1px solid var(--botao-2-borda);
+        border-radius: var(--raio);
+        cursor: pointer;
+      }
+      .bloco {
+        padding-block: var(--e-8);
+      }
+      .bloco h2 {
+        margin-block: var(--e-5) var(--e-6);
+      }
+      .espaco {
+        margin-top: var(--e-7);
+      }
+      .amostras {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+        gap: var(--e-5);
+        padding: 0;
+        margin-bottom: var(--e-5);
+      }
+      .amostra {
+        display: grid;
+        gap: var(--e-1);
+      }
+      .amostra__cor {
+        aspect-ratio: 3 / 2;
+        border: 1px solid var(--linha);
+      }
+      .escala-tipo {
+        display: grid;
+        gap: var(--e-5);
+      }
+      .provas {
+        display: grid;
+        gap: var(--e-7);
+      }
+      @media (min-width: 60rem) {
+        .provas {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .prova {
+        display: grid;
+        gap: var(--e-6);
+        align-content: start;
+      }
+      .prova--b {
+        --fonte-titulo: var(--f-dmserif), 'DM Serif Display', georgia, serif;
+        --fonte-texto: var(--f-intertight), 'Inter Tight', arial, sans-serif;
+        font-family: var(--fonte-texto);
+      }
+      .prova__nome {
+        color: var(--acento-texto);
+      }
+      .prova__escolha {
+        color: var(--texto);
+      }
+      .prova__display {
+        font-family: var(--fonte-titulo);
+        font-size: clamp(3rem, 1rem + 6vw, 6.25rem);
+        line-height: 0.9;
+        letter-spacing: -0.02em;
+      }
+      .prova__lide {
+        margin-block: var(--e-4);
+        font-size: var(--fs-3);
+        line-height: 1.3;
+        max-width: 28ch;
+      }
+      .prova__tabela {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .prova__tabela tr {
+        border-top: 1px solid var(--linha);
+      }
+      .prova__tabela th {
+        text-align: start;
+        padding-block: 0.6rem;
+        color: var(--texto-2);
+      }
+      .prova__tabela td {
+        text-align: end;
+        font-family: var(--fonte-texto);
+        font-size: var(--fs-3);
+        font-variant-numeric: tabular-nums;
+      }
+      .prova__citacao p {
+        font-family: var(--fonte-titulo);
+        font-size: var(--fs-2);
+        line-height: 1.08;
+        max-width: 18ch;
+      }
+      .mono-linha {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--e-7);
+        margin-bottom: var(--e-7);
+      }
+      .mono-giz {
+        color: var(--giz);
+      }
+      .mono-giz :global(.monograma) {
+        color: currentColor;
+      }
+      .mono-comparacao {
+        display: grid;
+        gap: var(--e-5);
+        margin-top: var(--e-5);
+      }
+      @media (min-width: 50rem) {
+        .mono-comparacao {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .mono-zoom {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 175 / 50;
+        color: var(--latao);
+        background: rgb(0 0 0 / 0.2);
+      }
+      .grade-2 {
+        display: grid;
+        gap: var(--e-7);
+        margin-top: var(--e-5);
+      }
+      @media (min-width: 60rem) {
+        .grade-2 {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .demo-passada {
+        max-width: 22.5rem;
+        margin-top: var(--e-5);
+      }
+      .cabecalhos {
+        display: grid;
+        gap: var(--e-6);
+        margin-top: var(--e-5);
+      }
+      .cabecalho .t-2 {
+        margin-top: var(--e-4);
+      }
+      .cabecalho--sem {
+        padding-top: var(--e-3);
+        border-top: 1px dashed var(--linha);
+      }
+      .botoes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--e-4);
+      }
+      .pilha {
+        display: grid;
+        gap: var(--e-5);
+        align-content: start;
+      }
+      .videos {
+        display: grid;
+        gap: var(--e-6);
+        align-items: start;
+      }
+      @media (min-width: 60rem) {
+        .videos {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      .poster-demo {
+        max-width: 22.5rem;
+      }
+      .poster-demo figcaption {
+        margin-top: var(--e-3);
+      }
+      code {
+        font-size: 0.9em;
+      }
+    </style>
+  </body>
+</html>

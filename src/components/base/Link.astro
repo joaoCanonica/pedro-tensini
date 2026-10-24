@@ -1,0 +1,12 @@
+---
+// Link com o sublinhado de cheio → hachurado (CSS em src/styles/base.css).
+interface Props {
+  href: string;
+  class?: string;
+}
+const { href, class: classe } = Astro.props;
+---
+
+<a class:list={['link', classe]} href={href}>
+  <slot />
+</a>

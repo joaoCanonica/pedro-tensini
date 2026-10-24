@@ -1,0 +1,63 @@
+---
+// Botões. primario: "Agendar no WhatsApp" (latão chapado, ícone oficial sem círculo).
+// secundario: borda fina, para "Como chegar" e "Ligar". Cantos quase retos (nada de pílula).
+import IconeWhatsApp from './IconeWhatsApp.astro';
+import { linkWhatsApp } from '../../lib/whatsapp.ts';
+
+interface Props {
+  variante?: 'primario' | 'secundario';
+  /** Sem href no primário: WhatsApp com a mensagem padrão. */
+  href?: string;
+  whatsapp?: boolean;
+  class?: string;
+}
+const { variante = 'primario', whatsapp = variante === 'primario', class: classe } = Astro.props;
+const href = Astro.props.href ?? (whatsapp ? linkWhatsApp() : '#');
+---
+
+<a class:list={['botao', `botao--${variante}`, classe]} href={href}>
+  {whatsapp && <IconeWhatsApp />}
+  <span>
+    <slot />
+  </span>
+</a>
+
+<style>
+  .botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+    min-height: 3rem;
+    padding: 0.8rem 1.4rem;
+    border-radius: var(--raio);
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+      background-color var(--dur-1) var(--curva),
+      color var(--dur-1) var(--curva),
+      box-shadow var(--dur-2) var(--curva);
+  }
+  .botao--primario {
+    background: var(--botao-fundo);
+    color: var(--botao-texto);
+  }
+  /* Hover: um fio de latão por baixo, como a linha da passada. */
+  .botao--primario:hover {
+    box-shadow: 0 3px 0 -1px var(--acento);
+  }
+  .botao--secundario {
+    border: 1px solid var(--botao-2-borda);
+    color: var(--texto);
+  }
+  .botao--secundario:hover {
+    border-color: var(--texto);
+  }
+  .botao:active {
+    transform: translateY(1px);
+  }
+</style>

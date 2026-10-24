@@ -1,0 +1,10 @@
+---
+// Rotas internas com "_" (o Astro não roteia arquivos de src/pages que começam com "_").
+import Estilo from './_estilo.astro';
+
+export function getStaticPaths() {
+  return [{ params: { interna: '_estilo' } }];
+}
+---
+
+<Estilo />

@@ -1,0 +1,57 @@
+---
+// Citação: a voz do Pedro, literal, sempre com a fonte.
+interface Props {
+  texto: string;
+  autor?: string;
+  fonte: string;
+  tamanho?: 'm' | 'g';
+}
+const { texto, autor = 'Pedro Tensini', fonte, tamanho = 'g' } = Astro.props;
+---
+
+<figure class:list={['citacao', `citacao--${tamanho}`]}>
+  <blockquote>
+    <p>{texto}</p>
+  </blockquote>
+  <figcaption class="rotulo">
+    {autor}{' '}
+    <span class="citacao__fonte secundario">
+      · <cite>{fonte}</cite>
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  blockquote p {
+    position: relative;
+    max-width: 15ch;
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-1);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+  }
+  .citacao--m blockquote p {
+    max-width: 22ch;
+    font-size: var(--fs-2);
+  }
+  /* Aspa pendurada em latão. */
+  blockquote p::before {
+    content: '“';
+    position: absolute;
+    right: 100%;
+    margin-right: 0.04em;
+    color: var(--acento);
+  }
+  figcaption {
+    margin-top: var(--e-5);
+    color: var(--acento-texto);
+  }
+  .citacao__fonte {
+    letter-spacing: 0.08em;
+    text-transform: none;
+    font-weight: 400;
+  }
+  cite {
+    font-style: normal;
+  }
+</style>

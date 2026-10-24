@@ -1,0 +1,51 @@
+---
+// (a) A "passada de máquina": uma linha de latão de 2 px com leve brilho percorre o bloco
+// de cima para baixo e revela o conteúdo por clip-path. Uma vez, por WAAPI.
+// Sem JS ou com movimento reduzido: conteúdo visível, sem animação.
+interface Props {
+  /** Desfoque → nítido junto com a revelação (entrada do hero). */
+  desfoque?: boolean;
+  duracao?: number;
+  class?: string;
+}
+const { desfoque = false, duracao = 600, class: classe } = Astro.props;
+---
+
+<div
+  class:list={['passada', classe]}
+  data-passada=""
+  data-duracao={duracao}
+  data-desfoque={desfoque ? '' : undefined}
+>
+  <div class="passada__conteudo">
+    <slot />
+  </div>
+  <span class="passada__linha" aria-hidden="true"></span>
+</div>
+
+<script src="./revelar.ts"></script>
+
+<style>
+  .passada {
+    position: relative;
+  }
+  .passada__linha {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: var(--linha-passada);
+    background: var(--latao);
+    box-shadow:
+      0 0 6px rgb(210 176 115 / 0.7),
+      0 0 18px 1px rgb(184 146 82 / 0.35);
+    opacity: 0;
+    pointer-events: none;
+    translate: 0 -50%;
+  }
+  /* Esconde só quando o JS vai revelar (sem JS, nada some). */
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    .passada[data-passada=''] .passada__conteudo {
+      clip-path: inset(0 0 100% 0);
+    }
+  }
+</style>

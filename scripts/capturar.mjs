@@ -74,7 +74,7 @@ try {
           colorScheme: tema === 'escuro' ? 'dark' : 'light',
           reducedMotion: movimento === 'reduzido' ? 'reduce' : 'no-preference',
         });
-        const dataTheme = tema === 'escuro' ? 'dark' : 'light';
+        const dataTheme = tema;
         await contexto.addInitScript((t) => {
           globalThis.document.documentElement.dataset.theme = t;
         }, dataTheme);
@@ -85,8 +85,17 @@ try {
             (t) => (globalThis.document.documentElement.dataset.theme = t),
             dataTheme,
           );
-          // Deixa as animações de entrada terminarem.
-          await pagina.waitForTimeout(movimento === 'reduzido' ? 200 : 2500);
+          // Rola a página inteira para disparar as revelações (IntersectionObserver)
+          // e volta ao topo; depois deixa as animações terminarem.
+          await pagina.evaluate(async () => {
+            const passo = globalThis.innerHeight * 0.6;
+            for (let y = 0; y < globalThis.document.body.scrollHeight; y += passo) {
+              globalThis.scrollTo(0, y);
+              await new Promise((ok) => setTimeout(ok, 120));
+            }
+            globalThis.scrollTo(0, 0);
+          });
+          await pagina.waitForTimeout(movimento === 'reduzido' ? 200 : 1500);
           const arquivo = join(destino, nomeArquivo(rota, largura, tema, movimento));
           await pagina.screenshot({ path: arquivo, fullPage: true });
           arquivos.push(arquivo);

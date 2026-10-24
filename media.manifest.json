@@ -847,7 +847,10 @@
       "trechos": [],
       "audioLiberado": false,
       "problemas": [],
-      "edicoes": [],
+      "edicoes": [
+        "Cópia do SVG original para public/media/ (sem alteração).",
+        "O site usa src/components/marca/tensini-monograma-tb.limpo.svg: 2 entalhes do bevel na barra horizontal removidos (bico em 205,9/230,2 e degrau em 317/235,8) e o gancho do canto do I alisado. Só nós ajustados; desenho igual (sessão 3)."
+      ],
       "naoUsar": false
     },
     {

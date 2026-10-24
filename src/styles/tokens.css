@@ -1,0 +1,134 @@
+/*
+  Tokens — Tensini Barbieri. Escuro é o padrão; claro com data-theme="claro".
+  Paleta calibrada contra os quadros e o logo (docs/DESIGN_SYSTEM.md).
+  Pares de texto/fundo validados por scripts/audit-contraste.mjs (lê as marcações @paleta e @superficie).
+*/
+
+/* @paleta */
+:root {
+  --carvao: #121316;
+  --navy: #1a2146;
+  --latao: #b89252;
+  --giz: #eef0ef;
+  --aco: #8c9098;
+  --musgo: #2c3e30;
+  --aco-escuro: #565b64;
+  --latao-escuro: #7a5b26;
+  --latao-claro: #d2b073;
+}
+
+/* Tipografia (fontes registradas no astro.config.mjs). */
+:root {
+  --fonte-titulo: var(--f-caslon), 'Libre Caslon Display', georgia, serif;
+  --fonte-texto: var(--f-schibsted), 'Schibsted Grotesk', arial, sans-serif;
+
+  /* Escala fluida: display muito grande contra texto de 17–18 px. */
+  --fs-display: clamp(3.75rem, 1.6rem + 10.5vw, 11.5rem);
+  --fs-1: clamp(2.5rem, 1.55rem + 4.2vw, 5.75rem);
+  --fs-2: clamp(1.875rem, 1.4rem + 2vw, 3.25rem);
+  --fs-3: clamp(1.375rem, 1.2rem + 0.75vw, 1.875rem);
+  --fs-texto: clamp(1.0625rem, 1.03rem + 0.15vw, 1.125rem);
+  --fs-pequeno: 0.9375rem;
+  --fs-rotulo: 0.75rem;
+
+  --lh-display: 0.88;
+  --lh-titulo: 1.02;
+  --lh-texto: 1.55;
+  --tracking-rotulo: 0.22em;
+  --medida: 62ch;
+
+  /* Espaço (base 4 px). */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 0.75rem;
+  --e-4: 1rem;
+  --e-5: 1.5rem;
+  --e-6: 2rem;
+  --e-7: 3rem;
+  --e-8: 4.5rem;
+  --e-9: clamp(4.5rem, 3rem + 6vw, 9rem);
+  --margem: clamp(1rem, 0.5rem + 3vw, 3.5rem);
+
+  /* Movimento: 160–600 ms e uma curva assinatura (a "passada": arranca firme, assenta preciso). */
+  --dur-1: 160ms;
+  --dur-2: 320ms;
+  --dur-3: 600ms;
+  --curva: cubic-bezier(0.7, 0, 0.18, 1);
+
+  --raio: 2px;
+  --borda-fina: 1px;
+  --linha-passada: 2px;
+}
+
+/* Fundos das superfícies, para as bordas entre seções. Escuro (padrão). */
+:root {
+  --fundo-base: var(--carvao);
+  --fundo-contraste: var(--giz);
+  --fundo-navy: var(--navy);
+  color-scheme: dark;
+}
+:root[data-theme='claro'] {
+  --fundo-base: var(--giz);
+  --fundo-contraste: var(--carvao);
+  color-scheme: light;
+}
+
+/*
+  Papéis por superfície. Uma seção escolhe data-superficie="base|contraste|navy";
+  base e contraste trocam com o tema (alternância carvão / giz).
+*/
+
+/* @superficie carvao */
+:root,
+:root:not([data-theme='claro']) [data-superficie='base'],
+:root[data-theme='claro'] [data-superficie='contraste'],
+.sup-carvao {
+  --fundo: var(--carvao);
+  --texto: var(--giz);
+  --texto-2: var(--aco);
+  --acento: var(--latao);
+  --acento-texto: var(--latao);
+  --linha: rgb(140 144 152 / 0.28);
+  --foco: var(--latao-claro);
+  --botao-fundo: var(--latao);
+  --botao-texto: var(--carvao);
+  --botao-2-borda: var(--aco);
+  --ponto-aberto: var(--latao);
+  --ponto-fechado: var(--aco);
+}
+
+/* @superficie giz */
+:root[data-theme='claro'],
+:root[data-theme='claro'] [data-superficie='base'],
+:root:not([data-theme='claro']) [data-superficie='contraste'],
+.sup-giz {
+  --fundo: var(--giz);
+  --texto: var(--carvao);
+  --texto-2: var(--aco-escuro);
+  --acento: var(--latao);
+  --acento-texto: var(--latao-escuro);
+  --linha: rgb(18 19 22 / 0.18);
+  --foco: var(--carvao);
+  --botao-fundo: var(--carvao);
+  --botao-texto: var(--giz);
+  --botao-2-borda: var(--aco-escuro);
+  --ponto-aberto: var(--latao-escuro);
+  --ponto-fechado: var(--aco-escuro);
+}
+
+/* @superficie navy */
+[data-superficie='navy'],
+.sup-navy {
+  --fundo: var(--navy);
+  --texto: var(--giz);
+  --texto-2: #a9adb6;
+  --acento: var(--latao);
+  --acento-texto: var(--latao-claro);
+  --linha: rgb(238 240 239 / 0.2);
+  --foco: var(--latao-claro);
+  --botao-fundo: var(--latao);
+  --botao-texto: var(--carvao);
+  --botao-2-borda: #a9adb6;
+  --ponto-aberto: var(--latao-claro);
+  --ponto-fechado: #a9adb6;
+}

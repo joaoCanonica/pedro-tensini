@@ -1,11 +1,19 @@
-// Tokens de partida (CLAUDE.md, seção 5). Calibrados e validados em AA na sessão 3.
+// Paleta calibrada na sessão 3 (docs/DESIGN_SYSTEM.md). Fonte visual: src/styles/tokens.css;
+// scripts/audit-contraste.mjs falha se as duas divergirem.
 export const cores = {
   carvao: '#121316',
-  navy: '#15233F',
+  /** Navy das capas (era #15233F; as capas puxam para o azul-violeta). */
+  navy: '#1A2146',
+  /** Latão chapado: matiz do meio-tom do monograma (37°). */
   latao: '#B89252',
-  giz: '#F1F0EC',
+  /** Giz frio (era #F1F0EC, levemente quente). */
+  giz: '#EEF0EF',
   aco: '#8C9098',
-  musgo: '#2E3D2A',
+  /** Musgo da parede verde (matiz ~128°). */
+  musgo: '#2C3E30',
+  acoEscuro: '#565B64',
+  lataoEscuro: '#7A5B26',
+  lataoClaro: '#D2B073',
 } as const;
 
 export const fontes = {

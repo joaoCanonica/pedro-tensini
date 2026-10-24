@@ -1,0 +1,194 @@
+/* Base: reset curto, tipografia, links, foco e utilitários. */
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  hanging-punctuation: first last;
+}
+body {
+  min-height: 100svh;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size: var(--fs-texto);
+  line-height: var(--lh-texto);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+[data-superficie] {
+  background: var(--fundo);
+  color: var(--texto);
+}
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+img,
+video {
+  height: auto;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* Tipografia */
+.display,
+h1,
+.t-1,
+h2,
+.t-2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.display {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: -0.025em;
+}
+h1,
+.t-1 {
+  font-size: var(--fs-1);
+  line-height: var(--lh-titulo);
+}
+h2,
+.t-2 {
+  font-size: var(--fs-2);
+  line-height: 1.08;
+}
+h3,
+.t-3 {
+  font-family: var(--fonte-texto);
+  font-size: var(--fs-3);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.pequeno {
+  font-size: var(--fs-pequeno);
+}
+.secundario {
+  color: var(--texto-2);
+}
+.medida {
+  max-width: var(--medida);
+}
+/* Rótulo em caixa alta espaçada, como o "BARBIERI" do logo (as fontes não têm versalete real). */
+.rotulo {
+  font-family: var(--fonte-texto);
+  font-size: var(--fs-rotulo);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: var(--tracking-rotulo);
+  text-transform: uppercase;
+}
+.num {
+  font-family: var(--fonte-texto);
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings:
+    'tnum' 1,
+    'lnum' 1;
+}
+
+/* Links: sublinhado cheio que vira hachurado (assinatura "O Degradê", uso d).
+   Repouso: linha cheia. Hover/foco: a cheia recolhe para a direita e a hachura entra pela esquerda. */
+a {
+  color: inherit;
+}
+.link,
+.prosa a {
+  text-decoration: none;
+  background-image:
+    linear-gradient(currentColor, currentColor),
+    repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 3.5px);
+  background-position:
+    100% 100%,
+    0 100%;
+  background-size:
+    100% 1px,
+    0% 4px;
+  background-repeat: no-repeat;
+  padding-bottom: 5px;
+  transition: background-size var(--dur-2) var(--curva);
+}
+.link:hover,
+.prosa a:hover,
+.link:focus-visible,
+.prosa a:focus-visible {
+  background-size:
+    0% 1px,
+    100% 4px;
+}
+
+/* Foco: anel de alto contraste com recuo (forma, não só cor). */
+:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 3px;
+  border-radius: var(--raio);
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+::selection {
+  background: var(--latao);
+  color: var(--carvao);
+}
+
+/* Movimento reduzido: nada se move; estados finais ficam. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Transição entre páginas só como melhoria progressiva e sem movimento reduzido. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}

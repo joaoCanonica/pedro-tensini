@@ -1,0 +1,51 @@
+---
+// Imagem responsiva AVIF/WebP com LQIP de fundo (sem salto de layout).
+// prioridade: imagem do LCP (eager + fetchpriority high); o resto é lazy.
+import { obterMidia, srcset } from './midia.ts';
+import type { Imagem } from './midia.ts';
+
+interface Props {
+  /** id de derivado (imagem, quadro, ou vídeo/loop para usar o pôster). */
+  id: string;
+  alt: string;
+  sizes?: string;
+  prioridade?: boolean;
+  class?: string;
+}
+
+const { id, alt, sizes = '100vw', prioridade = false, class: classe } = Astro.props;
+const item = obterMidia(id);
+const img: Imagem | undefined = item.imagem ?? item.poster;
+if (!img) throw new Error(`Mídia "${id}" sem imagem nem pôster.`);
+const maior = img.webp.at(-1);
+---
+
+<picture class:list={['poster', classe]} style={`aspect-ratio: ${img.largura} / ${img.altura}`}>
+  <source type="image/avif" srcset={srcset(img.avif)} sizes={sizes} />
+  <source type="image/webp" srcset={srcset(img.webp)} sizes={sizes} />
+  <img
+    src={maior?.src}
+    width={img.largura}
+    height={img.altura}
+    alt={alt}
+    sizes={sizes}
+    loading={prioridade ? 'eager' : 'lazy'}
+    fetchpriority={prioridade ? 'high' : 'auto'}
+    decoding={prioridade ? 'sync' : 'async'}
+    style={`background-image: url(${img.lqip})`}
+  />
+</picture>
+
+<style>
+  .poster {
+    display: block;
+    overflow: hidden;
+  }
+  .poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+  }
+</style>

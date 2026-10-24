@@ -1,0 +1,117 @@
+---
+// Vídeo vertical na moldura "espelho" (eco do espelho iluminado da barbearia).
+// loop: decorativo, mudo, sem controles, aria-hidden (pausa global vem na sessão 6).
+// conteudo: controles, preload none, legenda/descrição no figcaption.
+// O pôster é um <picture> (AVIF + LQIP) sob o vídeo: é ele que vira LCP, nunca o vídeo.
+import Poster from './Poster.astro';
+import { obterMidia } from './midia.ts';
+
+interface Props {
+  id: string;
+  tipo?: 'loop' | 'conteudo';
+  /** Descrição do que o vídeo mostra (conteúdo) ou do pôster (loop). */
+  descricao: string;
+  legenda?: string;
+  prioridade?: boolean;
+  sizes?: string;
+}
+
+const {
+  id,
+  tipo = 'conteudo',
+  descricao,
+  legenda,
+  prioridade = false,
+  sizes = '(min-width: 900px) 420px, 88vw',
+} = Astro.props;
+const item = obterMidia(id);
+if (!item.videos || !item.poster) throw new Error(`Mídia "${id}" não é vídeo.`);
+const v720 = item.videos.find((v) => v.largura === 720) ?? item.videos[0];
+const v540 = item.videos.find((v) => v.largura === 540);
+const loop = tipo === 'loop';
+const posterAttr = item.poster.webp.at(-1)?.src;
+---
+
+<figure class:list={['moldura', { 'moldura--loop': loop }]}>
+  <div class="moldura__espelho">
+    <Poster
+      id={id}
+      alt={loop ? '' : descricao}
+      sizes={sizes}
+      prioridade={prioridade}
+      class="moldura__poster"
+    />
+    <video
+      class="moldura__video"
+      width={v720?.largura}
+      height={v720?.altura}
+      poster={posterAttr}
+      playsinline
+      muted
+      {...(loop
+        ? {
+            autoplay: true,
+            loop: true,
+            'aria-hidden': 'true',
+            tabindex: -1,
+            preload: 'metadata',
+            'data-loop': '',
+          }
+        : { controls: true, preload: 'none', 'aria-label': descricao })}
+    >
+      {v540 && <source src={v540.webm.src} type="video/webm" media="(max-width: 600px)" />}
+      {v540 && <source src={v540.mp4.src} type="video/mp4" media="(max-width: 600px)" />}
+      {v720 && <source src={v720.webm.src} type="video/webm" />}
+      {v720 && <source src={v720.mp4.src} type="video/mp4" />}
+    </video>
+  </div>
+  {(legenda || !loop) && (
+    <figcaption class="moldura__legenda pequeno secundario">{legenda ?? descricao}</figcaption>
+  )}
+</figure>
+
+<script>
+  // Movimento reduzido: loop decorativo não toca (fica o pôster).
+  const reduzir = matchMedia('(prefers-reduced-motion: reduce)');
+  const aplicar = () => {
+    for (const v of document.querySelectorAll<HTMLVideoElement>('video[data-loop]')) {
+      if (reduzir.matches) {
+        v.pause();
+        v.removeAttribute('autoplay');
+      } else if (v.paused) void v.play().catch(() => {});
+    }
+  };
+  aplicar();
+  reduzir.addEventListener('change', aplicar);
+</script>
+
+<style>
+  .moldura {
+    width: min(100%, 26.25rem);
+  }
+  .moldura__espelho {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    padding: 6px;
+    border: 1px solid rgb(255 232 200 / 0.55);
+    border-radius: var(--raio);
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 0.35),
+      0 0 22px 2px rgb(255 214 160 / 0.2),
+      inset 0 0 14px rgb(255 214 160 / 0.14);
+  }
+  .moldura__poster,
+  .moldura__video {
+    position: absolute;
+    inset: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    object-fit: cover;
+  }
+  .moldura__video {
+    background: transparent;
+  }
+  .moldura__legenda {
+    margin-top: var(--e-3);
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+// <head> comum: meta, robots da config, fontes (preload só da fonte do H1) e CSS base.
+import { Font } from 'astro:assets';
+import { robots } from '../../config/seo.ts';
+import '../../styles/base.css';
+
+interface Props {
+  titulo: string;
+  descricao?: string;
+  /** Força noindex (páginas internas como /_estilo). */
+  noindex?: boolean;
+  /** Fontes alternativas (só na página de provas). */
+  alternativas?: boolean;
+}
+const { titulo, descricao, noindex = false, alternativas = false } = Astro.props;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : robots} />
+<title>{titulo}</title>
+{descricao && <meta name="description" content={descricao} />}
+<meta name="theme-color" content="#121316" />
+<Font cssVariable="--f-caslon" preload />
+<Font cssVariable="--f-schibsted" />
+{alternativas && <Font cssVariable="--f-dmserif" />}
+{alternativas && <Font cssVariable="--f-intertight" />}
