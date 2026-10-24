@@ -1,0 +1,25 @@
+---
+// Faixa "em revisão": aparece em todo preview (modo != producao). Sem copy final.
+import { modo } from '../config/seo.ts';
+---
+
+{modo !== 'producao' && (
+  <div class="preview-banner" role="note">
+    Em revisão · prévia não indexada · dados marcados como PROVISÓRIO ainda não foram confirmados
+  </div>
+)}
+
+<style>
+  .preview-banner {
+    position: relative;
+    z-index: 50;
+    padding: 0.375rem 1rem;
+    background: #b89252;
+    color: #121316;
+    font:
+      600 0.75rem/1.4 system-ui,
+      sans-serif;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+</style>

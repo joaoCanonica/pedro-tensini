@@ -1,5 +1,8 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist", "node_modules", "public/media"]
+  "exclude": ["dist", "node_modules", "public/media"],
+  "compilerOptions": {
+    "erasableSyntaxOnly": true
+  }
 }

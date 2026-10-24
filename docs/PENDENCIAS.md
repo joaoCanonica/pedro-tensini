@@ -26,8 +26,55 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 - [ ] **Pomadas**: o vídeo termina com o CTA "Segue esse perfil" queimado (36–37 s). Decidir se corta o final no site.
 - [ ] Demais itens a gravar: ver `docs/TENSINI_MAPA_MIDIA.md`, seção "O que falta gravar ou fotografar".
 
+## Config (sessão 2)
+
+- [ ] **Feriados e folgas** de 2026/2027 (e se fecha para almoço): entram em `src/config/horario.ts` (`excecoes`, `intervalo`). Sem isso, o status ao vivo trata feriado como dia normal.
+- [ ] **Link direto da ficha do Google** (place id): habilita "ver no Google" e o link "avaliar". Hoje os mapas usam as coordenadas.
+- [ ] **Nomes dos avaliadores** (Vinicius Farias, Diogo Amaral): ficam literais na config; conferir na passada de normas (sessão 9) se exibe nome completo.
+- [ ] Rodar `pnpm validate-config` depois de cada dado novo: a seção automática abaixo se atualiza sozinha.
+
 ## Ambiente (sessão 0)
 
 - O Astro estável atual (7.4.2) exige Node ≥ 22.23.4. O projeto foi fixado em Node 24.22.1 (LTS "Krypton"), ver `.nvmrc`.
 - `pnpm build` e `pnpm dev` rodam `media:prepare` antes (predev/prebuild) e precisam de **ffmpeg/ffprobe** no ambiente de build. Definir na sessão 9 como o deploy recebe os derivados (ffmpeg no build ou upload de `public/media/`).
 - O Playwright do projeto (1.64.1) procura um Chromium que não vem pré-instalado neste ambiente; `scripts/capturar.mjs` usa `/opt/pw-browsers/chromium` como alternativa. Em outra máquina: `pnpm exec playwright install chromium`.
+
+<!-- CONFIG:INICIO (pnpm validate-config) -->
+## Gerado pela config
+
+### Travas de produção
+
+- [x] WhatsApp presente e confirmado
+- [ ] Número do endereço confirmado: bloqueante: 405 ou 205 — posts dizem 205
+- [ ] Nome canônico confirmado: bloqueante: Tensini Barbieri — confirmar com o Pedro
+- [x] Nenhum termo vetado
+- [x] Nenhuma mídia naoUsar referenciada
+- [x] Nenhum preço exibido sem fonte
+- [ ] Termos vetados, preço sem fonte, mídia naoUsar e links wa.me no HTML: conferidos por `pnpm audit-compliance` depois do build.
+
+### Bloqueantes
+
+- `marca.nomeCanonico`: Tensini Barbieri — confirmar com o Pedro
+- `contato.endereco.numero`: 405 ou 205 — posts dizem 205
+
+### Avisos
+
+- nenhum
+
+### Opcionais pendentes (não travam; não aparecem em produção)
+
+- Andar/sala dentro da Galeria Augusta: `contato.endereco.salaAndar`
+- Onde estacionar perto da galeria: `contato.estacionamento`
+- Link direto da ficha do Google (place id): `contato.fichaGoogle`
+- Feriados e folgas do ano (nenhum informado ainda): `horario.feriadosInformados`
+- Intervalo de almoço: `horario.intervalo`
+- Combos (corte + barba etc.) e preços: `servicos.combos`
+- Preço (tabela oficial pendente; uma avaliação do Google cita R$ 40–60): `servicos.servicos[0].preco`, `servicos.servicos[1].preco`, `servicos.servicos[2].preco`, `servicos.servicos[3].preco`, `servicos.servicos[4].preco`
+- Duração: `servicos.servicos[0].duracao`, `servicos.servicos[1].duracao`, `servicos.servicos[2].duracao`, `servicos.servicos[3].duracao`, `servicos.servicos[4].duracao`
+- Link "escrever avaliação" do Google (place id): `avaliacoes.google.linkAvaliar`
+- Formação: Pedro confirma (datas e certificados): `formacao.formacao[0]`, `formacao.formacao[1]`, `formacao.formacao[2]`, `formacao.formacao[3]`, `formacao.formacao[4]`, `formacao.formacao[5]`
+- O Pedro oferece mentoria ou curso?: `formacao.ofereceMentoria`
+- Nome do app de agenda: `agenda.agenda.app`
+- Link público do app de agenda: `agenda.agenda.linkPublico`
+- Domínio do site (SITE_URL): `seo.dominio`
+<!-- CONFIG:FIM -->
