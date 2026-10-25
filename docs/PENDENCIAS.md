@@ -69,6 +69,15 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 - [ ] /privacidade: hospedagem e guarda de registros técnicos; data de publicação; revisão na sessão 9.
 - [ ] Formas de pagamento, encaixe, atendimento sem hora marcada e criança seguem pendentes no FAQ (selo PROVISÓRIO).
 
+## QA e deploy
+
+- [ ] Primeiro deploy: token da Vercel e segredos `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` no GitHub; depois domínio e `SITE_URL` (passo a passo em `docs/CONFERENCIA_FINAL.md`, seção 10).
+- [ ] Nomes de autores nas avaliações da home: autorização, iniciais ou sem nome (decisão do João).
+- [ ] Marcar a lista de mídias com cliente (`docs/CONFERENCIA_FINAL.md`, seção 4).
+- [ ] Safari iOS e Firefox: não testados aqui (download bloqueado); testar no aparelho e/ou no CI. Conferir no celular que o wa.me abre o app e, no desktop, o WhatsApp Web.
+- [ ] Teste humano com VoiceOver (iPhone) no montador e no status.
+- [ ] LCP entre 2,03 e 2,10 s em 4 medições (degradê, pomadas, sobre, home sem entrada); meta < 2,0 s. Opcional: pôster da abertura em 480 px no mobile.
+
 ## SEO e GEO
 
 - [ ] Capturas do Rich Results Test e do validator.schema.org: o ambiente bloqueou esses sites (proxy 403). Rodar com as URLs no ar e guardar em `docs/capturas/seo/` (o JSON-LD de cada página já está lá para colar).

@@ -1,0 +1,71 @@
+# Build e deploy na Vercel. O build roda aqui (o runner tem ffmpeg para gerar as mídias; a
+# imagem de build da Vercel não tem) e sobe pronto com `vercel deploy --prebuilt`.
+# - Qualquer branch: prévia (noindex, protegida pela Vercel).
+# - main: produção. A build de produção TRAVA enquanto houver pendência bloqueante na config
+#   (endereço, nome canônico...): é de propósito, nada é afrouxado aqui.
+# Segredos do repositório: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID.
+# Variáveis de ambiente (SITE_MODO, SITE_URL, PUBLIC_MEDICAO_*) ficam no projeto da Vercel e
+# chegam pelo `vercel pull`.
+name: deploy
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_CLI: vercel@63.1.2
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.22.1
+          cache: pnpm
+
+      - name: Cache das mídias geradas
+        uses: actions/cache@v4
+        with:
+          path: |
+            public/media
+            .cache
+          key: midia-${{ hashFiles('media.manifest.json', 'media-originais/**', 'scripts/prepare-media.mjs', 'scripts/lib/**') }}
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Ambiente da Vercel
+        run: |
+          ALVO=${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
+          echo "ALVO=$ALVO" >> "$GITHUB_ENV"
+          npx --yes $VERCEL_CLI pull --yes --environment=$ALVO --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build (prebuild gera mídias e confere travas; postbuild audita e põe o CSP)
+        run: |
+          if [ "$ALVO" = production ]; then
+            npx --yes $VERCEL_CLI build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          else
+            npx --yes $VERCEL_CLI build --token=${{ secrets.VERCEL_TOKEN }}
+          fi
+
+      - name: Deploy
+        run: |
+          if [ "$ALVO" = production ]; then
+            npx --yes $VERCEL_CLI deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+          else
+            npx --yes $VERCEL_CLI deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+          fi

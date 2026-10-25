@@ -1,0 +1,702 @@
+[
+ {
+  "rota": "/",
+  "perf": 99,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1881,
+  "fcp": 1243,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    19,
+    790.2
+   ],
+   "media": [
+    1,
+    566.6
+   ],
+   "image": [
+    4,
+    129.7
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    33.3
+   ],
+   "script": [
+    10,
+    9.9
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/?entrada=0",
+  "perf": 99,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 2030,
+  "fcp": 1505,
+  "cls": 0.001,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    19,
+    790.2
+   ],
+   "media": [
+    1,
+    566.6
+   ],
+   "image": [
+    4,
+    129.7
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    33.3
+   ],
+   "script": [
+    10,
+    9.9
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/agendar/",
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1354,
+  "fcp": 1204,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    11,
+    71.3
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    12.3
+   ],
+   "script": [
+    7,
+    8.3
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "image": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/como-chegar/",
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1730,
+  "fcp": 1221,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    14,
+    112.7
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "image": [
+    1,
+    38.1
+   ],
+   "document": [
+    1,
+    15.8
+   ],
+   "script": [
+    9,
+    8.1
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/servicos-e-precos/",
+  "perf": 99,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1955,
+  "fcp": 1221,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    14,
+    133.2
+   ],
+   "image": [
+    1,
+    53.1
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    19.9
+   ],
+   "script": [
+    9,
+    9.6
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/degrade-em-lages/",
+  "perf": 98,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 2101,
+  "fcp": 1576,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    16,
+    585.4
+   ],
+   "media": [
+    1,
+    434.1
+   ],
+   "image": [
+    2,
+    66.7
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    24.3
+   ],
+   "script": [
+    9,
+    9.6
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/barba-e-barbaterapia/",
+  "perf": 99,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1881,
+  "fcp": 1356,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    17,
+    202.6
+   ],
+   "image": [
+    4,
+    119.5
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    22.9
+   ],
+   "script": [
+    9,
+    9.6
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/sobrancelha/",
+  "perf": 99,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1953,
+  "fcp": 1221,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    14,
+    128
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "image": [
+    1,
+    48
+   ],
+   "document": [
+    1,
+    19.7
+   ],
+   "script": [
+    9,
+    9.6
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/pomadas/",
+  "perf": 99,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 2027,
+  "fcp": 1218,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    14,
+    142.6
+   ],
+   "image": [
+    1,
+    60.7
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    21.6
+   ],
+   "script": [
+    9,
+    9.6
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/sobre-pedro-tensini/",
+  "perf": 99,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 2027,
+  "fcp": 1299,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    11,
+    171.6
+   ],
+   "image": [
+    3,
+    100.8
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    16.6
+   ],
+   "script": [
+    4,
+    3.4
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/perguntas-frequentes/",
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1224,
+  "fcp": 1064,
+  "cls": 0.003,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    6,
+    66.6
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    13.7
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "script": [
+    2,
+    2.2
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "image": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/avaliar/",
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1227,
+  "fcp": 1066,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    6,
+    66.1
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    13.3
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "script": [
+    2,
+    2.2
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "image": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/privacidade/",
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1229,
+  "fcp": 1065,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    6,
+    65.2
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    12.4
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "script": [
+    2,
+    2.2
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "image": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ },
+ {
+  "rota": "/404.html",
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "lcp": 1222,
+  "fcp": 1062,
+  "cls": 0,
+  "tbt": 0,
+  "recursos": {
+   "total": [
+    6,
+    63.2
+   ],
+   "font": [
+    2,
+    48.4
+   ],
+   "document": [
+    1,
+    10.3
+   ],
+   "other": [
+    1,
+    2.3
+   ],
+   "script": [
+    2,
+    2.2
+   ],
+   "stylesheet": [
+    0,
+    0
+   ],
+   "image": [
+    0,
+    0
+   ],
+   "media": [
+    0,
+    0
+   ],
+   "third-party": [
+    0,
+    0
+   ]
+  },
+  "falhas": []
+ }
+]

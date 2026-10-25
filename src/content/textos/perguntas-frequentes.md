@@ -45,7 +45,7 @@ Depende do comprimento do cabelo e da altura do degradê, porque cada fase, até
 Os valores estão em Serviços e preços. O Pedro confirma no WhatsApp ao marcar.
 <!-- senao -->
 
-A tabela de preços está sendo fechada. Enquanto isso, o valor de cada serviço você confirma com o Pedro no WhatsApp, antes de marcar. Sem surpresa na hora de pagar. [PROVISÓRIO: tabela de preços]
+A tabela de preços está sendo fechada. Enquanto isso, o valor de cada serviço você confirma com o Pedro no WhatsApp, antes de marcar. Assim você sabe o valor antes do horário. [PROVISÓRIO: tabela de preços]
 <!-- fim -->
 
 ## Quais formas de pagamento aceita?

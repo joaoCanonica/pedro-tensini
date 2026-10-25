@@ -82,7 +82,7 @@ const tel = whatsapp.estado === 'confirmado' ? `tel:+${whatsapp.valor}` : null;
     <p>
       {nome} · Pedro Carlos Tensini{exibirCnpj && ` · CNPJ ${cnpj.valor}`}
     </p>
-    <p>
+    <p class="rodape__links">
       <a class="link" href="/privacidade/">
         Política de privacidade
       </a>
@@ -142,7 +142,6 @@ const tel = whatsapp.estado === 'confirmado' ? `tel:+${whatsapp.valor}` : null;
     list-style: none;
   }
   .rodape__preferencias {
-    margin-left: var(--e-4);
     border: 0;
     padding: 0 0 5px;
     background-color: transparent;
@@ -152,6 +151,17 @@ const tel = whatsapp.estado === 'confirmado' ? `tel:+${whatsapp.valor}` : null;
   }
   .rodape__preferencias[hidden] {
     display: none;
+  }
+  /* Dois alvos lado a lado: altura e distância de pelo menos 24 px (WCAG 2.5.8). */
+  .rodape__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2) var(--e-5);
+  }
+  .rodape__links > * {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
   }
   .rodape__legal {
     margin-top: var(--e-8);

@@ -43,7 +43,7 @@ const poster = video.poster?.webp.at(-1)?.src;
     ))}
   </div>
 
-  <ol class="tempos" aria-label="Os cinco tempos da barbaterapia">
+  <ol class="tempos" aria-label="Os cinco tempos da barbaterapia" tabindex="0">
     {t.itens.map((item, i) => {
       const foto = FOTOS[item.nome];
       return (
@@ -136,6 +136,11 @@ const poster = video.poster?.webp.at(-1)?.src;
 </script>
 
 <style>
+  /* Faixa com rolagem horizontal: focável para quem rola pelo teclado (setas). */
+  .tempos:focus-visible {
+    outline: 2px solid var(--foco);
+    outline-offset: 4px;
+  }
   .barba__intro {
     margin-bottom: var(--e-5);
   }

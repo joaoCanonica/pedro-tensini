@@ -25,10 +25,9 @@ function rotular(tocando: boolean): void {
 
 function tocar(): void {
   if (!video) return;
-  if (video.preload !== 'auto') {
-    video.preload = 'auto';
-    video.load();
-  }
+  // Só troca o preload: isso já inicia o download. Um load() a mais abortava e recomeçava o
+  // pedido (o vídeo saía baixado duas vezes).
+  if (video.preload !== 'auto') video.preload = 'auto';
   void video.play().catch(() => rotular(false));
 }
 

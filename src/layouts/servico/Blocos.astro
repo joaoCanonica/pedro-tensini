@@ -28,7 +28,12 @@ const { blocos, rotuloPassos = 'Passo a passo' } = Astro.props;
       ))}
     </dl>
   ) : b.tipo === 'tabela' ? (
-    <div class="blocos__tabela-rolagem">
+    <div
+      class="blocos__tabela-rolagem"
+      role="region"
+      aria-label={`Tabela: ${b.cabecalho.join(', ')}`}
+      tabindex="0"
+    >
       <table class="blocos__tabela">
         <thead>
           <tr>
@@ -99,6 +104,10 @@ const { blocos, rotuloPassos = 'Passo a passo' } = Astro.props;
   }
   .blocos__tabela-rolagem {
     overflow-x: auto;
+  }
+  .blocos__tabela-rolagem:focus-visible {
+    outline: 2px solid var(--foco);
+    outline-offset: 3px;
   }
   .blocos__tabela {
     width: 100%;

@@ -72,3 +72,5 @@ Na dúvida, pergunte ao Pedro no seu horário: ele mostra a quantidade, o jeito 
 ## Vídeo
 
 Descrição: O Pedro, na barbearia, explica por que o cabelo não fica igual em casa e mostra quatro pomadas: em pó, matte, com brilho e extra forte. No fim lembra que escova e secador também fazem parte do processo. Vídeo sem som, com as falas legendadas na imagem.
+
+Nota: Os produtos que aparecem no vídeo são exemplos de cada tipo de pomada. Este site não vende produtos.

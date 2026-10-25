@@ -16,10 +16,14 @@ const aplicar = parte(p, 'Como aplicar');
 const naoSo = parte(p, 'Não é só a pomada');
 const qual = parte(p, 'Qual é a sua?');
 const video = parte(p, 'Vídeo');
-const descricao = video.blocos
-  .map((b) => (b.tipo === 'p' ? b.texto.replace(/^Descrição:\s*/, '') : ''))
+const paragrafosVideo = video.blocos.flatMap((b) => (b.tipo === 'p' ? [b.texto] : []));
+const descricao = paragrafosVideo
+  .filter((t) => !t.startsWith('Nota:'))
+  .map((t) => t.replace(/^Descrição:\s*/, ''))
   .join(' ')
   .trim();
+// Marcas no vídeo: nota neutra junto da legenda (sem sugerir patrocínio nem venda).
+const nota = paragrafosVideo.find((t) => t.startsWith('Nota:'))?.replace(/^Nota:\s*/, '') ?? '';
 const citacoes = p.intro.blocos.filter((b) => b.tipo === 'citacao');
 const resto = p.intro.blocos.filter((b) => b.tipo !== 'citacao');
 const perguntas = [
@@ -39,6 +43,7 @@ const perguntas = [
     id="pomadas"
     prioridade
     descricao={descricao}
+    legenda={nota ? `${descricao} ${nota}` : descricao}
     sizes="(min-width: 60rem) 26rem, 88vw"
   />
 
