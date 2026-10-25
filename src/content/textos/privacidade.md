@@ -1,12 +1,10 @@
 ---
 pagina: /privacidade
-title: Política de privacidade | Tensini Barbieri
+title: Política de privacidade | Pedro Tensini Barbearia
 description: Como o site da barbearia do Pedro Tensini, em Lages, trata dados: sem formulário, sem cadastro, WhatsApp só quando você toca no botão.
 ---
 
 # Política de privacidade
-
-[PROVISÓRIO: texto revisado na conferência de normas (sessão 9, LGPD)]
 
 Este site é da barbearia do {{pedro}} (Pedro Carlos Tensini, MEI, CNPJ {{cnpj}}), na Galeria Augusta, Rua Hercílio Luz, Centro de Lages/SC. Aqui está, em linguagem simples, o que acontece com os seus dados.
 
@@ -30,9 +28,9 @@ Os vídeos e as fotos ficam neste próprio site. Nenhum player de terceiros é c
 
 ## Medição de cliques
 
-O site conta, sem cookies e sem identificar você, os toques nos botões de WhatsApp, de rota (Google Maps, Waze, Apple Mapas) e de ligar: qual botão e em qual página. Não entra nome, telefone nem o texto da mensagem. A contagem fica num servidor da própria barbearia, sem serviço de terceiros. [PROVISÓRIO: a contagem só liga quando o servidor de medição (Umami) estiver no ar; até lá, nada é enviado]
+O site conta, sem cookies e sem identificar você, os toques nos botões de WhatsApp, de rota (Google Maps, Waze, Apple Mapas) e de ligar: qual botão e em qual página. Não entra nome, telefone nem o texto da mensagem. A contagem fica num servidor da própria barbearia, sem serviço de terceiros. Hoje essa contagem está desligada: nada é enviado.
 
-O servidor que hospeda o site pode guardar registros técnicos de acesso, como o endereço IP e o horário, por segurança. [PROVISÓRIO: hospedagem e prazo de guarda dos registros a confirmar]
+O site é hospedado na Vercel, que guarda por pouco tempo registros técnicos de acesso, como o endereço IP, o horário e a página pedida, por segurança e para o site funcionar. A barbearia não usa esses registros para identificar ninguém.
 
 ## Sua escolha
 
@@ -42,4 +40,4 @@ Na primeira visita aparece um aviso com dois botões, Aceitar e Recusar. Aceitar
 
 Dúvidas sobre os seus dados: WhatsApp {{whatsapp}}.
 
-Atualizada em: a data entra na publicação. [PROVISÓRIO: data da publicação]
+Atualizada em: 27/10/2026.

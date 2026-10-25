@@ -54,7 +54,7 @@ A tabela de preços está sendo fechada. Enquanto isso, o valor de cada serviço
 
 ## Onde fica a Galeria Augusta? Como eu acho?
 
-A Galeria Augusta fica na Rua Hercílio Luz, no Centro de Lages. A barbearia é dentro da galeria. Na página Como chegar tem o endereço completo, o mapa e os botões de rota para Google Maps, Waze e Apple Mapas. [PROVISÓRIO: andar/sala e referências próximas]
+A Galeria Augusta fica na Rua Hercílio Luz, no Centro de Lages, ao lado da Agito. A barbearia é dentro da galeria. Na página Como chegar tem o endereço completo, o mapa e os botões de rota para Google Maps, Waze e Apple Mapas.
 
 ## Tem estacionamento?
 

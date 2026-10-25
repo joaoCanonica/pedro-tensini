@@ -1,8 +1,13 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
 
-// SITE_URL vem do ambiente; sem domínio confirmado o site fica em noindex.
-const site = process.env.SITE_URL;
+// SITE_URL vem do ambiente (na Vercel, cai no domínio de produção, como em src/config/seo.ts);
+// sem domínio o site fica em noindex.
+const vercelProducao =
+  process.env.VERCEL_ENV === 'production' && process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : undefined;
+const site = process.env.SITE_URL?.trim() || vercelProducao;
 
 const F = './src/styles/fonts';
 

@@ -4,8 +4,8 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 
 ## Bloqueantes para produção
 
-- [ ] **Número do endereço**: João passou 405; os posts da barbaterapia dizem 205. Falta também andar/sala na Galeria Augusta.
-- [ ] **Nome canônico**: recomendado "Tensini Barbieri" (logo oficial). Pedro confirma.
+- [x] **Número do endereço**: decisão do João (27/10/2026): o número não entra; o endereço é Rua Hercílio Luz, Galeria Augusta, Centro. Referência: ao lado da Agito. Falta só o andar/sala, se houver (opcional).
+- [x] **Nome canônico**: "Pedro Tensini Barbearia" (João, 27/10/2026). As variações antigas (Tensini Barbieri, Tensini Barbiere) ficam como `alternateName` no JSON-LD.
 - [ ] **Domínio**: sem domínio, `SITE_URL` fica vazio e o site permanece em noindex.
 
 ## Dados a confirmar
@@ -30,7 +30,7 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 
 - [ ] **Feriados e folgas** de 2026/2027 (e se fecha para almoço): entram em `src/config/horario.ts` (`excecoes`, `intervalo`). Sem isso, o status ao vivo trata feriado como dia normal.
 - [ ] **Link direto da ficha do Google** (place id): habilita "ver no Google" e o link "avaliar". Hoje os mapas usam as coordenadas.
-- [ ] **Nomes dos avaliadores** (Vinicius Farias, Diogo Amaral): ficam literais na config; conferir na passada de normas (sessão 9) se exibe nome completo.
+- [x] **Nomes dos avaliadores**: só as iniciais ("V. F.", "D. A."), decisão do João.
 - [ ] Rodar `pnpm validate-config` depois de cada dado novo: a seção automática abaixo se atualiza sozinha.
 
 ## Home (sessão 4)
@@ -62,17 +62,17 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 ## Local, horário e confiança (sessão 8)
 
 - [ ] /como-chegar: "Da calçada à cadeira" sem foto em nenhum passo (selo "Foto em breve" no preview). Gravar: calçada da Rua Hercílio Luz, entrada da Galeria Augusta, corredor/andar, porta da barbearia; preencher `comoChegar` em `src/config/contato.ts`.
-- [ ] /como-chegar: andar/sala (`endereco.salaAndar`), estacionamento (`estacionamento`) e pontos de referência próximos (só entram confirmados).
+- [ ] /como-chegar: andar/sala (`endereco.salaAndar`) e estacionamento (`estacionamento`). Referência próxima confirmada: ao lado da Agito.
 - [ ] Mapa interativo: embed do Google sem chave (`maps?q=…&output=embed`), carregado só após o clique. Conferir na sessão 9 (LGPD) se o aviso de consentimento basta.
 - [ ] /avaliar: o botão e o QR apontam para `destinoAvaliar()` (`src/config/avaliacoes.ts`). Hoje é a busca da ficha no Maps; trocar pelo link direto "escrever avaliação" (place id) quando o João passar, e reimprimir a plaquinha.
 - [ ] /sobre-pedro-tensini: formação só aparece no preview até cada item ser confirmado na config; imagem do certificado do workshop quando o João liberar; retrato oficial.
-- [ ] /privacidade: hospedagem e guarda de registros técnicos; data de publicação; revisão na sessão 9.
+- [x] /privacidade: hospedagem (Vercel) e data (27/10/2026).
 - [ ] Formas de pagamento, encaixe, atendimento sem hora marcada e criança seguem pendentes no FAQ (selo PROVISÓRIO).
 
 ## QA e deploy
 
-- [ ] Primeiro deploy: token da Vercel e segredos `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` no GitHub; depois domínio e `SITE_URL` (passo a passo em `docs/CONFERENCIA_FINAL.md`, seção 10).
-- [ ] Nomes de autores nas avaliações da home: autorização, iniciais ou sem nome (decisão do João).
+- [x] Deploy: projeto `pedro-tensini` na Vercel ligado ao GitHub; build nativa da Vercel (sem ffmpeg, com as mídias geradas no git). Falta só o domínio próprio, se o João quiser (ver `docs/CONFERENCIA_FINAL.md`, seção 10).
+- [x] Nomes de autores nas avaliações da home: iniciais.
 - [ ] Marcar a lista de mídias com cliente (`docs/CONFERENCIA_FINAL.md`, seção 4).
 - [ ] Safari iOS e Firefox: não testados aqui (download bloqueado); testar no aparelho e/ou no CI. Conferir no celular que o wa.me abre o app e, no desktop, o WhatsApp Web.
 - [ ] Teste humano com VoiceOver (iPhone) no montador e no status.
@@ -89,7 +89,7 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 
 - [ ] Medição: subir o Umami (auto-hospedado) na mesma origem do site, ou um proxy `/api/send`, e definir `PUBLIC_MEDICAO_URL` e `PUBLIC_MEDICAO_SITE` no build de produção. Até lá nada é enviado (docs/FUNIL.md).
 - [ ] Exceções de horário (feriados, folgas) em `src/config/horario.ts`: o montador já avisa "Fechado em dd/mm: motivo", mas a lista está vazia e o e2e não cobre esse caso (só com uma exceção cadastrada).
-- [ ] Revisão de normas (sessão 9): texto do banner, política de privacidade e base legal da medição sem cookies.
+- [x] Revisão de normas (sessão 9): feita (`docs/CONFERENCIA_FINAL.md`).
 
 ## Textos (sessão 5)
 
@@ -98,8 +98,6 @@ Gerado de `src/content/textos/*.md` (marcas `[PROVISÓRIO: …]`). Cada item sai
 - [ ] Link direto "escrever avaliação" do Google (place id). Até lá o botão abre a ficha no Google Maps — avaliar.md
 - [ ] Duração da barba e da barbaterapia — barba-e-barbaterapia.md
 - [ ] Tabela de preços — barba-e-barbaterapia.md, degrade-em-lages.md, perguntas-frequentes.md, sobrancelha.md
-- [ ] Andar ou sala dentro da Galeria Augusta — como-chegar.md
-- [ ] Passos com foto/vídeo e referências próximas — como-chegar.md
 - [ ] Onde estacionar perto da galeria — como-chegar.md
 - [ ] Duração do serviço — degrade-em-lages.md, sobrancelha.md
 - [ ] Intervalo de retoque que o Pedro recomenda — degrade-em-lages.md
@@ -110,23 +108,18 @@ Gerado de `src/content/textos/*.md` (marcas `[PROVISÓRIO: …]`). Cada item sai
 - [ ] O Pedro confirma se atende sem horário marcado — perguntas-frequentes.md
 - [ ] Duração do degradê — perguntas-frequentes.md
 - [ ] Formas de pagamento (Pix, cartão, dinheiro) a confirmar com o Pedro — perguntas-frequentes.md, servicos-e-precos.md
-- [ ] Andar/sala e referências próximas — perguntas-frequentes.md
 - [ ] Estacionamento perto da galeria a confirmar com o Pedro — perguntas-frequentes.md
 - [ ] O Pedro confirma se atende criança e a partir de que idade — perguntas-frequentes.md
 - [ ] O Pedro confirma este resumo do vídeo e se vende as pomadas na barbearia — pomadas.md
-- [ ] Texto revisado na conferência de normas (sessão 9, LGPD) — privacidade.md
-- [ ] Definido na sessão 7. Se houver medição, ela será sem cookies de rastreamento e sem dados que identifiquem você — privacidade.md
-- [ ] Data da publicação — privacidade.md
 - [ ] Tabela de preços e durações — servicos-e-precos.md
 - [ ] Combos e valores — servicos-e-precos.md
-- [ ] Nome canônico da marca a confirmar com o Pedro (Barbieri ou Barbiere) — sobre-pedro-tensini.md
 - [ ] A lista abaixo foi vista nos stories do destaque "Mentorias" e só vai ao ar depois que o Pedro confirmar datas e certificados — sobre-pedro-tensini.md
 
 Também dependem de dado (blocos condicionais `<!-- se:… -->`, já com texto de reserva pronto): preço e duração de cada serviço (`{{preco.*}}`, `{{duracao.*}}`), combos, exceções de horário, passo a passo "da calçada à cadeira", estacionamento, link de avaliar e andar/sala na galeria.
 
 Citações com fonte a localizar (o texto é literal, mas falta o post exato): "Se você repara nos detalhes, já sabe onde vir." e "Precisão nos acabamentos, elegância no resultado!". A de "Mais que um corte, uma experiência." está no post provável DMdJJJdu5AW.
 
-Títulos e descrições usam "Tensini Barbieri" (nome provisório): se o nome canônico mudar, trocar em `title`/`description` de home, sobre, privacidade e 404.
+Títulos usam o nome canônico "Pedro Tensini Barbearia".
 
 ## Ambiente (sessão 0)
 
@@ -140,8 +133,8 @@ Títulos e descrições usam "Tensini Barbieri" (nome provisório): se o nome ca
 ### Travas de produção
 
 - [x] WhatsApp presente e confirmado
-- [ ] Número do endereço confirmado: bloqueante: 405 ou 205 — posts dizem 205
-- [ ] Nome canônico confirmado: bloqueante: Tensini Barbieri — confirmar com o Pedro
+- [x] Número do endereço confirmado
+- [x] Nome canônico confirmado
 - [x] Nenhum termo vetado
 - [x] Nenhuma mídia naoUsar referenciada
 - [x] Nenhum preço exibido sem fonte
@@ -149,8 +142,7 @@ Títulos e descrições usam "Tensini Barbieri" (nome provisório): se o nome ca
 
 ### Bloqueantes
 
-- `marca.nomeCanonico`: Tensini Barbieri — confirmar com o Pedro
-- `contato.endereco.numero`: 405 ou 205 — posts dizem 205
+- nenhum
 
 ### Avisos
 

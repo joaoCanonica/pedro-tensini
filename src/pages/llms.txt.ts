@@ -4,7 +4,7 @@ import type { APIRoute } from 'astro';
 import { nap, ruaCompleta, absoluta } from '../components/seo/entidade.ts';
 import { PAGINAS, metaDe } from '../components/seo/paginas.ts';
 import { resumoSemana } from '../components/base/semana.ts';
-import { instagram, links } from '../config/contato.ts';
+import { endereco, instagram, links } from '../config/contato.ts';
 import { profissional } from '../config/marca.ts';
 import { linkWhatsApp } from '../lib/whatsapp.ts';
 
@@ -25,7 +25,7 @@ export const GET: APIRoute = () => {
   };
   const texto = `# ${nap.nome}
 
-> Barbearia do ${profissional.nome.valor} na Galeria Augusta, ${nap.rua}, ${nap.bairro} de ${nap.cidade}/${nap.uf}. Degradê com acabamento na shaver, barba, barbaterapia e sobrancelha. Agendamento pelo WhatsApp; o Pedro confirma o horário por lá.
+> Barbearia do ${profissional.nome.valor} na Galeria Augusta, ${nap.rua}, ${nap.bairro} de ${nap.cidade}/${nap.uf} (${endereco.referencia.valor}). Degradê com acabamento na shaver, barba, barbaterapia e sobrancelha. Agendamento pelo WhatsApp; o Pedro confirma o horário por lá.
 
 ## Quem é
 

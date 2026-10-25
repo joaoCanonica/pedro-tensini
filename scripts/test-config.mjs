@@ -206,8 +206,13 @@ const falhas = (e) =>
     .map((t) => t.id);
 
 describe('travas de config (cada uma derruba a produção)', () => {
-  it('config real: trava número do endereço e nome canônico', () =>
-    assert.deepEqual(falhas(entradaPadrao(manifesto)), ['numero-endereco', 'nome-canonico']));
+  it('config real: nenhuma trava (nome e endereço confirmados pelo João)', () =>
+    assert.deepEqual(falhas(entradaPadrao(manifesto)), []));
+  it('endereço confirmado sem número (null) não trava', () =>
+    assert.deepEqual(
+      falhas({ ...tudoConfirmado(), numeroEndereco: confirmado(null, 'decisão registrada') }),
+      [],
+    ));
   it('com tudo confirmado: nenhuma trava', () => assert.deepEqual(falhas(tudoConfirmado()), []));
   it('WhatsApp ausente', () =>
     assert.deepEqual(falhas({ ...tudoConfirmado(), whatsapp: opcional() }), ['whatsapp']));
@@ -324,15 +329,15 @@ describe('scripts de ponta a ponta', () => {
       encoding: 'utf8',
       env: { ...process.env, ...env },
     });
-  it('validate-config: preview passa com pendências', () => {
+  it('validate-config: preview passa', () => {
     const r = rodar('validate-config.mjs', ['--modo=preview', '--sem-escrever']);
     assert.equal(r.status, 0, r.stderr);
-    assert.match(r.stdout, /TRAVA/);
+    assert.match(r.stdout, /pendências: 0 bloqueantes/);
   });
-  it('validate-config: produção falha (número e nome pendentes)', () => {
+  it('validate-config: produção passa (nenhuma trava aberta)', () => {
     const r = rodar('validate-config.mjs', ['--sem-escrever'], { SITE_MODO: 'producao' });
-    assert.equal(r.status, 1);
-    assert.match(r.stderr, /PRODUÇÃO BLOQUEADA: 2 trava/);
+    assert.equal(r.status, 0, r.stderr);
+    assert.doesNotMatch(r.stderr, /PRODUÇÃO BLOQUEADA/);
   });
   it('audit-compliance: cada problema derruba a produção; preview só alerta', () => {
     const casos = {

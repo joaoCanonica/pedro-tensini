@@ -11,12 +11,9 @@ export const google = {
   conferidoEm: '2026-10-24',
   /** Trechos literais, sem edição. */
   trechos: [
+    confirmado({ autor: 'V. F.', texto: 'Top! Atendimento excelente de alta qualidade!' }, FONTE),
     confirmado(
-      { autor: 'Vinicius Farias', texto: 'Top! Atendimento excelente de alta qualidade!' },
-      FONTE,
-    ),
-    confirmado(
-      { autor: 'Diogo Amaral', texto: 'Atendimento de qualidade, barbeiro muito profissional' },
+      { autor: 'D. A.', texto: 'Atendimento de qualidade, barbeiro muito profissional' },
       FONTE,
     ),
   ],
