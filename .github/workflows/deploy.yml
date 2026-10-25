@@ -3,7 +3,8 @@
 # - Qualquer branch: prévia (noindex, protegida pela Vercel).
 # - main: produção. A build de produção TRAVA enquanto houver pendência bloqueante na config
 #   (endereço, nome canônico...): é de propósito, nada é afrouxado aqui.
-# Segredos do repositório: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID.
+# Segredos do repositório: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID; variável de
+# repositório DEPLOY_ATIVO=true (sem ela o job não roda).
 # Variáveis de ambiente (SITE_MODO, SITE_URL, PUBLIC_MEDICAO_*) ficam no projeto da Vercel e
 # chegam pelo `vercel pull`.
 name: deploy
@@ -23,6 +24,8 @@ env:
 
 jobs:
   deploy:
+    # Desligado até o João criar os segredos e a variável de repositório DEPLOY_ATIVO=true.
+    if: vars.DEPLOY_ATIVO == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:

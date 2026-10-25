@@ -99,9 +99,10 @@ Resultado: **produção bloqueada por 2 travas** (mais 27 pendências opcionais 
 
 1. Cria um token em vercel.com → Account Settings → Tokens.
 2. No GitHub (`joaocanonica/pedro-tensini` → Settings → Secrets and variables → Actions), cria `VERCEL_TOKEN`, `VERCEL_ORG_ID` = `team_ekDszb9n4cvStIbnpxxVoSzv` e `VERCEL_PROJECT_ID` = `prj_ql6jJDbXoC1bltdRY7wzQnqrAlKV`.
-3. Roda o workflow "deploy" (aba Actions) no branch atual: sai uma prévia `*.vercel.app` com noindex.
-4. Quando o domínio existir: em Vercel → Settings → Environment Variables, cria `SITE_URL=https://<domínio>` em Production, liga o domínio ao projeto e, com as duas travas resolvidas, faz o merge em `main`.
-5. Se quiser medição: `PUBLIC_MEDICAO_URL` e `PUBLIC_MEDICAO_SITE` em Production (`docs/FUNIL.md`).
+3. Na mesma tela, aba Variables, cria `DEPLOY_ATIVO` = `true` (sem ela o workflow não roda).
+4. Roda o workflow "deploy" (aba Actions) no branch atual: sai uma prévia `*.vercel.app` com noindex.
+5. Quando o domínio existir: em Vercel → Settings → Environment Variables, cria `SITE_URL=https://<domínio>` em Production, liga o domínio ao projeto e, com as duas travas resolvidas, faz o merge em `main`.
+6. Se quiser medição: `PUBLIC_MEDICAO_URL` e `PUBLIC_MEDICAO_SITE` em Production (`docs/FUNIL.md`).
 
 ## 11. O que depende do João (resumo)
 
