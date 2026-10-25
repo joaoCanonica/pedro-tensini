@@ -3,13 +3,15 @@
 import { emPreview } from './textos.ts';
 interface Props {
   titulo?: string;
+  /** Texto do selo (padrão: "Provisório"; ex.: "Foto em breve"). */
+  texto?: string;
 }
-const { titulo } = Astro.props;
+const { titulo, texto = 'Provisório' } = Astro.props;
 ---
 
 {emPreview && (
   <span class="selo" title={titulo}>
-    Provisório
+    {texto}
   </span>
 )}
 

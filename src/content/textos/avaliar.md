@@ -4,7 +4,7 @@ title: Avalie o Pedro Tensini no Google | Barbeiro em Lages
 description: Cortou com o Pedro Tensini no Centro de Lages? Conte como foi no Google. Sua avaliação ajuda quem procura barbeiro em Lages.
 ---
 
-# Avaliar
+# Avalie o {{pedro}} no Google
 
 Cortou com o {{pedro}}, na Galeria Augusta, Centro de Lages? Conte como foi no Google. Leva um minuto e ajuda quem procura barbeiro na cidade.
 

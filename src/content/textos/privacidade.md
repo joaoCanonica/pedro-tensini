@@ -30,10 +30,12 @@ Os vídeos e as fotos ficam neste próprio site. Nenhum player de terceiros é c
 
 ## Medição de visitas
 
-[PROVISÓRIO: definido na sessão 7. Se houver medição, ela será sem cookies de rastreamento e sem dados que identifiquem você]
+Hoje o site não mede visitas e não usa cookies. As fontes, as fotos e os vídeos são servidos pelo próprio site, sem serviços de terceiros. Se um dia houver medição, ela será sem cookies de rastreamento e sem dados que identifiquem você, e esta página muda antes. [PROVISÓRIO: confirmar na publicação se haverá medição]
+
+O servidor que hospeda o site pode guardar registros técnicos de acesso, como o endereço IP e o horário, por segurança. [PROVISÓRIO: hospedagem e prazo de guarda dos registros a confirmar]
 
 ## Fale com a gente
 
 Dúvidas sobre os seus dados: WhatsApp {{whatsapp}}.
 
-Atualizada em: [PROVISÓRIO: data da publicação]
+Atualizada em: a data entra na publicação. [PROVISÓRIO: data da publicação]

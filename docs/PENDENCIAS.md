@@ -59,6 +59,16 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 - [ ] Os selos PROVISÓRIO saem em produção, mas as frases marcadas continuam. A revisão de normas (sessão 9) confere cada uma antes do ar.
 - [ ] Links ainda sem página: `/como-chegar/`, `/perguntas-frequentes/` (404 no preview).
 
+## Local, horário e confiança (sessão 8)
+
+- [ ] /como-chegar: "Da calçada à cadeira" sem foto em nenhum passo (selo "Foto em breve" no preview). Gravar: calçada da Rua Hercílio Luz, entrada da Galeria Augusta, corredor/andar, porta da barbearia; preencher `comoChegar` em `src/config/contato.ts`.
+- [ ] /como-chegar: andar/sala (`endereco.salaAndar`), estacionamento (`estacionamento`) e pontos de referência próximos (só entram confirmados).
+- [ ] Mapa interativo: embed do Google sem chave (`maps?q=…&output=embed`), carregado só após o clique. Conferir na sessão 9 (LGPD) se o aviso de consentimento basta.
+- [ ] /avaliar: o botão e o QR apontam para `destinoAvaliar()` (`src/config/avaliacoes.ts`). Hoje é a busca da ficha no Maps; trocar pelo link direto "escrever avaliação" (place id) quando o João passar, e reimprimir a plaquinha.
+- [ ] /sobre-pedro-tensini: formação só aparece no preview até cada item ser confirmado na config; imagem do certificado do workshop quando o João liberar; retrato oficial.
+- [ ] /privacidade: hospedagem e guarda de registros técnicos; data de publicação; revisão na sessão 9.
+- [ ] Formas de pagamento, encaixe, atendimento sem hora marcada e criança seguem pendentes no FAQ (selo PROVISÓRIO).
+
 ## Textos (sessão 5)
 
 Gerado de `src/content/textos/*.md` (marcas `[PROVISÓRIO: …]`). Cada item sai do ar ou vira texto confirmado quando o dado chegar.

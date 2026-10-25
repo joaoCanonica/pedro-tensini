@@ -1,0 +1,150 @@
+---
+// /perguntas-frequentes: <details> nativos, sem JS. Respostas curtas, literais do texto-fonte;
+// o que depende do Pedro aparece com o selo PROVISÓRIO no preview, nunca inventado.
+// Cada pergunta tem âncora; um script curto abre o <details> ao chegar pelo link.
+import Pagina from '../layouts/Pagina.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import Botao from '../components/base/Botao.astro';
+import Selo from '../components/secoes/Selo.astro';
+import { pagina } from '../layouts/servico/pagina.ts';
+
+const p = pagina('perguntas-frequentes');
+const ancora = (t: string) =>
+  t
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+const perguntas = [...p.partes.values()];
+---
+
+<Pagina
+  titulo={p.title}
+  descricao={p.description}
+  trilha={[
+    { nome: 'Início', rota: '/' },
+    { nome: 'Perguntas frequentes', rota: '/perguntas-frequentes/' },
+  ]}
+>
+  <section class="faq" data-superficie="base" aria-labelledby="faq-titulo">
+    <div class="faq__grade envelope-s">
+      <header class="faq__cabeca">
+        <p class="rotulo faq__rotulo">Dúvidas</p>
+        <h1 id="faq-titulo" class="faq__titulo">
+          {p.h1}
+        </h1>
+        <p class="faq__resposta">{p.resposta}</p>
+      </header>
+      <div class="faq__lista">
+        {perguntas.map((q) => (
+          <details class="faq__item" id={ancora(q.titulo)}>
+            <summary class="faq__pergunta">
+              <span>{q.titulo}</span>
+            </summary>
+            <div class="faq__corpo">
+              {q.provisorios.length > 0 && <Selo titulo={q.provisorios.join(' · ')} />}
+              <Blocos blocos={q.blocos} />
+            </div>
+          </details>
+        ))}
+        <div class="faq__fim" data-agendar-principal>
+          <p>Não achou a sua? Pergunte no WhatsApp.</p>
+          <Botao>Agendar no WhatsApp</Botao>
+        </div>
+      </div>
+    </div>
+  </section>
+</Pagina>
+
+<script>
+  // Link direto para uma pergunta (/perguntas-frequentes/#atende-sabado) já abre a resposta.
+  const abrir = () => {
+    const alvo = location.hash ? document.getElementById(location.hash.slice(1)) : null;
+    if (alvo instanceof HTMLDetailsElement) alvo.open = true;
+  };
+  abrir();
+  addEventListener('hashchange', abrir);
+</script>
+
+<style>
+  .faq {
+    padding-block: var(--e-5) var(--e-9);
+  }
+  .faq__grade {
+    display: grid;
+    gap: var(--e-7);
+  }
+  .faq__cabeca {
+    display: grid;
+    gap: var(--e-4);
+    align-content: start;
+  }
+  .faq__rotulo {
+    color: var(--acento-texto);
+  }
+  .faq__titulo {
+    font-size: var(--fs-1);
+    line-height: 1;
+    max-width: 12ch;
+  }
+  .faq__resposta {
+    max-width: 44ch;
+    color: var(--texto-2);
+  }
+  .faq__item {
+    border-top: 1px solid var(--linha);
+  }
+  .faq__item:last-of-type {
+    border-bottom: 1px solid var(--linha);
+  }
+  .faq__pergunta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--e-4);
+    padding-block: var(--e-4);
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-3);
+    line-height: 1.2;
+  }
+  .faq__pergunta::-webkit-details-marker {
+    display: none;
+  }
+  /* Marcador em latão: "+" fechado, "−" aberto. */
+  .faq__pergunta::after {
+    content: '+';
+    flex: none;
+    font-family: var(--fonte-texto);
+    color: var(--acento-texto);
+    font-weight: 500;
+  }
+  .faq__item[open] > .faq__pergunta::after {
+    content: '−';
+  }
+  .faq__corpo {
+    display: grid;
+    gap: var(--e-3);
+    justify-items: start;
+    padding-bottom: var(--e-5);
+    color: var(--texto-2);
+  }
+  .faq__fim {
+    display: grid;
+    gap: var(--e-3);
+    justify-items: start;
+    padding-top: var(--e-6);
+  }
+  @media (min-width: 60rem) {
+    .faq__grade {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      column-gap: var(--e-8);
+    }
+    .faq__cabeca {
+      position: sticky;
+      top: var(--e-5);
+    }
+  }
+</style>

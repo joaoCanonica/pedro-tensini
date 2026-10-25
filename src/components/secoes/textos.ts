@@ -23,6 +23,14 @@ const MARCADORES: Record<string, string> = {
   'endereco.curto':
     [conf(endereco.rua), conf(endereco.complemento)].filter(Boolean).join(', ') +
     ` — ${conf(endereco.bairro) ?? ''}`,
+  // Sem número confirmado: "nº a confirmar" (no preview; em produção a trava exige o número).
+  'endereco.completo': [
+    [conf(endereco.rua), conf(endereco.numero) ?? 'nº a confirmar'].join(', '),
+    [conf(endereco.complemento), conf(endereco.salaAndar)].filter(Boolean).join(', '),
+    conf(endereco.bairro),
+    `${conf(endereco.cidade) ?? ''}/${conf(endereco.uf) ?? ''}`,
+    `CEP ${conf(endereco.cep) ?? ''}`,
+  ].join(', '),
   'horario.semana': resumoSemana(),
   'google.nota': google.nota.valor.toFixed(1).replace('.', ','),
   'google.total': String(google.total.valor),

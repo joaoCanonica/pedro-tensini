@@ -1,0 +1,87 @@
+---
+// /privacidade: LGPD em linguagem simples. Sem formulário; o que o site mede (nada, hoje),
+// consentimento do mapa e o WhatsApp como conversa direta. Texto revisado na sessão 9.
+import Pagina from '../layouts/Pagina.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import Selo from '../components/secoes/Selo.astro';
+import { pagina } from '../layouts/servico/pagina.ts';
+
+const p = pagina('privacidade');
+const secoes = [...p.partes.values()];
+---
+
+<Pagina
+  titulo={p.title}
+  descricao={p.description}
+  trilha={[
+    { nome: 'Início', rota: '/' },
+    { nome: 'Privacidade', rota: '/privacidade/' },
+  ]}
+>
+  <article class="priv envelope-s" aria-labelledby="priv-titulo">
+    <header class="priv__cabeca">
+      <p class="rotulo priv__rotulo">LGPD, sem juridiquês</p>
+      <h1 id="priv-titulo" class="priv__titulo">
+        {p.h1}
+      </h1>
+      {p.intro.provisorios.length > 0 && <Selo titulo={p.intro.provisorios.join(' · ')} />}
+      <p class="priv__resposta">{p.resposta}</p>
+      <Blocos blocos={p.intro.blocos} />
+    </header>
+    <div class="priv__corpo">
+      {secoes.map((s) => (
+        <section class="priv__secao" aria-label={s.titulo}>
+          <h2 class="priv__subtitulo">{s.titulo}</h2>
+          {s.provisorios.length > 0 && <Selo titulo={s.provisorios.join(' · ')} />}
+          <Blocos blocos={s.blocos} />
+        </section>
+      ))}
+    </div>
+  </article>
+</Pagina>
+
+<style>
+  .priv {
+    display: grid;
+    gap: var(--e-7);
+    padding-block: var(--e-5) var(--e-9);
+  }
+  .priv__cabeca {
+    display: grid;
+    gap: var(--e-4);
+    justify-items: start;
+  }
+  .priv__rotulo {
+    color: var(--acento-texto);
+  }
+  .priv__titulo {
+    font-size: var(--fs-1);
+    line-height: 1;
+    max-width: 14ch;
+  }
+  .priv__resposta {
+    font-size: var(--fs-3);
+    line-height: 1.4;
+    max-width: 44ch;
+  }
+  .priv__corpo {
+    display: grid;
+    max-width: 48rem;
+  }
+  .priv__secao {
+    display: grid;
+    gap: var(--e-3);
+    justify-items: start;
+    padding-block: var(--e-5);
+    border-top: 1px solid var(--linha);
+  }
+  .priv__subtitulo {
+    font-size: var(--fs-3);
+  }
+  @media (min-width: 60rem) {
+    .priv {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      column-gap: var(--e-8);
+    }
+  }
+</style>

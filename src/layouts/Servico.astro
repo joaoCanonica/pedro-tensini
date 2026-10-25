@@ -4,24 +4,19 @@
 // (passos, valores, guia), agendar com o serviço já marcado, onde e quando, perguntas e os
 // outros serviços. Breadcrumb visível. Não é cópia da home: abertura em ficha, seções com o
 // título numa coluna à esquerda.
-import Cabeca from '../components/base/Cabeca.astro';
-import PreviewBanner from '../components/PreviewBanner.astro';
-import Monograma from '../components/marca/Monograma.astro';
 import BordaDegrade from '../components/marca/BordaDegrade.astro';
 import Botao from '../components/base/Botao.astro';
 import StatusAoVivo from '../components/base/StatusAoVivo.astro';
 import TabelaHorario from '../components/base/TabelaHorario.astro';
 import Endereco from '../components/secoes/Endereco.astro';
 import Montador from '../components/secoes/Montador.astro';
-import Rodape from '../components/secoes/Rodape.astro';
-import BarraAgendar from '../components/secoes/BarraAgendar.astro';
 import Selo from '../components/secoes/Selo.astro';
+import Casca from './Pagina.astro';
 import Faixa from './servico/Faixa.astro';
 import Perguntas, { type Pergunta } from './servico/Perguntas.astro';
 import { PAGINAS_SERVICO, paginaServico } from './servico/catalogo.ts';
 import type { Pagina } from './servico/pagina.ts';
 import { links } from '../config/contato.ts';
-import { siteUrl } from '../config/seo.ts';
 import { formatarPreco, precoExibivel, servicos } from '../config/servicos.ts';
 import { linkWhatsApp, montarMensagem } from '../lib/whatsapp.ts';
 import { MARCADORES } from '../components/secoes/textos.ts';
@@ -58,261 +53,145 @@ const valores = valor.map((slug) => {
   return { nome: s.nome, preco: p ? formatarPreco(p) : null };
 });
 const valorPendente = valores.some((v) => !v.preco);
-
-const ld = siteUrl
-  ? JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: trilha.map((t, i) => ({
-        '@type': 'ListItem',
-        position: i + 1,
-        name: t.nome,
-        item: `${siteUrl}${t.rota}`,
-      })),
-    })
-  : null;
 ---
 
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <Cabeca titulo={pagina.title} descricao={pagina.description} />
-    <link rel="icon" href="/media/monograma/monograma.svg" type="image/svg+xml" />
-    {ld && <script type="application/ld+json" set:html={ld} />}
-  </head>
-  <body>
-    <a class="pular-conteudo" href="#conteudo">
-      Pular para o conteúdo
-    </a>
-    <PreviewBanner />
-    <header class="topo envelope-s" data-superficie="base">
-      <a class="topo__marca" href="/" aria-label={`Início · ${MARCADORES.nome}`}>
-        <Monograma />
-      </a>
-      <nav class="trilha" aria-label="Você está em">
-        <ol>
-          {trilha.map((t, i) => (
-            <li>
-              {i < trilha.length - 1 ? (
-                <a class="link" href={t.rota}>
-                  {t.nome}
-                </a>
-              ) : (
-                <span aria-current="page">{t.nome}</span>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
-    </header>
-
-    <main id="conteudo">
-      <section class="abertura" data-superficie="base" aria-labelledby="servico-titulo">
-        <div class="abertura__grade envelope-s">
-          <div class="abertura__texto">
-            <p class="rotulo abertura__rotulo">Barbeiro no Centro de Lages</p>
-            <h1 id="servico-titulo" class="abertura__titulo">
-              {pagina.h1}
-            </h1>
-            <p class="abertura__resposta">{pagina.resposta}</p>
-          </div>
-          {Astro.slots.has('midia') && (
-            <div class="abertura__midia">
-              <slot name="midia" />
-            </div>
-          )}
-          <dl class="ficha">
-            <div>
-              <dt class="rotulo">Onde</dt>
-              <dd>
-                <a class="link" href="/como-chegar/">
-                  {MARCADORES['endereco.curto']}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt class="rotulo">Agora</dt>
-              <dd>
-                <StatusAoVivo />
-              </dd>
-            </div>
-            {valores.length > 0 && (
-              <div>
-                <dt class="rotulo">Valor</dt>
-                <dd class="num">
-                  {valorPendente ? (
-                    <>
-                      Valores pelo WhatsApp <Selo titulo="Tabela de preços a confirmar" />
-                    </>
-                  ) : (
-                    valores.map((v) => (
-                      <span class="ficha__valor">
-                        {valores.length > 1 && `${v.nome}: `}
-                        {v.preco}
-                      </span>
-                    ))
-                  )}
-                </dd>
-              </div>
-            )}
-          </dl>
-          <div class="abertura__acoes">
-            <div data-agendar-principal>
-              <Botao href={linkWhatsApp(mensagem)}>Agendar no WhatsApp</Botao>
-            </div>
-            <a class="link" href="#onde-e-quando">
-              Horário e como chegar
-            </a>
-          </div>
-          {pagina.intro.provisorios.length > 0 && (
-            <p class="abertura__selo">
-              <Selo titulo={pagina.intro.provisorios.join(' · ')} />
-            </p>
-          )}
-        </div>
-      </section>
-
-      <BordaDegrade de="base" para="contraste" />
-      <div class="miolo" data-superficie="contraste">
-        <slot />
+<Casca titulo={pagina.title} descricao={pagina.description} trilha={trilha} mensagem={mensagem}>
+  <section class="abertura" data-superficie="base" aria-labelledby="servico-titulo">
+    <div class="abertura__grade envelope-s">
+      <div class="abertura__texto">
+        <p class="rotulo abertura__rotulo">Barbeiro no Centro de Lages</p>
+        <h1 id="servico-titulo" class="abertura__titulo">
+          {pagina.h1}
+        </h1>
+        <p class="abertura__resposta">{pagina.resposta}</p>
       </div>
-      <BordaDegrade de="contraste" para="navy" />
-
-      <Faixa id="agendar" titulo={tituloAgendar} rotulo="Pelo WhatsApp" superficie="navy">
-        <div class="agendar" data-secao-agendar>
-          <p class="medida">
-            Escolha o dia e o período: a mensagem abre pronta no WhatsApp. Você escolhe e o Pedro
-            confirma o horário no WhatsApp.
-          </p>
-          <Montador servicos={atual.montador} />
+      {Astro.slots.has('midia') && (
+        <div class="abertura__midia">
+          <slot name="midia" />
         </div>
-      </Faixa>
-
-      <BordaDegrade de="navy" para="base" />
-      <Faixa id="onde-e-quando" titulo="Onde e quando" rotulo="Galeria Augusta">
-        <div class="onde">
-          <div class="onde__local">
-            <Endereco />
-            <StatusAoVivo />
-            <div class="onde__rotas">
-              <Botao variante="secundario" href={links.googleRota} whatsapp={false}>
-                Google Maps
-              </Botao>
-              <Botao variante="secundario" href={links.waze} whatsapp={false}>
-                Waze
-              </Botao>
-              <Botao variante="secundario" href={links.appleMapas} whatsapp={false}>
-                Apple Mapas
-              </Botao>
-            </div>
-            <a class="link" href="/como-chegar/">
-              Como chegar passo a passo
-            </a>
-          </div>
-          <TabelaHorario />
-        </div>
-      </Faixa>
-
-      {perguntas.length > 0 && (
-        <Faixa id="perguntas" titulo="Perguntas" rotulo="Sobre este serviço">
-          <Perguntas itens={perguntas} />
-        </Faixa>
       )}
-
-      <BordaDegrade de="base" para="contraste" />
-      <nav class="outros" data-superficie="contraste" aria-labelledby="outros-titulo">
-        <div class="envelope-s">
-          <h2 id="outros-titulo" class="rotulo outros__titulo">
-            {ehIndice ? 'Cada serviço em detalhe' : 'Outros serviços'}
-          </h2>
-          <ol class="outros__lista">
-            {outros.map((p) => (
-              <li>
-                <a href={p.rota} class="outros__link">
-                  <span class="outros__nome">
-                    <span class="link">{p.nome}</span>
-                  </span>
-                  <span class="outros__resumo pequeno">{p.resumo}</span>
-                </a>
-              </li>
-            ))}
-          </ol>
+      <dl class="ficha">
+        <div>
+          <dt class="rotulo">Onde</dt>
+          <dd>
+            <a class="link" href="/como-chegar/">
+              {MARCADORES['endereco.curto']}
+            </a>
+          </dd>
         </div>
-      </nav>
-      <BordaDegrade de="contraste" para="navy" />
-    </main>
-    <Rodape />
-    <BarraAgendar mensagem={mensagem} />
-  </body>
-</html>
+        <div>
+          <dt class="rotulo">Agora</dt>
+          <dd>
+            <StatusAoVivo />
+          </dd>
+        </div>
+        {valores.length > 0 && (
+          <div>
+            <dt class="rotulo">Valor</dt>
+            <dd class="num">
+              {valorPendente ? (
+                <>
+                  Valores pelo WhatsApp <Selo titulo="Tabela de preços a confirmar" />
+                </>
+              ) : (
+                valores.map((v) => (
+                  <span class="ficha__valor">
+                    {valores.length > 1 && `${v.nome}: `}
+                    {v.preco}
+                  </span>
+                ))
+              )}
+            </dd>
+          </div>
+        )}
+      </dl>
+      <div class="abertura__acoes">
+        <div data-agendar-principal>
+          <Botao href={linkWhatsApp(mensagem)}>Agendar no WhatsApp</Botao>
+        </div>
+        <a class="link" href="#onde-e-quando">
+          Horário e como chegar
+        </a>
+      </div>
+      {pagina.intro.provisorios.length > 0 && (
+        <p class="abertura__selo">
+          <Selo titulo={pagina.intro.provisorios.join(' · ')} />
+        </p>
+      )}
+    </div>
+  </section>
 
-<style is:global>
-  html,
-  body {
-    overflow-x: clip;
-  }
-  .pular-conteudo {
-    position: absolute;
-    left: var(--margem);
-    top: -4rem;
-    z-index: 2000;
-    padding: 0.7rem 1rem;
-    background: var(--latao);
-    color: var(--carvao);
-    font-weight: 600;
-  }
-  .pular-conteudo:focus {
-    top: 0.75rem;
-  }
-  .envelope-s {
-    width: min(100% - 2 * var(--margem), 80rem);
-    margin-inline: auto;
-  }
-</style>
+  <BordaDegrade de="base" para="contraste" />
+  <div class="miolo" data-superficie="contraste">
+    <slot />
+  </div>
+  <BordaDegrade de="contraste" para="navy" />
+
+  <Faixa id="agendar" titulo={tituloAgendar} rotulo="Pelo WhatsApp" superficie="navy">
+    <div class="agendar" data-secao-agendar>
+      <p class="medida">
+        Escolha o dia e o período: a mensagem abre pronta no WhatsApp. Você escolhe e o Pedro
+        confirma o horário no WhatsApp.
+      </p>
+      <Montador servicos={atual.montador} />
+    </div>
+  </Faixa>
+
+  <BordaDegrade de="navy" para="base" />
+  <Faixa id="onde-e-quando" titulo="Onde e quando" rotulo="Galeria Augusta">
+    <div class="onde">
+      <div class="onde__local">
+        <Endereco />
+        <StatusAoVivo />
+        <div class="onde__rotas">
+          <Botao variante="secundario" href={links.googleRota} whatsapp={false}>
+            Google Maps
+          </Botao>
+          <Botao variante="secundario" href={links.waze} whatsapp={false}>
+            Waze
+          </Botao>
+          <Botao variante="secundario" href={links.appleMapas} whatsapp={false}>
+            Apple Mapas
+          </Botao>
+        </div>
+        <a class="link" href="/como-chegar/">
+          Como chegar passo a passo
+        </a>
+      </div>
+      <TabelaHorario />
+    </div>
+  </Faixa>
+
+  {perguntas.length > 0 && (
+    <Faixa id="perguntas" titulo="Perguntas" rotulo="Sobre este serviço">
+      <Perguntas itens={perguntas} />
+    </Faixa>
+  )}
+
+  <BordaDegrade de="base" para="contraste" />
+  <nav class="outros" data-superficie="contraste" aria-labelledby="outros-titulo">
+    <div class="envelope-s">
+      <h2 id="outros-titulo" class="rotulo outros__titulo">
+        {ehIndice ? 'Cada serviço em detalhe' : 'Outros serviços'}
+      </h2>
+      <ol class="outros__lista">
+        {outros.map((p) => (
+          <li>
+            <a href={p.rota} class="outros__link">
+              <span class="outros__nome">
+                <span class="link">{p.nome}</span>
+              </span>
+              <span class="outros__resumo pequeno">{p.resumo}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+  <BordaDegrade de="contraste" para="navy" />
+</Casca>
 
 <style>
-  .topo {
-    display: flex;
-    align-items: center;
-    gap: var(--e-5);
-    padding-block: var(--e-4);
-    min-height: 4.25rem;
-  }
-  .topo__marca {
-    flex: none;
-    width: 2.5rem;
-    color: var(--acento);
-  }
-  /* Sempre numa linha: se quebrasse, a troca da fonte de fallback pela Schibsted mudaria a
-     altura do topo (CLS). O último item recolhe com reticências. */
-  .trilha {
-    min-width: 0;
-  }
-  .trilha ol {
-    display: flex;
-    gap: var(--e-3);
-    padding: 0;
-    list-style: none;
-    font-size: var(--fs-pequeno);
-  }
-  .trilha li + li::before {
-    content: '/';
-    margin-right: var(--e-3);
-    color: var(--texto-2);
-  }
-  /* No li: o text-wrap global de li reativaria a quebra. */
-  .trilha li {
-    white-space: nowrap;
-  }
-  .trilha li:last-child {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .trilha [aria-current] {
-    color: var(--texto-2);
-  }
-
   .abertura {
     padding-block: var(--e-6) var(--e-8);
   }

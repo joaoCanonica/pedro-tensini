@@ -3,12 +3,15 @@
 // ao mais preciso (0). No desktop os passos ficam lado a lado sobre uma régua com dentes que
 // encurtam a cada passo; no mobile, empilhados com a régua na vertical.
 import Poster from '../../components/base/Poster.astro';
+import Selo from '../../components/secoes/Selo.astro';
 import { escalaPente } from '../../config/tema.ts';
 
 interface Item {
   nome: string;
   texto: string;
   midia?: { id: string; alt: string } | null;
+  /** Sem mídia ainda: selo (só no preview) com este texto, ex.: "Foto em breve". */
+  pendente?: string;
 }
 interface Props {
   itens: Item[];
@@ -39,8 +42,9 @@ const comMidia = itens.some((i) => i.midia !== undefined);
             class="passo__foto"
           />
         ) : (
-          <div class="passo__foto passo__foto--tipo" aria-hidden="true">
-            <span>{item.nome}</span>
+          <div class="passo__foto passo__foto--tipo">
+            <span aria-hidden="true">{item.nome}</span>
+            {item.pendente && <Selo texto={item.pendente} />}
           </div>
         ))}
       <h3 class="passo__nome">
@@ -127,7 +131,9 @@ const comMidia = itens.some((i) => i.midia !== undefined);
   }
   .passo__foto--tipo {
     display: grid;
-    place-items: center;
+    place-content: center;
+    justify-items: center;
+    gap: var(--e-3);
     border: 1px solid var(--linha);
     background: repeating-linear-gradient(
       -45deg,

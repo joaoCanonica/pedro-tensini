@@ -1,0 +1,273 @@
+---
+// /avaliar: duas linhas, o botão para o Google e a plaquinha da bancada com QR code gerado no
+// build (A6 para imprimir, com o monograma). Texto neutro: pede a opinião de quem foi atendido,
+// sem sorteio, desconto ou brinde em troca (proibido pelo Google).
+import QRCode from 'qrcode';
+import Pagina from '../layouts/Pagina.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import Botao from '../components/base/Botao.astro';
+import Monograma from '../components/marca/Monograma.astro';
+import Selo from '../components/secoes/Selo.astro';
+import { destinoAvaliar } from '../config/avaliacoes.ts';
+import { pagina, parte } from '../layouts/servico/pagina.ts';
+import { MARCADORES } from '../components/secoes/textos.ts';
+
+const p = pagina('avaliar');
+const escrever = parte(p, 'O que escrever');
+const certo = parte(p, 'Do jeito certo');
+const hojeParte = parte(p, 'Hoje no Google');
+// A linha "QR Code (plaquinha…)" do .md é instrução de layout: vira a frase da plaquinha.
+const linhaQr = hojeParte.blocos.find((b) => b.tipo === 'p' && b.texto.startsWith('QR Code'));
+const hoje = { ...hojeParte, blocos: hojeParte.blocos.filter((b) => b !== linhaQr) };
+const destino = destinoAvaliar();
+// QR em SVG, cor única (carvão) sobre fundo transparente; a plaquinha é sempre giz.
+const qr = await QRCode.toString(destino.url, {
+  type: 'svg',
+  errorCorrectionLevel: 'M',
+  margin: 0,
+  color: { dark: '#121316', light: '#0000' },
+});
+const frasePlaquinha =
+  (linhaQr?.tipo === 'p' && linhaQr.texto.match(/"([^"]+)"/)?.[1]) || 'Avalie no Google.';
+---
+
+<Pagina
+  titulo={p.title}
+  descricao={p.description}
+  trilha={[
+    { nome: 'Início', rota: '/' },
+    { nome: 'Avaliar', rota: '/avaliar/' },
+  ]}
+>
+  <section class="avaliar" data-superficie="base" aria-labelledby="avaliar-titulo">
+    <div class="avaliar__grade envelope-s">
+      <div class="avaliar__texto">
+        <p class="rotulo avaliar__rotulo">Avaliação no Google</p>
+        <h1 id="avaliar-titulo" class="avaliar__titulo">
+          {p.h1}
+        </h1>
+        <p class="avaliar__resposta">{p.resposta}</p>
+        <div class="avaliar__acao">
+          <Botao href={destino.url} whatsapp={false}>
+            Avaliar no Google
+          </Botao>
+          {!destino.direto && (
+            <p class="pequeno secundario">
+              Abre a ficha da barbearia no Google Maps; lá, toque em "Avaliar".{' '}
+              <Selo titulo="Link direto de avaliação (place id) a confirmar" />
+            </p>
+          )}
+        </div>
+        <div class="avaliar__notas">
+          <div>
+            <h2 class="rotulo">{escrever.titulo}</h2>
+            <Blocos blocos={escrever.blocos} />
+          </div>
+          <div>
+            <h2 class="rotulo">{certo.titulo}</h2>
+            <Blocos blocos={certo.blocos} />
+          </div>
+          <div>
+            <h2 class="rotulo">{hoje.titulo}</h2>
+            <Blocos blocos={hoje.blocos} />
+          </div>
+        </div>
+      </div>
+
+      <div class="avaliar__plaquinha-area">
+        <figure class="plaquinha sup-giz" aria-labelledby="plaquinha-legenda">
+          <div class="plaquinha__marca">
+            <Monograma titulo="" tamanho="2.75rem" />
+            <p class="plaquinha__nome">{MARCADORES.nome}</p>
+          </div>
+          <p class="plaquinha__frase" id="plaquinha-legenda">
+            {frasePlaquinha}
+          </p>
+          <div class="plaquinha__qr" role="img" aria-label="QR code para avaliar no Google">
+            <Fragment set:html={qr} />
+          </div>
+          <p class="plaquinha__dica">Aponte a câmera do celular.</p>
+        </figure>
+        <p class="pequeno secundario">
+          Plaquinha da bancada, tamanho A6 (10,5 × 14,8 cm).
+          {!destino.direto && <Selo titulo="O QR aponta para a ficha até existir o link direto" />}
+        </p>
+        <button type="button" class="avaliar__imprimir" data-imprimir hidden>
+          Imprimir a plaquinha
+        </button>
+      </div>
+    </div>
+  </section>
+</Pagina>
+
+<script>
+  const botao = document.querySelector<HTMLButtonElement>('[data-imprimir]');
+  if (botao) {
+    botao.hidden = false;
+    botao.addEventListener('click', () => window.print());
+  }
+</script>
+
+<style>
+  .avaliar {
+    padding-block: var(--e-5) var(--e-9);
+  }
+  .avaliar__grade {
+    display: grid;
+    gap: var(--e-8);
+  }
+  .avaliar__texto {
+    display: grid;
+    gap: var(--e-5);
+    align-content: start;
+  }
+  .avaliar__rotulo {
+    color: var(--acento-texto);
+  }
+  .avaliar__titulo {
+    font-size: var(--fs-1);
+    line-height: 1;
+    max-width: 14ch;
+  }
+  .avaliar__resposta {
+    font-size: var(--fs-3);
+    line-height: 1.4;
+    max-width: 40ch;
+  }
+  .avaliar__acao {
+    display: grid;
+    gap: var(--e-3);
+    justify-items: start;
+  }
+  .avaliar__notas {
+    display: grid;
+    gap: var(--e-5);
+    margin-top: var(--e-4);
+  }
+  .avaliar__notas > div {
+    display: grid;
+    gap: var(--e-2);
+    padding-top: var(--e-4);
+    border-top: 1px solid var(--linha);
+  }
+  .avaliar__notas h2 {
+    color: var(--texto-2);
+  }
+  .avaliar__plaquinha-area {
+    display: grid;
+    gap: var(--e-4);
+    justify-items: start;
+    align-content: start;
+  }
+  .avaliar__imprimir {
+    display: inline-block;
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--botao-2-borda);
+    border-radius: var(--raio);
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  /* Só some sem JS; com JS já aparece no primeiro desenho (sem CLS). */
+  @media (scripting: none) {
+    .avaliar__imprimir[hidden] {
+      display: none;
+    }
+  }
+
+  /* Plaquinha A6 (105 × 148 mm): na tela em escala, na impressão no tamanho real. */
+  .plaquinha {
+    width: min(100%, 21rem);
+    aspect-ratio: 105 / 148;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    justify-items: center;
+    gap: 0.9rem;
+    padding: 1.6rem 1.5rem 1.3rem;
+    background: var(--giz);
+    color: var(--carvao);
+    border: 1px solid var(--linha);
+    text-align: center;
+  }
+  .plaquinha__marca {
+    display: grid;
+    justify-items: center;
+    gap: 0.4rem;
+    color: var(--latao-escuro);
+  }
+  .plaquinha__nome {
+    font-family: var(--fonte-texto);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-rotulo);
+    text-transform: uppercase;
+    color: var(--carvao);
+  }
+  .plaquinha__frase {
+    font-family: var(--fonte-titulo);
+    font-size: 1.45rem;
+    line-height: 1.12;
+    max-width: 13ch;
+  }
+  .plaquinha__qr {
+    width: 62%;
+    align-self: center;
+  }
+  .plaquinha__qr :global(svg) {
+    width: 100%;
+    height: auto;
+  }
+  .plaquinha__dica {
+    font-size: 0.72rem;
+    color: var(--aco-escuro);
+  }
+
+  @media (min-width: 60rem) {
+    .avaliar__grade {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: var(--e-8);
+    }
+  }
+
+  @media print {
+    @page {
+      size: 105mm 148mm; /* A6; o nome "A6" não é reconhecido em todo navegador */
+      margin: 0;
+    }
+    /* Uma folha só: o resto da página fica invisível e sem altura. */
+    :global(html),
+    :global(body) {
+      height: 148mm;
+      overflow: hidden;
+      background: #fff;
+    }
+    :global(body *) {
+      visibility: hidden;
+    }
+    /* :global: o SVG do QR (set:html) e o monograma não levam o atributo de escopo. */
+    .plaquinha,
+    .plaquinha :global(*) {
+      visibility: visible;
+    }
+    .plaquinha {
+      position: fixed;
+      inset: 0;
+      width: 105mm;
+      height: 148mm;
+      border: 0;
+      padding: 12mm 10mm 9mm;
+      background: #fff;
+      gap: 6mm;
+    }
+    .plaquinha__frase {
+      font-size: 17pt;
+    }
+    .plaquinha__nome {
+      font-size: 7pt;
+    }
+    .plaquinha__dica {
+      font-size: 7.5pt;
+    }
+  }
+</style>

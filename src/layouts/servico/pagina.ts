@@ -142,7 +142,7 @@ export function pagina(nome: string): Pagina {
   const [, front = '', corpo = ''] = bruto.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/) ?? [];
   const meta = (k: string) => front.match(new RegExp(`^${k}:\\s*(.*)$`, 'm'))?.[1]?.trim() ?? '';
   const md = condicionais(corpo);
-  const h1 = md.match(/^# (.+)$/m)?.[1]?.trim() ?? '';
+  const h1 = resolver(md.match(/^# (.+)$/m)?.[1]?.trim() ?? '');
   const [antes = '', ...secoes] = md.replace(/^# .+$/m, '').split(/^## /m);
   const introProv: string[] = [];
   const intro: Parte = { titulo: '', blocos: blocos(antes, introProv), provisorios: introProv };
@@ -150,8 +150,10 @@ export function pagina(nome: string): Pagina {
   for (const s of secoes) {
     const [titulo = '', ...resto] = s.split('\n');
     const provisorios: string[] = [];
-    partes.set(titulo.trim(), {
-      titulo: titulo.trim(),
+    // "## Horário {#horario}": a âncora fica no .md, fora do título.
+    const limpo = titulo.replace(/\s*\{#[\w-]+\}\s*$/, '').trim();
+    partes.set(limpo, {
+      titulo: limpo,
       blocos: blocos(resto.join('\n'), provisorios),
       provisorios,
     });
