@@ -1,0 +1,48 @@
+---
+// Mostra um campo da config. Confirmado: o valor. Preview e não confirmado: o valor
+// conhecido/provisório (ou o rótulo) com selo PROVISÓRIO. Produção e não confirmado: nada.
+import { modo } from '../config/seo.ts';
+import { valorPreview } from '../config/tipos.ts';
+import type { Campo } from '../config/tipos.ts';
+
+interface Props {
+  campo: Campo<unknown>;
+  /** Converte o valor em texto (padrão: String). */
+  formatar?: (valor: unknown) => string;
+}
+
+const { campo, formatar = (v: unknown) => String(v) } = Astro.props;
+const confirmado = campo.estado === 'confirmado';
+const valor = valorPreview(campo);
+const rotulo = 'rotulo' in campo ? campo.rotulo : null;
+const texto = valor !== null ? formatar(valor) : (rotulo ?? 'pendente');
+const mostrar = confirmado || modo !== 'producao';
+---
+
+{mostrar &&
+  (confirmado ? (
+    <>{texto}</>
+  ) : (
+    <span class="provisorio" title={rotulo ?? undefined}>
+      {texto}
+      <span class="selo-provisorio">PROVISÓRIO</span>
+    </span>
+  ))}
+
+<style>
+  .provisorio {
+    outline: 1px dashed currentColor;
+    outline-offset: 2px;
+  }
+  .selo-provisorio {
+    margin-inline-start: 0.375em;
+    padding: 0 0.25em;
+    background: #b89252;
+    color: #121316;
+    font:
+      700 0.625rem/1.4 system-ui,
+      sans-serif;
+    letter-spacing: 0.08em;
+    vertical-align: middle;
+  }
+</style>

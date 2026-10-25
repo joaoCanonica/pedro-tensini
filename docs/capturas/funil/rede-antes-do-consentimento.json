@@ -1,0 +1,832 @@
+[
+  {
+    "pagina": "/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/"
+  },
+  {
+    "pagina": "/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/loop-hero/loop-hero-poster-540.avif?v=cc12475e8d"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/HorarioCompacto.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/BordaDegrade.astro_astro_type_script_index_0_lang.CGATeEPY.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-parede-verde/quadro-parede-verde-480.avif?v=4b8e5dd887"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/",
+    "tipo": "media",
+    "url": "http://127.0.0.1:4329/media/loop-hero/loop-hero-540.webm?v=97633cce69"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-cafe-coado/quadro-cafe-coado-480.avif?v=443b047fe2"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-resultado-nuca/quadro-resultado-nuca-480.avif?v=2e5a0c9607"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/loop-degrade/loop-degrade-poster-540.avif?v=f477ac9342"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-resultado-nuca/quadro-resultado-nuca-720.webp?v=cb2339b21c"
+  },
+  {
+    "pagina": "/",
+    "tipo": "media",
+    "url": "http://127.0.0.1:4329/media/loop-degrade/loop-degrade-540.webm?v=2bd447b331"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/foto-toalha-quente/foto-toalha-quente-480.avif?v=7cc85c0f2d"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/foto-esfoliacao/foto-esfoliacao-480.avif?v=10af021a6b"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/retrato-provisorio-1/retrato-provisorio-1-480.avif?v=8a6a810771"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/resultado-1/resultado-1-poster-540.avif?v=2fcad4d475"
+  },
+  {
+    "pagina": "/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/resultado-2/resultado-2-poster-540.avif?v=138f4cba56"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/degrade-em-lages/"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/loop-degrade/loop-degrade-poster-540.avif?v=f477ac9342"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/BordaDegrade.astro_astro_type_script_index_0_lang.CGATeEPY.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-resultado-nuca/quadro-resultado-nuca-720.webp?v=cb2339b21c"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-resultado-nuca/quadro-resultado-nuca-480.avif?v=2e5a0c9607"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/resultado-1/resultado-1-poster-540.avif?v=2fcad4d475"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/resultado-2/resultado-2-poster-540.avif?v=138f4cba56"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "media",
+    "url": "http://127.0.0.1:4329/media/loop-degrade/loop-degrade-540.webm?v=2bd447b331"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/barba-e-barbaterapia/"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/experiencia-completa/experiencia-completa-poster-540.avif?v=cc12475e8d"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/BordaDegrade.astro_astro_type_script_index_0_lang.CGATeEPY.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/foto-toalha-quente/foto-toalha-quente-480.avif?v=7cc85c0f2d"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/foto-esfoliacao/foto-esfoliacao-480.avif?v=10af021a6b"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/foto-navalha/foto-navalha-480.avif?v=b0215a5b11"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/foto-barba-finalizada/foto-barba-finalizada-480.avif?v=ccd3464c84"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/sobrancelha/"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-sobrancelha-navalha/quadro-sobrancelha-navalha-480.avif?v=4590caf15e"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/BordaDegrade.astro_astro_type_script_index_0_lang.CGATeEPY.js"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/sobrancelha/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/pomadas/"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/pomadas/pomadas-poster-540.avif?v=e962622deb"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/BordaDegrade.astro_astro_type_script_index_0_lang.CGATeEPY.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/servicos-e-precos/"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-parede-verde/quadro-parede-verde-480.avif?v=4b8e5dd887"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/BordaDegrade.astro_astro_type_script_index_0_lang.CGATeEPY.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/como-chegar/"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-barbearia-geral/quadro-barbearia-geral-480.avif?v=c3fa36e2ba"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/BordaDegrade.astro_astro_type_script_index_0_lang.CGATeEPY.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/MapaInterativo.astro_astro_type_script_index_0_lang.BCrppSqr.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/sobre-pedro-tensini/"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/retrato-provisorio-1/retrato-provisorio-1-480.avif?v=8a6a810771"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/BordaDegrade.astro_astro_type_script_index_0_lang.CGATeEPY.js"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/bastidores-site/bastidores-site-poster-540.avif?v=51f36dd343"
+  },
+  {
+    "pagina": "/sobre-pedro-tensini/",
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/trajetoria/trajetoria-poster-540.avif?v=157e1bb02e"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/agendar/"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/perguntas-frequentes/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/perguntas-frequentes/"
+  },
+  {
+    "pagina": "/perguntas-frequentes/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/perguntas-frequentes/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/perguntas-frequentes/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/perguntas-frequentes/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/perguntas-frequentes/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/avaliar/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/avaliar/"
+  },
+  {
+    "pagina": "/avaliar/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/avaliar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/avaliar/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/avaliar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/avaliar/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/privacidade/",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/privacidade/"
+  },
+  {
+    "pagina": "/privacidade/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/privacidade/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/privacidade/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/privacidade/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/privacidade/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  },
+  {
+    "pagina": "/404.html",
+    "tipo": "document",
+    "url": "http://127.0.0.1:4329/404.html"
+  },
+  {
+    "pagina": "/404.html",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/d7d5d905ab441980.woff2"
+  },
+  {
+    "pagina": "/404.html",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+  },
+  {
+    "pagina": "/404.html",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/404.html",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/404.html",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
+  }
+]

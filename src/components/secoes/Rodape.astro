@@ -1,0 +1,181 @@
+---
+// Rodapé: monograma, nome canônico, endereço completo, horário completo, WhatsApp,
+// Instagram, CNPJ e privacidade.
+import Monograma from '../marca/Monograma.astro';
+import Endereco from './Endereco.astro';
+import Selo from './Selo.astro';
+import { linhasSemana, faixa } from '../base/semana.ts';
+import { cnpj, exibirCnpj, nomeCanonico, profissional } from '../../config/marca.ts';
+import { instagram, telefone, whatsapp } from '../../config/contato.ts';
+import { valorPreview } from '../../config/tipos.ts';
+import { ctaWhatsApp } from '../../lib/whatsapp.ts';
+import { ctaLigar } from '../../lib/medicao.ts';
+
+const nome = valorPreview(nomeCanonico) ?? '';
+const nomeConfirmado = nomeCanonico.estado === 'confirmado';
+const tel = whatsapp.estado === 'confirmado' ? `tel:+${whatsapp.valor}` : null;
+---
+
+<footer class="rodape" data-superficie="navy" data-rodape>
+  <div class="rodape__envelope">
+    <div class="rodape__marca">
+      <Monograma tamanho="3.5rem" titulo="" />
+      <p class="rodape__nome">
+        {nome} {!nomeConfirmado && <Selo titulo="Nome canônico a confirmar com o Pedro" />}
+      </p>
+      <p class="pequeno secundario">{profissional.nome.valor} · Barbeiro no Centro de Lages</p>
+    </div>
+    <div>
+      <p class="rotulo rodape__rotulo">Endereço</p>
+      <Endereco />
+      <p>
+        <a class="link pequeno" href="/como-chegar/">
+          Como chegar
+        </a>
+      </p>
+    </div>
+    <div>
+      <p class="rotulo rodape__rotulo">Horário</p>
+      <dl class="rodape__horario num">
+        {linhasSemana.map((l) => (
+          <div>
+            <dt>{l.nome}</dt>
+            <dd>{l.janela ? faixa(l.janela) : 'Fechado'}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <div>
+      <p class="rotulo rodape__rotulo">Contato</p>
+      <ul class="rodape__lista" role="list">
+        <li>
+          <a class="link" {...ctaWhatsApp('rodape')}>
+            WhatsApp {telefone.valor}
+          </a>
+        </li>
+        {tel && (
+          <li>
+            <a class="link" href={tel} {...ctaLigar()}>
+              Ligar
+            </a>
+          </li>
+        )}
+        <li>
+          <a class="link" href={instagram.valor.url}>
+            Instagram @{instagram.valor.usuario}
+          </a>
+        </li>
+        <li>
+          <a class="link" href="/perguntas-frequentes/">
+            Perguntas frequentes
+          </a>
+        </li>
+        <li>
+          <a class="link" href="/avaliar/">
+            Avaliar no Google
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="rodape__legal rodape__envelope pequeno">
+    <p>
+      {nome} · Pedro Carlos Tensini{exibirCnpj && ` · CNPJ ${cnpj.valor}`}
+    </p>
+    <p class="rodape__links">
+      <a class="link" href="/privacidade/">
+        Política de privacidade
+      </a>
+      <button type="button" class="link rodape__preferencias" data-abrir-consentimento hidden>
+        Preferências de privacidade
+      </button>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .rodape {
+    padding-block: var(--e-8) var(--e-6);
+  }
+  .rodape__envelope {
+    width: min(100% - 2 * var(--margem), 80rem);
+    margin-inline: auto;
+    display: grid;
+    gap: var(--e-7);
+  }
+  .rodape__marca {
+    display: grid;
+    gap: var(--e-3);
+    color: var(--acento);
+  }
+  .rodape__marca :global(.monograma) {
+    color: var(--latao);
+  }
+  .rodape__nome {
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-3);
+    color: var(--texto);
+  }
+  .rodape__rotulo {
+    margin-bottom: var(--e-3);
+    color: var(--acento-texto);
+  }
+  .rodape__horario {
+    display: grid;
+    gap: 0.2rem;
+    margin: 0;
+    max-width: 16rem;
+  }
+  .rodape__horario div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--e-4);
+  }
+  .rodape__horario dd {
+    margin: 0;
+  }
+  .rodape__lista {
+    display: grid;
+    gap: var(--e-3);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .rodape__preferencias {
+    border: 0;
+    padding: 0 0 5px;
+    background-color: transparent;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+  .rodape__preferencias[hidden] {
+    display: none;
+  }
+  /* Dois alvos lado a lado: altura e distância de pelo menos 24 px (WCAG 2.5.8). */
+  .rodape__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2) var(--e-5);
+  }
+  .rodape__links > * {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
+  .rodape__legal {
+    margin-top: var(--e-8);
+    padding-top: var(--e-5);
+    border-top: 1px solid var(--linha);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--e-3);
+    color: var(--texto-2);
+  }
+  @media (min-width: 60rem) {
+    .rodape__envelope:first-child {
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    }
+  }
+</style>

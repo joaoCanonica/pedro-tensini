@@ -1,0 +1,101 @@
+---
+// 404: curta, com o monograma e os três caminhos (agendar, como chegar, início).
+import Pagina from '../layouts/Pagina.astro';
+import Botao from '../components/base/Botao.astro';
+import Monograma from '../components/marca/Monograma.astro';
+import { pagina } from '../layouts/servico/pagina.ts';
+
+const p = pagina('404');
+// No .md: "Rótulo: …" e "Título: …" viram parágrafos; o resto é o texto.
+const campo = (nome: string) =>
+  p.intro.blocos
+    .map((b) =>
+      b.tipo === 'p' && b.texto.startsWith(`${nome}:`) ? b.texto.slice(nome.length + 1).trim() : '',
+    )
+    .find(Boolean) ?? '';
+const rotulo = campo('Rótulo') || p.resposta.replace(/^Rótulo:\s*/, '');
+const titulo = campo('Título');
+const texto = p.intro.blocos.find(
+  (b) => b.tipo === 'p' && !/^(Rótulo|Título|Links):/.test(b.texto),
+);
+---
+
+<Pagina titulo={p.title} descricao={p.description} trilha={[]} rota="/404" noindex barra={false}>
+  <section class="nao" data-superficie="base" aria-labelledby="nao-titulo">
+    <div class="nao__grade envelope-s">
+      <div class="nao__marca" aria-hidden="true">
+        <Monograma titulo="" tamanho="clamp(6rem, 4rem + 12vw, 13rem)" />
+      </div>
+      <div class="nao__texto">
+        <p class="rotulo nao__rotulo">{rotulo}</p>
+        <h1 id="nao-titulo" class="nao__titulo">
+          {titulo || p.h1}
+        </h1>
+        {texto?.tipo === 'p' && <p class="nao__frase">{texto.texto}</p>}
+        <ul class="nao__caminhos" role="list">
+          <li>
+            <Botao origem="404">Agendar no WhatsApp</Botao>
+          </li>
+          <li>
+            <a class="link" href="/como-chegar/">
+              Como chegar
+            </a>
+          </li>
+          <li>
+            <a class="link" href="/">
+              Voltar ao início
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Pagina>
+
+<style>
+  .nao {
+    min-height: 70svh;
+    display: grid;
+    align-items: center;
+    padding-block: var(--e-7) var(--e-9);
+  }
+  .nao__grade {
+    display: grid;
+    gap: var(--e-6);
+    align-items: center;
+  }
+  .nao__marca {
+    color: var(--acento);
+  }
+  .nao__texto {
+    display: grid;
+    gap: var(--e-4);
+    justify-items: start;
+  }
+  .nao__rotulo {
+    color: var(--acento-texto);
+  }
+  .nao__titulo {
+    font-size: var(--fs-1);
+    line-height: 1;
+  }
+  .nao__frase {
+    max-width: 40ch;
+    color: var(--texto-2);
+  }
+  .nao__caminhos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-4) var(--e-6);
+    padding: 0;
+    list-style: none;
+    margin-top: var(--e-3);
+  }
+  @media (min-width: 60rem) {
+    .nao__grade {
+      grid-template-columns: auto minmax(0, 1fr);
+      column-gap: var(--e-8);
+    }
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+// /sobrancelha: página curta e honesta. Um quadro do primeiro vídeo, como é feita (um
+// parágrafo, sem inventar passos), valores e agendar.
+import Servico from '../layouts/Servico.astro';
+import Faixa from '../layouts/servico/Faixa.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import Valores from '../layouts/servico/Valores.astro';
+import Poster from '../components/base/Poster.astro';
+import Selo from '../components/secoes/Selo.astro';
+import { comoPergunta, faq, pagina, parte } from '../layouts/servico/pagina.ts';
+
+const p = pagina('sobrancelha');
+const como = parte(p, 'Como é feita');
+const perguntas = [
+  comoPergunta(p, 'Para quem é', 'Para quem é a sobrancelha masculina?'),
+  comoPergunta(p, 'Quanto tempo leva', 'Quanto tempo leva a sobrancelha?'),
+  faq('Faz sobrancelha e barba?'),
+];
+---
+
+<Servico rota="/sobrancelha/" pagina={p} perguntas={perguntas} valor={['sobrancelha']}>
+  <figure slot="midia" class="still">
+    <Poster
+      id="quadro-sobrancelha-navalha"
+      alt="O Pedro com a navalha dourada e o pente na linha do cabelo, logo acima da sobrancelha do cliente"
+      sizes="(min-width: 60rem) 22rem, 88vw"
+      prioridade
+    />
+    <figcaption class="pequeno secundario">
+      Navalha no acabamento, no primeiro vídeo da barbearia.
+      <Selo titulo="Foto ou vídeo próprio da sobrancelha a pedir ao Pedro" />
+    </figcaption>
+  </figure>
+
+  <Faixa
+    id="como-e-feito"
+    titulo={como.titulo}
+    rotulo="Na navalha"
+    superficie="contraste"
+    provisorios={como.provisorios}
+  >
+    <Blocos blocos={como.blocos} />
+  </Faixa>
+
+  <Faixa
+    id="valores"
+    titulo="Quanto custa e quanto tempo leva?"
+    rotulo="Valores"
+    superficie="contraste"
+  >
+    <Valores linhas={[{ slug: 'sobrancelha' }]} legenda="Preço e duração da sobrancelha" />
+  </Faixa>
+</Servico>
+
+<style>
+  .still {
+    display: grid;
+    gap: var(--e-3);
+    max-width: 26rem;
+  }
+  .still :global(img) {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+</style>

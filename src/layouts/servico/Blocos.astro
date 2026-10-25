@@ -1,0 +1,143 @@
+---
+// Renderiza os blocos de uma seção do texto-fonte (parágrafo, lista, tabela, citação, subtítulo).
+// Passos numerados vão para o componente Passos, com a escala de pente.
+import Citacao from '../../components/base/Citacao.astro';
+import Passos from './Passos.astro';
+import type { Bloco } from './pagina.ts';
+
+interface Props {
+  blocos: Bloco[];
+  /** Nome acessível da lista de passos, se houver. */
+  rotuloPassos?: string;
+}
+const { blocos, rotuloPassos = 'Passo a passo' } = Astro.props;
+---
+
+{blocos.map((b) =>
+  b.tipo === 'p' ? (
+    <p class="medida">{b.texto}</p>
+  ) : b.tipo === 'passos' ? (
+    <Passos itens={b.itens} rotulo={rotuloPassos} />
+  ) : b.tipo === 'lista' ? (
+    <dl class="blocos__lista">
+      {b.itens.map((i) => (
+        <div>
+          {i.rotulo && <dt class="rotulo">{i.rotulo}</dt>}
+          <dd>{i.texto}</dd>
+        </div>
+      ))}
+    </dl>
+  ) : b.tipo === 'tabela' ? (
+    <div
+      class="blocos__tabela-rolagem"
+      role="region"
+      aria-label={`Tabela: ${b.cabecalho.join(', ')}`}
+      tabindex="0"
+    >
+      <table class="blocos__tabela">
+        <thead>
+          <tr>
+            {b.cabecalho.map((c) => (
+              <th scope="col" class="rotulo">
+                {c}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {b.linhas.map((l) => (
+            <tr>
+              {l.map((c, i) =>
+                i === 0 ? (
+                  <th scope="row">{c}</th>
+                ) : c === '—' ? (
+                  <td class="vazio">
+                    <span aria-hidden="true">—</span>
+                    <span class="sr-only">não informado</span>
+                  </td>
+                ) : (
+                  <td>{c}</td>
+                ),
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ) : b.tipo === 'citacao' ? (
+    <Citacao texto={b.texto} fonte={b.fonte} tamanho="m" />
+  ) : (
+    <div class="blocos__sub">
+      <h3>{b.titulo}</h3>
+      <Astro.self blocos={b.blocos} />
+    </div>
+  ),
+)}
+
+<style>
+  .blocos__lista {
+    display: grid;
+    gap: 0;
+    max-width: var(--medida);
+  }
+  .blocos__lista > div {
+    display: grid;
+    gap: var(--e-1) var(--e-5);
+    padding-block: var(--e-4);
+    border-top: 1px solid var(--linha);
+  }
+  .blocos__lista dt {
+    color: var(--acento-texto);
+  }
+  .blocos__lista dd {
+    margin: 0;
+  }
+  /* "**Barba:** desenho…" no texto-fonte: a frase começa em minúscula depois do rótulo. */
+  .blocos__lista dd::first-letter {
+    text-transform: uppercase;
+  }
+  @media (min-width: 40rem) {
+    .blocos__lista > div {
+      grid-template-columns: 10rem minmax(0, 1fr);
+      align-items: baseline;
+    }
+  }
+  .blocos__tabela-rolagem {
+    overflow-x: auto;
+  }
+  .blocos__tabela-rolagem:focus-visible {
+    outline: 2px solid var(--foco);
+    outline-offset: 3px;
+  }
+  .blocos__tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-pequeno);
+  }
+  .blocos__tabela th,
+  .blocos__tabela td {
+    padding: var(--e-3) var(--e-4) var(--e-3) 0;
+    text-align: start;
+    vertical-align: baseline;
+    border-bottom: 1px solid var(--linha);
+  }
+  .blocos__tabela thead th {
+    color: var(--texto-2);
+    border-bottom-color: var(--texto);
+  }
+  .blocos__tabela tbody th {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: var(--fs-3);
+    white-space: nowrap;
+  }
+  .blocos__tabela td.vazio {
+    color: var(--texto-2);
+  }
+  .blocos__sub {
+    display: grid;
+    gap: var(--e-2);
+    padding-top: var(--e-4);
+    border-top: 1px solid var(--linha);
+  }
+</style>

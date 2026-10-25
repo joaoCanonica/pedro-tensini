@@ -1,0 +1,106 @@
+---
+// 0 · Acabamento e agendar: montador completo, horário com hoje e status, endereço,
+// rotas, mapa estático e o passo a passo.
+import Secao from './Secao.astro';
+import Montador from './Montador.astro';
+import Endereco from './Endereco.astro';
+import MapaEstatico from './MapaEstatico.astro';
+import TabelaHorario from '../base/TabelaHorario.astro';
+import StatusAoVivo from '../base/StatusAoVivo.astro';
+import Botao from '../base/Botao.astro';
+import Citacao from '../base/Citacao.astro';
+import { links } from '../../config/contato.ts';
+import { secao } from './textos.ts';
+
+const t = secao('0 ·');
+const citacao = t.citacoes[0];
+import { ctaRota } from '../../lib/medicao.ts';
+---
+
+<Secao
+  id="agendar"
+  superficie="contraste"
+  valor="0"
+  rotulo="Acabamento e agendar"
+  titulo={t.titulo}
+>
+  <div class="envelope agendar" data-secao-agendar>
+    <div class="agendar__montador">
+      {t.paragrafos.map((p) => (
+        <p class="medida">{p}</p>
+      ))}
+      <Montador />
+    </div>
+    <div class="agendar__local">
+      <StatusAoVivo />
+      <TabelaHorario />
+      <div class="agendar__onde">
+        <p class="rotulo agendar__rotulo">Onde</p>
+        <Endereco />
+        <div class="agendar__rotas">
+          <Botao
+            variante="secundario"
+            href={links.googleRota}
+            whatsapp={false}
+            dados={ctaRota('google-maps')}
+          >
+            Google Maps
+          </Botao>
+          <Botao variante="secundario" href={links.waze} whatsapp={false} dados={ctaRota('waze')}>
+            Waze
+          </Botao>
+          <Botao
+            variante="secundario"
+            href={links.appleMapas}
+            whatsapp={false}
+            dados={ctaRota('apple-mapas')}
+          >
+            Apple Mapas
+          </Botao>
+        </div>
+        <MapaEstatico />
+        <p>
+          <a class="link" href="/como-chegar/">
+            Como chegar passo a passo
+          </a>
+        </p>
+      </div>
+      {citacao && <Citacao texto={citacao.texto} fonte={citacao.fonte} tamanho="m" />}
+    </div>
+  </div>
+</Secao>
+
+<style>
+  .agendar {
+    display: grid;
+    gap: var(--e-8);
+  }
+  .agendar__montador {
+    display: grid;
+    gap: var(--e-5);
+    align-content: start;
+  }
+  .agendar__local {
+    display: grid;
+    gap: var(--e-6);
+    align-content: start;
+  }
+  .agendar__onde {
+    display: grid;
+    gap: var(--e-4);
+  }
+  .agendar__rotulo {
+    color: var(--acento-texto);
+  }
+  .agendar__rotas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2);
+  }
+  @media (min-width: 60rem) {
+    .agendar {
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 7rem);
+    }
+  }
+</style>

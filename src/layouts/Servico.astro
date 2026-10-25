@@ -1,0 +1,395 @@
+---
+// Template das páginas de serviço, feito para responder busca local: H1 com o serviço e Lages,
+// parágrafo-resposta, mídia principal, ficha rápida (onde, agora, valor), o miolo da página
+// (passos, valores, guia), agendar com o serviço já marcado, onde e quando, perguntas e os
+// outros serviços. Breadcrumb visível. Não é cópia da home: abertura em ficha, seções com o
+// título numa coluna à esquerda.
+import BordaDegrade from '../components/marca/BordaDegrade.astro';
+import Botao from '../components/base/Botao.astro';
+import StatusAoVivo from '../components/base/StatusAoVivo.astro';
+import TabelaHorario from '../components/base/TabelaHorario.astro';
+import Endereco from '../components/secoes/Endereco.astro';
+import Montador from '../components/secoes/Montador.astro';
+import Selo from '../components/secoes/Selo.astro';
+import Casca from './Pagina.astro';
+import Faixa from './servico/Faixa.astro';
+import Perguntas, { type Pergunta } from './servico/Perguntas.astro';
+import { PAGINAS_SERVICO, paginaServico } from './servico/catalogo.ts';
+import type { Pagina } from './servico/pagina.ts';
+import { links } from '../config/contato.ts';
+import { formatarPreco, precoExibivel, servicos } from '../config/servicos.ts';
+import { juntarServicos } from '../lib/whatsapp.ts';
+import { servicoSchema } from '../components/seo/entidade.ts';
+import { MARCADORES } from '../components/secoes/textos.ts';
+
+interface Props {
+  rota: string;
+  pagina: Pagina;
+  perguntas: Pergunta[];
+  /** Slugs de src/config/servicos.ts cujo valor entra na ficha da abertura. */
+  valor?: string[];
+  /** Título do bloco de agendar. */
+  tituloAgendar?: string;
+}
+const { rota, pagina, perguntas, valor = [], tituloAgendar = 'Agendar' } = Astro.props;
+const atual = paginaServico(rota);
+const ehIndice = rota === '/servicos-e-precos/';
+const trilha = [
+  { nome: 'Início', rota: '/' },
+  ...(ehIndice ? [] : [{ nome: 'Serviços e preços', rota: '/servicos-e-precos/' }]),
+  { nome: atual.nome, rota },
+];
+const outros = PAGINAS_SERVICO.filter((p) => p.rota !== rota);
+// Serviço já marcado ("degradê"): vai na mensagem do botão, da barra fixa e no evento.
+const servicoMarcado = juntarServicos(atual.montador.map((s) => s.toLowerCase()));
+
+// JSON-LD: o Service de cada serviço desta página (o catálogo completo já vai no negócio).
+const SCHEMA_POR_ROTA: Record<string, string[]> = {
+  '/degrade-em-lages/': ['degrade'],
+  '/barba-e-barbaterapia/': ['barba', 'barbaterapia'],
+  '/sobrancelha/': ['sobrancelha'],
+};
+const dadosServico = (SCHEMA_POR_ROTA[rota] ?? []).map((s) => servicoSchema(s, true));
+
+// Ficha: valor só confirmado; um serviço por linha.
+const valores = valor.map((slug) => {
+  const s = servicos.find((x) => x.slug === slug);
+  if (!s) throw new Error(`Serviço "${slug}" não está em src/config/servicos.ts`);
+  const p = precoExibivel(s);
+  return { nome: s.nome, preco: p ? formatarPreco(p) : null };
+});
+const valorPendente = valores.some((v) => !v.preco);
+import { ctaRota } from '../lib/medicao.ts';
+---
+
+<Casca
+  titulo={pagina.title}
+  descricao={pagina.description}
+  trilha={trilha}
+  servico={servicoMarcado}
+  dados={dadosServico}
+>
+  <section class="abertura" data-superficie="base" aria-labelledby="servico-titulo">
+    <div class="abertura__grade envelope-s">
+      <div class="abertura__texto">
+        <p class="rotulo abertura__rotulo">Barbeiro no Centro de Lages</p>
+        <h1 id="servico-titulo" class="abertura__titulo">
+          {pagina.h1}
+        </h1>
+        <p class="abertura__resposta">{pagina.resposta}</p>
+      </div>
+      {Astro.slots.has('midia') && (
+        <div class="abertura__midia">
+          <slot name="midia" />
+        </div>
+      )}
+      <dl class="ficha">
+        <div>
+          <dt class="rotulo">Onde</dt>
+          <dd>
+            <a class="link" href="/como-chegar/">
+              {MARCADORES['endereco.curto']}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt class="rotulo">Agora</dt>
+          <dd>
+            <StatusAoVivo />
+          </dd>
+        </div>
+        {valores.length > 0 && (
+          <div>
+            <dt class="rotulo">Valor</dt>
+            <dd class="num">
+              {valorPendente ? (
+                <>
+                  Valores pelo WhatsApp <Selo titulo="Tabela de preços a confirmar" />
+                </>
+              ) : (
+                valores.map((v) => (
+                  <span class="ficha__valor">
+                    {valores.length > 1 && `${v.nome}: `}
+                    {v.preco}
+                  </span>
+                ))
+              )}
+            </dd>
+          </div>
+        )}
+      </dl>
+      <div class="abertura__acoes">
+        <div data-agendar-principal>
+          <Botao origem="servico" {...(servicoMarcado ? { servico: servicoMarcado } : {})}>
+            Agendar no WhatsApp
+          </Botao>
+        </div>
+        <a class="link" href="#onde-e-quando">
+          Horário e como chegar
+        </a>
+      </div>
+      {pagina.intro.provisorios.length > 0 && (
+        <p class="abertura__selo">
+          <Selo titulo={pagina.intro.provisorios.join(' · ')} />
+        </p>
+      )}
+    </div>
+  </section>
+
+  <BordaDegrade de="base" para="contraste" />
+  <div class="miolo" data-superficie="contraste">
+    <slot />
+  </div>
+  <BordaDegrade de="contraste" para="navy" />
+
+  <Faixa id="agendar" titulo={tituloAgendar} rotulo="Pelo WhatsApp" superficie="navy">
+    <div class="agendar" data-secao-agendar>
+      <p class="medida">
+        Escolha o dia e o período: a mensagem abre pronta no WhatsApp. Você escolhe e o Pedro
+        confirma o horário no WhatsApp.
+      </p>
+      <Montador servicos={atual.montador} />
+    </div>
+  </Faixa>
+
+  <BordaDegrade de="navy" para="base" />
+  <Faixa id="onde-e-quando" titulo="Onde e quando" rotulo="Galeria Augusta">
+    <div class="onde">
+      <div class="onde__local">
+        <Endereco />
+        <StatusAoVivo />
+        <div class="onde__rotas">
+          <Botao
+            variante="secundario"
+            href={links.googleRota}
+            whatsapp={false}
+            dados={ctaRota('google-maps')}
+          >
+            Google Maps
+          </Botao>
+          <Botao variante="secundario" href={links.waze} whatsapp={false} dados={ctaRota('waze')}>
+            Waze
+          </Botao>
+          <Botao
+            variante="secundario"
+            href={links.appleMapas}
+            whatsapp={false}
+            dados={ctaRota('apple-mapas')}
+          >
+            Apple Mapas
+          </Botao>
+        </div>
+        <a class="link" href="/como-chegar/">
+          Como chegar passo a passo
+        </a>
+      </div>
+      <TabelaHorario />
+    </div>
+  </Faixa>
+
+  {perguntas.length > 0 && (
+    <Faixa id="perguntas" titulo="Perguntas" rotulo="Sobre este serviço">
+      <Perguntas itens={perguntas} />
+    </Faixa>
+  )}
+
+  <BordaDegrade de="base" para="contraste" />
+  <nav class="outros" data-superficie="contraste" aria-labelledby="outros-titulo">
+    <div class="envelope-s">
+      <h2 id="outros-titulo" class="rotulo outros__titulo">
+        {ehIndice ? 'Cada serviço em detalhe' : 'Outros serviços'}
+      </h2>
+      <ol class="outros__lista">
+        {outros.map((p) => (
+          <li>
+            <a href={p.rota} class="outros__link">
+              <span class="outros__nome">
+                <span class="link">{p.nome}</span>
+              </span>
+              <span class="outros__resumo pequeno">{p.resumo}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </nav>
+  <BordaDegrade de="contraste" para="navy" />
+</Casca>
+
+<style>
+  .abertura {
+    padding-block: var(--e-6) var(--e-8);
+  }
+  .abertura__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+  .abertura__texto {
+    display: grid;
+    gap: var(--e-4);
+    align-content: start;
+  }
+  .abertura__rotulo {
+    color: var(--acento-texto);
+  }
+  .abertura__titulo {
+    font-size: var(--fs-1);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    max-width: 14ch;
+  }
+  .abertura__resposta {
+    font-size: var(--fs-3);
+    line-height: 1.4;
+    max-width: 40ch;
+  }
+  .abertura__midia {
+    min-width: 0;
+  }
+  .ficha {
+    display: grid;
+    margin: 0;
+  }
+  .ficha > div {
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    gap: var(--e-4);
+    align-items: baseline;
+    padding-block: var(--e-3);
+    border-top: 1px solid var(--linha);
+  }
+  .ficha > div:last-child {
+    border-bottom: 1px solid var(--linha);
+  }
+  .ficha dt {
+    color: var(--texto-2);
+  }
+  .ficha dd {
+    margin: 0;
+    min-width: 0;
+  }
+  .ficha__valor {
+    display: block;
+  }
+  .abertura__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-4) var(--e-6);
+  }
+  @media (max-width: 39.99rem) {
+    .abertura__acoes > div,
+    .abertura__acoes :global(.botao) {
+      width: 100%;
+    }
+  }
+  @media (min-width: 60rem) {
+    .abertura {
+      padding-top: var(--e-7);
+    }
+    .abertura__grade {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: var(--e-8);
+      grid-template-areas:
+        'texto midia'
+        'ficha midia'
+        'acoes midia'
+        'selo midia';
+      grid-template-rows: auto auto auto 1fr;
+      align-items: start;
+    }
+    .abertura__texto {
+      grid-area: texto;
+    }
+    .abertura__midia {
+      grid-area: midia;
+    }
+    .ficha {
+      grid-area: ficha;
+      max-width: 36rem;
+    }
+    .abertura__acoes {
+      grid-area: acoes;
+    }
+    .abertura__selo {
+      grid-area: selo;
+    }
+  }
+
+  .miolo {
+    padding-bottom: var(--e-6);
+  }
+
+  .agendar {
+    display: grid;
+    gap: var(--e-5);
+    max-width: 44rem;
+  }
+
+  .onde {
+    display: grid;
+    gap: var(--e-7);
+  }
+  .onde__local {
+    display: grid;
+    gap: var(--e-4);
+    align-content: start;
+    justify-items: start;
+  }
+  .onde__rotas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-3);
+  }
+  @media (min-width: 48rem) {
+    .onde {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .outros {
+    padding-block: var(--e-7) var(--e-8);
+  }
+  .outros__titulo {
+    color: var(--acento-texto);
+    margin-bottom: var(--e-4);
+  }
+  .outros__lista {
+    padding: 0;
+    list-style: none;
+    display: grid;
+  }
+  .outros__link {
+    display: grid;
+    gap: var(--e-1);
+    padding-block: var(--e-4);
+    border-top: 1px solid var(--linha);
+    text-decoration: none;
+  }
+  .outros__nome {
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-2);
+    line-height: 1.05;
+  }
+  .outros__resumo {
+    color: var(--texto-2);
+  }
+  /* Sublinhado cheio → hachurado quando o item inteiro recebe hover/foco. */
+  .outros__link:hover .link,
+  .outros__link:focus-visible .link {
+    background-size:
+      0% 1px,
+      100% 4px;
+  }
+  @media (min-width: 60rem) {
+    .outros__lista {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: var(--e-7);
+    }
+    .outros__link {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: baseline;
+      column-gap: var(--e-5);
+    }
+  }
+</style>

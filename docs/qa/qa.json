@@ -1,0 +1,522 @@
+{
+  "data": "2026-10-25T05:43:42.034Z",
+  "navegador": "153.0.8010.12",
+  "resultados": {
+    "axe": [
+      {
+        "rota": "/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 56,
+        "incompletas": 2
+      },
+      {
+        "rota": "/agendar/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 53,
+        "incompletas": 1
+      },
+      {
+        "rota": "/como-chegar/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 53,
+        "incompletas": 1
+      },
+      {
+        "rota": "/servicos-e-precos/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 54,
+        "incompletas": 1
+      },
+      {
+        "rota": "/degrade-em-lages/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 57,
+        "incompletas": 2
+      },
+      {
+        "rota": "/barba-e-barbaterapia/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 55,
+        "incompletas": 2
+      },
+      {
+        "rota": "/sobrancelha/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 54,
+        "incompletas": 1
+      },
+      {
+        "rota": "/pomadas/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 56,
+        "incompletas": 2
+      },
+      {
+        "rota": "/sobre-pedro-tensini/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 45,
+        "incompletas": 2
+      },
+      {
+        "rota": "/perguntas-frequentes/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 44,
+        "incompletas": 1
+      },
+      {
+        "rota": "/avaliar/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 44,
+        "incompletas": 1
+      },
+      {
+        "rota": "/privacidade/",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 43,
+        "incompletas": 1
+      },
+      {
+        "rota": "/404.html",
+        "tema": "escuro",
+        "violacoes": [],
+        "aprovadas": 42,
+        "incompletas": 1
+      },
+      {
+        "rota": "/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 56,
+        "incompletas": 2
+      },
+      {
+        "rota": "/agendar/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 53,
+        "incompletas": 1
+      },
+      {
+        "rota": "/como-chegar/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 53,
+        "incompletas": 1
+      },
+      {
+        "rota": "/servicos-e-precos/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 54,
+        "incompletas": 1
+      },
+      {
+        "rota": "/degrade-em-lages/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 57,
+        "incompletas": 2
+      },
+      {
+        "rota": "/barba-e-barbaterapia/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 55,
+        "incompletas": 2
+      },
+      {
+        "rota": "/sobrancelha/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 54,
+        "incompletas": 1
+      },
+      {
+        "rota": "/pomadas/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 56,
+        "incompletas": 2
+      },
+      {
+        "rota": "/sobre-pedro-tensini/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 45,
+        "incompletas": 2
+      },
+      {
+        "rota": "/perguntas-frequentes/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 44,
+        "incompletas": 1
+      },
+      {
+        "rota": "/avaliar/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 44,
+        "incompletas": 1
+      },
+      {
+        "rota": "/privacidade/",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 43,
+        "incompletas": 1
+      },
+      {
+        "rota": "/404.html",
+        "tema": "claro",
+        "violacoes": [],
+        "aprovadas": 42,
+        "incompletas": 1
+      }
+    ],
+    "economia": [
+      {
+        "conexao": "save-data",
+        "videosBaixados": 0,
+        "arquivos": []
+      },
+      {
+        "conexao": "2g",
+        "videosBaixados": 0,
+        "arquivos": []
+      },
+      {
+        "conexao": "normal",
+        "videosBaixados": 3,
+        "arquivos": [
+          "loop-hero-540.webm?v=97633cce69",
+          "loop-degrade-540.webm?v=2bd447b331"
+        ]
+      }
+    ],
+    "teclado": {
+      "passos": [
+        "entrada: ativa; Pular presente: 1",
+        "Tab → entrada: feita, foco: a Tensini Barbieri, página inicial",
+        "21 Tabs até o montador → input",
+        "Tab até \"Abrir conversa no WhatsApp\" → https://wa.me/5549999037620?text=Olá, Pedro! Vim pelo site e quero agendar: corte. Prefiro manhã."
+      ],
+      "resumoFalado": "Sua escolha: Corte, de manhã.",
+      "anelDeFocoVisivel": true,
+      "linkWhatsApp": "https://wa.me/5549999037620?text=Ol%C3%A1%2C%20Pedro!%20Vim%20pelo%20site%20e%20quero%20agendar%3A%20corte.%20Prefiro%20manh%C3%A3."
+    },
+    "leitorDeTela": {
+      "status": "- paragraph: Fechado · abre amanhã às 8h30",
+      "montador": "- paragraph: Monte sua mensagem\n- form \"Monte sua mensagem\":\n  - group \"O que você quer fazer?\":\n    - text: O que você quer fazer?\n    - paragraph: Pode marcar mais de um.\n    - checkbox \"Corte\"\n    - text: Corte\n    - checkbox \"Degradê\"\n    - text: Degradê\n    - checkbox \"Barba\"\n    - text: Barba\n    - checkbox \"Barbaterapia\"\n    - text: Barbaterapia\n    - checkbox \"Sobrancelha\"\n    - text: Sobrancelha\n  - group \"Qual dia?\":\n    - text: Qual dia?\n    - radio \"Hoje · domingo fechado\" [disabled]\n    - text: Hoje · domingo fechado\n    - radio \"Amanhã\"\n    - text: Amanhã\n    - radio \"Escolher data\"\n    - text: Escolher data\n    - paragraph\n  - group \"Qual período?\":\n    - text: Qual período?\n    - radio \"Manhã · 8h30 às 12h\"\n    - text: Manhã · 8h30 às 12h\n    - radio \"Tarde · 12h às 18h\"\n    - text: Tarde · 12h às 18h\n    - radio \"Noite · 18h às 20h\"\n    - text: Noite · 18h às 20h\n    - paragraph\n  - text: Seu nome (opcional)\n  - textbox \"Seu nome (opcional)\":\n    - /placeholder: Como o Pedro te chama\n  - paragraph: Sua mensagem\n  - status \"Sua mensagem\": Olá, Pedro! Vim pelo site e quero agendar um horário.\n  - paragraph\n- link \"Abrir conversa no WhatsApp\":\n  - /url: https://wa.me/5549999037620?text=Ol%C3%A1%2C%20Pedro!%20Vim%20pelo%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio.\n- paragraph: O Pedro confirma o horário com você por lá.\n- paragraph: Nada do que você escolhe fica salvo neste site.",
+      "regioesVivas": [
+        "p aria-live=polite aviso",
+        "p aria-live=polite aviso",
+        "output aria-live=off previa__texto",
+        "p aria-live=polite sr-only"
+      ]
+    },
+    "reflow": [
+      {
+        "modo": "320px",
+        "rota": "/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/agendar/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/como-chegar/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/servicos-e-precos/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/degrade-em-lages/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/barba-e-barbaterapia/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/sobrancelha/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/pomadas/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/sobre-pedro-tensini/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/perguntas-frequentes/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/avaliar/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/privacidade/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "320px",
+        "rota": "/404.html",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/agendar/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/como-chegar/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/servicos-e-precos/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/degrade-em-lages/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/barba-e-barbaterapia/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/sobrancelha/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/pomadas/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/sobre-pedro-tensini/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/perguntas-frequentes/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/avaliar/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/privacidade/",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      },
+      {
+        "modo": "zoom-200",
+        "rota": "/404.html",
+        "rolagemHorizontal": 0,
+        "foraDaTela": []
+      }
+    ],
+    "movimentoReduzido": {
+      "entrada": "não rodou",
+      "videosTocando": 0,
+      "animacoesRodando": 0
+    },
+    "pausarVideo": {
+      "heroTocavaAntes": true,
+      "hero": {
+        "pausado": true,
+        "rotulo": "Tocar vídeo",
+        "pressed": "true"
+      },
+      "loopTocavaAntes": true,
+      "loop": {
+        "pausados": true,
+        "rotulo": "Tocar vídeo"
+      }
+    },
+    "android": {
+      "dispositivo": "Pixel 7 (emulado)",
+      "paginas": [
+        {
+          "rota": "/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 4,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/agendar/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 3,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/como-chegar/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 3,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/servicos-e-precos/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 4,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/degrade-em-lages/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 4,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/barba-e-barbaterapia/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 4,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/sobrancelha/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 4,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/pomadas/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 4,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/sobre-pedro-tensini/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 3,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/perguntas-frequentes/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 3,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/avaliar/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 2,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/privacidade/",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 2,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        },
+        {
+          "rota": "/404.html",
+          "largura": 412,
+          "rolagemHorizontal": 0,
+          "linksWhatsApp": 2,
+          "formatoWaMe": true,
+          "alvosMenoresQue24px": 0
+        }
+      ],
+      "erros": []
+    },
+    "csp": {
+      "paginasComMeta": 13,
+      "violacoes": [],
+      "mapaCarregou": true
+    }
+  }
+}

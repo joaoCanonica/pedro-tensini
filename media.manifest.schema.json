@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tensini.local/media.manifest.schema.json",
+  "title": "Manifesto de mídia — Tensini Barbieri",
+  "type": "object",
+  "required": ["versao", "originais", "derivados"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "versao": { "const": 1 },
+    "notas": { "type": "string" },
+    "originais": { "type": "array", "items": { "$ref": "#/$defs/original" } },
+    "derivados": { "type": "array", "items": { "$ref": "#/$defs/derivado" } }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "segundos": { "type": "number", "minimum": 0 },
+    "trecho": {
+      "type": "object",
+      "required": ["in", "out"],
+      "additionalProperties": false,
+      "properties": { "in": { "$ref": "#/$defs/segundos" }, "out": { "$ref": "#/$defs/segundos" } }
+    },
+    "janela": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/segundos" },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "retangulo": {
+      "type": "object",
+      "required": ["x", "y", "largura", "altura"],
+      "properties": {
+        "x": { "type": "integer", "minimum": 0 },
+        "y": { "type": "integer", "minimum": 0 },
+        "largura": { "type": "integer", "minimum": 1 },
+        "altura": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "recorte": {
+      "allOf": [{ "$ref": "#/$defs/retangulo" }],
+      "required": ["provisorio", "motivo"],
+      "properties": {
+        "x": true,
+        "y": true,
+        "largura": true,
+        "altura": true,
+        "provisorio": { "type": "boolean" },
+        "motivo": { "type": "string", "minLength": 1 }
+      },
+      "unevaluatedProperties": false
+    },
+    "postOrigem": {
+      "type": "object",
+      "required": ["codigo", "estado"],
+      "additionalProperties": false,
+      "properties": {
+        "codigo": { "type": ["string", "null"] },
+        "estado": { "enum": ["indicado", "provavel", "conferido", "pendente", "nao-se-aplica"] },
+        "nota": { "type": "string" }
+      }
+    },
+    "comuns": {
+      "type": "object",
+      "required": [
+        "id",
+        "arquivo",
+        "tipo",
+        "postOrigem",
+        "legendaLiteral",
+        "uso",
+        "trechos",
+        "audioLiberado",
+        "problemas",
+        "edicoes",
+        "naoUsar"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "arquivo": { "type": "string", "minLength": 1 },
+        "postOrigem": { "$ref": "#/$defs/postOrigem" },
+        "legendaLiteral": { "type": ["string", "null"] },
+        "uso": { "type": "string", "minLength": 1 },
+        "trechos": { "type": "array", "items": { "$ref": "#/$defs/trecho" } },
+        "audioLiberado": { "type": "boolean" },
+        "problemas": { "type": "array", "items": { "type": "string" } },
+        "edicoes": { "type": "array", "items": { "type": "string" } },
+        "naoUsar": { "type": "boolean" },
+        "motivoNaoUsar": { "type": "string", "minLength": 1 }
+      },
+      "if": { "properties": { "naoUsar": { "const": true } } },
+      "then": { "required": ["motivoNaoUsar"] }
+    },
+    "original": {
+      "allOf": [{ "$ref": "#/$defs/comuns" }],
+      "required": ["sha256", "largura", "altura"],
+      "properties": {
+        "arquivo": { "pattern": "^media-originais/(fotos|videos|marca)/" },
+        "tipo": { "enum": ["video", "foto", "marca-vetor", "marca-raster", "documentacao"] },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "largura": { "type": "integer", "minimum": 1 },
+        "altura": { "type": "integer", "minimum": 1 },
+        "duracao": { "type": "number", "exclusiveMinimum": 0 },
+        "audioCandidato": {
+          "type": "object",
+          "required": ["trechos", "nota"],
+          "additionalProperties": false,
+          "properties": {
+            "trechos": { "type": "array", "items": { "$ref": "#/$defs/trecho" } },
+            "nota": { "type": "string" }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "derivado": {
+      "allOf": [
+        { "$ref": "#/$defs/comuns" },
+        {
+          "if": { "properties": { "tipo": { "enum": ["video", "loop"] } } },
+          "then": { "required": ["video"], "properties": { "trechos": { "minItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "tipo": { "const": "quadro" } } },
+          "then": { "required": ["quadro", "exibicaoMax"] }
+        },
+        {
+          "if": { "properties": { "tipo": { "const": "imagem" } } },
+          "then": { "required": ["exibicaoMax"] }
+        }
+      ],
+      "required": ["origem", "natureza"],
+      "properties": {
+        "origem": { "$ref": "#/$defs/id" },
+        "arquivo": { "pattern": "^media/[a-z0-9-]+/$" },
+        "tipo": { "enum": ["video", "loop", "imagem", "quadro", "vetor"] },
+        "natureza": { "enum": ["video", "foto", "quadro de vídeo", "vetor"] },
+        "provisorio": { "type": "boolean" },
+        "recorte": { "$ref": "#/$defs/recorte" },
+        "exibicaoMax": {
+          "type": "object",
+          "required": ["larguraCss", "nota"],
+          "additionalProperties": false,
+          "properties": {
+            "larguraCss": { "type": "integer", "minimum": 1 },
+            "nota": { "type": "string" }
+          }
+        },
+        "video": {
+          "type": "object",
+          "required": ["larguras", "poster"],
+          "additionalProperties": false,
+          "properties": {
+            "larguras": { "type": "array", "items": { "enum": [720, 540] }, "minItems": 1 },
+            "loop": {
+              "type": "object",
+              "required": ["crossfade"],
+              "additionalProperties": false,
+              "properties": { "crossfade": { "type": "number", "minimum": 0, "maximum": 1 } }
+            },
+            "limiteBytes": {
+              "type": "object",
+              "propertyNames": { "enum": ["720", "540"] },
+              "additionalProperties": { "type": "integer", "minimum": 1 }
+            },
+            "poster": {
+              "type": "object",
+              "required": ["janelaFonte"],
+              "additionalProperties": false,
+              "properties": {
+                "janelaFonte": { "$ref": "#/$defs/janela" },
+                "t": { "$ref": "#/$defs/segundos" }
+              }
+            }
+          }
+        },
+        "quadro": {
+          "type": "object",
+          "required": ["janelaFonte"],
+          "additionalProperties": false,
+          "properties": {
+            "janelaFonte": { "$ref": "#/$defs/janela" },
+            "regiaoNitidez": { "$ref": "#/$defs/retangulo" },
+            "t": { "$ref": "#/$defs/segundos" }
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

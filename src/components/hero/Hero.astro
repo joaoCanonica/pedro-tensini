@@ -1,0 +1,368 @@
+---
+// Hero da home. Estado final é o HTML estático (sem JS, sem movimento: é isto que aparece).
+// Mobile: vídeo vertical em tela cheia, véu só embaixo, texto por cima na base.
+// Desktop: coluna de texto à esquerda, vídeo vertical na moldura "espelho" à direita.
+// O pôster (AVIF, fetchpriority high) é o LCP; o vídeo só entra depois, por cima, sem salto.
+import Botao from '../base/Botao.astro';
+import Rotulo from '../base/Rotulo.astro';
+import StatusAoVivo from '../base/StatusAoVivo.astro';
+import Provisorio from '../Provisorio.astro';
+import Monograma from '../marca/Monograma.astro';
+import HorarioCompacto from './HorarioCompacto.astro';
+import { obterMidia, srcset } from '../base/midia.ts';
+import { endereco } from '../../config/contato.ts';
+import { nomeCanonico, profissional } from '../../config/marca.ts';
+import { SIZES_POSTER } from './hero.ts';
+
+const item = obterMidia('loop-hero');
+const poster = item.poster;
+const videos = item.videos ?? [];
+if (!poster || !videos.length) throw new Error('loop-hero sem pôster ou vídeo no índice de mídia.');
+const v540 = videos.find((v) => v.largura === 540);
+const v720 = videos.find((v) => v.largura === 720);
+const maior = poster.webp.at(-1);
+
+const rua = endereco.rua.estado === 'confirmado' ? endereco.rua.valor : '';
+const galeria = endereco.complemento.estado === 'confirmado' ? endereco.complemento.valor : '';
+const bairro = endereco.bairro.estado === 'confirmado' ? endereco.bairro.valor : '';
+const COMO_CHEGAR = '/como-chegar/';
+---
+
+<section class="hero" data-superficie="base" aria-labelledby="hero-titulo">
+  <header class="hero__topo">
+    <a class="hero__marca" href="/" data-entrada-alvo>
+      <Monograma tamanho="100%" titulo="Tensini Barbieri, página inicial" />
+    </a>
+  </header>
+
+  <div class="hero__midia">
+    <div class="hero__espelho" data-hero-espelho>
+      <picture class="hero__poster" data-hero-poster>
+        <source type="image/avif" srcset={srcset(poster.avif)} sizes={SIZES_POSTER} />
+        <source type="image/webp" srcset={srcset(poster.webp)} sizes={SIZES_POSTER} />
+        <img
+          src={maior?.src}
+          width={poster.largura}
+          height={poster.altura}
+          alt="Máquina de corte passando na barba, em close"
+          sizes={SIZES_POSTER}
+          fetchpriority="high"
+          loading="eager"
+          decoding="sync"
+          style={`background-image: url(${poster.lqip})`}
+        />
+      </picture>
+      <video
+        class="hero__video"
+        data-hero-video
+        width={v720?.largura}
+        height={v720?.altura}
+        muted
+        playsinline
+        loop
+        preload="none"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        {v540 && <source src={v540.webm.src} type="video/webm" media="(max-width: 60rem)" />}
+        {v540 && <source src={v540.mp4.src} type="video/mp4" media="(max-width: 60rem)" />}
+        {v720 && <source src={v720.webm.src} type="video/webm" />}
+        {v720 && <source src={v720.mp4.src} type="video/mp4" />}
+      </video>
+      <button class="hero__pausa" type="button" data-hero-pausa aria-pressed="false" hidden>
+        <span class="hero__pausa-icone" aria-hidden="true"></span>
+        <span class="hero__pausa-texto">Pausar vídeo</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="hero__texto">
+    <div class="hero__abertura">
+      <p data-entra>
+        <Rotulo acento>Barbeiro no Centro de Lages</Rotulo>
+      </p>
+      <h1 id="hero-titulo" class="hero__titulo" data-entra>
+        Degradê, barba e acabamento no detalhe.
+      </h1>
+      <p class="hero__nome" data-entra>
+        {profissional.nome.valor} · <Provisorio campo={nomeCanonico} />
+      </p>
+    </div>
+    <div class="hero__acao">
+      <div class="hero__onde" data-entra>
+        <StatusAoVivo />
+        <a class="link hero__endereco" href={COMO_CHEGAR}>
+          {rua}, {galeria} — {bairro}
+        </a>
+      </div>
+      <div class="hero__botoes" data-entra>
+        <Botao class="hero__agendar" origem="hero">
+          Agendar no WhatsApp
+        </Botao>
+        <a class="link hero__horarios" href={`${COMO_CHEGAR}#horario`}>
+          Ver horários e como chegar
+        </a>
+      </div>
+      <div class="hero__tabela" data-entra>
+        <HorarioCompacto />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="./hero-video.ts"></script>
+
+<style>
+  .hero {
+    --topo: 4.25rem;
+    position: relative;
+    isolation: isolate;
+    min-height: 100svh;
+    display: grid;
+  }
+  .hero__topo {
+    position: absolute;
+    z-index: 3;
+    inset: 0 0 auto 0;
+    height: var(--topo);
+    display: flex;
+    align-items: center;
+    padding-inline: var(--margem);
+    /* Só o link recebe cliques: o resto do topo não cobre o botão de pausar. */
+    pointer-events: none;
+  }
+  .hero__marca {
+    pointer-events: auto;
+    display: block;
+    width: 2.75rem;
+    color: var(--acento);
+  }
+  .hero__marca :global(.monograma) {
+    color: var(--acento);
+  }
+
+  /* —— Mobile: vídeo em tela cheia, texto na base —— */
+  .hero__midia {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero__espelho {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: var(--carvao);
+  }
+  .hero__poster,
+  .hero__poster img,
+  .hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+  .hero__poster img {
+    background-size: cover;
+    background-position: 50% 40%;
+  }
+  .hero__video {
+    opacity: 0;
+    transition: opacity var(--dur-2) var(--curva);
+  }
+  .hero__video[data-tocando] {
+    opacity: 1;
+  }
+  /* Véu escuro só embaixo, para a leitura do texto. */
+  .hero__espelho::after {
+    content: '';
+    position: absolute;
+    inset: 38% 0 0 0;
+    background: linear-gradient(
+      to bottom,
+      rgb(18 19 22 / 0),
+      rgb(18 19 22 / 0.72) 38%,
+      rgb(18 19 22 / 0.94)
+    );
+    pointer-events: none;
+  }
+  .hero__texto {
+    position: relative;
+    z-index: 2;
+    align-self: end;
+    display: grid;
+    gap: var(--e-5);
+    padding: var(--e-9) var(--margem) var(--e-6);
+    color: var(--giz);
+  }
+  .hero__titulo {
+    font-size: clamp(2.6rem, 0.9rem + 6.6vw, 8.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    max-width: 13ch;
+    margin-block: var(--e-3) var(--e-4);
+  }
+  .hero__nome {
+    font-size: var(--fs-pequeno);
+    color: var(--texto);
+  }
+  .hero__acao {
+    display: grid;
+    gap: var(--e-5);
+  }
+  .hero__onde {
+    display: grid;
+    gap: var(--e-2);
+  }
+  .hero__endereco {
+    justify-self: start;
+    font-size: var(--fs-pequeno);
+  }
+  .hero__botoes {
+    display: grid;
+    gap: var(--e-4);
+    justify-items: center;
+  }
+  .hero__botoes :global(.hero__agendar) {
+    width: 100%;
+    min-height: 3.5rem;
+    font-size: 1.0625rem;
+  }
+  .hero__horarios {
+    font-size: var(--fs-pequeno);
+  }
+  .hero__tabela {
+    display: none;
+  }
+
+  /* Pausar: sempre visível (WCAG 2.2.2). */
+  .hero__pausa {
+    position: absolute;
+    z-index: 4;
+    top: calc((var(--topo) - 2.75rem) / 2);
+    right: var(--margem);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    min-height: 2.75rem;
+    padding: 0 0.85rem;
+    border: 1px solid rgb(238 240 239 / 0.55);
+    border-radius: var(--raio);
+    background: rgb(18 19 22 / 0.55);
+    color: var(--giz);
+    font: 600 0.8125rem/1 var(--fonte-texto);
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+  }
+  .hero__pausa[hidden] {
+    display: none;
+  }
+  .hero__pausa-icone {
+    width: 0.7rem;
+    height: 0.8rem;
+    border-inline: 3px solid currentColor;
+  }
+  .hero__pausa[aria-pressed='true'] .hero__pausa-icone {
+    border: 0;
+    width: 0;
+    height: 0;
+    border-block: 0.42rem solid transparent;
+    border-left: 0.7rem solid currentColor;
+  }
+
+  /* Mobile: o texto fica sobre o vídeo + véu escuro em qualquer tema → papéis da superfície carvão. */
+  @media (max-width: 59.99rem) {
+    .hero__texto,
+    .hero__topo {
+      --texto: var(--giz);
+      --texto-2: var(--aco);
+      --acento: var(--latao);
+      --acento-texto: var(--latao);
+      --linha: rgb(140 144 152 / 0.28);
+      --foco: var(--latao-claro);
+      --botao-fundo: var(--latao);
+      --botao-texto: var(--carvao);
+      --ponto-aberto: var(--latao);
+      --ponto-fechado: var(--aco);
+    }
+  }
+
+  /* —— Desktop: assimétrico, vídeo inteiro na moldura espelho —— */
+  @media (min-width: 60rem) {
+    .hero {
+      --video-h: min(calc(100svh - var(--topo) - 3.5rem), 52rem);
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: clamp(2rem, 5vw, 6rem);
+      padding: var(--topo) var(--margem) var(--e-6);
+      align-items: center;
+    }
+    .hero__midia {
+      position: relative;
+      inset: auto;
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .hero__espelho {
+      position: relative;
+      inset: auto;
+      height: var(--video-h);
+      aspect-ratio: 9 / 16;
+      padding: 7px;
+      border: 1px solid rgb(255 232 200 / 0.55);
+      border-radius: var(--raio);
+      background: var(--carvao);
+      box-shadow:
+        0 0 0 1px rgb(0 0 0 / 0.35),
+        0 0 28px 3px rgb(255 214 160 / 0.2),
+        inset 0 0 16px rgb(255 214 160 / 0.14);
+      overflow: visible;
+    }
+    .hero__poster,
+    .hero__video {
+      inset: 7px;
+      width: calc(100% - 14px);
+      height: calc(100% - 14px);
+    }
+    .hero__espelho::after {
+      display: none;
+    }
+    .hero__pausa {
+      top: auto;
+      bottom: 1.1rem;
+      right: 1.1rem;
+    }
+    .hero__texto {
+      grid-column: 1;
+      grid-row: 1;
+      align-self: stretch;
+      grid-template-rows: 1fr auto;
+      gap: var(--e-7);
+      padding: var(--e-6) 0 0;
+      color: var(--texto);
+    }
+    .hero__abertura {
+      align-self: center;
+    }
+    .hero__acao {
+      grid-template-columns: auto auto;
+      align-items: end;
+      justify-content: start;
+      gap: var(--e-6) var(--e-8);
+    }
+    .hero__onde {
+      grid-column: 1 / -1;
+    }
+    .hero__botoes {
+      grid-column: 1;
+      justify-items: start;
+    }
+    .hero__botoes :global(.hero__agendar) {
+      width: auto;
+    }
+    .hero__tabela {
+      display: block;
+      grid-column: 2;
+    }
+  }
+</style>

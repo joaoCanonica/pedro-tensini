@@ -1,0 +1,120 @@
+---
+// /degrade-em-lages: a especialidade. Loop do degradê na abertura, passos com a escala de
+// pente, o acabamento de perto (shaver + zoom na nuca), os resultados e os valores.
+import Servico from '../layouts/Servico.astro';
+import Faixa from '../layouts/servico/Faixa.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import Valores from '../layouts/servico/Valores.astro';
+import MolduraVideo from '../components/base/MolduraVideo.astro';
+import ZoomAcabamento from '../components/secoes/ZoomAcabamento.astro';
+import { comoPergunta, faq, pagina, parte } from '../layouts/servico/pagina.ts';
+
+const p = pagina('degrade-em-lages');
+const oQue = parte(p, 'O que é o degradê');
+const como = parte(p, 'Como é feito');
+const shaver = parte(p, 'O que é a shaver');
+const perguntas = [
+  faq('Quanto tempo leva o degradê?'),
+  comoPergunta(p, 'Quando voltar', 'De quanto em quanto tempo retocar o degradê?'),
+  comoPergunta(p, 'Para quem é', 'Para quem é o degradê?'),
+  faq('Meu cabelo não fica igual em casa. Por quê?'),
+];
+---
+
+<Servico rota="/degrade-em-lages/" pagina={p} perguntas={perguntas} valor={['degrade']}>
+  <MolduraVideo
+    slot="midia"
+    id="loop-degrade"
+    tipo="loop"
+    prioridade
+    descricao="Close do degradê na nuca e do acabamento do pezinho"
+    legenda="Na máquina e na shaver: o degradê sendo feito."
+    sizes="(min-width: 60rem) 26rem, 88vw"
+  />
+
+  <Faixa id="o-que-e" titulo={oQue.titulo} rotulo="O corte" superficie="contraste">
+    <Blocos blocos={oQue.blocos} />
+  </Faixa>
+
+  <Faixa
+    id="como-e-feito"
+    titulo={como.titulo}
+    rotulo="Do pente 3 ao 0"
+    superficie="contraste"
+    provisorios={como.provisorios}
+  >
+    <Blocos blocos={como.blocos} rotuloPassos="As fases do degradê" />
+  </Faixa>
+
+  <Faixa
+    id="shaver"
+    titulo="O acabamento de perto"
+    rotulo={shaver.titulo}
+    superficie="contraste"
+    provisorios={shaver.provisorios}
+  >
+    <div class="shaver">
+      <div class="shaver__texto">
+        <Blocos blocos={shaver.blocos} />
+      </div>
+      <ZoomAcabamento
+        x={0.6}
+        y={0.5}
+        escala={1.8}
+        id="quadro-resultado-nuca"
+        alt="Degradê pronto visto da nuca, com a transição do curto ao longo"
+      />
+    </div>
+  </Faixa>
+
+  <Faixa id="resultados" titulo="O resultado" rotulo="Em vídeo" superficie="contraste">
+    <div class="resultados">
+      <MolduraVideo
+        id="resultado-1"
+        descricao="Resultado do degradê girando: perfil, nuca e o outro perfil, com a transição do curto ao longo. Sem som."
+        sizes="(min-width: 60rem) 19rem, 44vw"
+      />
+      <MolduraVideo
+        id="resultado-2"
+        descricao="Degradê baixo pronto, visto de perfil, de trás e de frente, enquanto o Pedro finaliza o penteado. Sem som."
+        sizes="(min-width: 60rem) 19rem, 44vw"
+      />
+    </div>
+  </Faixa>
+
+  <Faixa
+    id="valores"
+    titulo="Quanto custa e quanto tempo leva?"
+    rotulo="Valores"
+    superficie="contraste"
+  >
+    <Valores linhas={[{ slug: 'degrade' }]} legenda="Preço e duração do degradê" />
+  </Faixa>
+</Servico>
+
+<style>
+  .shaver {
+    display: grid;
+    gap: var(--e-6);
+  }
+  .shaver__texto {
+    display: grid;
+    gap: var(--e-4);
+    align-content: start;
+  }
+  .resultados {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--e-4);
+    max-width: 40rem;
+  }
+  .resultados > :global(:nth-child(2)) {
+    margin-top: var(--e-7);
+  }
+  @media (min-width: 60rem) {
+    .shaver {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+</style>

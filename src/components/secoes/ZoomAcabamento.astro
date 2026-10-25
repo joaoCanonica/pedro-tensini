@@ -1,0 +1,162 @@
+---
+// Zoom de acabamento: recorte retangular ampliado sobre a nuca (nada de lupa circular).
+// Mouse: acompanha o ponteiro. Toque: arrasta o recorte. Teclado: setas movem.
+// Sem JS: duas imagens lado a lado, a inteira e o detalhe da nuca.
+import Poster from '../base/Poster.astro';
+import { obterMidia } from '../base/midia.ts';
+
+interface Props {
+  id: string;
+  alt: string;
+  /** Centro inicial do recorte (0–1). */
+  x?: number;
+  y?: number;
+  escala?: number;
+}
+const { id, alt, x = 0.56, y = 0.6, escala = 2.6 } = Astro.props;
+const img = obterMidia(id).imagem;
+const fonte = img?.webp.at(-1)?.src ?? '';
+const fundo = `--zoom-img:url(${fonte});background-size:${escala * 100}% auto;background-position:${x * 100}% ${y * 100}%`;
+---
+
+<div class="zoom" data-zoom data-x={x} data-y={y} data-escala={escala} data-src={fonte}>
+  <div class="zoom__inteira" data-zoom-alvo>
+    <Poster id={id} alt={alt} sizes="(min-width: 60rem) 26rem, 60vw" />
+    <span
+      class="zoom__lente"
+      data-zoom-lente
+      tabindex="0"
+      role="img"
+      aria-label="Detalhe ampliado do acabamento. Use as setas para mover."
+      hidden
+    ></span>
+  </div>
+  <div
+    class="zoom__detalhe"
+    role="img"
+    aria-label="Detalhe ampliado da nuca: a transição do degradê"
+    style={fundo}
+  ></div>
+  <p class="zoom__dica pequeno secundario" data-zoom-dica hidden>
+    Passe o ponteiro ou arraste o recorte pela nuca para ver o acabamento de perto.
+  </p>
+</div>
+
+<script>
+  for (const raiz of document.querySelectorAll<HTMLElement>('[data-zoom]')) {
+    const alvo = raiz.querySelector<HTMLElement>('[data-zoom-alvo]');
+    const lente = raiz.querySelector<HTMLElement>('[data-zoom-lente]');
+    const dica = raiz.querySelector<HTMLElement>('[data-zoom-dica]');
+    if (!alvo || !lente) continue;
+    const escala = Number(raiz.dataset['escala'] ?? 2.6);
+    let cx = Number(raiz.dataset['x'] ?? 0.5);
+    let cy = Number(raiz.dataset['y'] ?? 0.5);
+    raiz.classList.add('zoom--ativo');
+    lente.hidden = false;
+    if (dica) dica.hidden = false;
+    // A imagem ampliada só baixa quando o zoom chega perto da tela (não disputa com o LCP).
+    const carregar = new IntersectionObserver(
+      (entradas) => {
+        if (!entradas.some((e) => e.isIntersecting)) return;
+        lente.style.backgroundImage = `url(${raiz.dataset['src']})`;
+        carregar.disconnect();
+      },
+      { rootMargin: '300px 0px' },
+    );
+    carregar.observe(raiz);
+
+    const posicionar = (): void => {
+      const r = alvo.getBoundingClientRect();
+      const w = lente.offsetWidth;
+      const h = lente.offsetHeight;
+      const meiaW = w / 2 / r.width;
+      const meiaH = h / 2 / r.height;
+      cx = Math.min(1 - meiaW, Math.max(meiaW, cx));
+      cy = Math.min(1 - meiaH, Math.max(meiaH, cy));
+      lente.style.left = `${cx * r.width - w / 2}px`;
+      lente.style.top = `${cy * r.height - h / 2}px`;
+      lente.style.backgroundSize = `${r.width * escala}px ${r.height * escala}px`;
+      lente.style.backgroundPosition = `${-(cx * r.width * escala - w / 2)}px ${-(cy * r.height * escala - h / 2)}px`;
+    };
+    const mover = (e: PointerEvent): void => {
+      const r = alvo.getBoundingClientRect();
+      cx = (e.clientX - r.left) / r.width;
+      cy = (e.clientY - r.top) / r.height;
+      posicionar();
+    };
+    alvo.addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'mouse' || lente.hasPointerCapture(e.pointerId)) mover(e);
+    });
+    lente.addEventListener('pointerdown', (e) => {
+      lente.setPointerCapture(e.pointerId);
+      mover(e);
+    });
+    lente.addEventListener('keydown', (e) => {
+      const passo = e.shiftKey ? 0.1 : 0.03;
+      const d: Record<string, [number, number]> = {
+        ArrowLeft: [-passo, 0],
+        ArrowRight: [passo, 0],
+        ArrowUp: [0, -passo],
+        ArrowDown: [0, passo],
+      };
+      const v = d[e.key];
+      if (!v) return;
+      e.preventDefault();
+      cx += v[0];
+      cy += v[1];
+      posicionar();
+    });
+    new ResizeObserver(posicionar).observe(alvo);
+    posicionar();
+  }
+</script>
+
+<style>
+  .zoom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--e-4);
+    align-items: start;
+  }
+  .zoom__inteira {
+    position: relative;
+  }
+  @media (scripting: none) {
+    .zoom__detalhe {
+      background-image: var(--zoom-img);
+    }
+  }
+  .zoom__detalhe {
+    aspect-ratio: 3 / 4;
+    background-repeat: no-repeat;
+    border: 1px solid var(--linha);
+  }
+  .zoom__dica {
+    grid-column: 1 / -1;
+  }
+  .zoom--ativo {
+    grid-template-columns: 1fr;
+  }
+  .zoom--ativo .zoom__detalhe {
+    display: none;
+  }
+  .zoom__lente {
+    position: absolute;
+    width: 52%;
+    aspect-ratio: 4 / 3;
+    background-repeat: no-repeat;
+    border: 1px solid var(--latao);
+    box-shadow:
+      0 0 0 1px rgb(18 19 22 / 0.5),
+      0 14px 36px rgb(0 0 0 / 0.45);
+    cursor: grab;
+    touch-action: none;
+  }
+  .zoom__lente:active {
+    cursor: grabbing;
+  }
+  .zoom__lente:focus-visible {
+    outline: 2px solid var(--foco);
+    outline-offset: 3px;
+  }
+</style>

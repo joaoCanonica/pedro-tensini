@@ -1,0 +1,39 @@
+---
+// Monograma TB (cor única, currentColor). Versão limpa: sem os 2 entalhes do bevel
+// na barra horizontal (docs/DESIGN_SYSTEM.md). Original intacto em media-originais/marca/.
+import svg from './tensini-monograma-tb.limpo.svg?raw';
+
+interface Props {
+  /** Título acessível; vazio = decorativo (aria-hidden). */
+  titulo?: string;
+  class?: string;
+  /** Tamanho em CSS (largura). */
+  tamanho?: string;
+}
+
+const { titulo = 'Monograma TB', class: classe, tamanho = '4rem' } = Astro.props;
+const d = svg.match(/ d="([^"]+)"/)?.[1] ?? '';
+const decorativo = titulo === '';
+---
+
+<svg
+  class:list={['monograma', classe]}
+  viewBox="0 0 572 555"
+  width="572"
+  height="555"
+  style={`width: ${tamanho}`}
+  role={decorativo ? undefined : 'img'}
+  aria-hidden={decorativo ? 'true' : undefined}
+  aria-label={decorativo ? undefined : titulo}
+  focusable="false"
+>
+  {!decorativo && <title>{titulo}</title>}
+  <path fill="currentColor" fill-rule="evenodd" d={d}></path>
+</svg>
+
+<style>
+  .monograma {
+    height: auto;
+    color: var(--acento);
+  }
+</style>

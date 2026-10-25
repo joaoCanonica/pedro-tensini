@@ -1,0 +1,48 @@
+---
+// Metas de compartilhamento e dados estruturados de cada página. Vai dentro do <head>, depois do
+// Cabeca (que já põe title, description, robots e lang pt-BR no <html>).
+// - canonical e og:url absolutos só com SITE_URL (sem domínio, a página é preview e noindex);
+// - Open Graph com a imagem 1200×630 gerada no build (/og/tensini.jpg); sem hreflang (só pt-BR);
+// - JSON-LD: o negócio (HairSalon) em todas as páginas + o que a página acrescentar.
+import { siteUrl } from '../../config/seo.ts';
+import { absoluta, negocio, nap, trilha, type ItemTrilha } from './entidade.ts';
+import { OG } from './og.ts';
+
+interface Props {
+  titulo: string;
+  descricao?: string;
+  /** Caminho da página ("/degrade-em-lages/"). */
+  rota: string;
+  /** Do início até a página (vira BreadcrumbList); vazio na home e no 404. */
+  trilha?: ItemTrilha[];
+  /** JSON-LD extra da página (Service, FAQPage, Person). */
+  dados?: object[];
+  tipo?: 'website' | 'profile' | 'article';
+}
+const { titulo, descricao, rota, trilha: itens = [], dados = [], tipo = 'website' } = Astro.props;
+const imagem = absoluta(OG.caminho);
+const blocos = [
+  negocio(siteUrl ? imagem : undefined),
+  ...(itens.length > 1 ? [trilha(itens)] : []),
+  ...dados,
+];
+// "</" dentro de JSON em <script> fecharia a tag: escapa.
+const json = (o: object) => JSON.stringify(o).replace(/</g, '\\u003c');
+---
+
+{siteUrl && <link rel="canonical" href={`${siteUrl}${rota}`} />}
+<meta property="og:type" content={tipo} />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content={nap.nome} />
+<meta property="og:title" content={titulo} />
+{descricao && <meta property="og:description" content={descricao} />}
+{siteUrl && <meta property="og:url" content={`${siteUrl}${rota}`} />}
+<meta property="og:image" content={imagem} />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content={String(OG.largura)} />
+<meta property="og:image:height" content={String(OG.altura)} />
+<meta property="og:image:alt" content={OG.alt} />
+<meta name="twitter:card" content="summary_large_image" />
+{blocos.map((b) => (
+  <script type="application/ld+json" set:html={json(b)} />
+))}

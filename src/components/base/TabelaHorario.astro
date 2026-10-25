@@ -1,0 +1,91 @@
+---
+// Tabela de horário como peça gráfica: dias em caixa alta espaçada, horas em tabular,
+// hoje marcado pela linha de latão + a palavra "hoje" (nunca só cor). Funciona sem JS.
+import { excecoes } from '../../config/horario.ts';
+import { linhasSemana, faixa } from './semana.ts';
+
+interface Props {
+  titulo?: string;
+}
+const { titulo = 'Horário de atendimento' } = Astro.props;
+---
+
+<table class="tabela" data-tabela-horario>
+  <caption class="rotulo">{titulo}</caption>
+  <tbody>
+    {linhasSemana.map((l) => (
+      <tr data-dia={l.dia} class:list={{ fechado: !l.janela }}>
+        <th scope="row" class="rotulo">
+          {l.nome}
+          <span class="tabela__hoje" hidden>
+            hoje
+          </span>
+        </th>
+        <td class="num">{l.janela ? faixa(l.janela).replace('–', ' – ') : 'Fechado'}</td>
+      </tr>
+    ))}
+  </tbody>
+  {excecoes.length > 0 && (
+    <tfoot>
+      {excecoes.map((e) => (
+        <tr>
+          <th scope="row" class="rotulo">
+            {e.data.split('-').reverse().slice(0, 2).join('/')}
+          </th>
+          <td class="num">{'fechado' in e && e.fechado ? `Fechado · ${e.motivo}` : e.motivo}</td>
+        </tr>
+      ))}
+    </tfoot>
+  )}
+</table>
+
+<script src="./vivo.ts"></script>
+
+<style>
+  .tabela {
+    width: min(100%, 34rem);
+    border-collapse: collapse;
+  }
+  caption {
+    text-align: start;
+    padding-bottom: var(--e-4);
+    color: var(--acento-texto);
+  }
+  tr {
+    position: relative;
+    border-top: 1px solid var(--linha);
+  }
+  tr:last-child {
+    border-bottom: 1px solid var(--linha);
+  }
+  th,
+  td {
+    padding-block: 0.7rem;
+    vertical-align: baseline;
+  }
+  th {
+    text-align: start;
+    font-weight: 600;
+    color: var(--texto-2);
+    padding-inline-start: var(--e-4);
+  }
+  td {
+    text-align: end;
+    font-size: var(--fs-3);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .fechado td {
+    color: var(--texto-2);
+    font-size: var(--fs-texto);
+  }
+  .tabela__hoje {
+    margin-inline-start: 0.6em;
+    color: var(--acento-texto);
+  }
+  /* Hoje: a linha de latão à esquerda e o texto em destaque. */
+  tr[aria-current='date'] th {
+    color: var(--texto);
+    background: linear-gradient(var(--acento), var(--acento)) left center / 2px 70% no-repeat;
+  }
+</style>

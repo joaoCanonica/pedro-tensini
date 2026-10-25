@@ -1,0 +1,199 @@
+---
+// /sobre-pedro-tensini: retrato, texto, citações dele, a barbearia, o nome, a formação
+// (só itens confirmados vão para produção; no preview, a lista com o selo) e os vídeos
+// bastidores-site e trajetoria.
+import Pagina from '../layouts/Pagina.astro';
+import Faixa from '../layouts/servico/Faixa.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import BordaDegrade from '../components/marca/BordaDegrade.astro';
+import Botao from '../components/base/Botao.astro';
+import Poster from '../components/base/Poster.astro';
+import MolduraVideo from '../components/base/MolduraVideo.astro';
+import Selo from '../components/secoes/Selo.astro';
+import { obterMidia } from '../components/base/midia.ts';
+import { formacao } from '../config/formacao.ts';
+import type { ItemFormacao } from '../config/formacao.ts';
+import type { Campo, Confirmado } from '../config/tipos.ts';
+import { pagina, parte } from '../layouts/servico/pagina.ts';
+import { pessoa } from '../components/seo/entidade.ts';
+import { emPreview } from '../components/secoes/textos.ts';
+
+const p = pagina('sobre-pedro-tensini');
+const trabalho = parte(p, 'Como ele trabalha');
+const barbearia = parte(p, 'A barbearia');
+const nome = parte(p, 'O nome');
+const form = parte(p, 'Formação');
+const dados = parte(p, 'Dados');
+const retratoProvisorio = obterMidia('retrato-provisorio-1').provisorio;
+// Formação: em produção só o que estiver confirmado na config; no preview, a lista do texto.
+const confirmados = (formacao as Campo<ItemFormacao>[]).filter(
+  (f): f is Confirmado<ItemFormacao> => f.estado === 'confirmado',
+);
+const mostrarFormacao = confirmados.length > 0 || emPreview;
+---
+
+<Pagina
+  titulo={p.title}
+  descricao={p.description}
+  trilha={[
+    { nome: 'Início', rota: '/' },
+    { nome: 'Sobre o Pedro', rota: '/sobre-pedro-tensini/' },
+  ]}
+  dados={[pessoa()]}
+  tipoOg="profile"
+>
+  <section class="sobre" data-superficie="base" aria-labelledby="sobre-titulo">
+    <div class="sobre__grade envelope-s">
+      <div class="sobre__texto">
+        <p class="rotulo sobre__rotulo">O barbeiro</p>
+        <h1 id="sobre-titulo" class="sobre__titulo">
+          {p.h1}
+        </h1>
+        <p class="sobre__resposta">{p.resposta}</p>
+        <div data-agendar-principal>
+          <Botao origem="sobre">Agendar no WhatsApp</Botao>
+        </div>
+      </div>
+      <figure class="sobre__retrato">
+        <Poster
+          id="retrato-provisorio-1"
+          alt="O Pedro, de óculos e camiseta branca, trabalhando na barba de um cliente"
+          sizes="(min-width: 60rem) 26rem, 88vw"
+          prioridade
+        />
+        {retratoProvisorio && (
+          <figcaption class="pequeno secundario">
+            Retrato do trabalho. <Selo titulo="Retrato oficial a combinar com o Pedro" />
+          </figcaption>
+        )}
+      </figure>
+    </div>
+  </section>
+
+  <BordaDegrade de="base" para="contraste" />
+  <Faixa id="trabalho" titulo={trabalho.titulo} rotulo="O detalhe" superficie="contraste">
+    <Blocos blocos={trabalho.blocos} />
+  </Faixa>
+
+  <Faixa id="um-dia" titulo="Um dia na barbearia" rotulo="Em vídeo" superficie="contraste">
+    <div class="videos">
+      <MolduraVideo
+        id="bastidores-site"
+        descricao="Café sendo servido, clientes na cadeira, cortes e acabamentos, o espaço da barbearia e, no fim, o Pedro falando para a câmera. Sem som."
+        sizes="(min-width: 60rem) 19rem, 44vw"
+      />
+      <MolduraVideo
+        id="trajetoria"
+        descricao="O primeiro vídeo da barbearia: bancada de ferramentas, corte, sobrancelha na navalha, barba com toalha quente e o resultado. Sem som."
+        sizes="(min-width: 60rem) 19rem, 44vw"
+      />
+    </div>
+  </Faixa>
+
+  <Faixa id="barbearia" titulo={barbearia.titulo} rotulo="Galeria Augusta" superficie="contraste">
+    <Blocos blocos={barbearia.blocos} />
+  </Faixa>
+
+  <Faixa
+    id="nome"
+    titulo={nome.titulo}
+    rotulo="Barbieri"
+    superficie="contraste"
+    provisorios={nome.provisorios}
+  >
+    <Blocos blocos={nome.blocos} />
+  </Faixa>
+
+  {mostrarFormacao && (
+    <Faixa
+      id="formacao"
+      titulo={form.titulo}
+      rotulo="Cursos e workshops"
+      superficie="contraste"
+      provisorios={confirmados.length ? [] : form.provisorios}
+    >
+      {confirmados.length > 0 ? (
+        <ul class="formacao" role="list">
+          {confirmados.map((f) => (
+            <li>{f.valor.descricao}</li>
+          ))}
+        </ul>
+      ) : (
+        <Blocos blocos={form.blocos} />
+      )}
+      {emPreview && (
+        <p class="pequeno secundario">
+          O certificado do workshop entra como imagem quando o João liberar.{' '}
+          <Selo titulo="Imagem do certificado a liberar" />
+        </p>
+      )}
+    </Faixa>
+  )}
+
+  <Faixa id="dados" titulo={dados.titulo} rotulo="Para conferir" superficie="contraste">
+    <Blocos blocos={dados.blocos} />
+  </Faixa>
+</Pagina>
+
+<style>
+  .sobre {
+    padding-block: var(--e-5) var(--e-8);
+  }
+  .sobre__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+  .sobre__texto {
+    display: grid;
+    gap: var(--e-4);
+    align-content: start;
+    justify-items: start;
+  }
+  .sobre__rotulo {
+    color: var(--acento-texto);
+  }
+  .sobre__titulo {
+    font-size: var(--fs-1);
+    line-height: 1;
+    max-width: 12ch;
+  }
+  .sobre__resposta {
+    font-size: var(--fs-3);
+    line-height: 1.4;
+    max-width: 40ch;
+  }
+  .sobre__retrato {
+    display: grid;
+    gap: var(--e-2);
+    max-width: 28rem;
+  }
+  .sobre__retrato :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .videos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--e-4);
+    max-width: 40rem;
+  }
+  .videos > :global(:nth-child(2)) {
+    margin-top: var(--e-7);
+  }
+  .formacao {
+    display: grid;
+    padding: 0;
+    list-style: none;
+  }
+  .formacao li {
+    padding-block: var(--e-3);
+    border-top: 1px solid var(--linha);
+  }
+  @media (min-width: 60rem) {
+    .sobre__grade {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: var(--e-8);
+    }
+  }
+</style>

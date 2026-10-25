@@ -1,0 +1,90 @@
+---
+// /barba-e-barbaterapia: barba ou barbaterapia, os cinco tempos com foto (escala de pente)
+// e o vídeo da experiência completa na abertura.
+import Servico from '../layouts/Servico.astro';
+import Faixa from '../layouts/servico/Faixa.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import Passos from '../layouts/servico/Passos.astro';
+import Valores from '../layouts/servico/Valores.astro';
+import MolduraVideo from '../components/base/MolduraVideo.astro';
+import { comoPergunta, faq, pagina, parte } from '../layouts/servico/pagina.ts';
+import type { Bloco } from '../layouts/servico/pagina.ts';
+
+const p = pagina('barba-e-barbaterapia');
+const qual = parte(p, 'Barba ou barbaterapia?');
+const tempos = parte(p, 'Os cinco tempos da barbaterapia');
+const citacoes = p.intro.blocos.filter((b) => b.tipo === 'citacao');
+const passos = tempos.blocos.find(
+  (b): b is Extract<Bloco, { tipo: 'passos' }> => b.tipo === 'passos',
+);
+
+// Mesmas fotos da home; "Creme e massagem" não tem foto própria (o post repete a da toalha).
+const FOTOS: Record<string, { id: string; alt: string } | null> = {
+  'Toalha quente': {
+    id: 'foto-toalha-quente',
+    alt: 'Cliente reclinado na cadeira com uma toalha quente envolvendo o rosto, segurada pelas mãos do barbeiro',
+  },
+  Esfoliação: {
+    id: 'foto-esfoliacao',
+    alt: 'Mãos de luva preta espalhando o esfoliante no rosto de um cliente de barba, de olhos fechados',
+  },
+  'Creme e massagem': null,
+  Navalha: {
+    id: 'foto-navalha',
+    alt: 'Close da navalha contornando a barba, com o pente segurando a pele acima da linha',
+  },
+  'Barba finalizada': {
+    id: 'foto-barba-finalizada',
+    alt: 'Máquina finalizando a barba de um cliente deitado, de perfil, com a parede verde ao fundo',
+  },
+};
+const itens = (passos?.itens ?? []).map((i) => ({ ...i, midia: FOTOS[i.nome] ?? null }));
+
+const perguntas = [
+  comoPergunta(p, 'Quanto tempo leva', 'Quanto tempo leva a barba e a barbaterapia?'),
+  comoPergunta(p, 'Para quem é', 'Para quem é a barbaterapia?'),
+  faq('Faz sobrancelha e barba?'),
+];
+---
+
+<Servico
+  rota="/barba-e-barbaterapia/"
+  pagina={p}
+  perguntas={perguntas}
+  valor={['barba', 'barbaterapia']}
+  tituloAgendar="Agendar a barba"
+>
+  <MolduraVideo
+    slot="midia"
+    id="experiencia-completa"
+    prioridade
+    descricao="O cliente chega, o Pedro faz o degradê na nuca e passa a máquina vinho na barba, depois a navalha e a toalha. No fim, o cliente sorri com o resultado. Sem som."
+    sizes="(min-width: 60rem) 26rem, 88vw"
+  />
+
+  <Faixa id="qual" titulo={qual.titulo} rotulo="Dois serviços" superficie="contraste">
+    <Blocos blocos={[...qual.blocos, ...citacoes]} />
+  </Faixa>
+
+  <Faixa
+    id="como-e-feito"
+    titulo="Como é feita a barbaterapia"
+    rotulo="Cinco tempos, do pente 3 ao 0"
+    superficie="contraste"
+    provisorios={tempos.provisorios}
+  >
+    <Passos itens={itens} rotulo="Os cinco tempos da barbaterapia" />
+  </Faixa>
+
+  <Faixa
+    id="valores"
+    titulo="Quanto custa e quanto tempo leva?"
+    rotulo="Valores"
+    superficie="contraste"
+  >
+    <Valores
+      linhas={[{ slug: 'barba' }, { slug: 'barbaterapia' }]}
+      legenda="Preço e duração da barba e da barbaterapia"
+    />
+  </Faixa>
+</Servico>

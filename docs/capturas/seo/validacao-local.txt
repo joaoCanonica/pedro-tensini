@@ -1,0 +1,29 @@
+# Validação local dos dados estruturados — 2026-10-25
+
+Rich Results Test e validator.schema.org: bloqueados pela política de rede deste ambiente (proxy 403). Substitutos offline:
+1) schema-dts 2.1.0 (tipos gerados do vocabulário atual do schema.org) no astro check: 0 erros;
+2) @adobe/structured-data-validator 1.7.0 (regras do Google) + conferências próprias no audit-seo.
+
+## Prévia (sem SITE_URL)
+[audit-seo] 12 páginas · prévia (noindex) · sem SITE_URL
+[audit-seo] 26 URL(s) relativas no JSON-LD: esperado sem SITE_URL; com o domínio viram absolutas.
+[audit-seo] ok: metas, JSON-LD, NAP (visível = JSON-LD = config), resposta no topo, llms.txt, robots e sitemap.
+
+## Indexável (SITE_MODO=producao, SITE_URL=https://tensini.example)
+[audit-seo] 12 páginas · indexável · https://tensini.example
+[audit-seo] ok: metas, JSON-LD, NAP (visível = JSON-LD = config), resposta no topo, llms.txt, robots e sitemap.
+
+## Validador de regras do Google, por página (versão indexável)
+index.html                         tipos: HairSalon | problemas: 0 
+agendar/index.html                 tipos: HairSalon,BreadcrumbList | problemas: 0 
+como-chegar/index.html             tipos: HairSalon,BreadcrumbList | problemas: 0 
+servicos-e-precos/index.html       tipos: HairSalon,BreadcrumbList | problemas: 0 
+degrade-em-lages/index.html        tipos: HairSalon,BreadcrumbList,Service | problemas: 0 
+barba-e-barbaterapia/index.html    tipos: HairSalon,BreadcrumbList,Service | problemas: 0 
+sobrancelha/index.html             tipos: HairSalon,BreadcrumbList,Service | problemas: 0 
+pomadas/index.html                 tipos: HairSalon,BreadcrumbList | problemas: 0 
+sobre-pedro-tensini/index.html     tipos: HairSalon,BreadcrumbList,Person | problemas: 0 
+perguntas-frequentes/index.html    tipos: HairSalon,BreadcrumbList,FAQPage | problemas: 0 
+avaliar/index.html                 tipos: HairSalon,BreadcrumbList | problemas: 0 
+privacidade/index.html             tipos: HairSalon,BreadcrumbList | problemas: 0 
+total 0

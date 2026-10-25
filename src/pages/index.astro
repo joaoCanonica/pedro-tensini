@@ -1,0 +1,91 @@
+---
+// Home: entrada + hero (sessão 4) e as seções da escala de pente, de 3 (amplo) a 0 (preciso).
+import Cabeca from '../components/base/Cabeca.astro';
+import PreviewBanner from '../components/PreviewBanner.astro';
+import EntradaInicio from '../components/entrada/EntradaInicio.astro';
+import Hero from '../components/hero/Hero.astro';
+import BordaDegrade from '../components/marca/BordaDegrade.astro';
+import SecaoBarbearia from '../components/secoes/SecaoBarbearia.astro';
+import SecaoDegrade from '../components/secoes/SecaoDegrade.astro';
+import SecaoBarba from '../components/secoes/SecaoBarba.astro';
+import SecaoPedro from '../components/secoes/SecaoPedro.astro';
+import SecaoResultados from '../components/secoes/SecaoResultados.astro';
+import SecaoAgendar from '../components/secoes/SecaoAgendar.astro';
+import Rodape from '../components/secoes/Rodape.astro';
+import BarraAgendar from '../components/secoes/BarraAgendar.astro';
+import Consentimento from '../components/consentimento/Consentimento.astro';
+import { obterMidia } from '../components/base/midia.ts';
+import { SIZES_POSTER } from '../components/hero/hero.ts';
+import Seo from '../components/seo/Seo.astro';
+import { pagina } from '../layouts/servico/pagina.ts';
+
+const meta = pagina('home');
+
+const poster = obterMidia('loop-hero').poster;
+const preload = poster?.avif.map((v) => `${v.src} ${v.largura}w`).join(', ');
+---
+
+<!doctype html>
+<html lang="pt-BR" data-theme="escuro">
+  <head>
+    <Cabeca titulo={meta.title} descricao={meta.description} />
+    <Seo titulo={meta.title} descricao={meta.description} rota="/" />
+    <link rel="icon" href="/media/monograma/monograma.svg" type="image/svg+xml" />
+    {preload && (
+      <link
+        rel="preload"
+        as="image"
+        type="image/avif"
+        imagesrcset={preload}
+        imagesizes={SIZES_POSTER}
+        fetchpriority="high"
+      />
+    )}
+  </head>
+  <body>
+    <EntradaInicio />
+    <a class="pular-conteudo" href="#barbearia">
+      Pular para o conteúdo
+    </a>
+    <PreviewBanner />
+    <main>
+      <Hero />
+      <BordaDegrade de="base" para="contraste" />
+      <SecaoBarbearia />
+      <BordaDegrade de="contraste" para="base" />
+      <SecaoDegrade />
+      <BordaDegrade de="base" para="navy" />
+      <SecaoBarba />
+      <BordaDegrade de="navy" para="contraste" />
+      <SecaoPedro />
+      <BordaDegrade de="contraste" para="base" />
+      <SecaoResultados />
+      <BordaDegrade de="base" para="contraste" />
+      <SecaoAgendar />
+      <BordaDegrade de="contraste" para="navy" />
+    </main>
+    <Rodape />
+    <BarraAgendar />
+    <Consentimento />
+  </body>
+</html>
+
+<style is:global>
+  html,
+  body {
+    overflow-x: clip;
+  }
+  .pular-conteudo {
+    position: absolute;
+    left: var(--margem);
+    top: -4rem;
+    z-index: 2000;
+    padding: 0.7rem 1rem;
+    background: var(--latao);
+    color: var(--carvao);
+    font-weight: 600;
+  }
+  .pular-conteudo:focus {
+    top: 0.75rem;
+  }
+</style>

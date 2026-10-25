@@ -1,0 +1,91 @@
+---
+// (b) Escala de pente: marcador de seção com a numeração dos pentes de máquina.
+// Da mais ampla (3 = a barbearia) à mais precisa (0 = acabamento e agendar).
+// Lê como navegação editorial: número em latão tabular + rótulo + régua com a posição.
+import { escalaPente } from '../../config/tema.ts';
+
+type Valor = (typeof escalaPente)[number];
+interface Props {
+  valor: Valor;
+  rotulo: string;
+  /** Mostra a régua com todos os pentes (padrão: sim). */
+  regua?: boolean;
+  class?: string;
+}
+const { valor, rotulo, regua = true, class: classe } = Astro.props;
+---
+
+<div class:list={['escala', classe]}>
+  <p class="escala__marca">
+    <span class="sr-only">Pente </span>
+    <span class="escala__numero num">{valor}</span>
+    <span class="escala__rotulo rotulo">{rotulo}</span>
+  </p>
+  {regua && (
+    <ol class="escala__regua num" aria-hidden="true">
+      {escalaPente.map((v) => (
+        <li class:list={{ atual: v === valor }}>{v}</li>
+      ))}
+    </ol>
+  )}
+</div>
+
+<style>
+  .escala {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--e-3) var(--e-6);
+    padding-bottom: var(--e-3);
+    border-bottom: 1px solid var(--linha);
+  }
+  .escala__marca {
+    display: flex;
+    align-items: baseline;
+    gap: var(--e-4);
+  }
+  .escala__numero {
+    color: var(--acento-texto);
+    font-size: clamp(2.5rem, 2rem + 2.4vw, 4rem);
+    font-weight: 500;
+    line-height: 0.8;
+    letter-spacing: -0.03em;
+  }
+  .escala__rotulo {
+    color: var(--texto);
+  }
+  .escala__regua {
+    display: flex;
+    gap: var(--e-4);
+    padding: 0;
+    list-style: none;
+    font-size: var(--fs-rotulo);
+    color: var(--texto-2);
+  }
+  .escala__regua li {
+    position: relative;
+    min-width: 1.4em;
+    padding-top: 10px;
+    text-align: center;
+  }
+  /* Dentes do pente: traço curto em cada valor, longo no atual. */
+  .escala__regua li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 6px;
+    background: currentColor;
+  }
+  .escala__regua li.atual {
+    color: var(--acento-texto);
+    font-weight: 700;
+  }
+  .escala__regua li.atual::before {
+    height: 10px;
+    top: -4px;
+    width: 2px;
+  }
+</style>

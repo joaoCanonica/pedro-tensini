@@ -1,0 +1,95 @@
+---
+// Mapa em duas etapas: antes, a imagem estática (sem ligação com o Google); com o consentimento
+// ("Aceitar" no banner) e o toque em "Carregar mapa interativo", o mapa do Google entra no
+// mesmo lugar. Sem JS: só a imagem com o link.
+import MapaEstatico from './MapaEstatico.astro';
+import { geo } from '../../config/contato.ts';
+
+const { lat, lng } = geo.valor;
+const embed = `https://www.google.com/maps?q=${lat},${lng}&z=17&hl=pt-BR&output=embed`;
+---
+
+<div class="mapa-i" data-mapa-interativo data-embed={embed}>
+  <div class="mapa-i__quadro" data-mapa-quadro>
+    <MapaEstatico />
+  </div>
+  <div class="mapa-i__consentimento" data-mapa-consentimento hidden>
+    <button type="button" class="mapa-i__botao" data-mapa-carregar>
+      Carregar mapa interativo
+    </button>
+    <p class="pequeno secundario">
+      Ao carregar, o Google recebe dados de acesso do seu navegador.{' '}
+      <a class="link" href="/privacidade/">
+        Veja a política de privacidade
+      </a>
+    </p>
+  </div>
+</div>
+
+<script>
+  import { lerConsentimento, pedirConsentimento } from '../consentimento/estado.ts';
+
+  for (const raiz of document.querySelectorAll<HTMLElement>('[data-mapa-interativo]')) {
+    const caixa = raiz.querySelector<HTMLElement>('[data-mapa-consentimento]');
+    const quadro = raiz.querySelector<HTMLElement>('[data-mapa-quadro]');
+    const botao = raiz.querySelector<HTMLButtonElement>('[data-mapa-carregar]');
+    if (!caixa || !quadro || !botao) continue;
+    caixa.hidden = false;
+    let esperando = false;
+    const carregar = () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = raiz.dataset['embed'] ?? '';
+      iframe.title = 'Mapa do Google com o ponto da barbearia na Galeria Augusta';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.className = 'mapa-i__iframe';
+      quadro.replaceChildren(iframe);
+      caixa.remove();
+      iframe.focus();
+    };
+    // Só com "Aceitar": sem escolha (ou com "Recusar"), o toque abre o banner e o mapa espera.
+    botao.addEventListener('click', () => {
+      if (lerConsentimento() === 'aceito') return carregar();
+      esperando = true;
+      pedirConsentimento('Para ver o mapa interativo, aceite o conteúdo do Google.');
+    });
+    addEventListener('tensini:consentimento', (e) => {
+      const escolha = (e as CustomEvent<string>).detail;
+      if (esperando && escolha === 'aceito') carregar();
+      esperando = false;
+    });
+  }
+</script>
+
+<style>
+  .mapa-i {
+    display: grid;
+    gap: var(--e-3);
+  }
+  .mapa-i__consentimento {
+    display: grid;
+    gap: var(--e-2);
+    justify-items: start;
+  }
+  /* Só some sem JS; com JS já aparece no primeiro desenho (sem CLS). */
+  @media (scripting: none) {
+    .mapa-i__consentimento[hidden] {
+      display: none;
+    }
+  }
+  .mapa-i__botao {
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--botao-2-borda);
+    border-radius: var(--raio);
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .mapa-i__quadro :global(.mapa-i__iframe) {
+    display: block;
+    width: 100%;
+    aspect-ratio: 8 / 5;
+    border: 1px solid var(--linha);
+  }
+</style>

@@ -1,0 +1,322 @@
+---
+// /como-chegar: depois da home, a página mais importante. Endereço grande com "copiar",
+// status e horário completo, "Da calçada à cadeira" na escala de pente (rua → galeria →
+// andar/sala → porta), rotas, mapa estático e, com clique + consentimento, o interativo.
+// Estacionamento e pontos próximos só com dado confirmado.
+import Pagina from '../layouts/Pagina.astro';
+import Faixa from '../layouts/servico/Faixa.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import Passos from '../layouts/servico/Passos.astro';
+import BordaDegrade from '../components/marca/BordaDegrade.astro';
+import Botao from '../components/base/Botao.astro';
+import Poster from '../components/base/Poster.astro';
+import StatusAoVivo from '../components/base/StatusAoVivo.astro';
+import TabelaHorario from '../components/base/TabelaHorario.astro';
+import Endereco from '../components/secoes/Endereco.astro';
+import MapaInterativo from '../components/secoes/MapaInterativo.astro';
+import Selo from '../components/secoes/Selo.astro';
+import { comoChegar, endereco, estacionamento, links, plusCode } from '../config/contato.ts';
+import { faq, pagina, parte } from '../layouts/servico/pagina.ts';
+import type { Bloco } from '../layouts/servico/pagina.ts';
+import type { Campo } from '../config/tipos.ts';
+import { emPreview } from '../components/secoes/textos.ts';
+
+const p = pagina('como-chegar');
+const caminho = parte(p, 'Da calçada à cadeira');
+const agendar = parte(p, 'Agendar');
+const passos = caminho.blocos.find(
+  (b): b is Extract<Bloco, { tipo: 'passos' }> => b.tipo === 'passos',
+);
+const notaCaminho = caminho.blocos.filter((b) => b.tipo !== 'passos');
+// Mídia por passo vem da config (comoChegar); enquanto não existir, selo "Foto em breve".
+const itens = (passos?.itens ?? []).map((item, i) => {
+  const midia = comoChegar[i]?.midia;
+  return midia
+    ? { ...item, midia: { id: midia, alt: comoChegar[i]?.texto ?? item.nome } }
+    : { ...item, midia: null, pendente: 'Foto em breve' };
+});
+
+const c = <T,>(x: { estado: string; valor: T | null }) =>
+  x.estado === 'confirmado' ? x.valor : null;
+// Texto copiado: só partes confirmadas (sem número até ele ser confirmado).
+const enderecoCopia = [
+  [c(endereco.rua), c(endereco.numero)].filter(Boolean).join(', '),
+  [c(endereco.complemento), c(endereco.salaAndar)].filter(Boolean).join(', '),
+  c(endereco.bairro),
+  `${c(endereco.cidade)}/${c(endereco.uf)}`,
+  `CEP ${c(endereco.cep)}`,
+]
+  .filter(Boolean)
+  .join(', ');
+const vagas = c(estacionamento as Campo<string>);
+const faqVagas = faq('Tem estacionamento?');
+import { ctaRota } from '../lib/medicao.ts';
+---
+
+<Pagina
+  titulo={p.title}
+  descricao={p.description}
+  trilha={[
+    { nome: 'Início', rota: '/' },
+    { nome: 'Como chegar', rota: '/como-chegar/' },
+  ]}
+>
+  <section class="chegar" data-superficie="base" aria-labelledby="chegar-titulo">
+    <div class="chegar__grade envelope-s">
+      <div class="chegar__texto">
+        <p class="rotulo chegar__rotulo">Galeria Augusta · Centro de Lages</p>
+        <h1 id="chegar-titulo" class="chegar__titulo">
+          {p.h1}
+        </h1>
+        <p class="chegar__resposta">{p.resposta}</p>
+      </div>
+
+      <div class="chegar__endereco">
+        <p class="rotulo secundario">Endereço</p>
+        <div class="chegar__endereco-texto">
+          <Endereco />
+        </div>
+        <p class="pequeno secundario">Plus Code: {plusCode.valor}</p>
+        <div class="chegar__copiar" data-copiar hidden>
+          <button
+            type="button"
+            class="chegar__botao-copiar"
+            data-copiar-botao
+            data-texto={enderecoCopia}
+          >
+            Copiar endereço
+          </button>
+          <span class="pequeno" role="status" data-copiar-aviso></span>
+        </div>
+        <div class="chegar__rotas">
+          <Botao
+            variante="secundario"
+            href={links.googleRota}
+            whatsapp={false}
+            dados={ctaRota('google-maps')}
+          >
+            Google Maps
+          </Botao>
+          <Botao variante="secundario" href={links.waze} whatsapp={false} dados={ctaRota('waze')}>
+            Waze
+          </Botao>
+          <Botao
+            variante="secundario"
+            href={links.appleMapas}
+            whatsapp={false}
+            dados={ctaRota('apple-mapas')}
+          >
+            Apple Mapas
+          </Botao>
+        </div>
+      </div>
+
+      <figure class="chegar__foto">
+        <Poster
+          id="quadro-barbearia-geral"
+          alt="A barbearia por dentro: cadeira, espelho iluminado e a parede verde"
+          sizes="(min-width: 60rem) 24rem, 88vw"
+          prioridade
+        />
+        <figcaption class="pequeno secundario">A barbearia por dentro.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <BordaDegrade de="base" para="contraste" />
+  <Faixa id="horario" titulo="Que horas abre?" rotulo="Hoje e na semana" superficie="contraste">
+    <div class="horario">
+      <div class="horario__status">
+        <StatusAoVivo />
+      </div>
+      <TabelaHorario />
+    </div>
+  </Faixa>
+
+  <Faixa
+    id="caminho"
+    titulo={caminho.titulo}
+    rotulo="Do pente 3 ao 0"
+    superficie="contraste"
+    provisorios={caminho.provisorios}
+  >
+    <Passos itens={itens} rotulo="Da calçada à cadeira, passo a passo" />
+    <Blocos blocos={notaCaminho} />
+  </Faixa>
+
+  <Faixa id="mapa" titulo="Mapa" rotulo="Rua Hercílio Luz" superficie="contraste">
+    <MapaInterativo />
+  </Faixa>
+
+  <Faixa
+    id="estacionamento"
+    titulo="Onde estacionar?"
+    rotulo="De carro"
+    superficie="contraste"
+    provisorios={vagas ? [] : ['Onde estacionar perto da galeria']}
+  >
+    {vagas ? <p class="medida">{vagas}</p> : <Blocos blocos={faqVagas.blocos} />}
+    {emPreview && (
+      <p class="pequeno secundario">
+        Pontos de referência perto da galeria só entram quando o Pedro confirmar.{' '}
+        <Selo titulo="Referências próximas a confirmar" />
+      </p>
+    )}
+  </Faixa>
+
+  <BordaDegrade de="contraste" para="navy" />
+  <section class="chamada" data-superficie="navy" aria-labelledby="chamada-titulo">
+    <div class="envelope-s chamada__grade">
+      <h2 id="chamada-titulo" class="chamada__titulo">
+        Antes de vir, marque.
+      </h2>
+      <Blocos blocos={agendar.blocos} />
+      <div class="chamada__acoes" data-agendar-principal>
+        <Botao origem="como-chegar">Agendar no WhatsApp</Botao>
+        <a class="link" href="/agendar/">
+          Escolher serviço, dia e período
+        </a>
+      </div>
+    </div>
+  </section>
+</Pagina>
+
+<script>
+  const caixa = document.querySelector<HTMLElement>('[data-copiar]');
+  const botao = caixa?.querySelector<HTMLButtonElement>('[data-copiar-botao]');
+  const aviso = caixa?.querySelector<HTMLElement>('[data-copiar-aviso]');
+  if (caixa && botao && navigator.clipboard) {
+    caixa.hidden = false;
+    botao.addEventListener('click', () => {
+      navigator.clipboard.writeText(botao.dataset['texto'] ?? '').then(
+        () => aviso && (aviso.textContent = 'Endereço copiado.'),
+        () => aviso && (aviso.textContent = 'Não deu para copiar. Selecione o texto acima.'),
+      );
+    });
+  }
+</script>
+
+<style>
+  .chegar {
+    padding-block: var(--e-6) var(--e-8);
+  }
+  .chegar__grade {
+    display: grid;
+    gap: var(--e-6);
+  }
+  .chegar__texto {
+    display: grid;
+    gap: var(--e-4);
+  }
+  .chegar__rotulo {
+    color: var(--acento-texto);
+  }
+  .chegar__titulo {
+    font-size: var(--fs-1);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    max-width: 16ch;
+  }
+  .chegar__resposta {
+    font-size: var(--fs-3);
+    line-height: 1.4;
+    max-width: 40ch;
+  }
+  .chegar__endereco {
+    display: grid;
+    gap: var(--e-3);
+    justify-items: start;
+    padding-top: var(--e-4);
+    border-top: 1px solid var(--linha);
+  }
+  /* O endereço é a peça gráfica: grande, em serifa. */
+  .chegar__endereco-texto {
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-2);
+    line-height: 1.12;
+  }
+  .chegar__copiar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-3);
+  }
+  /* Só some sem JS; com JS já aparece no primeiro desenho (sem CLS). */
+  @media (scripting: none) {
+    .chegar__copiar[hidden] {
+      display: none;
+    }
+  }
+  .chegar__botao-copiar {
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--botao-2-borda);
+    border-radius: var(--raio);
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .chegar__rotas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-3);
+    margin-top: var(--e-2);
+  }
+  .chegar__foto {
+    display: grid;
+    gap: var(--e-2);
+    max-width: 30rem;
+  }
+  .chegar__foto :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  @media (min-width: 60rem) {
+    .chegar__grade {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: var(--e-8);
+      grid-template-areas:
+        'texto foto'
+        'endereco foto';
+      align-items: start;
+    }
+    .chegar__texto {
+      grid-area: texto;
+    }
+    .chegar__endereco {
+      grid-area: endereco;
+    }
+    .chegar__foto {
+      grid-area: foto;
+    }
+  }
+
+  .horario {
+    display: grid;
+    gap: var(--e-5);
+    max-width: 36rem;
+  }
+  .horario__status {
+    font-size: var(--fs-3);
+  }
+
+  .chamada {
+    padding-block: var(--e-8);
+  }
+  .chamada__grade {
+    display: grid;
+    gap: var(--e-4);
+    justify-items: start;
+  }
+  .chamada__titulo {
+    font-size: var(--fs-2);
+  }
+  .chamada__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-4) var(--e-6);
+    margin-top: var(--e-3);
+  }
+</style>

@@ -1,0 +1,106 @@
+---
+// "Agendar no WhatsApp" sempre à mão: barra inferior no mobile, botão fixo no topo no desktop.
+// Some enquanto o botão do hero (ou o da abertura das páginas de serviço), a seção 0 ou o rodapé estão visíveis (não duplica, não cobre
+// o rodapé legal). Sem JS: fica visível o tempo todo, e o corpo ganha espaço embaixo.
+import IconeWhatsApp from '../base/IconeWhatsApp.astro';
+import { ctaWhatsApp } from '../../lib/whatsapp.ts';
+
+interface Props {
+  /** Serviço já escolhido na página ("degradê"): entra na mensagem e no evento. */
+  servico?: string;
+}
+const { servico } = Astro.props;
+const cta = ctaWhatsApp('barra', servico ? { servico } : {});
+---
+
+<div class="barra" data-barra-agendar>
+  <a class="barra__botao" {...cta}>
+    <IconeWhatsApp />
+    <span>Agendar no WhatsApp</span>
+  </a>
+</div>
+
+<script>
+  const barra = document.querySelector<HTMLElement>('[data-barra-agendar]');
+  const alvos = [
+    '.hero__agendar',
+    '[data-agendar-principal]',
+    '[data-secao-agendar]',
+    '[data-rodape]',
+  ]
+    .map((s) => document.querySelector(s))
+    .filter((el): el is Element => Boolean(el));
+  if (barra && alvos.length) {
+    const vendo = new Set<Element>();
+    barra.dataset['escondida'] = '';
+    const io = new IntersectionObserver((entradas) => {
+      for (const e of entradas) {
+        if (e.isIntersecting) vendo.add(e.target);
+        else vendo.delete(e.target);
+      }
+      if (vendo.size) barra.dataset['escondida'] = '';
+      else delete barra.dataset['escondida'];
+    });
+    for (const a of alvos) io.observe(a);
+  }
+</script>
+
+<style>
+  .barra {
+    position: fixed;
+    z-index: 50;
+    inset: auto 0 0 0;
+    padding: 0.6rem var(--margem) max(0.6rem, env(safe-area-inset-bottom));
+    background: rgb(18 19 22 / 0.92);
+    border-top: 1px solid rgb(184 146 82 / 0.45);
+    backdrop-filter: blur(8px);
+    transition:
+      transform var(--dur-2) var(--curva),
+      visibility 0s linear 0s;
+  }
+  .barra[data-escondida] {
+    transform: translateY(110%);
+    visibility: hidden;
+    transition:
+      transform var(--dur-2) var(--curva),
+      visibility 0s linear var(--dur-2);
+  }
+  .barra__botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+    min-height: 3rem;
+    border-radius: var(--raio);
+    background: var(--latao);
+    color: var(--carvao);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .barra__botao:focus-visible {
+    outline: 2px solid var(--latao-claro);
+    outline-offset: 3px;
+  }
+  /* No mobile o fim da página ganha espaço para a barra não cobrir nada. */
+  @media (max-width: 59.99rem) {
+    :global([data-rodape]) {
+      padding-bottom: calc(var(--e-6) + 4.5rem);
+    }
+  }
+  @media (min-width: 60rem) {
+    .barra {
+      inset: 1rem var(--margem) auto auto;
+      padding: 0;
+      background: none;
+      border: 0;
+      backdrop-filter: none;
+    }
+    .barra[data-escondida] {
+      transform: translateY(-160%);
+    }
+    .barra__botao {
+      padding: 0 1.2rem;
+      box-shadow: 0 10px 28px rgb(0 0 0 / 0.35);
+    }
+  }
+</style>

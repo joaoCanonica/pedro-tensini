@@ -1,0 +1,166 @@
+---
+// Casca das páginas internas: <head>, "pular para o conteúdo", faixa de preview, topo com o
+// monograma e o breadcrumb visível, rodapé e a barra "Agendar no WhatsApp".
+// Usada pelo template Servico e pelas páginas de local, horário e confiança.
+import Cabeca from '../components/base/Cabeca.astro';
+import PreviewBanner from '../components/PreviewBanner.astro';
+import Monograma from '../components/marca/Monograma.astro';
+import Rodape from '../components/secoes/Rodape.astro';
+import BarraAgendar from '../components/secoes/BarraAgendar.astro';
+import Consentimento from '../components/consentimento/Consentimento.astro';
+import Seo from '../components/seo/Seo.astro';
+import { MARCADORES } from '../components/secoes/textos.ts';
+
+export interface ItemTrilha {
+  nome: string;
+  rota: string;
+}
+interface Props {
+  titulo: string;
+  descricao?: string;
+  /** Do início até a página atual (a última é a atual). */
+  trilha: ItemTrilha[];
+  /** Barra fixa de agendar (desligada em /agendar: a página inteira é o montador). */
+  barra?: boolean;
+  /** Serviço já escolhido na página: vai na mensagem da barra fixa e no evento. */
+  servico?: string;
+  noindex?: boolean;
+  /** Caminho, quando não há trilha (404). */
+  rota?: string;
+  /** JSON-LD extra da página (Service, FAQPage, Person). */
+  dados?: object[];
+  tipoOg?: 'website' | 'profile' | 'article';
+}
+const {
+  titulo,
+  descricao,
+  trilha,
+  barra = true,
+  servico,
+  noindex = false,
+  dados = [],
+  tipoOg = 'website',
+} = Astro.props;
+
+// Rota da página: a última da trilha (404 e páginas sem trilha passam `rota`).
+const rota = Astro.props.rota ?? trilha.at(-1)?.rota ?? '/';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <Cabeca titulo={titulo} {...(descricao ? { descricao } : {})} noindex={noindex} />
+    <link rel="icon" href="/media/monograma/monograma.svg" type="image/svg+xml" />
+    <Seo
+      titulo={titulo}
+      {...(descricao ? { descricao } : {})}
+      rota={rota}
+      trilha={trilha}
+      dados={dados}
+      tipo={tipoOg}
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="pular-conteudo" href="#conteudo">
+      Pular para o conteúdo
+    </a>
+    <PreviewBanner />
+    <header class="topo envelope-s" data-superficie="base">
+      <a class="topo__marca" href="/" aria-label={`Início · ${MARCADORES.nome}`}>
+        <Monograma />
+      </a>
+      {trilha.length > 1 && (
+        <nav class="trilha" aria-label="Você está em">
+          <ol>
+            {trilha.map((t, i) => (
+              <li>
+                {i < trilha.length - 1 ? (
+                  <a class="link" href={t.rota}>
+                    {t.nome}
+                  </a>
+                ) : (
+                  <span aria-current="page">{t.nome}</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+    </header>
+    <main id="conteudo">
+      <slot />
+    </main>
+    <Rodape />
+    {barra && <BarraAgendar {...(servico ? { servico } : {})} />}
+    <Consentimento />
+  </body>
+</html>
+
+<style is:global>
+  html,
+  body {
+    overflow-x: clip;
+  }
+  .pular-conteudo {
+    position: absolute;
+    left: var(--margem);
+    top: -4rem;
+    z-index: 2000;
+    padding: 0.7rem 1rem;
+    background: var(--latao);
+    color: var(--carvao);
+    font-weight: 600;
+  }
+  .pular-conteudo:focus {
+    top: 0.75rem;
+  }
+  .envelope-s {
+    width: min(100% - 2 * var(--margem), 80rem);
+    margin-inline: auto;
+  }
+</style>
+
+<style>
+  .topo {
+    display: flex;
+    align-items: center;
+    gap: var(--e-5);
+    padding-block: var(--e-4);
+    min-height: 4.25rem;
+  }
+  .topo__marca {
+    flex: none;
+    width: 2.5rem;
+    color: var(--acento);
+  }
+  /* Sempre numa linha: se quebrasse, a troca da fonte de fallback pela Schibsted mudaria a
+     altura do topo (CLS). O último item recolhe com reticências. */
+  .trilha {
+    min-width: 0;
+  }
+  .trilha ol {
+    display: flex;
+    gap: var(--e-3);
+    padding: 0;
+    list-style: none;
+    font-size: var(--fs-pequeno);
+  }
+  .trilha li + li::before {
+    content: '/';
+    margin-right: var(--e-3);
+    color: var(--texto-2);
+  }
+  /* No li: o text-wrap global de li reativaria a quebra. */
+  .trilha li {
+    white-space: nowrap;
+  }
+  .trilha li:last-child {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .trilha [aria-current] {
+    color: var(--texto-2);
+  }
+</style>

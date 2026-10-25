@@ -1,0 +1,219 @@
+---
+// Vídeo vertical na moldura "espelho" (eco do espelho iluminado da barbearia).
+// loop: decorativo, mudo, sem controles, aria-hidden (pausa global vem na sessão 6).
+// conteudo: controles, preload none, legenda/descrição no figcaption.
+// O pôster é um <picture> (AVIF + LQIP) sob o vídeo: é ele que vira LCP, nunca o vídeo.
+import Poster from './Poster.astro';
+import { obterMidia } from './midia.ts';
+
+interface Props {
+  id: string;
+  tipo?: 'loop' | 'conteudo';
+  /** Descrição do que o vídeo mostra (conteúdo) ou do pôster (loop). */
+  descricao: string;
+  legenda?: string;
+  prioridade?: boolean;
+  sizes?: string;
+}
+
+const {
+  id,
+  tipo = 'conteudo',
+  descricao,
+  legenda,
+  prioridade = false,
+  sizes = '(min-width: 900px) 420px, 88vw',
+} = Astro.props;
+const item = obterMidia(id);
+if (!item.videos || !item.poster) throw new Error(`Mídia "${id}" não é vídeo.`);
+const v720 = item.videos.find((v) => v.largura === 720) ?? item.videos[0];
+const v540 = item.videos.find((v) => v.largura === 540);
+const loop = tipo === 'loop';
+---
+
+<figure class:list={['moldura', { 'moldura--loop': loop }]}>
+  <div class="moldura__espelho">
+    <Poster
+      id={id}
+      alt={loop ? '' : descricao}
+      sizes={sizes}
+      prioridade={prioridade}
+      class="moldura__poster"
+    />
+    <video
+      class="moldura__video"
+      width={v720?.largura}
+      height={v720?.altura}
+      playsinline
+      muted
+      {...(loop
+        ? {
+            loop: true,
+            'aria-hidden': 'true',
+            tabindex: -1,
+            preload: 'none',
+            'data-loop': '',
+          }
+        : { controls: true, preload: 'none', 'aria-label': descricao })}
+    >
+      {v540 && <source src={v540.webm.src} type="video/webm" media="(max-width: 600px)" />}
+      {v540 && <source src={v540.mp4.src} type="video/mp4" media="(max-width: 600px)" />}
+      {v720 && <source src={v720.webm.src} type="video/webm" />}
+      {v720 && <source src={v720.mp4.src} type="video/mp4" />}
+    </video>
+    {loop && (
+      <button class="moldura__pausa" type="button" data-loop-pausa aria-pressed="false" hidden>
+        <span class="moldura__pausa-icone" aria-hidden="true" />
+        <span class="moldura__pausa-texto">Pausar vídeo</span>
+      </button>
+    )}
+  </div>
+  {(legenda || !loop) && (
+    <figcaption class="moldura__legenda pequeno secundario">{legenda ?? descricao}</figcaption>
+  )}
+</figure>
+
+<script>
+  // Loops decorativos: só tocam visíveis na tela; nunca com movimento reduzido nem Save-Data/2g.
+  // Botão pausar visível (WCAG 2.2.2); a escolha vale para todos os loops da página.
+  type Conexao = { saveData?: boolean; effectiveType?: string };
+  const conexao = (navigator as Navigator & { connection?: Conexao }).connection;
+  const economia = Boolean(conexao?.saveData) || /(^|-)2g$/.test(conexao?.effectiveType ?? '');
+  const reduzir = matchMedia('(prefers-reduced-motion: reduce)');
+  let pausado = economia || reduzir.matches;
+  const loops = [...document.querySelectorAll<HTMLVideoElement>('video[data-loop]')];
+  const visiveis = new Set<HTMLVideoElement>();
+
+  const rotular = () => {
+    for (const b of document.querySelectorAll<HTMLButtonElement>('[data-loop-pausa]')) {
+      b.hidden = false;
+      b.setAttribute('aria-pressed', String(pausado));
+      const t = b.querySelector('.moldura__pausa-texto');
+      if (t) t.textContent = pausado ? 'Tocar vídeo' : 'Pausar vídeo';
+    }
+  };
+  const aplicar = () => {
+    for (const v of loops) {
+      if (!pausado && visiveis.has(v)) {
+        if (v.preload !== 'auto') v.preload = 'auto';
+        void v.play().catch(() => {});
+      } else v.pause();
+    }
+    rotular();
+  };
+  const io = new IntersectionObserver(
+    (entradas) => {
+      for (const e of entradas) {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) visiveis.add(v);
+        else visiveis.delete(v);
+      }
+      aplicar();
+    },
+    { rootMargin: '200px 0px' },
+  );
+  for (const v of loops) {
+    v.addEventListener('playing', () => (v.dataset['tocando'] = ''), { once: true });
+    io.observe(v);
+  }
+  for (const b of document.querySelectorAll<HTMLButtonElement>('[data-loop-pausa]'))
+    b.addEventListener('click', () => {
+      pausado = !pausado;
+      aplicar();
+    });
+  reduzir.addEventListener('change', () => {
+    pausado = reduzir.matches;
+    aplicar();
+  });
+  rotular();
+
+  // Vídeos de conteúdo: sem pôster o Chrome pinta um retângulo cinza por cima do <picture>.
+  // O pôster entra só perto da tela, reaproveitando a imagem que o <picture> já baixou.
+  const ioPoster = new IntersectionObserver(
+    (entradas) => {
+      for (const e of entradas) {
+        if (!e.isIntersecting) continue;
+        const v = e.target as HTMLVideoElement;
+        const img = v.parentElement?.querySelector('img');
+        if (img) {
+          const definir = () => (v.poster = img.currentSrc || img.src);
+          if (img.complete) definir();
+          else img.addEventListener('load', definir, { once: true });
+        }
+        ioPoster.unobserve(v);
+      }
+    },
+    { rootMargin: '300px 0px' },
+  );
+  for (const v of document.querySelectorAll<HTMLVideoElement>('.moldura__video:not([data-loop])'))
+    ioPoster.observe(v);
+</script>
+
+<style>
+  .moldura {
+    width: min(100%, 26.25rem);
+  }
+  .moldura__espelho {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    padding: 6px;
+    border: 1px solid rgb(255 232 200 / 0.55);
+    border-radius: var(--raio);
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 0.35),
+      0 0 22px 2px rgb(255 214 160 / 0.2),
+      inset 0 0 14px rgb(255 214 160 / 0.14);
+  }
+  .moldura__poster,
+  .moldura__video {
+    position: absolute;
+    inset: 6px;
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    object-fit: cover;
+  }
+  .moldura__video {
+    background: transparent;
+  }
+  .moldura--loop .moldura__video {
+    opacity: 0;
+    transition: opacity var(--dur-2) var(--curva);
+  }
+  .moldura--loop .moldura__video[data-tocando] {
+    opacity: 1;
+  }
+  .moldura__pausa {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    min-height: 2.75rem;
+    padding: 0 0.85rem;
+    border: 1px solid rgb(238 240 239 / 0.55);
+    border-radius: var(--raio);
+    background: rgb(18 19 22 / 0.6);
+    color: #eef0ef;
+    font: 600 0.8125rem/1 var(--fonte-texto);
+    cursor: pointer;
+  }
+  .moldura__pausa[hidden] {
+    display: none;
+  }
+  .moldura__pausa-icone {
+    width: 0.7rem;
+    height: 0.8rem;
+    border-inline: 3px solid currentColor;
+  }
+  .moldura__pausa[aria-pressed='true'] .moldura__pausa-icone {
+    width: 0;
+    height: 0;
+    border: 0;
+    border-block: 0.42rem solid transparent;
+    border-left: 0.7rem solid currentColor;
+  }
+  .moldura__legenda {
+    margin-top: var(--e-3);
+  }
+</style>

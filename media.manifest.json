@@ -1,0 +1,1258 @@
+{
+  "$schema": "./media.manifest.schema.json",
+  "versao": 1,
+  "notas": "Originais em media-originais/ (intactos, só git mv). Derivados gerados por scripts/prepare-media.mjs em public/media/ (fora do git). Tempos em segundos do arquivo original; vídeos a 30 qps. Campos 't' de pôster e quadro são preenchidos por scripts/extract-stills.mjs (quadro mais nítido da janela).",
+  "originais": [
+    {
+      "id": "experiencia-babearia-verdadeira",
+      "arquivo": "media-originais/videos/experiencia-babearia-verdadeira.mp4",
+      "tipo": "video",
+      "sha256": "6bfd0f4bc5ec4ce22a94c29b8402838ca7e7b721d33d39348413efd50b1ae35b",
+      "largura": 720,
+      "altura": 1280,
+      "duracao": 59.487,
+      "postOrigem": {
+        "codigo": "DUbAeAMgLCK",
+        "estado": "indicado",
+        "nota": "Indicado no mapa de mídia."
+      },
+      "legendaLiteral": "Experiência de barbearia de verdade! Precisão em cada detalhe e excelência no resultado!",
+      "uso": "Loop do hero (16,6–22,9 s) e vídeo completo na seção Barba; quadros: máquina vinho, navalha, resultado, retrato provisório do Pedro.",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": ["Trilha do Instagram: sai muda.", "Pedro de máscara em 24–26 s e 31–33 s."],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "corte1",
+      "arquivo": "media-originais/videos/corte1.mp4",
+      "tipo": "video",
+      "sha256": "97b0a3fce01287cbb941725bfea5cdd73cd84dfb9d80f8e0d2540bd07fcee122",
+      "largura": 720,
+      "altura": 1280,
+      "duracao": 54.03,
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente",
+        "nota": "Sem acesso ao Instagram nesta sessão. Candidatos citados na investigação (não conferidos): DXKB3kGDqsq (degradê na shaver), DX7q5jxvWai (acabamento na shaver)."
+      },
+      "legendaLiteral": null,
+      "uso": "Loop do degradê (nuca + pezinho); quadros: plano geral com parede verde, Pedro concentrado, retrato provisório.",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": ["Trilha do Instagram: sai muda."],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "corte-acabamento",
+      "arquivo": "media-originais/videos/corte-acabamento.mp4",
+      "tipo": "video",
+      "sha256": "8d6fde086e00efd41127e2ad9914bacc616ca6a089d1173c41dee6541ab87456",
+      "largura": 720,
+      "altura": 1280,
+      "duracao": 34.827,
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente",
+        "nota": "Sem acesso ao Instagram nesta sessão. Candidatos não conferidos: DXKB3kGDqsq, DX7q5jxvWai."
+      },
+      "legendaLiteral": null,
+      "uso": "Resultado final (giro 26,6–34,8 s); quadros de perfil e nuca.",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "Celular na mão de alguém ao fundo em 10–12 s e Pedro com celular em ~4 s: fora dos trechos usados.",
+        "Trilha do Instagram: sai muda."
+      ],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "corte2",
+      "arquivo": "media-originais/videos/corte2.mp4",
+      "tipo": "video",
+      "sha256": "bbe7b8e61323437e3847718bf569818dd01ddb6c7d987580db8b75db46215c58",
+      "largura": 720,
+      "altura": 1280,
+      "duracao": 62.18,
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente",
+        "nota": "Sem acesso ao Instagram nesta sessão. Candidatos não conferidos: DXKB3kGDqsq, DX7q5jxvWai."
+      },
+      "legendaLiteral": null,
+      "uso": "Segundo resultado (ângulos 43,6–60,3 s).",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "60,5–62,2 s: transição e vinheta com o logo raster 3D e poste de barbeiro. Fica fora de qualquer derivado.",
+        "Trilha do Instagram: sai muda."
+      ],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "bastidores",
+      "arquivo": "media-originais/videos/bastidores.mp4",
+      "tipo": "video",
+      "sha256": "3bce7d71461cb7708ff7d7e0dc6a3dd07ce458137ba3da6d8b91cb5e4d86283f",
+      "largura": 720,
+      "altura": 1280,
+      "duracao": 56.329,
+      "postOrigem": {
+        "codigo": "DZ0-DLwN-d1",
+        "estado": "indicado",
+        "nota": "Indicado no mapa de mídia."
+      },
+      "legendaLiteral": "Bastidores da barbearia! Confere como é um dia com muita resenha e cortes!",
+      "uso": "Página Sobre / 'Um dia aqui' (sem o selo e sem a agenda); quadros: plano geral da barbearia, café.",
+      "trechos": [],
+      "audioLiberado": false,
+      "audioCandidato": {
+        "trechos": [
+          {
+            "in": 43.55,
+            "out": 56.19
+          }
+        ],
+        "nota": "Fala do Pedro para a câmera. Liberar só depois de o João confirmar que não há música comercial por baixo."
+      },
+      "problemas": [
+        "0–2,5 s: selo 'BASTIDORES BARBEARIA' queimado. Removido por corte.",
+        "7,0–8,8 s: tela do app de agenda (possíveis nomes de clientes). Removido por corte.",
+        "56,2 s: último quadro preto."
+      ],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "qual-pomada-certa",
+      "arquivo": "media-originais/videos/qual-pomada-certa.mp4",
+      "tipo": "video",
+      "sha256": "64521d2872e3162ec6b17defb60fd28f22f5720d08bdc0add1934c32fd9ccbe7",
+      "largura": 720,
+      "altura": 1280,
+      "duracao": 38.821,
+      "postOrigem": {
+        "codigo": "DWPtNZOD9Pw",
+        "estado": "indicado",
+        "nota": "Indicado no mapa e na investigação."
+      },
+      "legendaLiteral": "Nem toda pomada é igual… e usar a errada pode acabar com seu cabelo 👀 Brilho, fixação, efeito seco…",
+      "uso": "Página /pomadas (vídeo inteiro); retrato provisório do Pedro (rosto de frente).",
+      "trechos": [],
+      "audioLiberado": false,
+      "audioCandidato": {
+        "trechos": [
+          {
+            "in": 0,
+            "out": 38.82
+          }
+        ],
+        "nota": "O Pedro fala o vídeo todo. Liberar só depois de o João confirmar que não há música comercial por baixo."
+      },
+      "problemas": [
+        "Legenda no mapa termina em reticências: pode estar truncada.",
+        "Legendas queimadas em todo o vídeo (texto de fala) e inserções de produto com marcas.",
+        "36–37 s: CTA queimado 'Segue esse perfil', que não faz sentido no site. Avaliar cortar o final."
+      ],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "primeiro-video",
+      "arquivo": "media-originais/videos/primeiro-video.mp4",
+      "tipo": "video",
+      "sha256": "9746cfd8f86c43fd50c56d771d96f57157944dbeef04a3bd69cab31a05c5e68c",
+      "largura": 720,
+      "altura": 1280,
+      "duracao": 61.23,
+      "postOrigem": {
+        "codigo": "DMdJJJdu5AW",
+        "estado": "provavel",
+        "nota": "Mapa indica 'provável'."
+      },
+      "legendaLiteral": "Mais que um corte, uma experiência 💈 Atendimento com respeito, excelência e cuidado com cada detalhe!",
+      "uso": "Página Sobre (trajetória), uso médio.",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "Qualidade menor que os demais.",
+        "Pedro de máscara em parte do vídeo.",
+        "Abre com poste de barbeiro físico (objeto real, não ilustração).",
+        "Trilha do Instagram: sai muda."
+      ],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "seu-visual-fala",
+      "arquivo": "media-originais/videos/seu-visual-fala-antes-de-qualquer-coisa.mp4",
+      "tipo": "video",
+      "sha256": "8b12982ac1e41f797ef45eb8b0d668f6f199267e6a7a7a527e5071e76c08f278",
+      "largura": 720,
+      "altura": 1280,
+      "duracao": 8.263,
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente",
+        "nota": "Post fixado com 4.171 visualizações; código não registrado."
+      },
+      "legendaLiteral": null,
+      "uso": "Nenhum como vídeo. A frase queimada vira texto (citação do Pedro).",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "Texto queimado: 'Seu visual fala antes de qualquer palavra. Faça ele transmitir confiança.'"
+      ],
+      "edicoes": [],
+      "naoUsar": true,
+      "motivoNaoUsar": "Texto queimado; a frase entra no site como texto."
+    },
+    {
+      "id": "foto-barbaterapia-toalha",
+      "arquivo": "media-originais/fotos/SaveClip.App_856610241_122104126131512758_229869556221299606_n.jpg",
+      "tipo": "foto",
+      "sha256": "4012af0cb5485fab1c6ad0cd6c6c3bbf75f21e8c3ed81a4103cbdadb2dc6d1fa",
+      "largura": 1080,
+      "altura": 1350,
+      "postOrigem": {
+        "codigo": "Dewh0h2DoBP",
+        "estado": "provavel",
+        "nota": "Série da barbaterapia (post de 21/10/2026 citado na investigação). Ordem no carrossel não conferida."
+      },
+      "legendaLiteral": null,
+      "uso": "Barbaterapia, passo 'toalha quente' (derivado recortado).",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "Texto 'Toalha quente' (y ≈ 1003+), WhatsApp, endereço com 'Nº 205' e logo (canto superior direito, até y ≈ 226) queimados.",
+        "Mesma foto do 858788059 ('Creme e massagem')."
+      ],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "foto-barbaterapia-esfoliacao",
+      "arquivo": "media-originais/fotos/SaveClip.App_857872880_122104125921512758_4288702109058299548_n.jpg",
+      "tipo": "foto",
+      "sha256": "48cda9cd3dfe81a42d8182f3f26466cd49c65e8e62583752cf30d9809e6388c0",
+      "largura": 1080,
+      "altura": 1350,
+      "postOrigem": {
+        "codigo": "Dewh0h2DoBP",
+        "estado": "provavel",
+        "nota": "Série da barbaterapia."
+      },
+      "legendaLiteral": null,
+      "uso": "Barbaterapia, passo 'esfoliação' (derivado recortado).",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": ["Texto 'Esfoliação' (y ≈ 1003+), rodapé e logo queimados."],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "foto-barbaterapia-creme",
+      "arquivo": "media-originais/fotos/SaveClip.App_858788059_122104126857512758_3862214480292085338_n.jpg",
+      "tipo": "foto",
+      "sha256": "e2f100329021c41ebdaf89607d02bebfb21fc83ee0e05a9627709e7253cacc4c",
+      "largura": 1080,
+      "altura": 1350,
+      "postOrigem": {
+        "codigo": "Dewh0h2DoBP",
+        "estado": "provavel",
+        "nota": "Série da barbaterapia."
+      },
+      "legendaLiteral": null,
+      "uso": "Nenhum. Sem o título queimado, é a mesma imagem da 'Toalha quente'.",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "É a mesma foto do 856610241 (toalha quente); só muda o título 'Creme e massagem' (y ≈ 967+). Diferença só em bordas e compressão (PSNR 24 dB na área útil).",
+        "Falta foto real do passo 'creme e massagem'."
+      ],
+      "edicoes": [],
+      "naoUsar": true,
+      "motivoNaoUsar": "Duplicata da foto da toalha quente; recortada, não mostra creme nem massagem."
+    },
+    {
+      "id": "foto-barbaterapia-navalha",
+      "arquivo": "media-originais/fotos/SaveClip.App_858729706_122104124973512758_5633014483998655299_n.jpg",
+      "tipo": "foto",
+      "sha256": "9f5e690f597ee3a45318375caeabeb655f524d8dae5c574bed6afc27b6568d70",
+      "largura": 1080,
+      "altura": 1350,
+      "postOrigem": {
+        "codigo": "Dewh0h2DoBP",
+        "estado": "provavel",
+        "nota": "Série da barbaterapia."
+      },
+      "legendaLiteral": null,
+      "uso": "Barbaterapia, passo 'navalha' (derivado recortado). Melhor foto de detalhe.",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "Título 'BARBATERAPIA o cuidado é outro' começa em y ≈ 1070 (o mapa estimava 820–870), rodapé e logo queimados.",
+        "Tatuagem com texto no pescoço do cliente (não é nome)."
+      ],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "foto-barbaterapia-finalizada",
+      "arquivo": "media-originais/fotos/SaveClip.App_858196088_122104126245512758_3717112216634346557_n.jpg",
+      "tipo": "foto",
+      "sha256": "d969eba551865d113893699196370475b9d06b86b6b9fde68c654c887129862a",
+      "largura": 1080,
+      "altura": 1350,
+      "postOrigem": {
+        "codigo": "Dewh0h2DoBP",
+        "estado": "provavel",
+        "nota": "Série da barbaterapia."
+      },
+      "legendaLiteral": null,
+      "uso": "Barbaterapia, passo 'barba finalizada' (derivado recortado).",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "Texto 'Barba finalizada' (y ≈ 1150+), rodapé e logo sobre a parede verde queimados."
+      ],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "foto-colagem-agende",
+      "arquivo": "media-originais/fotos/SaveClip.App_858462534_122104126341512758_8185224576184917_n.jpg",
+      "tipo": "foto",
+      "sha256": "be7fa88f9257ed63ca828c613a8888a5d4bbd5d613c48eca92fc7a9a7273b8b0",
+      "largura": 1080,
+      "altura": 1350,
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente"
+      },
+      "legendaLiteral": null,
+      "uso": "Nenhum.",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "Colagem (Pedro de máscara + cliente) com 'Agende seu próximo horário' queimado."
+      ],
+      "edicoes": [],
+      "naoUsar": true,
+      "motivoNaoUsar": "Colagem com texto queimado."
+    },
+    {
+      "id": "foto-pedro-avatar",
+      "arquivo": "media-originais/fotos/foto-pedro.jpg",
+      "tipo": "foto",
+      "sha256": "d9045c16ba6b44293988ae26053a12d9372fe54990d68edbf12cb99a979c7018",
+      "largura": 150,
+      "altura": 150,
+      "postOrigem": {
+        "codigo": null,
+        "estado": "nao-se-aplica",
+        "nota": "Avatar do perfil."
+      },
+      "legendaLiteral": null,
+      "uso": "Nenhum por enquanto (150 px, pequeno demais). Sem derivado.",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [
+        "150×150 px: não serve como retrato. Ver retratos provisórios extraídos de vídeo."
+      ],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "monograma-tb",
+      "arquivo": "media-originais/marca/tensini-monograma-tb.svg",
+      "tipo": "marca-vetor",
+      "sha256": "67bfb9b08743d74337b604ad06076cd3a4dc4be4076fb929d0fb55dbbd20b082",
+      "largura": 100,
+      "altura": 100,
+      "postOrigem": {
+        "codigo": null,
+        "estado": "nao-se-aplica",
+        "nota": "Vetorizado pela WAXLO a partir do logo."
+      },
+      "legendaLiteral": null,
+      "uso": "Monograma TB (cor única, currentColor).",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [],
+      "edicoes": [],
+      "naoUsar": false
+    },
+    {
+      "id": "logo-raster-3d",
+      "arquivo": "media-originais/marca/Pedro-tensini-logo.JPG",
+      "tipo": "marca-raster",
+      "sha256": "154d5eda64705803e6728ecd65d7090c6332246d181a0ce064318c2e474e4f6a",
+      "largura": 2048,
+      "altura": 2048,
+      "postOrigem": {
+        "codigo": null,
+        "estado": "nao-se-aplica"
+      },
+      "legendaLiteral": null,
+      "uso": "Só referência (fonte do monograma e do nome 'TENSINI BARBIERI PROFESSIONALE').",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": ["Dourado 3D com brilho: contra a identidade (latão chapado)."],
+      "edicoes": [],
+      "naoUsar": true,
+      "motivoNaoUsar": "Raster 3D; só referência. O nome é tipografia."
+    },
+    {
+      "id": "monograma-comparacao",
+      "arquivo": "media-originais/marca/tensini-monograma-comparacao.png",
+      "tipo": "documentacao",
+      "sha256": "e989266ddc12437d1ed2b52658319d02287554e8e0d1ec62456b2ac69375c8d3",
+      "largura": 1300,
+      "altura": 560,
+      "postOrigem": {
+        "codigo": null,
+        "estado": "nao-se-aplica"
+      },
+      "legendaLiteral": null,
+      "uso": "Só documentação da vetorização do monograma.",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [],
+      "edicoes": [],
+      "naoUsar": true,
+      "motivoNaoUsar": "Documentação interna."
+    }
+  ],
+  "derivados": [
+    {
+      "id": "loop-hero",
+      "origem": "experiencia-babearia-verdadeira",
+      "arquivo": "media/loop-hero/",
+      "tipo": "loop",
+      "natureza": "video",
+      "postOrigem": {
+        "codigo": "DUbAeAMgLCK",
+        "estado": "indicado"
+      },
+      "legendaLiteral": null,
+      "uso": "Hero da home: loop mudo decorativo (aria-hidden + botão pausar global). Macro da máquina na barba.",
+      "trechos": [
+        {
+          "in": 16.55,
+          "out": 22.95
+        }
+      ],
+      "audioLiberado": false,
+      "video": {
+        "larguras": [720, 540],
+        "loop": {
+          "crossfade": 0.4
+        },
+        "limiteBytes": {
+          "720": 1200000
+        },
+        "poster": {
+          "janelaFonte": [19.15, 21.7],
+          "t": 21.0333
+        }
+      },
+      "problemas": [
+        "O pedido era 16–22 s; o trecho tem 3 planos (16,6 lateral com pente, 19,1 macro da Wahl vinho, 21,8 máquina no buço). Pegamos 16,55–22,95 (6,4 s) para fechar 6,0 s após o crossfade."
+      ],
+      "edicoes": [
+        "Corte 16,55–22,95 s.",
+        "Laço com crossfade de 0,4 s (fim do plano 3 dissolve no início do plano 1).",
+        "Rotação do laço para começar no pôster (quadro mais nítido do macro), para o pôster casar com o 1º quadro.",
+        "Sem áudio."
+      ],
+      "naoUsar": false
+    },
+    {
+      "id": "loop-degrade",
+      "origem": "corte1",
+      "arquivo": "media/loop-degrade/",
+      "tipo": "loop",
+      "natureza": "video",
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente"
+      },
+      "legendaLiteral": null,
+      "uso": "Seção Degradê: loop mudo decorativo (close do degradê na nuca + pezinho).",
+      "trechos": [
+        {
+          "in": 5.95,
+          "out": 7.82
+        },
+        {
+          "in": 8.75,
+          "out": 10.18
+        }
+      ],
+      "audioLiberado": false,
+      "video": {
+        "larguras": [720, 540],
+        "loop": {
+          "crossfade": 0.4
+        },
+        "poster": {
+          "janelaFonte": [6.3, 7.8],
+          "t": 6.9667
+        }
+      },
+      "problemas": [
+        "Os planos reais são 5,97–7,83 (nuca) e 8,77–10,20 (pezinho); entre eles há um plano do rosto do cliente (7,83–8,77), removido. Loop final ≈ 2,9 s."
+      ],
+      "edicoes": [
+        "Corte 5,95–7,82 + 8,75–10,18 s.",
+        "Laço com crossfade de 0,4 s.",
+        "Rotação do laço para começar no pôster.",
+        "Sem áudio."
+      ],
+      "naoUsar": false
+    },
+    {
+      "id": "resultado-1",
+      "origem": "corte-acabamento",
+      "arquivo": "media/resultado-1/",
+      "tipo": "video",
+      "natureza": "video",
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente"
+      },
+      "legendaLiteral": null,
+      "uso": "Seção Degradê e /degrade-em-lages: giro do resultado (perfil, nuca, perfil). Vídeo de conteúdo com controles.",
+      "trechos": [
+        {
+          "in": 26.62,
+          "out": 34.83
+        }
+      ],
+      "audioLiberado": false,
+      "video": {
+        "larguras": [720, 540],
+        "poster": {
+          "janelaFonte": [31.9, 34.7],
+          "t": 32.1333
+        }
+      },
+      "problemas": [
+        "Pedido 26–35 s; o plano do resultado começa em 26,6 s (antes é o Pedro finalizando de outro ângulo)."
+      ],
+      "edicoes": ["Corte 26,62–34,83 s.", "Sem áudio."],
+      "naoUsar": false
+    },
+    {
+      "id": "resultado-2",
+      "origem": "corte2",
+      "arquivo": "media/resultado-2/",
+      "tipo": "video",
+      "natureza": "video",
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente"
+      },
+      "legendaLiteral": null,
+      "uso": "Galeria de resultados: degradê baixo em vários ângulos. Vídeo de conteúdo com controles.",
+      "trechos": [
+        {
+          "in": 43.55,
+          "out": 60.32
+        }
+      ],
+      "audioLiberado": false,
+      "video": {
+        "larguras": [720, 540],
+        "poster": {
+          "janelaFonte": [43.6, 46.35],
+          "t": 46.2
+        }
+      },
+      "problemas": [
+        "Pedido 40–62 s. 38,8–43,6 s ainda é o Pedro cortando (máquina no pescoço e plano dele); de 60,5 s em diante há a transição para a vinheta com o logo raster 3D. Trecho final 43,55–60,32 s (16,8 s)."
+      ],
+      "edicoes": ["Corte 43,55–60,32 s.", "Sem áudio."],
+      "naoUsar": false
+    },
+    {
+      "id": "experiencia-completa",
+      "origem": "experiencia-babearia-verdadeira",
+      "arquivo": "media/experiencia-completa/",
+      "tipo": "video",
+      "natureza": "video",
+      "postOrigem": {
+        "codigo": "DUbAeAMgLCK",
+        "estado": "indicado"
+      },
+      "legendaLiteral": "Experiência de barbearia de verdade! Precisão em cada detalhe e excelência no resultado!",
+      "uso": "Seção Barba: vídeo completo com controles.",
+      "trechos": [
+        {
+          "in": 0,
+          "out": 59.49
+        }
+      ],
+      "audioLiberado": false,
+      "video": {
+        "larguras": [720, 540],
+        "poster": {
+          "janelaFonte": [19.15, 21.7],
+          "t": 21.0333
+        }
+      },
+      "problemas": [],
+      "edicoes": ["Sem áudio (trilha do Instagram)."],
+      "naoUsar": false
+    },
+    {
+      "id": "bastidores-site",
+      "origem": "bastidores",
+      "arquivo": "media/bastidores-site/",
+      "tipo": "video",
+      "natureza": "video",
+      "postOrigem": {
+        "codigo": "DZ0-DLwN-d1",
+        "estado": "indicado"
+      },
+      "legendaLiteral": "Bastidores da barbearia! Confere como é um dia com muita resenha e cortes!",
+      "uso": "Página Sobre / 'Um dia aqui': vídeo com controles.",
+      "trechos": [
+        {
+          "in": 2.52,
+          "out": 6.99
+        },
+        {
+          "in": 8.79,
+          "out": 56.19
+        }
+      ],
+      "audioLiberado": false,
+      "video": {
+        "larguras": [720, 540],
+        "poster": {
+          "janelaFonte": [10.45, 12.05],
+          "t": 11.7333
+        }
+      },
+      "problemas": [],
+      "edicoes": [
+        "Corte do selo queimado (0–2,53 s): o selo só ocupa o 1º plano, então sai por corte, sem apagamento.",
+        "Corte da tela da agenda (7,0–8,8 s).",
+        "Corte do quadro preto final.",
+        "Sem áudio (fala do Pedro aguarda liberação)."
+      ],
+      "naoUsar": false
+    },
+    {
+      "id": "pomadas",
+      "origem": "qual-pomada-certa",
+      "arquivo": "media/pomadas/",
+      "tipo": "video",
+      "natureza": "video",
+      "postOrigem": {
+        "codigo": "DWPtNZOD9Pw",
+        "estado": "indicado"
+      },
+      "legendaLiteral": "Nem toda pomada é igual… e usar a errada pode acabar com seu cabelo 👀 Brilho, fixação, efeito seco…",
+      "uso": "Página /pomadas: vídeo inteiro com controles (as legendas queimadas acompanham a fala).",
+      "trechos": [
+        {
+          "in": 0,
+          "out": 38.83
+        }
+      ],
+      "audioLiberado": false,
+      "video": {
+        "larguras": [720, 540],
+        "poster": {
+          "janelaFonte": [27, 29.4],
+          "t": 28.4667
+        }
+      },
+      "problemas": [
+        "Sem áudio, o vídeo depende das legendas queimadas.",
+        "CTA 'Segue esse perfil' queimado em 36–37 s."
+      ],
+      "edicoes": ["Sem áudio até liberação."],
+      "naoUsar": false
+    },
+    {
+      "id": "trajetoria",
+      "origem": "primeiro-video",
+      "arquivo": "media/trajetoria/",
+      "tipo": "video",
+      "natureza": "video",
+      "postOrigem": {
+        "codigo": "DMdJJJdu5AW",
+        "estado": "provavel"
+      },
+      "legendaLiteral": "Mais que um corte, uma experiência 💈 Atendimento com respeito, excelência e cuidado com cada detalhe!",
+      "uso": "Página Sobre (trajetória), uso médio: vídeo com controles.",
+      "trechos": [
+        {
+          "in": 0,
+          "out": 61.23
+        }
+      ],
+      "audioLiberado": false,
+      "video": {
+        "larguras": [720, 540],
+        "poster": {
+          "janelaFonte": [39, 41.6],
+          "t": 39.5333
+        }
+      },
+      "problemas": ["Qualidade menor."],
+      "edicoes": ["Sem áudio."],
+      "naoUsar": false
+    },
+    {
+      "id": "foto-toalha-quente",
+      "origem": "foto-barbaterapia-toalha",
+      "arquivo": "media/foto-toalha-quente/",
+      "tipo": "imagem",
+      "natureza": "foto",
+      "postOrigem": {
+        "codigo": "Dewh0h2DoBP",
+        "estado": "provavel"
+      },
+      "legendaLiteral": null,
+      "uso": "Barbaterapia, passo 1: toalha quente.",
+      "trechos": [],
+      "audioLiberado": false,
+      "recorte": {
+        "x": 36,
+        "y": 234,
+        "largura": 1008,
+        "altura": 756,
+        "provisorio": true,
+        "motivo": "Tira logo (até y≈226), título (y≈1003) e rodapé. Trocar pelo original sem texto do fotógrafo/agência."
+      },
+      "exibicaoMax": {
+        "larguraCss": 504,
+        "nota": "1008 px reais: até 504 px CSS em telas 2x."
+      },
+      "problemas": ["Recorte corta a testa e o cabelo do cliente."],
+      "edicoes": ["Recorte 4:3 1008×756 em (36, 234). Provisório."],
+      "naoUsar": false
+    },
+    {
+      "id": "foto-esfoliacao",
+      "origem": "foto-barbaterapia-esfoliacao",
+      "arquivo": "media/foto-esfoliacao/",
+      "tipo": "imagem",
+      "natureza": "foto",
+      "postOrigem": {
+        "codigo": "Dewh0h2DoBP",
+        "estado": "provavel"
+      },
+      "legendaLiteral": null,
+      "uso": "Barbaterapia, passo 2: esfoliação.",
+      "trechos": [],
+      "audioLiberado": false,
+      "recorte": {
+        "x": 36,
+        "y": 234,
+        "largura": 1008,
+        "altura": 756,
+        "provisorio": true,
+        "motivo": "Tira logo, título e rodapé. Trocar pelo original sem texto."
+      },
+      "exibicaoMax": {
+        "larguraCss": 504,
+        "nota": "1008 px reais: até 504 px CSS em telas 2x."
+      },
+      "problemas": ["Recorte corta o topo da cabeça."],
+      "edicoes": ["Recorte 4:3 1008×756 em (36, 234). Provisório."],
+      "naoUsar": false
+    },
+    {
+      "id": "foto-navalha",
+      "origem": "foto-barbaterapia-navalha",
+      "arquivo": "media/foto-navalha/",
+      "tipo": "imagem",
+      "natureza": "foto",
+      "postOrigem": {
+        "codigo": "Dewh0h2DoBP",
+        "estado": "provavel"
+      },
+      "legendaLiteral": null,
+      "uso": "Barbaterapia, passo 4: navalha.",
+      "trechos": [],
+      "audioLiberado": false,
+      "recorte": {
+        "x": 36,
+        "y": 234,
+        "largura": 1008,
+        "altura": 756,
+        "provisorio": true,
+        "motivo": "Tira logo, título (y≈1070) e rodapé. Trocar pelo original sem texto."
+      },
+      "exibicaoMax": {
+        "larguraCss": 504,
+        "nota": "1008 px reais: até 504 px CSS em telas 2x."
+      },
+      "problemas": ["Recorte corta a mão com o pente no topo."],
+      "edicoes": ["Recorte 4:3 1008×756 em (36, 234). Provisório."],
+      "naoUsar": false
+    },
+    {
+      "id": "foto-barba-finalizada",
+      "origem": "foto-barbaterapia-finalizada",
+      "arquivo": "media/foto-barba-finalizada/",
+      "tipo": "imagem",
+      "natureza": "foto",
+      "postOrigem": {
+        "codigo": "Dewh0h2DoBP",
+        "estado": "provavel"
+      },
+      "legendaLiteral": null,
+      "uso": "Barbaterapia, passo 5: barba finalizada.",
+      "trechos": [],
+      "audioLiberado": false,
+      "recorte": {
+        "x": 72,
+        "y": 234,
+        "largura": 1008,
+        "altura": 756,
+        "provisorio": true,
+        "motivo": "Tira logo (sobre a parede verde), título e rodapé. Trocar pelo original sem texto."
+      },
+      "exibicaoMax": {
+        "larguraCss": 504,
+        "nota": "1008 px reais: até 504 px CSS em telas 2x."
+      },
+      "problemas": [],
+      "edicoes": ["Recorte 4:3 1008×756 em (72, 234). Provisório."],
+      "naoUsar": false
+    },
+    {
+      "id": "monograma",
+      "origem": "monograma-tb",
+      "arquivo": "media/monograma/",
+      "tipo": "vetor",
+      "natureza": "vetor",
+      "postOrigem": {
+        "codigo": null,
+        "estado": "nao-se-aplica"
+      },
+      "legendaLiteral": null,
+      "uso": "Monograma TB (cópia do SVG, sem alteração).",
+      "trechos": [],
+      "audioLiberado": false,
+      "problemas": [],
+      "edicoes": [
+        "Cópia do SVG original para public/media/ (sem alteração).",
+        "O site usa src/components/marca/tensini-monograma-tb.limpo.svg: 2 entalhes do bevel na barra horizontal removidos (bico em 205,9/230,2 e degrau em 317/235,8) e o gancho do canto do I alisado. Só nós ajustados; desenho igual (sessão 3)."
+      ],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-maquina-vinho",
+      "origem": "experiencia-babearia-verdadeira",
+      "arquivo": "media/quadro-maquina-vinho/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DUbAeAMgLCK",
+        "estado": "indicado"
+      },
+      "legendaLiteral": null,
+      "uso": "Detalhe: máquina vinho na luva preta.",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [29.55, 30.8],
+        "t": 30.2333
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-navalha",
+      "origem": "experiencia-babearia-verdadeira",
+      "arquivo": "media/quadro-navalha/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DUbAeAMgLCK",
+        "estado": "indicado"
+      },
+      "legendaLiteral": null,
+      "uso": "Detalhe: navalha na barba.",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [48.45, 49.7],
+        "t": 48.8667
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-resultado-barba",
+      "origem": "experiencia-babearia-verdadeira",
+      "arquivo": "media/quadro-resultado-barba/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DUbAeAMgLCK",
+        "estado": "indicado"
+      },
+      "legendaLiteral": null,
+      "uso": "Resultado da barba, cliente sorrindo.",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [57.6, 59.4],
+        "t": 57.6
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": ["Rosto de cliente (autorizado pelo João). Nenhum nome."],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-parede-verde",
+      "origem": "corte1",
+      "arquivo": "media/quadro-parede-verde/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente"
+      },
+      "legendaLiteral": null,
+      "uso": "Plano geral com a parede verde (ambiente).",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [10.25, 12.7],
+        "t": 11.9
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-pedro-concentrado",
+      "origem": "corte1",
+      "arquivo": "media/quadro-pedro-concentrado/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente"
+      },
+      "legendaLiteral": null,
+      "uso": "Pedro concentrado no trabalho.",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [12.8, 14.8],
+        "t": 14.7333
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-barbearia-geral",
+      "origem": "bastidores",
+      "arquivo": "media/quadro-barbearia-geral/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DZ0-DLwN-d1",
+        "estado": "indicado"
+      },
+      "legendaLiteral": null,
+      "uso": "Plano geral da barbearia (ambiente, Como chegar).",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [10.45, 12.05],
+        "t": 11.7333
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": ["Câmera de celular: menos nitidez."],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-cafe-coado",
+      "origem": "bastidores",
+      "arquivo": "media/quadro-cafe-coado/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DZ0-DLwN-d1",
+        "estado": "indicado"
+      },
+      "legendaLiteral": null,
+      "uso": "Café sendo coado (prova do atendimento com café).",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [12.15, 14.7],
+        "t": 14
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-cafe-servido",
+      "origem": "bastidores",
+      "arquivo": "media/quadro-cafe-servido/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DZ0-DLwN-d1",
+        "estado": "indicado"
+      },
+      "legendaLiteral": null,
+      "uso": "Café entregue ao cliente na cadeira.",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [4.45, 5.33],
+        "t": 5
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": ["Câmera de celular, plano curto."],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-resultado-perfil",
+      "origem": "corte-acabamento",
+      "arquivo": "media/quadro-resultado-perfil/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente"
+      },
+      "legendaLiteral": null,
+      "uso": "Resultado do degradê de perfil.",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [31.87, 34.7],
+        "t": 32.1333
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-resultado-nuca",
+      "origem": "corte-acabamento",
+      "arquivo": "media/quadro-resultado-nuca/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente"
+      },
+      "legendaLiteral": null,
+      "uso": "Resultado do degradê na nuca.",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [28.57, 31.8],
+        "t": 31.4667
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "quadro-sobrancelha-navalha",
+      "origem": "primeiro-video",
+      "arquivo": "media/quadro-sobrancelha-navalha/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DMdJJJdu5AW",
+        "estado": "provavel"
+      },
+      "legendaLiteral": null,
+      "uso": "Página /sobrancelha: mídia principal provisória (navalha e pente na linha do cabelo, logo acima da sobrancelha).",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [27.67, 29],
+        "t": 28.5667
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [
+        "Vídeo mais antigo, qualidade menor que os demais.",
+        "O vídeo não tem plano claro da sobrancelha sendo feita: a navalha aparece na linha do cabelo, acima da sobrancelha. Pedir foto ou vídeo real do serviço."
+      ],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
+      "id": "retrato-provisorio-1",
+      "origem": "experiencia-babearia-verdadeira",
+      "arquivo": "media/retrato-provisorio-1/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DUbAeAMgLCK",
+        "estado": "indicado"
+      },
+      "legendaLiteral": null,
+      "uso": "Retrato provisório do Pedro (óculos, camiseta branca).",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [15.17, 16.53],
+        "regiaoNitidez": {
+          "x": 120,
+          "y": 0,
+          "largura": 440,
+          "altura": 420
+        },
+        "t": 16.2
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [
+        "Provisório até existir retrato profissional. Pedro olha para o cliente, não para a câmera."
+      ],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false,
+      "provisorio": true
+    },
+    {
+      "id": "retrato-provisorio-2",
+      "origem": "corte1",
+      "arquivo": "media/retrato-provisorio-2/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": null,
+        "estado": "pendente"
+      },
+      "legendaLiteral": null,
+      "uso": "Retrato provisório do Pedro (trabalhando, parede verde).",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [12.8, 14.8],
+        "regiaoNitidez": {
+          "x": 120,
+          "y": 60,
+          "largura": 400,
+          "altura": 420
+        },
+        "t": 14.4667
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": ["Provisório. Olhar para baixo (concentrado)."],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false,
+      "provisorio": true
+    },
+    {
+      "id": "retrato-provisorio-3",
+      "origem": "qual-pomada-certa",
+      "arquivo": "media/retrato-provisorio-3/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DWPtNZOD9Pw",
+        "estado": "indicado"
+      },
+      "legendaLiteral": null,
+      "uso": "Retrato provisório do Pedro (de frente, falando).",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [25.3, 29.4],
+        "regiaoNitidez": {
+          "x": 220,
+          "y": 100,
+          "largura": 300,
+          "altura": 330
+        },
+        "t": 27.9333
+      },
+      "recorte": {
+        "x": 0,
+        "y": 0,
+        "largura": 720,
+        "altura": 720,
+        "provisorio": true,
+        "motivo": "Recorte quadrado acima das legendas queimadas (y≈770)."
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "720×720 reais: até 360 px CSS em telas 2x."
+      },
+      "problemas": ["Provisório. Câmera de celular; legenda queimada fica fora do recorte."],
+      "edicoes": [
+        "Quadro mais nítido da janela (nitidez medida no rosto).",
+        "Recorte quadrado 720×720 em (0, 0)."
+      ],
+      "naoUsar": false,
+      "provisorio": true
+    }
+  ]
+}

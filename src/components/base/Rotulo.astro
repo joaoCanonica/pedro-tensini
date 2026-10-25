@@ -1,0 +1,19 @@
+---
+// Rótulo em caixa alta espaçada (eco do "BARBIERI" do logo).
+interface Props {
+  as?: 'span' | 'p' | 'h2' | 'h3';
+  acento?: boolean;
+  class?: string;
+}
+const { as: Tag = 'span', acento = false, class: classe } = Astro.props;
+---
+
+<Tag class:list={['rotulo', { 'rotulo--acento': acento }, classe]}>
+  <slot />
+</Tag>
+
+<style>
+  .rotulo--acento {
+    color: var(--acento-texto);
+  }
+</style>

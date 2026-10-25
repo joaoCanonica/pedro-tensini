@@ -1,0 +1,71 @@
+---
+// 2 · O degradê: o gesto é o zoom de acabamento. Ao lado, o loop do degradê na moldura espelho.
+import Secao from './Secao.astro';
+import ZoomAcabamento from './ZoomAcabamento.astro';
+import MolduraVideo from '../base/MolduraVideo.astro';
+import Citacao from '../base/Citacao.astro';
+import { secao } from './textos.ts';
+
+const t = secao('2 ·');
+const citacao = t.citacoes[0];
+---
+
+<Secao id="degrade" superficie="base" valor="2" rotulo="O degradê" titulo={t.titulo}>
+  <div class="envelope degrade">
+    <div class="degrade__texto">
+      {t.paragrafos.map((p) => (
+        <p class="medida">{p}</p>
+      ))}
+      {citacao && <Citacao texto={citacao.texto} fonte={citacao.fonte} tamanho="m" />}
+      <p>
+        <a class="link" href="/degrade-em-lages/">
+          {t.links[0] ?? 'Entenda o degradê'}
+        </a>
+      </p>
+    </div>
+    <div class="degrade__zoom">
+      <ZoomAcabamento
+        x={0.6}
+        y={0.5}
+        escala={1.8}
+        id="quadro-resultado-nuca"
+        alt="Degradê pronto visto da nuca, com a transição do curto ao longo"
+      />
+    </div>
+    <div class="degrade__loop">
+      <MolduraVideo
+        id="loop-degrade"
+        tipo="loop"
+        descricao="Close do degradê na nuca e do acabamento do pezinho"
+        legenda="Na máquina e na shaver: o degradê sendo feito."
+        sizes="(min-width: 60rem) 20rem, 70vw"
+      />
+    </div>
+  </div>
+</Secao>
+
+<style>
+  .degrade {
+    display: grid;
+    gap: var(--e-7);
+  }
+  .degrade__texto {
+    display: grid;
+    gap: var(--e-5);
+    align-content: start;
+  }
+  .degrade__loop {
+    justify-self: center;
+    width: min(100%, 20rem);
+  }
+  @media (min-width: 60rem) {
+    .degrade {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 26rem) minmax(0, 18rem);
+      align-items: start;
+      gap: clamp(2rem, 4vw, 4.5rem);
+    }
+    .degrade__loop {
+      margin-top: var(--e-9);
+    }
+  }
+</style>

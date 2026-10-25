@@ -1,0 +1,66 @@
+---
+// (c) Borda entre seções em hachura de linhas paralelas com densidade decrescente,
+// como o fade na nuca: as linhas da cor de baixo engrossam até fechar.
+// Estática; acende uma vez ao entrar na tela (máscara animada via @property).
+type Sup = 'base' | 'contraste' | 'navy';
+interface Props {
+  de: Sup;
+  para: Sup;
+  /** Altura em px. */
+  altura?: number;
+  linhas?: number;
+}
+const { de, para, altura = 96, linhas = 12 } = Astro.props;
+const passo = altura / linhas;
+// Espessura cresce de 1 px até fechar o passo (curva ^1.6): a densidade cai de baixo para cima.
+const faixas = Array.from({ length: linhas }, (_, i) => {
+  const w = Math.max(1, passo * ((i + 1) / linhas) ** 1.6);
+  return { y: +(i * passo + (passo - w)).toFixed(2), h: +w.toFixed(2) };
+});
+---
+
+<div
+  class="borda-degrade"
+  data-acender=""
+  aria-hidden="true"
+  style={`--de: var(--fundo-${de}); --para: var(--fundo-${para}); height: ${altura}px`}
+>
+  <svg viewBox={`0 0 100 ${altura}`} preserveAspectRatio="none" width="100%" height={altura}>
+    {faixas.map((f) => (
+      <rect x="0" y={f.y} width="100" height={f.h} fill="currentColor" />
+    ))}
+  </svg>
+</div>
+
+<script src="./revelar.ts"></script>
+
+<style>
+  @property --acender {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 100%;
+  }
+  .borda-degrade {
+    display: block;
+    background: var(--de);
+    color: var(--para);
+  }
+  .borda-degrade svg {
+    width: 100%;
+    height: 100%;
+    --acender: 100%;
+    mask-image: linear-gradient(
+      90deg,
+      #000 var(--acender),
+      rgb(0 0 0 / 0.18) calc(var(--acender) + 18%)
+    );
+  }
+  @media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+    .borda-degrade[data-acender=''] svg {
+      --acender: -18%;
+    }
+    .borda-degrade svg {
+      transition: --acender var(--dur-3) var(--curva);
+    }
+  }
+</style>

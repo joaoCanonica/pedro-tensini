@@ -1,0 +1,94 @@
+---
+// Variante "assinatura": monograma + TENSINI em caixa alta espaçada + régua fina com
+// losango central (eco do logo) + BARBIERI. O nome é tipografia; o logo raster não vai ao site.
+import Monograma from './Monograma.astro';
+import { nomeCanonico } from '../../config/marca.ts';
+import { valorPreview } from '../../config/tipos.ts';
+
+interface Props {
+  tamanho?: 'p' | 'm' | 'g';
+  class?: string;
+}
+
+const { tamanho = 'm', class: classe } = Astro.props;
+const nome = valorPreview(nomeCanonico) ?? 'Tensini Barbieri';
+const [primeiro = '', ...resto] = nome.split(' ');
+const segundo = resto.join(' ');
+---
+
+<div
+  class:list={['assinatura', `assinatura--${tamanho}`, classe]}
+  role="img"
+  aria-label={`${nome}, monograma TB`}
+>
+  <Monograma titulo="" class="assinatura__mono" tamanho="var(--mono)" />
+  <span class="assinatura__nome" aria-hidden="true">
+    {primeiro}
+  </span>
+  <span class="assinatura__regua" aria-hidden="true">
+    <span class="assinatura__losango"></span>
+  </span>
+  <span class="assinatura__sub" aria-hidden="true">
+    {segundo}
+  </span>
+</div>
+
+<style>
+  .assinatura {
+    --mono: 5.5rem;
+    --nome: 1.75rem;
+    display: inline-grid;
+    justify-items: center;
+    gap: 0.6em;
+    color: var(--acento);
+    font-size: var(--nome);
+  }
+  .assinatura--p {
+    --mono: 3rem;
+    --nome: 1.05rem;
+  }
+  .assinatura--g {
+    --mono: clamp(6rem, 4rem + 8vw, 10rem);
+    --nome: clamp(1.75rem, 1.2rem + 2vw, 3rem);
+  }
+  .assinatura__nome {
+    font-family: var(--fonte-titulo);
+    font-size: 1em;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    margin-inline-end: -0.2em;
+    text-transform: uppercase;
+  }
+  .assinatura__regua {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-width: 7em;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      currentColor 12%,
+      currentColor 88%,
+      transparent
+    );
+  }
+  .assinatura__losango {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.32em;
+    height: 0.32em;
+    background: currentColor;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .assinatura__sub {
+    font-family: var(--fonte-texto);
+    font-size: 0.42em;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.42em;
+    margin-inline-end: -0.42em;
+    text-transform: uppercase;
+  }
+</style>

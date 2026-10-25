@@ -1,0 +1,83 @@
+---
+// Botões. primario: "Agendar no WhatsApp" (latão chapado, ícone oficial sem círculo).
+// secundario: borda fina, para "Como chegar" e "Ligar". Cantos quase retos (nada de pílula).
+import IconeWhatsApp from './IconeWhatsApp.astro';
+import { ctaWhatsApp, type OrigemWhatsApp } from '../../lib/whatsapp.ts';
+
+interface Props {
+  variante?: 'primario' | 'secundario';
+  /** Sem href no primário: WhatsApp (ctaWhatsApp) com a mensagem do contexto. */
+  href?: string;
+  whatsapp?: boolean;
+  /** Origem do CTA de WhatsApp (só para a medição; não vai na URL). Obrigatória sem href. */
+  origem?: OrigemWhatsApp;
+  /** Serviço já escolhido ("degradê"): entra na mensagem e no evento. */
+  servico?: string;
+  /** Atributos de medição de outros CTAs (rotas: ctaRota). */
+  dados?: Record<string, string>;
+  class?: string;
+}
+const {
+  variante = 'primario',
+  whatsapp = variante === 'primario',
+  origem,
+  servico,
+  dados = {},
+  class: classe,
+} = Astro.props;
+let href = Astro.props.href ?? '#';
+let atributos: Record<string, string> = { ...dados };
+if (whatsapp && !Astro.props.href) {
+  if (!origem) throw new Error('Botão de WhatsApp sem "origem" (medição do funil).');
+  const { href: link, ...cta } = ctaWhatsApp(origem, servico ? { servico } : {});
+  href = link;
+  atributos = { ...atributos, ...cta };
+}
+---
+
+<a class:list={['botao', `botao--${variante}`, classe]} href={href} {...atributos}>
+  {whatsapp && <IconeWhatsApp />}
+  <span>
+    <slot />
+  </span>
+</a>
+
+<style>
+  .botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+    min-height: 3rem;
+    padding: 0.8rem 1.4rem;
+    border-radius: var(--raio);
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+      background-color var(--dur-1) var(--curva),
+      color var(--dur-1) var(--curva),
+      box-shadow var(--dur-2) var(--curva);
+  }
+  .botao--primario {
+    background: var(--botao-fundo);
+    color: var(--botao-texto);
+  }
+  /* Hover: um fio de latão por baixo, como a linha da passada. */
+  .botao--primario:hover {
+    box-shadow: 0 3px 0 -1px var(--acento);
+  }
+  .botao--secundario {
+    border: 1px solid var(--botao-2-borda);
+    color: var(--texto);
+  }
+  .botao--secundario:hover {
+    border-color: var(--texto);
+  }
+  .botao:active {
+    transform: translateY(1px);
+  }
+</style>

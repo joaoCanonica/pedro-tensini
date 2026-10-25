@@ -1,0 +1,83 @@
+---
+// Seção das páginas de serviço. Diferente da home: título numa coluna estreita à esquerda
+// (fica parado enquanto o conteúdo passa, no desktop), conteúdo largo à direita. Ficha
+// técnica, não vitrine.
+import Selo from '../../components/secoes/Selo.astro';
+
+interface Props {
+  id: string;
+  titulo: string;
+  /** Rótulo curto acima do título. */
+  rotulo?: string;
+  superficie?: 'base' | 'contraste' | 'navy';
+  /** Motivos PROVISÓRIO desta seção (selo só no preview). */
+  provisorios?: string[];
+  class?: string;
+}
+const { id, titulo, rotulo, superficie = 'base', provisorios = [], class: classe } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={['faixa', classe]}
+  data-superficie={superficie}
+  aria-labelledby={`${id}-titulo`}
+>
+  <div class="faixa__grade">
+    <header class="faixa__cabeca">
+      {rotulo && <p class="rotulo faixa__rotulo">{rotulo}</p>}
+      <h2 id={`${id}-titulo`} class="faixa__titulo">
+        {titulo}
+      </h2>
+      {provisorios.length > 0 && <Selo titulo={provisorios.join(' · ')} />}
+    </header>
+    <div class="faixa__corpo">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .faixa {
+    padding-block: var(--e-8);
+  }
+  .faixa__grade {
+    width: min(100% - 2 * var(--margem), 80rem);
+    margin-inline: auto;
+    display: grid;
+    gap: var(--e-5) var(--e-7);
+  }
+  .faixa__cabeca {
+    display: grid;
+    gap: var(--e-3);
+    align-content: start;
+    justify-items: start;
+    padding-top: var(--e-3);
+    border-top: 1px solid var(--linha);
+  }
+  .faixa__rotulo {
+    color: var(--acento-texto);
+  }
+  .faixa__titulo {
+    font-size: var(--fs-2);
+    max-width: 14ch;
+  }
+  .faixa__corpo {
+    display: grid;
+    gap: var(--e-5);
+    min-width: 0;
+  }
+  @media (min-width: 60rem) {
+    .faixa__grade {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    }
+    .faixa__cabeca {
+      position: sticky;
+      top: var(--e-6);
+    }
+    .faixa__corpo {
+      padding-top: var(--e-3);
+      border-top: 1px solid var(--linha);
+    }
+  }
+</style>

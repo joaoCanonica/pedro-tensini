@@ -1,0 +1,116 @@
+---
+// /agendar: destino dos QR codes e da bio do Instagram. Só o montador, o horário e o local.
+// Sem distração: sem vídeo, sem barra fixa (a página inteira já é o agendar).
+import Pagina from '../layouts/Pagina.astro';
+import Montador from '../components/secoes/Montador.astro';
+import Endereco from '../components/secoes/Endereco.astro';
+import StatusAoVivo from '../components/base/StatusAoVivo.astro';
+import TabelaHorario from '../components/base/TabelaHorario.astro';
+import { telefone, whatsapp } from '../config/contato.ts';
+import { ctaWhatsApp } from '../lib/whatsapp.ts';
+import { ctaLigar } from '../lib/medicao.ts';
+import { pagina } from '../layouts/servico/pagina.ts';
+
+const p = pagina('agendar');
+const tel = whatsapp.estado === 'confirmado' ? `tel:+${whatsapp.valor}` : null;
+---
+
+<Pagina
+  titulo={p.title}
+  descricao={p.description}
+  trilha={[
+    { nome: 'Início', rota: '/' },
+    { nome: 'Agendar', rota: '/agendar/' },
+  ]}
+  barra={false}
+>
+  <section class="agendar" data-superficie="base" aria-labelledby="agendar-titulo">
+    <div class="agendar__grade envelope-s">
+      <div class="agendar__montador">
+        <h1 id="agendar-titulo" class="agendar__titulo">
+          {p.h1}
+        </h1>
+        <p class="agendar__resposta">{p.resposta}</p>
+        <Montador />
+        <p class="pequeno agendar__direto">
+          Prefere escrever do seu jeito?{' '}
+          <a class="link" {...ctaWhatsApp('agendar')}>
+            WhatsApp {telefone.valor}
+          </a>
+          {tel && (
+            <>
+              {' '}
+              ·{' '}
+              <a class="link" href={tel} {...ctaLigar()}>
+                Ligar
+              </a>
+            </>
+          )}
+        </p>
+      </div>
+      <aside class="agendar__local" aria-label="Horário e local">
+        <div class="agendar__status">
+          <StatusAoVivo />
+        </div>
+        <TabelaHorario />
+        <div class="agendar__onde">
+          <p class="rotulo secundario">Onde</p>
+          <Endereco />
+          <a class="link pequeno" href="/como-chegar/">
+            Como chegar
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Pagina>
+
+<style>
+  .agendar {
+    padding-block: var(--e-5) var(--e-8);
+  }
+  .agendar__grade {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--e-7);
+  }
+  .agendar__montador {
+    min-width: 0;
+    display: grid;
+    gap: var(--e-5);
+    align-content: start;
+    max-width: 44rem;
+  }
+  .agendar__titulo {
+    font-size: var(--fs-1);
+    line-height: 1;
+  }
+  .agendar__resposta {
+    max-width: 46ch;
+  }
+  .agendar__local {
+    display: grid;
+    gap: var(--e-5);
+    align-content: start;
+  }
+  .agendar__status {
+    font-size: var(--fs-3);
+  }
+  .agendar__onde {
+    display: grid;
+    gap: var(--e-2);
+    justify-items: start;
+    padding-top: var(--e-4);
+    border-top: 1px solid var(--linha);
+  }
+  @media (min-width: 60rem) {
+    .agendar__grade {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      column-gap: var(--e-8);
+    }
+    .agendar__local {
+      position: sticky;
+      top: var(--e-5);
+    }
+  }
+</style>

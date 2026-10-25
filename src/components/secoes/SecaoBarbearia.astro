@@ -1,0 +1,110 @@
+---
+// 3 · A barbearia: still do plano geral grande e sangrado, texto curto, detalhe do café
+// e a linha do endereço em destaque.
+import Secao from './Secao.astro';
+import Poster from '../base/Poster.astro';
+import Citacao from '../base/Citacao.astro';
+import { secao, MARCADORES } from './textos.ts';
+
+const t = secao('3 ·');
+// Parágrafo-resposta (quem, onde, o quê, quando) logo depois do hero: é o que Google e IAs citam.
+const resposta = secao('Hero').paragrafos.find((p) => p.includes('Galeria Augusta')) ?? '';
+const citacao = t.citacoes[0];
+---
+
+<Secao id="barbearia" superficie="contraste" valor="3" rotulo="A barbearia" titulo={t.titulo}>
+  {resposta && (
+    <div class="envelope">
+      <p class="barbearia__resposta">{resposta}</p>
+    </div>
+  )}
+  <div class="barbearia">
+    <figure class="barbearia__plano">
+      <Poster
+        id="quadro-parede-verde"
+        alt="O Pedro cortando o cabelo de um cliente na cadeira, com a parede verde ao lado"
+        sizes="(min-width: 60rem) 46vw, 100vw"
+      />
+    </figure>
+    <div class="barbearia__texto">
+      {t.paragrafos.map((p) => (
+        <p>{p}</p>
+      ))}
+      <p class="barbearia__endereco">
+        <a class="link" href="/como-chegar/">
+          {MARCADORES['endereco.curto']}
+        </a>
+      </p>
+      <figure class="barbearia__cafe">
+        <Poster
+          id="quadro-cafe-coado"
+          alt="Café sendo coado no filtro, com a parede verde atrás"
+          sizes="(min-width: 60rem) 15rem, 45vw"
+        />
+        <figcaption class="pequeno secundario">O café sai na hora.</figcaption>
+      </figure>
+      {citacao && <Citacao texto={citacao.texto} fonte={citacao.fonte} tamanho="m" />}
+    </div>
+  </div>
+</Secao>
+
+<style>
+  .barbearia__resposta {
+    max-width: 44ch;
+    margin-bottom: var(--e-7);
+    font-size: var(--fs-3);
+    line-height: 1.4;
+  }
+  .barbearia {
+    display: grid;
+    gap: var(--e-7);
+  }
+  .barbearia__plano {
+    margin: 0;
+  }
+  .barbearia__plano :global(.poster) {
+    aspect-ratio: 4 / 5 !important;
+  }
+  .barbearia__texto {
+    display: grid;
+    gap: var(--e-5);
+    align-content: start;
+    width: min(100% - 2 * var(--margem), 34rem);
+    margin-inline: auto;
+  }
+  .barbearia__endereco {
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-3);
+    line-height: 1.25;
+  }
+  .barbearia__cafe {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: var(--e-4);
+    align-items: end;
+    margin: var(--e-3) 0;
+  }
+  .barbearia__cafe :global(.poster) {
+    aspect-ratio: 3 / 4 !important;
+  }
+  @media (min-width: 60rem) {
+    .barbearia {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      align-items: start;
+      gap: clamp(2rem, 5vw, 6rem);
+    }
+    /* Sangrado: o plano encosta na borda esquerda da tela. */
+    .barbearia__plano :global(.poster) {
+      aspect-ratio: 3 / 4 !important;
+      max-height: 92svh;
+    }
+    .barbearia__texto {
+      width: auto;
+      margin: 0;
+      padding-inline-end: var(--margem);
+    }
+    .barbearia__cafe {
+      grid-template-columns: 13rem 1fr;
+    }
+  }
+</style>

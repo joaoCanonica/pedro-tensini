@@ -1,0 +1,120 @@
+---
+// ½ · Resultados e o que dizem: dois resultados em janelas verticais e as 2 avaliações do
+// Google, literais, com nome e data de conferência. Sem estrelas, sem média gigante.
+import Secao from './Secao.astro';
+import MolduraVideo from '../base/MolduraVideo.astro';
+import { secao } from './textos.ts';
+import { google } from '../../config/avaliacoes.ts';
+import { variacoesVistas } from '../../config/marca.ts';
+
+const t = secao('½');
+const conferido = google.conferidoEm.split('-').reverse().join('/');
+const fichaGoogle = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${variacoesVistas[2].nome}, Lages`)}`;
+const avaliacoes = google.trechos.map((a) => a.valor);
+---
+
+<Secao
+  id="resultados"
+  superficie="base"
+  valor="½"
+  rotulo="Resultados e o que dizem"
+  titulo={t.titulo}
+>
+  <div class="envelope resultados">
+    <div class="resultados__videos">
+      <MolduraVideo
+        id="resultado-1"
+        descricao="Resultado do degradê girando: perfil, nuca e o outro perfil, com a transição do curto ao longo. Sem som."
+        sizes="(min-width: 60rem) 17rem, 44vw"
+      />
+      <MolduraVideo
+        id="resultado-2"
+        descricao="Degradê baixo pronto, visto de perfil, de trás e de frente, enquanto o Pedro finaliza o penteado. Sem som."
+        sizes="(min-width: 60rem) 17rem, 44vw"
+      />
+    </div>
+    <div class="resultados__dizem">
+      <ul class="avaliacoes" role="list">
+        {avaliacoes.map((a) => (
+          <li>
+            <figure>
+              <blockquote>
+                <p>“{a.texto}”</p>
+              </blockquote>
+              <figcaption>
+                <span class="rotulo">{a.autor}</span>
+                <span class="pequeno secundario">
+                  Avaliação no Google · conferida em {conferido}
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        ))}
+      </ul>
+      <p class="pequeno secundario">No Google: {t.campos['Nota no Google']}</p>
+      <p class="medida">{t.campos['Convite']}</p>
+      <p class="resultados__links">
+        <a class="link" href={fichaGoogle}>
+          Ver no Google
+        </a>
+        <a class="link" href="/avaliar/">
+          Avaliar o Pedro
+        </a>
+      </p>
+    </div>
+  </div>
+</Secao>
+
+<style>
+  .resultados {
+    display: grid;
+    gap: var(--e-7);
+  }
+  .resultados__videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--e-4);
+    align-items: start;
+  }
+  .resultados__videos > :global(.moldura:nth-child(2)) {
+    margin-top: var(--e-8);
+  }
+  .resultados__dizem {
+    display: grid;
+    gap: var(--e-5);
+    align-content: start;
+  }
+  .avaliacoes {
+    display: grid;
+    gap: var(--e-6);
+    padding: 0;
+    margin: 0 0 var(--e-3);
+    list-style: none;
+  }
+  .avaliacoes blockquote p {
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-2);
+    line-height: 1.1;
+  }
+  .avaliacoes figcaption {
+    display: grid;
+    gap: var(--e-1);
+    margin-top: var(--e-3);
+    padding-top: var(--e-3);
+    border-top: 1px solid var(--linha);
+  }
+  .avaliacoes .rotulo {
+    color: var(--acento-texto);
+  }
+  .resultados__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-6);
+  }
+  @media (min-width: 60rem) {
+    .resultados {
+      grid-template-columns: minmax(0, 36rem) minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 7rem);
+    }
+  }
+</style>
