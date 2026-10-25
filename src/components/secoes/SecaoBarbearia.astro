@@ -7,10 +7,17 @@ import Citacao from '../base/Citacao.astro';
 import { secao, MARCADORES } from './textos.ts';
 
 const t = secao('3 ·');
+// Parágrafo-resposta (quem, onde, o quê, quando) logo depois do hero: é o que Google e IAs citam.
+const resposta = secao('Hero').paragrafos.find((p) => p.includes('Galeria Augusta')) ?? '';
 const citacao = t.citacoes[0];
 ---
 
 <Secao id="barbearia" superficie="contraste" valor="3" rotulo="A barbearia" titulo={t.titulo}>
+  {resposta && (
+    <div class="envelope">
+      <p class="barbearia__resposta">{resposta}</p>
+    </div>
+  )}
   <div class="barbearia">
     <figure class="barbearia__plano">
       <Poster
@@ -42,6 +49,12 @@ const citacao = t.citacoes[0];
 </Secao>
 
 <style>
+  .barbearia__resposta {
+    max-width: 44ch;
+    margin-bottom: var(--e-7);
+    font-size: var(--fs-3);
+    line-height: 1.4;
+  }
   .barbearia {
     display: grid;
     gap: var(--e-7);

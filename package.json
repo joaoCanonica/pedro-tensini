@@ -13,7 +13,7 @@
     "dev": "astro dev",
     "prebuild": "pnpm media:prepare && pnpm validate-config",
     "build": "astro build",
-    "postbuild": "pnpm audit-compliance",
+    "postbuild": "pnpm audit-compliance && pnpm audit-seo",
     "preview": "astro preview",
     "check": "astro check && eslint . && prettier --check . && pnpm audit-textos",
     "test": "pnpm test-config",
@@ -37,8 +37,10 @@
     "astro": "7.4.2"
   },
   "devDependencies": {
+    "@adobe/structured-data-validator": "1.7.0",
     "@astrojs/check": "0.9.12",
     "@eslint/js": "10.0.1",
+    "@marbec/web-auto-extractor": "2.2.1",
     "@types/node": "^24.19.2",
     "@types/qrcode": "1.5.5",
     "ajv": "8.20.0",
@@ -49,6 +51,7 @@
     "prettier": "3.9.10",
     "prettier-plugin-astro": "1.1.2",
     "qrcode": "1.5.4",
+    "schema-dts": "2.1.0",
     "sharp": "0.35.5",
     "typescript": "6.0.3",
     "typescript-eslint": "8.72.0"

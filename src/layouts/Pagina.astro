@@ -8,7 +8,7 @@ import Monograma from '../components/marca/Monograma.astro';
 import Rodape from '../components/secoes/Rodape.astro';
 import BarraAgendar from '../components/secoes/BarraAgendar.astro';
 import Consentimento from '../components/consentimento/Consentimento.astro';
-import { siteUrl } from '../config/seo.ts';
+import Seo from '../components/seo/Seo.astro';
 import { MARCADORES } from '../components/secoes/textos.ts';
 
 export interface ItemTrilha {
@@ -25,22 +25,25 @@ interface Props {
   /** Serviço já escolhido na página: vai na mensagem da barra fixa e no evento. */
   servico?: string;
   noindex?: boolean;
+  /** Caminho, quando não há trilha (404). */
+  rota?: string;
+  /** JSON-LD extra da página (Service, FAQPage, Person). */
+  dados?: object[];
+  tipoOg?: 'website' | 'profile' | 'article';
 }
-const { titulo, descricao, trilha, barra = true, servico, noindex = false } = Astro.props;
+const {
+  titulo,
+  descricao,
+  trilha,
+  barra = true,
+  servico,
+  noindex = false,
+  dados = [],
+  tipoOg = 'website',
+} = Astro.props;
 
-const ld =
-  siteUrl && trilha.length > 1
-    ? JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: trilha.map((t, i) => ({
-          '@type': 'ListItem',
-          position: i + 1,
-          name: t.nome,
-          item: `${siteUrl}${t.rota}`,
-        })),
-      })
-    : null;
+// Rota da página: a última da trilha (404 e páginas sem trilha passam `rota`).
+const rota = Astro.props.rota ?? trilha.at(-1)?.rota ?? '/';
 ---
 
 <!doctype html>
@@ -48,7 +51,14 @@ const ld =
   <head>
     <Cabeca titulo={titulo} {...(descricao ? { descricao } : {})} noindex={noindex} />
     <link rel="icon" href="/media/monograma/monograma.svg" type="image/svg+xml" />
-    {ld && <script type="application/ld+json" set:html={ld} />}
+    <Seo
+      titulo={titulo}
+      {...(descricao ? { descricao } : {})}
+      rota={rota}
+      trilha={trilha}
+      dados={dados}
+      tipo={tipoOg}
+    />
     <slot name="head" />
   </head>
   <body>

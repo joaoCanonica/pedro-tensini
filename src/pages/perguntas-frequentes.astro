@@ -7,6 +7,7 @@ import Blocos from '../layouts/servico/Blocos.astro';
 import Botao from '../components/base/Botao.astro';
 import Selo from '../components/secoes/Selo.astro';
 import { pagina } from '../layouts/servico/pagina.ts';
+import { perguntas as faqSchema } from '../components/seo/entidade.ts';
 
 const p = pagina('perguntas-frequentes');
 const ancora = (t: string) =>
@@ -17,6 +18,19 @@ const ancora = (t: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 const perguntas = [...p.partes.values()];
+// FAQPage com o mesmo texto visível de cada resposta (parágrafos e listas, sem o selo).
+const textoDe = (q: (typeof perguntas)[number]) =>
+  q.blocos
+    .map((b) =>
+      b.tipo === 'p'
+        ? b.texto
+        : b.tipo === 'lista'
+          ? b.itens.map((i) => (i.rotulo ? `${i.rotulo}: ${i.texto}` : i.texto)).join(' ')
+          : '',
+    )
+    .filter(Boolean)
+    .join(' ');
+const faq = faqSchema(perguntas.map((q) => ({ pergunta: q.titulo, resposta: textoDe(q) })));
 ---
 
 <Pagina
@@ -26,6 +40,7 @@ const perguntas = [...p.partes.values()];
     { nome: 'Início', rota: '/' },
     { nome: 'Perguntas frequentes', rota: '/perguntas-frequentes/' },
   ]}
+  dados={[faq]}
 >
   <section class="faq" data-superficie="base" aria-labelledby="faq-titulo">
     <div class="faq__grade envelope-s">

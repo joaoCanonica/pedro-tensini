@@ -52,11 +52,6 @@
   {
     "pagina": "/",
     "tipo": "image",
-    "url": "http://127.0.0.1:4329/media/loop-hero/loop-hero-poster-720.webp"
-  },
-  {
-    "pagina": "/",
-    "tipo": "image",
     "url": "http://127.0.0.1:4329/media/quadro-parede-verde/quadro-parede-verde-480.avif"
   },
   {
@@ -91,13 +86,13 @@
   },
   {
     "pagina": "/",
-    "tipo": "image",
-    "url": "http://127.0.0.1:4329/media/quadro-cafe-coado/quadro-cafe-coado-480.avif"
+    "tipo": "media",
+    "url": "http://127.0.0.1:4329/media/loop-hero/loop-hero-540.webm"
   },
   {
     "pagina": "/",
-    "tipo": "media",
-    "url": "http://127.0.0.1:4329/media/loop-hero/loop-hero-540.webm"
+    "tipo": "image",
+    "url": "http://127.0.0.1:4329/media/quadro-cafe-coado/quadro-cafe-coado-480.avif"
   },
   {
     "pagina": "/",
@@ -116,6 +111,11 @@
   },
   {
     "pagina": "/",
+    "tipo": "media",
+    "url": "http://127.0.0.1:4329/media/loop-degrade/loop-degrade-540.webm"
+  },
+  {
+    "pagina": "/",
     "tipo": "image",
     "url": "http://127.0.0.1:4329/media/foto-toalha-quente/foto-toalha-quente-480.avif"
   },
@@ -123,11 +123,6 @@
     "pagina": "/",
     "tipo": "image",
     "url": "http://127.0.0.1:4329/media/foto-esfoliacao/foto-esfoliacao-480.avif"
-  },
-  {
-    "pagina": "/",
-    "tipo": "media",
-    "url": "http://127.0.0.1:4329/media/loop-degrade/loop-degrade-540.webm"
   },
   {
     "pagina": "/",
@@ -211,6 +206,11 @@
   },
   {
     "pagina": "/degrade-em-lages/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
     "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
   },
@@ -223,11 +223,6 @@
     "pagina": "/degrade-em-lages/",
     "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
-  },
-  {
-    "pagina": "/degrade-em-lages/",
-    "tipo": "font",
-    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
   },
   {
     "pagina": "/degrade-em-lages/",
@@ -286,6 +281,11 @@
   },
   {
     "pagina": "/barba-e-barbaterapia/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
     "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
   },
@@ -298,11 +298,6 @@
     "pagina": "/barba-e-barbaterapia/",
     "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "font",
-    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
   },
   {
     "pagina": "/barba-e-barbaterapia/",
@@ -387,12 +382,12 @@
   {
     "pagina": "/sobrancelha/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
   },
   {
     "pagina": "/sobrancelha/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
   },
   {
     "pagina": "/sobrancelha/",
@@ -522,12 +517,12 @@
   {
     "pagina": "/servicos-e-precos/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
   },
   {
     "pagina": "/servicos-e-precos/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
   },
   {
     "pagina": "/servicos-e-precos/",
@@ -581,11 +576,6 @@
   },
   {
     "pagina": "/como-chegar/",
-    "tipo": "font",
-    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
-  },
-  {
-    "pagina": "/como-chegar/",
     "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
   },
@@ -598,6 +588,11 @@
     "pagina": "/como-chegar/",
     "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
   },
   {
     "pagina": "/como-chegar/",
@@ -641,13 +636,13 @@
   },
   {
     "pagina": "/sobre-pedro-tensini/",
-    "tipo": "font",
-    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
   },
   {
     "pagina": "/sobre-pedro-tensini/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
   },
   {
     "pagina": "/sobre-pedro-tensini/",
@@ -696,23 +691,23 @@
   },
   {
     "pagina": "/agendar/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
-  },
-  {
-    "pagina": "/agendar/",
     "tipo": "font",
     "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
   },
   {
     "pagina": "/agendar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
   },
   {
     "pagina": "/agendar/",
     "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
   },
   {
     "pagina": "/agendar/",
@@ -826,13 +821,13 @@
   },
   {
     "pagina": "/404.html",
-    "tipo": "font",
-    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
   },
   {
     "pagina": "/404.html",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
   },
   {
     "pagina": "/404.html",

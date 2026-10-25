@@ -16,6 +16,10 @@ import BarraAgendar from '../components/secoes/BarraAgendar.astro';
 import Consentimento from '../components/consentimento/Consentimento.astro';
 import { obterMidia } from '../components/base/midia.ts';
 import { SIZES_POSTER } from '../components/hero/hero.ts';
+import Seo from '../components/seo/Seo.astro';
+import { pagina } from '../layouts/servico/pagina.ts';
+
+const meta = pagina('home');
 
 const poster = obterMidia('loop-hero').poster;
 const preload = poster?.avif.map((v) => `${v.src} ${v.largura}w`).join(', ');
@@ -24,10 +28,8 @@ const preload = poster?.avif.map((v) => `${v.src} ${v.largura}w`).join(', ');
 <!doctype html>
 <html lang="pt-BR" data-theme="escuro">
   <head>
-    <Cabeca
-      titulo="Barbeiro em Lages: degradê e barba | Tensini Barbieri"
-      descricao="Pedro Tensini faz degradê com acabamento na shaver, barba e barbaterapia na Galeria Augusta, Centro de Lages/SC. Agende pelo WhatsApp."
-    />
+    <Cabeca titulo={meta.title} descricao={meta.description} />
+    <Seo titulo={meta.title} descricao={meta.description} rota="/" />
     <link rel="icon" href="/media/monograma/monograma.svg" type="image/svg+xml" />
     {preload && (
       <link

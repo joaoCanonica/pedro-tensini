@@ -19,6 +19,7 @@ import type { Pagina } from './servico/pagina.ts';
 import { links } from '../config/contato.ts';
 import { formatarPreco, precoExibivel, servicos } from '../config/servicos.ts';
 import { juntarServicos } from '../lib/whatsapp.ts';
+import { servicoSchema } from '../components/seo/entidade.ts';
 import { MARCADORES } from '../components/secoes/textos.ts';
 
 interface Props {
@@ -42,6 +43,14 @@ const outros = PAGINAS_SERVICO.filter((p) => p.rota !== rota);
 // Serviço já marcado ("degradê"): vai na mensagem do botão, da barra fixa e no evento.
 const servicoMarcado = juntarServicos(atual.montador.map((s) => s.toLowerCase()));
 
+// JSON-LD: o Service de cada serviço desta página (o catálogo completo já vai no negócio).
+const SCHEMA_POR_ROTA: Record<string, string[]> = {
+  '/degrade-em-lages/': ['degrade'],
+  '/barba-e-barbaterapia/': ['barba', 'barbaterapia'],
+  '/sobrancelha/': ['sobrancelha'],
+};
+const dadosServico = (SCHEMA_POR_ROTA[rota] ?? []).map((s) => servicoSchema(s, true));
+
 // Ficha: valor só confirmado; um serviço por linha.
 const valores = valor.map((slug) => {
   const s = servicos.find((x) => x.slug === slug);
@@ -58,6 +67,7 @@ import { ctaRota } from '../lib/medicao.ts';
   descricao={pagina.description}
   trilha={trilha}
   servico={servicoMarcado}
+  dados={dadosServico}
 >
   <section class="abertura" data-superficie="base" aria-labelledby="servico-titulo">
     <div class="abertura__grade envelope-s">

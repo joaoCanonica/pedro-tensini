@@ -15,6 +15,7 @@ import { formacao } from '../config/formacao.ts';
 import type { ItemFormacao } from '../config/formacao.ts';
 import type { Campo, Confirmado } from '../config/tipos.ts';
 import { pagina, parte } from '../layouts/servico/pagina.ts';
+import { pessoa } from '../components/seo/entidade.ts';
 import { emPreview } from '../components/secoes/textos.ts';
 
 const p = pagina('sobre-pedro-tensini');
@@ -38,6 +39,8 @@ const mostrarFormacao = confirmados.length > 0 || emPreview;
     { nome: 'Início', rota: '/' },
     { nome: 'Sobre o Pedro', rota: '/sobre-pedro-tensini/' },
   ]}
+  dados={[pessoa()]}
+  tipoOg="profile"
 >
   <section class="sobre" data-superficie="base" aria-labelledby="sobre-titulo">
     <div class="sobre__grade envelope-s">

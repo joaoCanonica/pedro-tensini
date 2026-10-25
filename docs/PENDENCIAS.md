@@ -69,6 +69,13 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 - [ ] /privacidade: hospedagem e guarda de registros técnicos; data de publicação; revisão na sessão 9.
 - [ ] Formas de pagamento, encaixe, atendimento sem hora marcada e criança seguem pendentes no FAQ (selo PROVISÓRIO).
 
+## SEO e GEO
+
+- [ ] Capturas do Rich Results Test e do validator.schema.org: o ambiente bloqueou esses sites (proxy 403). Rodar com as URLs no ar e guardar em `docs/capturas/seo/` (o JSON-LD de cada página já está lá para colar).
+- [ ] `SITE_URL` (domínio) para canonical, sitemap, URLs absolutas no JSON-LD e `index, follow`.
+- [ ] Link da ficha do Google (`fichaGoogle`) e de "escrever avaliação" (`google.linkAvaliar`): entram no `sameAs`, no /avaliar e no QR.
+- [ ] Checklist fora do site (Perfil da Empresa, Bing, Apple, Waze, Instagram, WhatsApp Business, avaliações, teste mensal nas IAs): `docs/SEO_GEO.md`.
+
 ## Funil e LGPD
 
 - [ ] Medição: subir o Umami (auto-hospedado) na mesma origem do site, ou um proxy `/api/send`, e definir `PUBLIC_MEDICAO_URL` e `PUBLIC_MEDICAO_SITE` no build de produção. Até lá nada é enviado (docs/FUNIL.md).
