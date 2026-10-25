@@ -98,7 +98,8 @@ Resultado: **produção liberada** (0 travas; 26 pendências opcionais que não 
 
 **Na Vercel (time "Joao Canonica's projects"):**
 
-- Projeto **`pedro-tensini`** (id `prj_sVgmzVsoLCFIZiq21dvYc1qFyO5H`, o que o João importou do GitHub). `SITE_MODO=producao` em Production.
+- **No ar: https://pedrotensinibarbearia.vercel.app** (produção, aberta ao público, indexável).
+- Projeto **`pedro-tensini`** (id `prj_sVgmzVsoLCFIZiq21dvYc1qFyO5H`, o que o João importou do GitHub). `SITE_MODO=producao` em Production. `SITE_URL=https://pedrotensinibarbearia.vercel.app` em Production (trocar pelo domínio próprio quando houver).
 - Proteção da Vercel só nas **prévias**; a produção abre para qualquer pessoa.
 - O projeto antigo, sem Git, foi renomeado para `pedro-tensini-sem-git` (sem deploy; pode ser apagado).
 
