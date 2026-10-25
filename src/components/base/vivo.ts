@@ -1,5 +1,6 @@
 // Horário ao vivo no navegador: status (aberto/fecha em/abre) e "hoje" na tabela.
-// O HTML estático já traz a tabela completa; isto só acrescenta o agora.
+// O HTML estático já traz a tabela completa (é o que o Google e as IAs leem); isto só
+// hidrata no cliente o 'agora': o rótulo do status e a linha de hoje.
 import { diaLocal, diaSemanaDe, statusEm } from '../../lib/horario.ts';
 
 function atualizar(): void {
@@ -22,9 +23,24 @@ function atualizar(): void {
   }
 }
 
+// Atualiza na virada de cada minuto ("Fecha em N min" muda por minuto), só com a aba visível:
+// aba escondida não gasta nada; ao voltar, atualiza na hora e retoma o ritmo.
+let proximo: ReturnType<typeof setTimeout> | undefined;
+function agendar(): void {
+  clearTimeout(proximo);
+  if (document.hidden) return;
+  proximo = setTimeout(
+    () => {
+      atualizar();
+      agendar();
+    },
+    60_000 - (Date.now() % 60_000) + 50,
+  );
+}
+
 atualizar();
-// Reavalia a cada 30 s (o rótulo "Fecha em N min" muda por minuto).
-setInterval(atualizar, 30_000);
+agendar();
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) atualizar();
+  agendar();
 });

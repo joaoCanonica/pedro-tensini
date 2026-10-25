@@ -6,12 +6,14 @@ import Endereco from './Endereco.astro';
 import Selo from './Selo.astro';
 import { linhasSemana, faixa } from '../base/semana.ts';
 import { cnpj, exibirCnpj, nomeCanonico, profissional } from '../../config/marca.ts';
-import { instagram, telefone } from '../../config/contato.ts';
+import { instagram, telefone, whatsapp } from '../../config/contato.ts';
 import { valorPreview } from '../../config/tipos.ts';
-import { linkWhatsApp } from '../../lib/whatsapp.ts';
+import { ctaWhatsApp } from '../../lib/whatsapp.ts';
+import { ctaLigar } from '../../lib/medicao.ts';
 
 const nome = valorPreview(nomeCanonico) ?? '';
 const nomeConfirmado = nomeCanonico.estado === 'confirmado';
+const tel = whatsapp.estado === 'confirmado' ? `tel:+${whatsapp.valor}` : null;
 ---
 
 <footer class="rodape" data-superficie="navy" data-rodape>
@@ -47,10 +49,17 @@ const nomeConfirmado = nomeCanonico.estado === 'confirmado';
       <p class="rotulo rodape__rotulo">Contato</p>
       <ul class="rodape__lista" role="list">
         <li>
-          <a class="link" href={linkWhatsApp()}>
+          <a class="link" {...ctaWhatsApp('rodape')}>
             WhatsApp {telefone.valor}
           </a>
         </li>
+        {tel && (
+          <li>
+            <a class="link" href={tel} {...ctaLigar()}>
+              Ligar
+            </a>
+          </li>
+        )}
         <li>
           <a class="link" href={instagram.valor.url}>
             Instagram @{instagram.valor.usuario}
@@ -77,6 +86,9 @@ const nomeConfirmado = nomeCanonico.estado === 'confirmado';
       <a class="link" href="/privacidade/">
         Política de privacidade
       </a>
+      <button type="button" class="link rodape__preferencias" data-abrir-consentimento hidden>
+        Preferências de privacidade
+      </button>
     </p>
   </div>
 </footer>
@@ -128,6 +140,18 @@ const nomeConfirmado = nomeCanonico.estado === 'confirmado';
     padding: 0;
     margin: 0;
     list-style: none;
+  }
+  .rodape__preferencias {
+    margin-left: var(--e-4);
+    border: 0;
+    padding: 0 0 5px;
+    background-color: transparent;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+  .rodape__preferencias[hidden] {
+    display: none;
   }
   .rodape__legal {
     margin-top: var(--e-8);

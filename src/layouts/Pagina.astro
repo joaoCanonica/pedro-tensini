@@ -7,6 +7,7 @@ import PreviewBanner from '../components/PreviewBanner.astro';
 import Monograma from '../components/marca/Monograma.astro';
 import Rodape from '../components/secoes/Rodape.astro';
 import BarraAgendar from '../components/secoes/BarraAgendar.astro';
+import Consentimento from '../components/consentimento/Consentimento.astro';
 import { siteUrl } from '../config/seo.ts';
 import { MARCADORES } from '../components/secoes/textos.ts';
 
@@ -21,11 +22,11 @@ interface Props {
   trilha: ItemTrilha[];
   /** Barra fixa de agendar (desligada em /agendar: a página inteira é o montador). */
   barra?: boolean;
-  /** Mensagem pré-preenchida da barra fixa. */
-  mensagem?: string;
+  /** Serviço já escolhido na página: vai na mensagem da barra fixa e no evento. */
+  servico?: string;
   noindex?: boolean;
 }
-const { titulo, descricao, trilha, barra = true, mensagem, noindex = false } = Astro.props;
+const { titulo, descricao, trilha, barra = true, servico, noindex = false } = Astro.props;
 
 const ld =
   siteUrl && trilha.length > 1
@@ -81,7 +82,8 @@ const ld =
       <slot />
     </main>
     <Rodape />
-    {barra && <BarraAgendar {...(mensagem ? { mensagem } : {})} />}
+    {barra && <BarraAgendar {...(servico ? { servico } : {})} />}
+    <Consentimento />
   </body>
 </html>
 

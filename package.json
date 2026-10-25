@@ -29,6 +29,7 @@
     "media:prepare": "node scripts/prepare-media.mjs",
     "media:stills": "node scripts/extract-stills.mjs",
     "media:catalogo": "node scripts/prepare-media.mjs --catalogo",
+    "test:e2e": "node scripts/e2e-funil.mjs",
     "capturar": "node scripts/capturar.mjs",
     "capturar:entrada": "node scripts/capturar-entrada.mjs"
   },

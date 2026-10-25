@@ -50,6 +50,7 @@ const enderecoCopia = [
   .join(', ');
 const vagas = c(estacionamento as Campo<string>);
 const faqVagas = faq('Tem estacionamento?');
+import { ctaRota } from '../lib/medicao.ts';
 ---
 
 <Pagina
@@ -88,13 +89,23 @@ const faqVagas = faq('Tem estacionamento?');
           <span class="pequeno" role="status" data-copiar-aviso></span>
         </div>
         <div class="chegar__rotas">
-          <Botao variante="secundario" href={links.googleRota} whatsapp={false}>
+          <Botao
+            variante="secundario"
+            href={links.googleRota}
+            whatsapp={false}
+            dados={ctaRota('google-maps')}
+          >
             Google Maps
           </Botao>
-          <Botao variante="secundario" href={links.waze} whatsapp={false}>
+          <Botao variante="secundario" href={links.waze} whatsapp={false} dados={ctaRota('waze')}>
             Waze
           </Botao>
-          <Botao variante="secundario" href={links.appleMapas} whatsapp={false}>
+          <Botao
+            variante="secundario"
+            href={links.appleMapas}
+            whatsapp={false}
+            dados={ctaRota('apple-mapas')}
+          >
             Apple Mapas
           </Botao>
         </div>
@@ -161,7 +172,7 @@ const faqVagas = faq('Tem estacionamento?');
       </h2>
       <Blocos blocos={agendar.blocos} />
       <div class="chamada__acoes" data-agendar-principal>
-        <Botao>Agendar no WhatsApp</Botao>
+        <Botao origem="como-chegar">Agendar no WhatsApp</Botao>
         <a class="link" href="/agendar/">
           Escolher serviço, dia e período
         </a>

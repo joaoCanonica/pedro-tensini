@@ -22,17 +22,21 @@ Quando você toca em "Agendar no WhatsApp", o site abre o WhatsApp com uma mensa
 
 ## Mapa
 
-O mapa interativo do Google só carrega se você pedir, tocando no botão. Antes disso aparece uma imagem estática, sem ligação com o Google. Ao carregar o mapa, o Google recebe dados técnicos do seu acesso, como o endereço IP, conforme a política de privacidade dele.
+O mapa interativo do Google só carrega se você aceitar e pedir, tocando no botão. Antes disso aparece uma imagem estática, sem ligação com o Google. Ao carregar o mapa, o Google recebe dados técnicos do seu acesso, como o endereço IP, conforme a política de privacidade dele.
 
 ## Vídeos e imagens
 
 Os vídeos e as fotos ficam neste próprio site. Nenhum player de terceiros é carregado.
 
-## Medição de visitas
+## Medição de cliques
 
-Hoje o site não mede visitas e não usa cookies. As fontes, as fotos e os vídeos são servidos pelo próprio site, sem serviços de terceiros. Se um dia houver medição, ela será sem cookies de rastreamento e sem dados que identifiquem você, e esta página muda antes. [PROVISÓRIO: confirmar na publicação se haverá medição]
+O site conta, sem cookies e sem identificar você, os toques nos botões de WhatsApp, de rota (Google Maps, Waze, Apple Mapas) e de ligar: qual botão e em qual página. Não entra nome, telefone nem o texto da mensagem. A contagem fica num servidor da própria barbearia, sem serviço de terceiros. [PROVISÓRIO: a contagem só liga quando o servidor de medição (Umami) estiver no ar; até lá, nada é enviado]
 
 O servidor que hospeda o site pode guardar registros técnicos de acesso, como o endereço IP e o horário, por segurança. [PROVISÓRIO: hospedagem e prazo de guarda dos registros a confirmar]
+
+## Sua escolha
+
+Na primeira visita aparece um aviso com dois botões, Aceitar e Recusar. Aceitar libera o mapa interativo do Google; Recusar deixa tudo como está, só com o que é do próprio site. A escolha fica guardada só no seu navegador (armazenamento local, não é cookie) e você muda quando quiser em "Preferências de privacidade", no rodapé.
 
 ## Fale com a gente
 

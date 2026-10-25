@@ -14,6 +14,7 @@ import { secao } from './textos.ts';
 
 const t = secao('0 ·');
 const citacao = t.citacoes[0];
+import { ctaRota } from '../../lib/medicao.ts';
 ---
 
 <Secao
@@ -37,13 +38,23 @@ const citacao = t.citacoes[0];
         <p class="rotulo agendar__rotulo">Onde</p>
         <Endereco />
         <div class="agendar__rotas">
-          <Botao variante="secundario" href={links.googleRota} whatsapp={false}>
+          <Botao
+            variante="secundario"
+            href={links.googleRota}
+            whatsapp={false}
+            dados={ctaRota('google-maps')}
+          >
             Google Maps
           </Botao>
-          <Botao variante="secundario" href={links.waze} whatsapp={false}>
+          <Botao variante="secundario" href={links.waze} whatsapp={false} dados={ctaRota('waze')}>
             Waze
           </Botao>
-          <Botao variante="secundario" href={links.appleMapas} whatsapp={false}>
+          <Botao
+            variante="secundario"
+            href={links.appleMapas}
+            whatsapp={false}
+            dados={ctaRota('apple-mapas')}
+          >
             Apple Mapas
           </Botao>
         </div>

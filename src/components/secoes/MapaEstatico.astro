@@ -4,13 +4,14 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { geo, links, plusCode } from '../../config/contato.ts';
+import { ctaRota } from '../../lib/medicao.ts';
 
 const arquivo = '/media/mapa-estatico.webp';
 const temImagem = existsSync(join(process.cwd(), 'public', arquivo));
 const { lat, lng } = geo.valor;
 ---
 
-<a class="mapa" href={links.googleMaps}>
+<a class="mapa" href={links.googleMaps} {...ctaRota('mapa-estatico')}>
   <span class="sr-only">Abrir a localização no Google Maps: </span>
   {temImagem ? (
     <img

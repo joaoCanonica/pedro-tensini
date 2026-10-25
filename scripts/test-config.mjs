@@ -11,7 +11,13 @@ import { avaliarTravas, entradaPadrao } from '../src/config/travas.ts';
 import { encontrarTermosVetados } from '../src/config/termos.ts';
 import { bloqueante, confirmado, opcional } from '../src/config/tipos.ts';
 import { periodosDisponiveis, statusEm } from '../src/lib/horario.ts';
-import { MENSAGEM_PADRAO, linkWhatsApp, montarMensagem } from '../src/lib/whatsapp.ts';
+import {
+  MENSAGEM_PADRAO,
+  ctaWhatsApp,
+  juntarServicos,
+  linkWhatsApp,
+  montarMensagem,
+} from '../src/lib/whatsapp.ts';
 import { auditarHtml, auditarTextoMd } from './lib/compliance.mjs';
 
 const RAIZ = new URL('../', import.meta.url).pathname;
@@ -168,6 +174,23 @@ describe('WhatsApp', () => {
       linkWhatsApp(),
       'https://wa.me/5549999037620?text=Ol%C3%A1%2C%20Pedro!%20Vim%20pelo%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio.',
     );
+  });
+  it('juntar serviços', () => {
+    assert.equal(juntarServicos([]), '');
+    assert.equal(juntarServicos(['degradê']), 'degradê');
+    assert.equal(juntarServicos(['corte', 'barba', 'sobrancelha']), 'corte, barba e sobrancelha');
+  });
+  it('CTA: origem só nos atributos, nunca na URL do wa.me', () => {
+    const cta = ctaWhatsApp('servico', { servico: 'degradê' });
+    assert.equal(cta['data-origem'], 'servico');
+    assert.equal(cta['data-servico'], 'degradê');
+    assert.equal(cta.href, linkWhatsApp('Olá, Pedro! Vim pelo site e quero agendar: degradê.'));
+    const url = new URL(cta.href);
+    assert.deepEqual([...url.searchParams.keys()], ['text']);
+    assert.doesNotMatch(cta.href, /origem/);
+    const padrao = ctaWhatsApp('hero');
+    assert.equal(padrao.href, linkWhatsApp());
+    assert.equal('data-servico' in padrao, false);
   });
 });
 

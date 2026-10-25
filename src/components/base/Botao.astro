@@ -2,20 +2,40 @@
 // Botões. primario: "Agendar no WhatsApp" (latão chapado, ícone oficial sem círculo).
 // secundario: borda fina, para "Como chegar" e "Ligar". Cantos quase retos (nada de pílula).
 import IconeWhatsApp from './IconeWhatsApp.astro';
-import { linkWhatsApp } from '../../lib/whatsapp.ts';
+import { ctaWhatsApp, type OrigemWhatsApp } from '../../lib/whatsapp.ts';
 
 interface Props {
   variante?: 'primario' | 'secundario';
-  /** Sem href no primário: WhatsApp com a mensagem padrão. */
+  /** Sem href no primário: WhatsApp (ctaWhatsApp) com a mensagem do contexto. */
   href?: string;
   whatsapp?: boolean;
+  /** Origem do CTA de WhatsApp (só para a medição; não vai na URL). Obrigatória sem href. */
+  origem?: OrigemWhatsApp;
+  /** Serviço já escolhido ("degradê"): entra na mensagem e no evento. */
+  servico?: string;
+  /** Atributos de medição de outros CTAs (rotas: ctaRota). */
+  dados?: Record<string, string>;
   class?: string;
 }
-const { variante = 'primario', whatsapp = variante === 'primario', class: classe } = Astro.props;
-const href = Astro.props.href ?? (whatsapp ? linkWhatsApp() : '#');
+const {
+  variante = 'primario',
+  whatsapp = variante === 'primario',
+  origem,
+  servico,
+  dados = {},
+  class: classe,
+} = Astro.props;
+let href = Astro.props.href ?? '#';
+let atributos: Record<string, string> = { ...dados };
+if (whatsapp && !Astro.props.href) {
+  if (!origem) throw new Error('Botão de WhatsApp sem "origem" (medição do funil).');
+  const { href: link, ...cta } = ctaWhatsApp(origem, servico ? { servico } : {});
+  href = link;
+  atributos = { ...atributos, ...cta };
+}
 ---
 
-<a class:list={['botao', `botao--${variante}`, classe]} href={href}>
+<a class:list={['botao', `botao--${variante}`, classe]} href={href} {...atributos}>
   {whatsapp && <IconeWhatsApp />}
   <span>
     <slot />

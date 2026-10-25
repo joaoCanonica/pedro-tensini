@@ -13,6 +13,7 @@ import SecaoResultados from '../components/secoes/SecaoResultados.astro';
 import SecaoAgendar from '../components/secoes/SecaoAgendar.astro';
 import Rodape from '../components/secoes/Rodape.astro';
 import BarraAgendar from '../components/secoes/BarraAgendar.astro';
+import Consentimento from '../components/consentimento/Consentimento.astro';
 import { obterMidia } from '../components/base/midia.ts';
 import { SIZES_POSTER } from '../components/hero/hero.ts';
 
@@ -63,6 +64,7 @@ const preload = poster?.avif.map((v) => `${v.src} ${v.largura}w`).join(', ');
     </main>
     <Rodape />
     <BarraAgendar />
+    <Consentimento />
   </body>
 </html>
 

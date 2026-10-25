@@ -41,6 +41,7 @@ const provas = [
   { id: 'a', nome: 'A · Libre Caslon Display + Schibsted Grotesk', escolhida: true },
   { id: 'b', nome: 'B · DM Serif Display + Inter Tight', escolhida: false },
 ];
+import { ctaLigar } from '../lib/medicao.ts';
 ---
 
 <!doctype html>
@@ -281,11 +282,11 @@ const provas = [
           Base
         </h2>
         <div class="botoes">
-          <Botao>Agendar no WhatsApp</Botao>
+          <Botao origem="estilo">Agendar no WhatsApp</Botao>
           <Botao variante="secundario" href={links.googleRota}>
             Como chegar
           </Botao>
-          <Botao variante="secundario" href={tel}>
+          <Botao variante="secundario" href={tel} dados={ctaLigar()}>
             Ligar
           </Botao>
         </div>

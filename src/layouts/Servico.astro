@@ -18,7 +18,7 @@ import { PAGINAS_SERVICO, paginaServico } from './servico/catalogo.ts';
 import type { Pagina } from './servico/pagina.ts';
 import { links } from '../config/contato.ts';
 import { formatarPreco, precoExibivel, servicos } from '../config/servicos.ts';
-import { linkWhatsApp, montarMensagem } from '../lib/whatsapp.ts';
+import { juntarServicos } from '../lib/whatsapp.ts';
 import { MARCADORES } from '../components/secoes/textos.ts';
 
 interface Props {
@@ -39,11 +39,8 @@ const trilha = [
   { nome: atual.nome, rota },
 ];
 const outros = PAGINAS_SERVICO.filter((p) => p.rota !== rota);
-const juntar = (l: string[]) =>
-  l.length > 1 ? `${l.slice(0, -1).join(', ')} e ${l.at(-1)}` : (l[0] ?? '');
-const mensagem = montarMensagem({
-  servico: juntar(atual.montador.map((s) => s.toLowerCase())),
-});
+// Serviço já marcado ("degradê"): vai na mensagem do botão, da barra fixa e no evento.
+const servicoMarcado = juntarServicos(atual.montador.map((s) => s.toLowerCase()));
 
 // Ficha: valor só confirmado; um serviço por linha.
 const valores = valor.map((slug) => {
@@ -53,9 +50,15 @@ const valores = valor.map((slug) => {
   return { nome: s.nome, preco: p ? formatarPreco(p) : null };
 });
 const valorPendente = valores.some((v) => !v.preco);
+import { ctaRota } from '../lib/medicao.ts';
 ---
 
-<Casca titulo={pagina.title} descricao={pagina.description} trilha={trilha} mensagem={mensagem}>
+<Casca
+  titulo={pagina.title}
+  descricao={pagina.description}
+  trilha={trilha}
+  servico={servicoMarcado}
+>
   <section class="abertura" data-superficie="base" aria-labelledby="servico-titulo">
     <div class="abertura__grade envelope-s">
       <div class="abertura__texto">
@@ -107,7 +110,9 @@ const valorPendente = valores.some((v) => !v.preco);
       </dl>
       <div class="abertura__acoes">
         <div data-agendar-principal>
-          <Botao href={linkWhatsApp(mensagem)}>Agendar no WhatsApp</Botao>
+          <Botao origem="servico" {...(servicoMarcado ? { servico: servicoMarcado } : {})}>
+            Agendar no WhatsApp
+          </Botao>
         </div>
         <a class="link" href="#onde-e-quando">
           Horário e como chegar
@@ -144,13 +149,23 @@ const valorPendente = valores.some((v) => !v.preco);
         <Endereco />
         <StatusAoVivo />
         <div class="onde__rotas">
-          <Botao variante="secundario" href={links.googleRota} whatsapp={false}>
+          <Botao
+            variante="secundario"
+            href={links.googleRota}
+            whatsapp={false}
+            dados={ctaRota('google-maps')}
+          >
             Google Maps
           </Botao>
-          <Botao variante="secundario" href={links.waze} whatsapp={false}>
+          <Botao variante="secundario" href={links.waze} whatsapp={false} dados={ctaRota('waze')}>
             Waze
           </Botao>
-          <Botao variante="secundario" href={links.appleMapas} whatsapp={false}>
+          <Botao
+            variante="secundario"
+            href={links.appleMapas}
+            whatsapp={false}
+            dados={ctaRota('apple-mapas')}
+          >
             Apple Mapas
           </Botao>
         </div>

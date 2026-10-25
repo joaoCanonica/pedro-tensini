@@ -69,6 +69,12 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 - [ ] /privacidade: hospedagem e guarda de registros técnicos; data de publicação; revisão na sessão 9.
 - [ ] Formas de pagamento, encaixe, atendimento sem hora marcada e criança seguem pendentes no FAQ (selo PROVISÓRIO).
 
+## Funil e LGPD
+
+- [ ] Medição: subir o Umami (auto-hospedado) na mesma origem do site, ou um proxy `/api/send`, e definir `PUBLIC_MEDICAO_URL` e `PUBLIC_MEDICAO_SITE` no build de produção. Até lá nada é enviado (docs/FUNIL.md).
+- [ ] Exceções de horário (feriados, folgas) em `src/config/horario.ts`: o montador já avisa "Fechado em dd/mm: motivo", mas a lista está vazia e o e2e não cobre esse caso (só com uma exceção cadastrada).
+- [ ] Revisão de normas (sessão 9): texto do banner, política de privacidade e base legal da medição sem cookies.
+
 ## Textos (sessão 5)
 
 Gerado de `src/content/textos/*.md` (marcas `[PROVISÓRIO: …]`). Cada item sai do ar ou vira texto confirmado quando o dado chegar.

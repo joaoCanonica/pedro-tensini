@@ -1,29 +1,41 @@
 ---
 // Montador de mensagem (ilha): serviço + dia + período + nome → wa.me com o texto pronto.
-// Nada é guardado. Sem JS: só o botão, com a mensagem padrão.
+// Nada é guardado. Acessível: fieldset/legend, rádios e caixas nativos estilizados (sem div
+// clicável), teclado de graça; o leitor de tela ouve o resumo ("Degradê, amanhã, à tarde").
+// Dias e períodos sem atendimento ficam desabilitados e com o motivo escrito.
+// Sem JS: só o botão, com a mensagem padrão (ou com o serviço da página, se houver).
 import IconeWhatsApp from '../base/IconeWhatsApp.astro';
-import { linkWhatsApp, montarMensagem } from '../../lib/whatsapp.ts';
+import { ctaWhatsApp, juntarServicos } from '../../lib/whatsapp.ts';
+import { formatarHora } from '../../lib/horario.ts';
+import { regrasHorario } from '../../config/horario.ts';
 
 interface Props {
   /** Serviços já marcados (páginas de serviço). Sem JS, o link já leva o serviço. */
   servicos?: string[];
 }
 const { servicos: marcados = [] } = Astro.props;
-const juntar = (l: string[]) =>
-  l.length > 1 ? `${l.slice(0, -1).join(', ')} e ${l.at(-1)}` : (l[0] ?? '');
-const mensagemInicial = montarMensagem({ servico: juntar(marcados.map((s) => s.toLowerCase())) });
+const servicoInicial = juntarServicos(marcados.map((s) => s.toLowerCase()));
+const cta = ctaWhatsApp('montador', servicoInicial ? { servico: servicoInicial } : {});
+const mensagemInicial = decodeURIComponent(new URL(cta.href).searchParams.get('text') ?? '');
 
 const SERVICOS = ['Corte', 'Degradê', 'Barba', 'Barbaterapia', 'Sobrancelha'];
+// Faixas de cada período a partir do horário da semana (abertura mais cedo, fechamento mais tarde).
+const mins = (h: string) => Number(h.slice(0, 2)) * 60 + Number(h.slice(3, 5));
+const janelas = regrasHorario.semana.flat();
+const abre = Math.min(...janelas.map((j) => mins(j.abre)));
+const fecha = Math.max(...janelas.map((j) => mins(j.fecha)));
 const PERIODOS = [
-  { id: 'manha', nome: 'Manhã', faixa: '8h30 às 12h' },
+  { id: 'manha', nome: 'Manhã', faixa: `${formatarHora(abre)} às 12h` },
   { id: 'tarde', nome: 'Tarde', faixa: '12h às 18h' },
-  { id: 'noite', nome: 'Noite', faixa: '18h às 20h' },
+  { id: 'noite', nome: 'Noite', faixa: `18h às ${formatarHora(fecha)}` },
 ];
 ---
 
 <div class="montador" data-montador>
-  <p class="rotulo montador__titulo">Monte sua mensagem</p>
-  <form class="montador__campos" data-montador-campos hidden>
+  <p class="rotulo montador__titulo" id="montador-titulo">
+    Monte sua mensagem
+  </p>
+  <form class="montador__campos" data-montador-campos hidden aria-labelledby="montador-titulo">
     <fieldset>
       <legend>O que você quer fazer?</legend>
       <p class="pequeno secundario">Pode marcar mais de um.</p>
@@ -37,7 +49,7 @@ const PERIODOS = [
       </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset aria-describedby="montador-aviso-dia">
       <legend>Qual dia?</legend>
       <div class="opcoes opcoes--dia">
         <label class="opcao">
@@ -55,12 +67,12 @@ const PERIODOS = [
       </div>
       <label class="montador__data" data-montador-data hidden>
         <span class="pequeno">Data</span>
-        <input type="date" name="data" />
+        <input type="date" name="data" aria-describedby="montador-aviso-dia" />
       </label>
-      <p class="aviso pequeno" data-aviso-dia aria-live="polite"></p>
+      <p class="aviso pequeno" id="montador-aviso-dia" data-aviso-dia aria-live="polite"></p>
     </fieldset>
 
-    <fieldset>
+    <fieldset aria-describedby="montador-aviso-periodo">
       <legend>Qual período?</legend>
       <div class="opcoes">
         {PERIODOS.map((p) => (
@@ -72,7 +84,12 @@ const PERIODOS = [
           </label>
         ))}
       </div>
-      <p class="aviso pequeno" data-aviso-periodo aria-live="polite"></p>
+      <p
+        class="aviso pequeno"
+        id="montador-aviso-periodo"
+        data-aviso-periodo
+        aria-live="polite"
+      ></p>
     </fieldset>
 
     <label class="montador__nome">
@@ -87,14 +104,18 @@ const PERIODOS = [
     </label>
 
     <div class="previa">
-      <p class="rotulo">Sua mensagem</p>
-      <output class="previa__texto" data-previa>
+      <p class="rotulo" id="montador-previa">
+        Sua mensagem
+      </p>
+      <!-- aria-live off: a mensagem inteira não é relida a cada letra; o resumo abaixo é que fala. -->
+      <output class="previa__texto" data-previa aria-live="off" aria-labelledby="montador-previa">
         {mensagemInicial}
       </output>
     </div>
+    <p class="sr-only" data-resumo aria-live="polite" aria-atomic="true"></p>
   </form>
 
-  <a class="botao-wa" href={linkWhatsApp(mensagemInicial)} data-montador-link>
+  <a class="botao-wa" {...cta} data-montador-link>
     <IconeWhatsApp />
     <span>Abrir conversa no WhatsApp</span>
   </a>
@@ -107,10 +128,19 @@ const PERIODOS = [
     DIAS,
     diaLocal,
     diaSemanaDe,
+    formatarHora,
+    janelasDoDia,
     periodosDisponiveis,
     somarDias,
   } from '../../lib/horario.ts';
-  import { linkWhatsApp, montarMensagem } from '../../lib/whatsapp.ts';
+  import { regrasHorario } from '../../config/horario.ts';
+  import { juntarServicos, linkWhatsApp, montarMensagem } from '../../lib/whatsapp.ts';
+
+  const NOMES: Record<string, { mensagem: string; resumo: string; rotulo: string }> = {
+    manha: { mensagem: 'manhã', resumo: 'de manhã', rotulo: 'Manhã' },
+    tarde: { mensagem: 'tarde', resumo: 'à tarde', rotulo: 'Tarde' },
+    noite: { mensagem: 'noite', resumo: 'à noite', rotulo: 'Noite' },
+  };
 
   const raiz = document.querySelector<HTMLElement>('[data-montador]');
   const form = raiz?.querySelector<HTMLFormElement>('[data-montador-campos]');
@@ -118,6 +148,7 @@ const PERIODOS = [
     form.hidden = false;
     const link = raiz.querySelector<HTMLAnchorElement>('[data-montador-link]');
     const previa = raiz.querySelector<HTMLOutputElement>('[data-previa]');
+    const resumo = raiz.querySelector<HTMLElement>('[data-resumo]');
     const caixaData = raiz.querySelector<HTMLElement>('[data-montador-data]');
     const inputData = form.elements.namedItem('data') as HTMLInputElement;
     const avisoDia = raiz.querySelector<HTMLElement>('[data-aviso-dia]');
@@ -126,6 +157,11 @@ const PERIODOS = [
       ...form.querySelectorAll<HTMLInputElement>(`input[name="${nome}"]`),
     ];
     const ddmm = (iso: string) => iso.slice(8, 10) + '/' + iso.slice(5, 7);
+    const excecao = (iso: string) => regrasHorario.excecoes.find((e) => e.data === iso);
+    const fechamento = (iso: string) => {
+      const j = janelasDoDia(iso);
+      return j.length ? formatarHora(Math.max(...j.map((x) => x.fecha))) : null;
+    };
 
     const agora = new Date();
     const hoje = diaLocal(agora);
@@ -133,79 +169,121 @@ const PERIODOS = [
     inputData.min = hoje;
     inputData.max = somarDias(hoje, 60);
 
+    // Hoje e amanhã sem atendimento: desabilitados, com o motivo no próprio rótulo.
     const abertoEm = (iso: string) => periodosDisponiveis(iso, { agora }).length > 0;
     for (const r of radios('dia')) {
       const iso = r.value === 'hoje' ? hoje : r.value === 'amanha' ? amanha : null;
-      if (iso && !abertoEm(iso)) {
-        r.disabled = true;
-        const span = r.nextElementSibling;
-        if (span)
-          span.textContent +=
-            r.value === 'hoje'
-              ? ' · sem horário'
+      if (!iso || abertoEm(iso)) continue;
+      r.disabled = true;
+      const span = r.nextElementSibling;
+      const exc = excecao(iso);
+      if (span)
+        span.textContent +=
+          r.value === 'hoje' && janelasDoDia(iso).length
+            ? ' · sem horário'
+            : exc
+              ? ` · fechado (${exc.motivo})`
               : diaSemanaDe(iso) === 0
                 ? ' · domingo fechado'
                 : ' · fechado';
-      }
     }
 
-    const diaEscolhido = (): { iso: string; texto: string } | null => {
+    const diaEscolhido = (): { iso: string; texto: string; resumo: string } | null => {
       const v = radios('dia').find((r) => r.checked)?.value;
       if (v === 'hoje')
-        return { iso: hoje, texto: `hoje (${DIAS[diaSemanaDe(hoje)]}, ${ddmm(hoje)})` };
-      if (v === 'amanha')
-        return { iso: amanha, texto: `amanhã (${DIAS[diaSemanaDe(amanha)]}, ${ddmm(amanha)})` };
-      if (v === 'data' && inputData.value)
         return {
-          iso: inputData.value,
-          texto: `${DIAS[diaSemanaDe(inputData.value)]}, ${ddmm(inputData.value)}`,
+          iso: hoje,
+          texto: `hoje (${DIAS[diaSemanaDe(hoje)]}, ${ddmm(hoje)})`,
+          resumo: 'hoje',
         };
+      if (v === 'amanha')
+        return {
+          iso: amanha,
+          texto: `amanhã (${DIAS[diaSemanaDe(amanha)]}, ${ddmm(amanha)})`,
+          resumo: 'amanhã',
+        };
+      if (v === 'data' && inputData.value) {
+        const t = `${DIAS[diaSemanaDe(inputData.value)]}, ${ddmm(inputData.value)}`;
+        return { iso: inputData.value, texto: t, resumo: t };
+      }
       return null;
     };
 
+    /** Motivo do dia sem atendimento (ou do horário especial). */
+    const avisoDoDia = (iso: string, aberto: boolean): string => {
+      const exc = excecao(iso);
+      if (!aberto) {
+        if (exc) return `Fechado em ${ddmm(iso)}: ${exc.motivo}. Escolha outro dia.`;
+        if (diaSemanaDe(iso) === 0) return 'Domingo fechado. Escolha outro dia.';
+        if (iso === hoje && janelasDoDia(iso).length)
+          return 'Hoje não tem mais horário. Escolha outro dia.';
+        return 'Fechado neste dia. Escolha outro dia.';
+      }
+      if (exc) return `Horário especial em ${ddmm(iso)}: ${exc.motivo}.`;
+      return '';
+    };
+
+    /** Por que cada período desabilitado não existe naquele dia. */
+    const avisoDosPeriodos = (iso: string, disponiveis: string[]): string => {
+      const fora = Object.keys(NOMES).filter((id) => !disponiveis.includes(id));
+      if (!fora.length || !disponiveis.length) return '';
+      const noDia = periodosDisponiveis(iso).map((p) => p.id as string);
+      const passou = fora.filter((id) => iso === hoje && noDia.includes(id));
+      const naoTem = fora.filter((id) => !passou.includes(id));
+      const nomes = (l: string[]) => juntarServicos(l.map((id) => NOMES[id]?.rotulo ?? id));
+      const partes: string[] = [];
+      if (passou.length) partes.push(`${nomes(passou)}: já passou.`);
+      if (naoTem.length) {
+        const f = fechamento(iso);
+        const dia = iso === hoje ? 'hoje' : DIAS[diaSemanaDe(iso)];
+        partes.push(`${nomes(naoTem)}: sem atendimento${f ? ` (${dia} fecha às ${f})` : ''}.`);
+      }
+      return partes.join(' ');
+    };
+
+    let resumoAnterior = '';
     const atualizar = (): void => {
       if (caixaData) caixaData.hidden = radios('dia').find((r) => r.checked)?.value !== 'data';
       const dia = diaEscolhido();
       const disponiveis = dia
-        ? periodosDisponiveis(dia.iso, { agora }).map((p) => p.id)
-        : ['manha', 'tarde', 'noite'];
-      if (avisoDia)
-        avisoDia.textContent =
-          dia && !disponiveis.length
-            ? diaSemanaDe(dia.iso) === 0
-              ? 'Domingo fechado. Escolha outro dia.'
-              : 'Fechado neste dia. Escolha outro dia.'
-            : '';
+        ? periodosDisponiveis(dia.iso, { agora }).map((p) => p.id as string)
+        : Object.keys(NOMES);
+      if (avisoDia) avisoDia.textContent = dia ? avisoDoDia(dia.iso, disponiveis.length > 0) : '';
       for (const r of radios('periodo')) {
         r.disabled = !disponiveis.includes(r.value);
         if (r.disabled) r.checked = false;
       }
       if (avisoPeriodo)
-        avisoPeriodo.textContent =
-          dia && disponiveis.length && disponiveis.length < 3
-            ? 'Só aparecem os períodos em que a barbearia está aberta nesse dia.'
-            : '';
-      const servicos = radios('servico')
-        .filter((r) => r.checked)
-        .map((r) => r.value.toLowerCase());
-      const servico =
-        servicos.length > 1
-          ? `${servicos.slice(0, -1).join(', ')} e ${servicos.at(-1)}`
-          : (servicos[0] ?? '');
+        avisoPeriodo.textContent = dia ? avisoDosPeriodos(dia.iso, disponiveis) : '';
+
+      const escolhidos = radios('servico').filter((r) => r.checked);
+      const servico = juntarServicos(escolhidos.map((r) => r.value.toLowerCase()));
       const periodo = radios('periodo').find((r) => r.checked && !r.disabled)?.value;
-      const nomesPeriodo: Record<string, string> = {
-        manha: 'manhã',
-        tarde: 'tarde',
-        noite: 'noite',
-      };
+      const diaValido = dia && disponiveis.length ? dia : null;
       const texto = montarMensagem({
         servico,
-        ...(dia && disponiveis.length ? { dia: dia.texto } : {}),
-        ...(periodo ? { periodo: nomesPeriodo[periodo] ?? periodo } : {}),
+        ...(diaValido ? { dia: diaValido.texto } : {}),
+        ...(periodo ? { periodo: NOMES[periodo]?.mensagem ?? periodo } : {}),
         nome: (form.elements.namedItem('nome') as HTMLInputElement).value,
       });
       if (previa) previa.value = texto;
-      if (link) link.href = linkWhatsApp(texto);
+      if (link) {
+        link.href = linkWhatsApp(texto);
+        if (servico) link.dataset['servico'] = servico;
+        else delete link.dataset['servico'];
+      }
+      // Resumo falado: "Degradê, amanhã, à tarde". Só muda com serviço, dia ou período.
+      const r = [
+        juntarServicos(escolhidos.map((x) => x.value)),
+        diaValido?.resumo,
+        periodo ? NOMES[periodo]?.resumo : '',
+      ]
+        .filter(Boolean)
+        .join(', ');
+      if (resumo && r !== resumoAnterior) {
+        resumo.textContent = r ? `Sua escolha: ${r}.` : '';
+        resumoAnterior = r;
+      }
     };
     form.addEventListener('input', atualizar);
     form.addEventListener('change', atualizar);

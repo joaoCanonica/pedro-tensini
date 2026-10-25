@@ -7,7 +7,8 @@ import Endereco from '../components/secoes/Endereco.astro';
 import StatusAoVivo from '../components/base/StatusAoVivo.astro';
 import TabelaHorario from '../components/base/TabelaHorario.astro';
 import { telefone, whatsapp } from '../config/contato.ts';
-import { linkWhatsApp } from '../lib/whatsapp.ts';
+import { ctaWhatsApp } from '../lib/whatsapp.ts';
+import { ctaLigar } from '../lib/medicao.ts';
 import { pagina } from '../layouts/servico/pagina.ts';
 
 const p = pagina('agendar');
@@ -33,14 +34,14 @@ const tel = whatsapp.estado === 'confirmado' ? `tel:+${whatsapp.valor}` : null;
         <Montador />
         <p class="pequeno agendar__direto">
           Prefere escrever do seu jeito?{' '}
-          <a class="link" href={linkWhatsApp()}>
+          <a class="link" {...ctaWhatsApp('agendar')}>
             WhatsApp {telefone.valor}
           </a>
           {tel && (
             <>
               {' '}
               ·{' '}
-              <a class="link" href={tel}>
+              <a class="link" href={tel} {...ctaLigar()}>
                 Ligar
               </a>
             </>

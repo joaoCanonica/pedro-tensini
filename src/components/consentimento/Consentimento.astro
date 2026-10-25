@@ -1,0 +1,163 @@
+---
+// Banner de consentimento + início da medição (ilha única, em todas as páginas).
+// Aceitar e Recusar têm o mesmo peso visual. O banner aparece na primeira visita e quando
+// alguém pede (rodapé, mapa). Sem JS: nada aparece e nada de terceiros carrega.
+// O que depende do "Aceitar": o mapa interativo do Google (e qualquer medição com cookie ou em
+// outro domínio, que hoje não existe).
+---
+
+<section class="consent" aria-labelledby="consent-titulo" data-consentimento hidden tabindex="-1">
+  <div class="consent__corpo">
+    <h2 id="consent-titulo" class="rotulo consent__titulo">
+      Privacidade
+    </h2>
+    <p class="consent__texto">
+      <span data-consent-motivo></span>Este site não usa cookies. O mapa interativo do Google é
+      conteúdo de terceiros: só carrega se você aceitar, e aí o Google recebe dados do seu acesso.
+    </p>
+    <p class="pequeno consent__atual" data-consent-atual hidden></p>
+    <div class="consent__botoes">
+      <button type="button" class="consent__botao" data-consent="aceito">
+        Aceitar
+      </button>
+      <button type="button" class="consent__botao" data-consent="recusado">
+        Recusar
+      </button>
+      <a class="link pequeno" href="/privacidade/">
+        Política de privacidade
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gravarConsentimento, lerConsentimento, type Escolha } from './estado.ts';
+  import { iniciarMedicao } from '../../lib/medicao.ts';
+
+  iniciarMedicao();
+
+  const banner = document.querySelector<HTMLElement>('[data-consentimento]');
+  if (banner) {
+    const motivo = banner.querySelector<HTMLElement>('[data-consent-motivo]');
+    const atual = banner.querySelector<HTMLElement>('[data-consent-atual]');
+    let devolverFoco: HTMLElement | null = null;
+
+    const abrir = (texto = '', focar = false) => {
+      if (motivo) motivo.textContent = texto;
+      const escolha = lerConsentimento();
+      if (atual) {
+        atual.hidden = !escolha;
+        atual.textContent = escolha
+          ? `Sua escolha agora: ${escolha === 'aceito' ? 'aceito' : 'recusado'}.`
+          : '';
+      }
+      banner.hidden = false;
+      document.documentElement.dataset['consentimentoAberto'] = '';
+      if (focar) {
+        devolverFoco =
+          document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        banner.focus();
+      }
+    };
+    const fechar = () => {
+      banner.hidden = true;
+      delete document.documentElement.dataset['consentimentoAberto'];
+      devolverFoco?.focus();
+      devolverFoco = null;
+    };
+
+    for (const b of banner.querySelectorAll<HTMLButtonElement>('[data-consent]')) {
+      b.addEventListener('click', () => {
+        gravarConsentimento(b.dataset['consent'] as Escolha);
+        fechar();
+      });
+    }
+    banner.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lerConsentimento()) fechar();
+    });
+    addEventListener('tensini:pedir-consentimento', (e) => {
+      const m = (e as CustomEvent<string>).detail;
+      abrir(m ? `${m} ` : '', true);
+    });
+    for (const b of document.querySelectorAll<HTMLButtonElement>('[data-abrir-consentimento]')) {
+      b.hidden = false;
+      b.addEventListener('click', () => abrir('', true));
+    }
+    if (!lerConsentimento()) abrir();
+  }
+</script>
+
+<style>
+  .consent {
+    position: fixed;
+    z-index: 1200;
+    inset: auto var(--e-3) var(--e-3) var(--e-3);
+    max-width: 34rem;
+    padding: var(--e-4) var(--e-5);
+    background: var(--carvao);
+    color: var(--giz);
+    border: 1px solid rgb(140 144 152 / 0.45);
+    border-radius: var(--raio);
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.35);
+  }
+  .consent[hidden] {
+    display: none;
+  }
+  .consent:focus {
+    outline: 2px solid var(--latao-claro);
+    outline-offset: 2px;
+  }
+  .consent__corpo {
+    display: grid;
+    gap: var(--e-3);
+  }
+  .consent__titulo {
+    color: var(--latao);
+  }
+  .consent__texto {
+    font-size: var(--fs-pequeno);
+    line-height: 1.5;
+  }
+  .consent__atual {
+    color: var(--aco);
+  }
+  .consent__botoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-3) var(--e-4);
+  }
+  /* Mesmo peso: mesma forma, cor, tamanho e ordem fixa. Nenhum dos dois é "o certo". */
+  .consent__botao {
+    min-width: 7.5rem;
+    min-height: 44px;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--giz);
+    border-radius: var(--raio);
+    background: transparent;
+    color: var(--giz);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .consent__botao:hover {
+    background: rgb(241 240 236 / 0.08);
+  }
+  .consent__botao:focus-visible {
+    outline: 2px solid var(--latao-claro);
+    outline-offset: 3px;
+  }
+  .consent :global(.link) {
+    color: var(--giz);
+  }
+  @media (min-width: 48rem) {
+    .consent {
+      inset: auto auto var(--e-5) var(--e-5);
+    }
+  }
+  /* Enquanto o banner está aberto, a barra fixa de agendar (mobile) não disputa o rodapé da tela. */
+  @media (max-width: 47.99rem) {
+    :global(html[data-consentimento-aberto] [data-barra-agendar]) {
+      visibility: hidden;
+    }
+  }
+</style>

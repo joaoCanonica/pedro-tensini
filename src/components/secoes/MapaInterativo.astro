@@ -1,7 +1,7 @@
 ---
-// Mapa em duas etapas: antes, a imagem estática (sem ligação com o Google); depois do toque em
-// "Carregar mapa interativo" (o consentimento), o mapa do Google entra no mesmo lugar.
-// Nada é lembrado: a cada visita o mapa volta a ser estático. Sem JS: só a imagem com o link.
+// Mapa em duas etapas: antes, a imagem estática (sem ligação com o Google); com o consentimento
+// ("Aceitar" no banner) e o toque em "Carregar mapa interativo", o mapa do Google entra no
+// mesmo lugar. Sem JS: só a imagem com o link.
 import MapaEstatico from './MapaEstatico.astro';
 import { geo } from '../../config/contato.ts';
 
@@ -27,13 +27,16 @@ const embed = `https://www.google.com/maps?q=${lat},${lng}&z=17&hl=pt-BR&output=
 </div>
 
 <script>
+  import { lerConsentimento, pedirConsentimento } from '../consentimento/estado.ts';
+
   for (const raiz of document.querySelectorAll<HTMLElement>('[data-mapa-interativo]')) {
     const caixa = raiz.querySelector<HTMLElement>('[data-mapa-consentimento]');
     const quadro = raiz.querySelector<HTMLElement>('[data-mapa-quadro]');
     const botao = raiz.querySelector<HTMLButtonElement>('[data-mapa-carregar]');
     if (!caixa || !quadro || !botao) continue;
     caixa.hidden = false;
-    botao.addEventListener('click', () => {
+    let esperando = false;
+    const carregar = () => {
       const iframe = document.createElement('iframe');
       iframe.src = raiz.dataset['embed'] ?? '';
       iframe.title = 'Mapa do Google com o ponto da barbearia na Galeria Augusta';
@@ -43,6 +46,17 @@ const embed = `https://www.google.com/maps?q=${lat},${lng}&z=17&hl=pt-BR&output=
       quadro.replaceChildren(iframe);
       caixa.remove();
       iframe.focus();
+    };
+    // Só com "Aceitar": sem escolha (ou com "Recusar"), o toque abre o banner e o mapa espera.
+    botao.addEventListener('click', () => {
+      if (lerConsentimento() === 'aceito') return carregar();
+      esperando = true;
+      pedirConsentimento('Para ver o mapa interativo, aceite o conteúdo do Google.');
+    });
+    addEventListener('tensini:consentimento', (e) => {
+      const escolha = (e as CustomEvent<string>).detail;
+      if (esperando && escolha === 'aceito') carregar();
+      esperando = false;
     });
   }
 </script>

@@ -3,17 +3,18 @@
 // Some enquanto o botão do hero (ou o da abertura das páginas de serviço), a seção 0 ou o rodapé estão visíveis (não duplica, não cobre
 // o rodapé legal). Sem JS: fica visível o tempo todo, e o corpo ganha espaço embaixo.
 import IconeWhatsApp from '../base/IconeWhatsApp.astro';
-import { linkWhatsApp } from '../../lib/whatsapp.ts';
+import { ctaWhatsApp } from '../../lib/whatsapp.ts';
 
 interface Props {
-  /** Mensagem pré-preenchida (páginas de serviço já levam o serviço). */
-  mensagem?: string;
+  /** Serviço já escolhido na página ("degradê"): entra na mensagem e no evento. */
+  servico?: string;
 }
-const { mensagem } = Astro.props;
+const { servico } = Astro.props;
+const cta = ctaWhatsApp('barra', servico ? { servico } : {});
 ---
 
 <div class="barra" data-barra-agendar>
-  <a class="barra__botao" href={linkWhatsApp(mensagem)}>
+  <a class="barra__botao" {...cta}>
     <IconeWhatsApp />
     <span>Agendar no WhatsApp</span>
   </a>
