@@ -1,9 +1,9 @@
-import { bloqueante, confirmado } from './tipos.ts';
+import { confirmado } from './tipos.ts';
 import type { Campo } from './tipos.ts';
 
-export const nomeCanonico: Campo<string> = bloqueante<string>(
-  'Tensini Barbieri — confirmar com o Pedro',
-  'Tensini Barbieri',
+export const nomeCanonico: Campo<string> = confirmado(
+  'Pedro Tensini Barbearia',
+  'João (WAXLO), decisão para a publicação de 27/10/2026',
 );
 
 /** Como o nome aparece hoje (consistência de entidade). */
@@ -11,6 +11,7 @@ export const variacoesVistas = [
   { nome: 'TENSINI BARBIERI PROFESSIONALE', onde: 'logo oficial' },
   { nome: 'Tensini Barbiere', onde: 'Instagram @tensinibarbiere_' },
   { nome: 'Barbearia - Tensini barbieri', onde: 'ficha do Google' },
+  { nome: 'Tensini Barbieri', onde: 'nome usado na prévia do site' },
 ] as const;
 
 export const profissional = {

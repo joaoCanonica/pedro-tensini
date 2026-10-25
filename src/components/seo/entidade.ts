@@ -47,7 +47,8 @@ export const nap = {
   /** Nome canônico (provisório no preview; a trava de produção exige o confirmado). */
   nome: valorPreview(nomeCanonico) ?? '',
   rua: conf(endereco.rua) ?? '',
-  numero: conf(endereco.numero as Campo<string>),
+  /** null = sem número (decisão do João: o endereço é a galeria). */
+  numero: conf(endereco.numero as Campo<string | null>),
   complemento: conf(endereco.complemento) ?? '',
   salaAndar: conf(endereco.salaAndar as Campo<string>),
   bairro: conf(endereco.bairro) ?? '',
@@ -63,7 +64,7 @@ export const nap = {
   })(),
 };
 
-/** "Rua Hercílio Luz, 405, Galeria Augusta" (sem número enquanto não confirmado). */
+/** "Rua Hercílio Luz, Galeria Augusta" (número só se existir). */
 export const ruaCompleta = [
   [nap.rua, nap.numero].filter(Boolean).join(', '),
   [nap.complemento, nap.salaAndar].filter(Boolean).join(', '),

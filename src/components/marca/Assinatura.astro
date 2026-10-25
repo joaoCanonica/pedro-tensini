@@ -1,6 +1,6 @@
 ---
-// Variante "assinatura": monograma + TENSINI em caixa alta espaçada + régua fina com
-// losango central (eco do logo) + BARBIERI. O nome é tipografia; o logo raster não vai ao site.
+// Variante "assinatura": monograma + PEDRO TENSINI em caixa alta espaçada + régua fina com
+// losango central (eco do logo) + BARBEARIA (última palavra do nome). O nome é tipografia; o logo raster não vai ao site.
 import Monograma from './Monograma.astro';
 import { nomeCanonico } from '../../config/marca.ts';
 import { valorPreview } from '../../config/tipos.ts';
@@ -11,9 +11,10 @@ interface Props {
 }
 
 const { tamanho = 'm', class: classe } = Astro.props;
-const nome = valorPreview(nomeCanonico) ?? 'Tensini Barbieri';
-const [primeiro = '', ...resto] = nome.split(' ');
-const segundo = resto.join(' ');
+const nome = valorPreview(nomeCanonico) ?? '';
+const corte = nome.lastIndexOf(' ');
+const primeiro = corte > 0 ? nome.slice(0, corte) : nome;
+const segundo = corte > 0 ? nome.slice(corte + 1) : '';
 ---
 
 <div

@@ -13,7 +13,7 @@
     "dev": "astro dev",
     "prebuild": "pnpm media:prepare && pnpm validate-config",
     "build": "astro build",
-    "postbuild": "pnpm audit-compliance && pnpm audit-seo && node scripts/csp.mjs",
+    "postbuild": "pnpm audit-compliance && pnpm audit-seo && node scripts/preload-lcp.mjs && node scripts/csp.mjs",
     "preview": "astro preview",
     "check": "astro check && eslint . && prettier --check . && pnpm audit-textos",
     "test": "pnpm test-config",

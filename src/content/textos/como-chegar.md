@@ -6,12 +6,12 @@ description: Barbearia do Pedro Tensini na Galeria Augusta, Rua Hercílio Luz, C
 
 # Como chegar à {{nome}}, na Galeria Augusta
 
-A barbearia do {{pedro}} fica na Galeria Augusta, na Rua Hercílio Luz, Centro de Lages/SC. Atende de segunda a sexta, das 8h30 às 20h, e no sábado, das 8h30 às 18h. Domingo fechado.
+A barbearia do {{pedro}} fica na Galeria Augusta, na Rua Hercílio Luz, Centro de Lages/SC, {{endereco.referencia}}. Atende de segunda a sexta, das 8h30 às 20h, e no sábado, das 8h30 às 18h. Domingo fechado.
 
 ## Endereço
 
 {{endereco.completo}}
-{{endereco.salaAndar}} [PROVISÓRIO: andar ou sala dentro da Galeria Augusta]
+Referência: {{endereco.referencia}}.
 Plus Code: {{plusCode}}
 
 Botões: Abrir no Google Maps · Abrir no Waze · Abrir no Apple Mapas
@@ -35,11 +35,11 @@ Atenção: {{excecoes}}
 <!-- senao -->
 
 1. **Rua Hercílio Luz.** A barbearia fica na Rua Hercílio Luz, no Centro de Lages.
-2. **Entrada da Galeria Augusta.** Entre na Galeria Augusta pela Rua Hercílio Luz.
-3. **Andar e sala.** O andar e a sala entram aqui assim que forem confirmados. Na dúvida, chame o Pedro no WhatsApp. [PROVISÓRIO: andar ou sala dentro da galeria]
+2. **Ao lado da Agito.** A entrada da Galeria Augusta fica ao lado da Agito, na mesma calçada.
+3. **Dentro da galeria.** Entre na Galeria Augusta: a barbearia é lá dentro. Na dúvida, chame o Pedro no WhatsApp que ele te orienta.
 4. **A porta da barbearia.** Lá dentro, a cadeira de couro, o espelho iluminado e a parede verde dos vídeos.
 
-O passo a passo com fotos, da calçada da Rua Hercílio Luz até a porta da barbearia, entra aqui assim que for gravado. Até lá: entre na Galeria Augusta pela Rua Hercílio Luz e, na dúvida, chame o Pedro no WhatsApp que ele te orienta. [PROVISÓRIO: passos com foto/vídeo e referências próximas]
+O passo a passo com fotos, da calçada da Rua Hercílio Luz até a porta da barbearia, entra aqui assim que for gravado. Até lá: procure a Agito na Rua Hercílio Luz, entre na Galeria Augusta, que fica ao lado, e, na dúvida, chame o Pedro no WhatsApp.
 <!-- fim -->
 
 ## Estacionamento

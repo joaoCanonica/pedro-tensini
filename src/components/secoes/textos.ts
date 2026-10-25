@@ -23,14 +23,20 @@ const MARCADORES: Record<string, string> = {
   'endereco.curto':
     [conf(endereco.rua), conf(endereco.complemento)].filter(Boolean).join(', ') +
     ` — ${conf(endereco.bairro) ?? ''}`,
-  // Sem número confirmado: "nº a confirmar" (no preview; em produção a trava exige o número).
+  // Número pendente: "nº a confirmar" (no preview). Confirmado como null: endereço sem número.
   'endereco.completo': [
-    [conf(endereco.rua), conf(endereco.numero) ?? 'nº a confirmar'].join(', '),
+    [
+      conf(endereco.rua),
+      endereco.numero.estado === 'confirmado' ? conf(endereco.numero) : 'nº a confirmar',
+    ]
+      .filter(Boolean)
+      .join(', '),
     [conf(endereco.complemento), conf(endereco.salaAndar)].filter(Boolean).join(', '),
     conf(endereco.bairro),
     `${conf(endereco.cidade) ?? ''}/${conf(endereco.uf) ?? ''}`,
     `CEP ${conf(endereco.cep) ?? ''}`,
   ].join(', '),
+  'endereco.referencia': conf(endereco.referencia) ?? '',
   'horario.semana': resumoSemana(),
   'google.nota': google.nota.valor.toFixed(1).replace('.', ','),
   'google.total': String(google.total.valor),

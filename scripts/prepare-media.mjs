@@ -37,13 +37,20 @@ const so = args.find((a) => a.startsWith('--so='))?.slice(5);
 const gerarCatalogo = args.includes('--catalogo');
 
 const inicio = Date.now();
-for (const f of ['ffmpeg', 'ffprobe']) {
-  if (!(await ferramentaExiste(f))) {
-    console.error(
-      `[media] ${f} não encontrado. Instale ffmpeg (inclui ffprobe) para gerar os derivados.`,
-    );
-    process.exit(1);
+// ffmpeg só é exigido quando algum derivado precisa ser gerado. Os derivados e o cache
+// (.cache/media.json) vão no git: a build da Vercel, que não tem ffmpeg, só confere.
+let ferramentasOk = false;
+async function exigirFerramentas(id) {
+  if (ferramentasOk) return;
+  for (const f of ['ffmpeg', 'ffprobe']) {
+    if (!(await ferramentaExiste(f))) {
+      console.error(
+        `[media] ${f} não encontrado e ${id} precisa ser gerado. Instale ffmpeg (inclui ffprobe) e rode pnpm media:prepare.`,
+      );
+      process.exit(1);
+    }
   }
+  ferramentasOk = true;
 }
 
 const { manifesto, originais } = await carregarManifesto();
@@ -102,6 +109,7 @@ for (const d of ativos) {
     continue;
   }
   if (pular) continue;
+  await exigirFerramentas(d.id);
   const t0 = Date.now();
   const tmp = join(SAIDA, `.tmp-${d.id}`);
   await rm(tmp, { recursive: true, force: true });

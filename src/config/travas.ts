@@ -39,7 +39,8 @@ export interface ManifestoResumo {
 
 export interface EntradaTravas {
   whatsapp: Campo<string>;
-  numeroEndereco: Campo<string>;
+  /** Confirmado com valor null = endereço sem número, por decisão registrada na fonte. */
+  numeroEndereco: Campo<string | null>;
   nomeCanonico: Campo<string>;
   /** Dados com texto que pode ir para a página. */
   conteudo: unknown;

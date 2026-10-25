@@ -1,0 +1,1821 @@
+{
+  "originais": {
+    "media-originais/videos/experiencia-babearia-verdadeira.mp4": {
+      "marca": "12235610:1792862471519.4106",
+      "sha256": "6bfd0f4bc5ec4ce22a94c29b8402838ca7e7b721d33d39348413efd50b1ae35b"
+    },
+    "media-originais/videos/corte1.mp4": {
+      "marca": "13483718:1792862471415.4106",
+      "sha256": "97b0a3fce01287cbb941725bfea5cdd73cd84dfb9d80f8e0d2540bd07fcee122"
+    },
+    "media-originais/videos/corte-acabamento.mp4": {
+      "marca": "7788414:1792862471363.4106",
+      "sha256": "8d6fde086e00efd41127e2ad9914bacc616ca6a089d1173c41dee6541ab87456"
+    },
+    "media-originais/videos/corte2.mp4": {
+      "marca": "14642979:1792862471471.4106",
+      "sha256": "bbe7b8e61323437e3847718bf569818dd01ddb6c7d987580db8b75db46215c58"
+    },
+    "media-originais/videos/bastidores.mp4": {
+      "marca": "11739771:1792862471355.4106",
+      "sha256": "3bce7d71461cb7708ff7d7e0dc6a3dd07ce458137ba3da6d8b91cb5e4d86283f"
+    },
+    "media-originais/videos/qual-pomada-certa.mp4": {
+      "marca": "7053373:1792862471615.4106",
+      "sha256": "64521d2872e3162ec6b17defb60fd28f22f5720d08bdc0add1934c32fd9ccbe7"
+    },
+    "media-originais/videos/primeiro-video.mp4": {
+      "marca": "15932436:1792862471587.4106",
+      "sha256": "9746cfd8f86c43fd50c56d771d96f57157944dbeef04a3bd69cab31a05c5e68c"
+    },
+    "media-originais/videos/seu-visual-fala-antes-de-qualquer-coisa.mp4": {
+      "marca": "463295:1792862471619.4106",
+      "sha256": "8b12982ac1e41f797ef45eb8b0d668f6f199267e6a7a7a527e5071e76c08f278"
+    },
+    "media-originais/fotos/SaveClip.App_856610241_122104126131512758_229869556221299606_n.jpg": {
+      "marca": "324292:1792862471335.214",
+      "sha256": "4012af0cb5485fab1c6ad0cd6c6c3bbf75f21e8c3ed81a4103cbdadb2dc6d1fa"
+    },
+    "media-originais/fotos/SaveClip.App_857872880_122104125921512758_4288702109058299548_n.jpg": {
+      "marca": "267981:1792862471335.4106",
+      "sha256": "48cda9cd3dfe81a42d8182f3f26466cd49c65e8e62583752cf30d9809e6388c0"
+    },
+    "media-originais/fotos/SaveClip.App_858788059_122104126857512758_3862214480292085338_n.jpg": {
+      "marca": "328619:1792862471339.4106",
+      "sha256": "e2f100329021c41ebdaf89607d02bebfb21fc83ee0e05a9627709e7253cacc4c"
+    },
+    "media-originais/fotos/SaveClip.App_858729706_122104124973512758_5633014483998655299_n.jpg": {
+      "marca": "444733:1792862471339.4106",
+      "sha256": "9f5e690f597ee3a45318375caeabeb655f524d8dae5c574bed6afc27b6568d70"
+    },
+    "media-originais/fotos/SaveClip.App_858196088_122104126245512758_3717112216634346557_n.jpg": {
+      "marca": "397819:1792862471335.4106",
+      "sha256": "d969eba551865d113893699196370475b9d06b86b6b9fde68c654c887129862a"
+    },
+    "media-originais/fotos/SaveClip.App_858462534_122104126341512758_8185224576184917_n.jpg": {
+      "marca": "417247:1792862471339.4106",
+      "sha256": "be7fa88f9257ed63ca828c613a8888a5d4bbd5d613c48eca92fc7a9a7273b8b0"
+    },
+    "media-originais/fotos/foto-pedro.jpg": {
+      "marca": "2955:1792862471339.4106",
+      "sha256": "d9045c16ba6b44293988ae26053a12d9372fe54990d68edbf12cb99a979c7018"
+    },
+    "media-originais/marca/tensini-monograma-tb.svg": {
+      "marca": "4410:1792862471339.4106",
+      "sha256": "67bfb9b08743d74337b604ad06076cd3a4dc4be4076fb929d0fb55dbbd20b082"
+    },
+    "media-originais/marca/Pedro-tensini-logo.JPG": {
+      "marca": "254534:1792862471331.4106",
+      "sha256": "154d5eda64705803e6728ecd65d7090c6332246d181a0ce064318c2e474e4f6a"
+    },
+    "media-originais/marca/tensini-monograma-comparacao.png": {
+      "marca": "38825:1792862471339.4106",
+      "sha256": "e989266ddc12437d1ed2b52658319d02287554e8e0d1ec62456b2ac69375c8d3"
+    }
+  },
+  "derivados": {
+    "loop-hero": {
+      "chave": "a4bd72e813c8d027ed13630c2ab64e42b11f480071d81923a38b99b049253cce",
+      "arquivos": [
+        "loop-hero-720.mp4",
+        "loop-hero-720.webm",
+        "loop-hero-540.mp4",
+        "loop-hero-540.webm",
+        "loop-hero-poster-540.avif",
+        "loop-hero-poster-540.webp",
+        "loop-hero-poster-720.avif",
+        "loop-hero-poster-720.webp"
+      ],
+      "indice": {
+        "id": "loop-hero",
+        "origem": "experiencia-babearia-verdadeira",
+        "tipo": "loop",
+        "natureza": "video",
+        "provisorio": false,
+        "loop": true,
+        "audio": false,
+        "fps": 30,
+        "duracao": 6,
+        "videos": [
+          {
+            "largura": 720,
+            "altura": 1280,
+            "mp4": {
+              "src": "/media/loop-hero/loop-hero-720.mp4",
+              "bytes": 873361,
+              "crf": 27
+            },
+            "webm": {
+              "src": "/media/loop-hero/loop-hero-720.webm",
+              "bytes": 851787,
+              "crf": 37
+            }
+          },
+          {
+            "largura": 540,
+            "altura": 960,
+            "mp4": {
+              "src": "/media/loop-hero/loop-hero-540.mp4",
+              "bytes": 537641,
+              "crf": 27
+            },
+            "webm": {
+              "src": "/media/loop-hero/loop-hero-540.webm",
+              "bytes": 579836,
+              "crf": 37
+            }
+          }
+        ],
+        "poster": {
+          "tFonte": 21.0333,
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/loop-hero/loop-hero-poster-540.avif",
+              "bytes": 21324
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/loop-hero/loop-hero-poster-720.avif",
+              "bytes": 29793
+            }
+          ],
+          "webp": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/loop-hero/loop-hero-poster-540.webp",
+              "bytes": 26678
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/loop-hero/loop-hero-poster-720.webp",
+              "bytes": 38052
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRuoAAABXRUJQVlA4IN4AAADQBgCdASoYACsAPu1sqlEppiOipW5hMB2JQBYj7RjXSv89iEDdaSaf7UXlxUyh71ftGoJklg6ReaOSGpVRG0AA/uLi/Zf+YtKHEZhHQ0+5/RIHHzm+91mjeIjqVg4GhtRbI2Z48z59Vq7cOqzoO5iSvo3bAhY0ttdF14mz/+9sbNFLxTk54tzB4Q80jS/E30kVTXzOByHc2zZunoAUENkHWBfOTuyfGckoBF5CTDV/S+BhVBX8d4V9JQcZx7yNMMSIjyIKbVoOs13q5GN8uuJX/IsIZX1FdbSoAEeAAAA="
+        }
+      }
+    },
+    "loop-degrade": {
+      "chave": "edc7b87280489548d232d0f33c264dac9d8491385e8ce1cf45b534242c379b37",
+      "arquivos": [
+        "loop-degrade-720.mp4",
+        "loop-degrade-720.webm",
+        "loop-degrade-540.mp4",
+        "loop-degrade-540.webm",
+        "loop-degrade-poster-540.avif",
+        "loop-degrade-poster-540.webp",
+        "loop-degrade-poster-720.avif",
+        "loop-degrade-poster-720.webp"
+      ],
+      "indice": {
+        "id": "loop-degrade",
+        "origem": "corte1",
+        "tipo": "loop",
+        "natureza": "video",
+        "provisorio": false,
+        "loop": true,
+        "audio": false,
+        "fps": 30,
+        "duracao": 2.9,
+        "videos": [
+          {
+            "largura": 720,
+            "altura": 1280,
+            "mp4": {
+              "src": "/media/loop-degrade/loop-degrade-720.mp4",
+              "bytes": 719107,
+              "crf": 27
+            },
+            "webm": {
+              "src": "/media/loop-degrade/loop-degrade-720.webm",
+              "bytes": 659654,
+              "crf": 37
+            }
+          },
+          {
+            "largura": 540,
+            "altura": 960,
+            "mp4": {
+              "src": "/media/loop-degrade/loop-degrade-540.mp4",
+              "bytes": 441629,
+              "crf": 27
+            },
+            "webm": {
+              "src": "/media/loop-degrade/loop-degrade-540.webm",
+              "bytes": 444143,
+              "crf": 37
+            }
+          }
+        ],
+        "poster": {
+          "tFonte": 6.9667,
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/loop-degrade/loop-degrade-poster-540.avif",
+              "bytes": 34729
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/loop-degrade/loop-degrade-poster-720.avif",
+              "bytes": 51554
+            }
+          ],
+          "webp": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/loop-degrade/loop-degrade-poster-540.webp",
+              "bytes": 46844
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/loop-degrade/loop-degrade-poster-720.webp",
+              "bytes": 68834
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRgoBAABXRUJQVlA4IP4AAACQBgCdASoYACsAPu1gq06ppSQiKrgN+TAdiUAXyQoV3yc7KMeXlrcmCR9nIXtgGvSyINHT/hHV+/mUO6AAAP73eYmt56sYxu/PS2WMZYNTVQcUvY3Dl7+QS+pT+S9NxgAjCloo4WSPIm/McESF7wIqHIVYUjcmO6JtRGAGWPo+PszEg/SMisB65KJWy849qVR23VpzPQyeTeNxlhJTSIwChVwJOTKFo/fn8cXQamGQyygIEFot5ev9XTh9hw24/IRZo7gydhqOqBA/2aqYLE0BwN66DAH5twms631oIwkSBMXp09VP0vyJzfui2MEVFW8F6OW7PxHyLBFM3WKwAA=="
+        }
+      }
+    },
+    "resultado-1": {
+      "chave": "3ae57ae52edddad987f42b9af8e5ff9d56de20524a286013a0c74359a7846c95",
+      "arquivos": [
+        "resultado-1-720.mp4",
+        "resultado-1-720.webm",
+        "resultado-1-540.mp4",
+        "resultado-1-540.webm",
+        "resultado-1-poster-540.avif",
+        "resultado-1-poster-540.webp",
+        "resultado-1-poster-720.avif",
+        "resultado-1-poster-720.webp"
+      ],
+      "indice": {
+        "id": "resultado-1",
+        "origem": "corte-acabamento",
+        "tipo": "video",
+        "natureza": "video",
+        "provisorio": false,
+        "loop": false,
+        "audio": false,
+        "fps": 30,
+        "duracao": 8.2,
+        "videos": [
+          {
+            "largura": 720,
+            "altura": 1280,
+            "mp4": {
+              "src": "/media/resultado-1/resultado-1-720.mp4",
+              "bytes": 1498076,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/resultado-1/resultado-1-720.webm",
+              "bytes": 1547520,
+              "crf": 35
+            }
+          },
+          {
+            "largura": 540,
+            "altura": 960,
+            "mp4": {
+              "src": "/media/resultado-1/resultado-1-540.mp4",
+              "bytes": 886545,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/resultado-1/resultado-1-540.webm",
+              "bytes": 1008487,
+              "crf": 35
+            }
+          }
+        ],
+        "poster": {
+          "tFonte": 32.1333,
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/resultado-1/resultado-1-poster-540.avif",
+              "bytes": 29195
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/resultado-1/resultado-1-poster-720.avif",
+              "bytes": 46864
+            }
+          ],
+          "webp": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/resultado-1/resultado-1-poster-540.webp",
+              "bytes": 40426
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/resultado-1/resultado-1-poster-720.webp",
+              "bytes": 65900
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4IAIBAABQBwCdASoYACsAPu1yrVGppyQiqrgIATAdiWMAtvvWCVWVYvTEqOf83KP+elz6nL7Su10paj+AcdX1zmHy9bwjIAhAAP6zUfp31BrIdZEr+nBDvAf8yu9PzGGEa2YNvwmxNkwV5/mi6BOwDcZxNgVaW+SVa2xPHEXYXDDEvMZnbZlG0DZGS4QzRXwSYXteES0FBBpdWnxI7y3tR8NAX42cviunAYjr/CDt5LlZctsOlvw7wJlq15S7DVeZgAEhBeTfv5NfqBFCrSdlBnn5I5WVpFSkrnuSvg5p5xDGdlUN1Le+L5ElSGk6/SLZu7SVLCrFmdMOYMNSVbrPj8E3zzfMYAA="
+        }
+      }
+    },
+    "resultado-2": {
+      "chave": "d73836073254946f38357ed7fb446e9fc3ca1a55c2da1f64e9f9330e77c97c31",
+      "arquivos": [
+        "resultado-2-720.mp4",
+        "resultado-2-720.webm",
+        "resultado-2-540.mp4",
+        "resultado-2-540.webm",
+        "resultado-2-poster-540.avif",
+        "resultado-2-poster-540.webp",
+        "resultado-2-poster-720.avif",
+        "resultado-2-poster-720.webp"
+      ],
+      "indice": {
+        "id": "resultado-2",
+        "origem": "corte2",
+        "tipo": "video",
+        "natureza": "video",
+        "provisorio": false,
+        "loop": false,
+        "audio": false,
+        "fps": 30,
+        "duracao": 16.767,
+        "videos": [
+          {
+            "largura": 720,
+            "altura": 1280,
+            "mp4": {
+              "src": "/media/resultado-2/resultado-2-720.mp4",
+              "bytes": 3355201,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/resultado-2/resultado-2-720.webm",
+              "bytes": 3823241,
+              "crf": 35
+            }
+          },
+          {
+            "largura": 540,
+            "altura": 960,
+            "mp4": {
+              "src": "/media/resultado-2/resultado-2-540.mp4",
+              "bytes": 2210245,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/resultado-2/resultado-2-540.webm",
+              "bytes": 2728159,
+              "crf": 35
+            }
+          }
+        ],
+        "poster": {
+          "tFonte": 46.2,
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/resultado-2/resultado-2-poster-540.avif",
+              "bytes": 28847
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/resultado-2/resultado-2-poster-720.avif",
+              "bytes": 41339
+            }
+          ],
+          "webp": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/resultado-2/resultado-2-poster-540.webp",
+              "bytes": 45268
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/resultado-2/resultado-2-poster-720.webp",
+              "bytes": 66176
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRhQBAABXRUJQVlA4IAgBAACQBgCdASoYACsAPu1ur1IppiQiqrgIATAdiWgAvdGNBGTzLSMx+TeD4QyRozYgEwPnEPW8LEXWKGNTwm8AAP74sZ82zTfIzGo7AcNlWBxCyJrI/tJ9rodSOOwxIcxCe1Mk3sSZca8MVhEBgDDGNSBEb4a4EthyxnJox2U5LqwXAOt5EO0sGfFD3v2OFSPBL/mnJ/T2VqK1lkTnw5Uc2qllYn5Ab73BbO4vGYvSCNSz8JURlXp1lgmbIsGzl4lpyxcbfTtO9UQZrPbJPwweWwkAPrqizc3yHTaVs9/lVs5GiC9Q9cTWPi4F4QaB8gSaz5Gt0jY2/ri1+x4a//jrhP/y9Y1g6o0AAAA="
+        }
+      }
+    },
+    "experiencia-completa": {
+      "chave": "03dc24073067e6c2c028ff1184653bde06667d95ed208b11f89e16cb297bc271",
+      "arquivos": [
+        "experiencia-completa-720.mp4",
+        "experiencia-completa-720.webm",
+        "experiencia-completa-540.mp4",
+        "experiencia-completa-540.webm",
+        "experiencia-completa-poster-540.avif",
+        "experiencia-completa-poster-540.webp",
+        "experiencia-completa-poster-720.avif",
+        "experiencia-completa-poster-720.webp"
+      ],
+      "indice": {
+        "id": "experiencia-completa",
+        "origem": "experiencia-babearia-verdadeira",
+        "tipo": "video",
+        "natureza": "video",
+        "provisorio": false,
+        "loop": false,
+        "audio": false,
+        "fps": 30,
+        "duracao": 59.5,
+        "videos": [
+          {
+            "largura": 720,
+            "altura": 1280,
+            "mp4": {
+              "src": "/media/experiencia-completa/experiencia-completa-720.mp4",
+              "bytes": 10249949,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/experiencia-completa/experiencia-completa-720.webm",
+              "bytes": 10610447,
+              "crf": 35
+            }
+          },
+          {
+            "largura": 540,
+            "altura": 960,
+            "mp4": {
+              "src": "/media/experiencia-completa/experiencia-completa-540.mp4",
+              "bytes": 6491439,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/experiencia-completa/experiencia-completa-540.webm",
+              "bytes": 7124215,
+              "crf": 35
+            }
+          }
+        ],
+        "poster": {
+          "tFonte": 21.0333,
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/experiencia-completa/experiencia-completa-poster-540.avif",
+              "bytes": 21324
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/experiencia-completa/experiencia-completa-poster-720.avif",
+              "bytes": 29793
+            }
+          ],
+          "webp": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/experiencia-completa/experiencia-completa-poster-540.webp",
+              "bytes": 26678
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/experiencia-completa/experiencia-completa-poster-720.webp",
+              "bytes": 38052
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRuoAAABXRUJQVlA4IN4AAADQBgCdASoYACsAPu1sqlEppiOipW5hMB2JQBYj7RjXSv89iEDdaSaf7UXlxUyh71ftGoJklg6ReaOSGpVRG0AA/uLi/Zf+YtKHEZhHQ0+5/RIHHzm+91mjeIjqVg4GhtRbI2Z48z59Vq7cOqzoO5iSvo3bAhY0ttdF14mz/+9sbNFLxTk54tzB4Q80jS/E30kVTXzOByHc2zZunoAUENkHWBfOTuyfGckoBF5CTDV/S+BhVBX8d4V9JQcZx7yNMMSIjyIKbVoOs13q5GN8uuJX/IsIZX1FdbSoAEeAAAA="
+        }
+      }
+    },
+    "bastidores-site": {
+      "chave": "b9e82a3237485d45743e7f696d1d885d276b38ff7b14afc24bc0ef4bb9105549",
+      "arquivos": [
+        "bastidores-site-720.mp4",
+        "bastidores-site-720.webm",
+        "bastidores-site-540.mp4",
+        "bastidores-site-540.webm",
+        "bastidores-site-poster-540.avif",
+        "bastidores-site-poster-540.webp",
+        "bastidores-site-poster-720.avif",
+        "bastidores-site-poster-720.webp"
+      ],
+      "indice": {
+        "id": "bastidores-site",
+        "origem": "bastidores",
+        "tipo": "video",
+        "natureza": "video",
+        "provisorio": false,
+        "loop": false,
+        "audio": false,
+        "fps": 30,
+        "duracao": 51.867,
+        "videos": [
+          {
+            "largura": 720,
+            "altura": 1280,
+            "mp4": {
+              "src": "/media/bastidores-site/bastidores-site-720.mp4",
+              "bytes": 7995593,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/bastidores-site/bastidores-site-720.webm",
+              "bytes": 8117467,
+              "crf": 35
+            }
+          },
+          {
+            "largura": 540,
+            "altura": 960,
+            "mp4": {
+              "src": "/media/bastidores-site/bastidores-site-540.mp4",
+              "bytes": 5086196,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/bastidores-site/bastidores-site-540.webm",
+              "bytes": 5611687,
+              "crf": 35
+            }
+          }
+        ],
+        "poster": {
+          "tFonte": 11.7333,
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/bastidores-site/bastidores-site-poster-540.avif",
+              "bytes": 26646
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/bastidores-site/bastidores-site-poster-720.avif",
+              "bytes": 38728
+            }
+          ],
+          "webp": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/bastidores-site/bastidores-site-poster-540.webp",
+              "bytes": 33382
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/bastidores-site/bastidores-site-poster-720.webp",
+              "bytes": 48440
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4IAIBAADQBgCdASoYACsAPu1wrVKppiOipWsxMB2JQBjmBWjkS/vzK0l16HOUlGfTw/YaTgwT73tZ1Pl7Y5Jkh1LhgAAA/iWsD4ZuRtbN2F4gh2LRLCEc4HrfVOcJex8MV40vLafpbYWU+yd3kwovaq3vZINaAdljOKNH7KLSSOqTb27zse/slX+gLDlE+mDYkuTmoi8ETRyiGXwQ+OvNv5mUvN9Yd0Ejr3HA3A7UKaCnkdDGGLGFNy0+RaCuuz2IjQPWuBIYVbkGOcQkF0UhrQkOXqa25WrgHeBAQslKJ7qoEWLcCfk3MjWMKsWnH+tApv5GgR6bkyG/zmpdKV9U6jLuLo1qAAA="
+        }
+      }
+    },
+    "pomadas": {
+      "chave": "6cc25a9ea791b0ed9d9e455ad08aa927276c194b5a8ac13e87645c781f6dc6af",
+      "arquivos": [
+        "pomadas-720.mp4",
+        "pomadas-720.webm",
+        "pomadas-540.mp4",
+        "pomadas-540.webm",
+        "pomadas-poster-540.avif",
+        "pomadas-poster-540.webp",
+        "pomadas-poster-720.avif",
+        "pomadas-poster-720.webp"
+      ],
+      "indice": {
+        "id": "pomadas",
+        "origem": "qual-pomada-certa",
+        "tipo": "video",
+        "natureza": "video",
+        "provisorio": false,
+        "loop": false,
+        "audio": false,
+        "fps": 30,
+        "duracao": 38.833,
+        "videos": [
+          {
+            "largura": 720,
+            "altura": 1280,
+            "mp4": {
+              "src": "/media/pomadas/pomadas-720.mp4",
+              "bytes": 5773514,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/pomadas/pomadas-720.webm",
+              "bytes": 7017403,
+              "crf": 35
+            }
+          },
+          {
+            "largura": 540,
+            "altura": 960,
+            "mp4": {
+              "src": "/media/pomadas/pomadas-540.mp4",
+              "bytes": 3987511,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/pomadas/pomadas-540.webm",
+              "bytes": 4954555,
+              "crf": 35
+            }
+          }
+        ],
+        "poster": {
+          "tFonte": 28.4667,
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/pomadas/pomadas-poster-540.avif",
+              "bytes": 41196
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/pomadas/pomadas-poster-720.avif",
+              "bytes": 61872
+            }
+          ],
+          "webp": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/pomadas/pomadas-poster-540.webp",
+              "bytes": 63218
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/pomadas/pomadas-poster-720.webp",
+              "bytes": 93652
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRj4BAABXRUJQVlA4IDIBAACwBwCdASoYACsAPu1qq1AppaOipW5hMB2JYgC355Pwd56psz4aNlcOSvnYiZL3DCHJGfebMJxmweQRb0ahGfzbr9Hai5lQAP7LCVEGYKZNc0+zVo1UcXG+yoGabLNZxH4t38TrJu1c5uZ7pNUuR1ughPR9C2cbWhyY/tYTgVE4r0XeNMnWUloUIjeiLkA83gcXGpogrtSRS3aAFuouVcHSkYda6RgzkTLDdQ6Q9WozxMFUt/WM7CHyHpLxYOym+tbOC2AJOC25zAJsp7kjPQtkD86ufBAL6aVYeSUaS5CBADrAwzPqNBiIIgBRrH9Kg7DErItrk4mnLs16IBgWwqZ5VQuLcj/qoP/LFLY0sOoPQFkwkb4gFF/gOZWWuUg4oyl6CrjU/RjaVgFGT+QIBvAAAAA="
+        }
+      }
+    },
+    "trajetoria": {
+      "chave": "b70944d06ca0c88169e3dcd39d52579a1cfe3a70d94e4a2d4306c5a2d39e04a0",
+      "arquivos": [
+        "trajetoria-720.mp4",
+        "trajetoria-720.webm",
+        "trajetoria-540.mp4",
+        "trajetoria-540.webm",
+        "trajetoria-poster-540.avif",
+        "trajetoria-poster-540.webp",
+        "trajetoria-poster-720.avif",
+        "trajetoria-poster-720.webp"
+      ],
+      "indice": {
+        "id": "trajetoria",
+        "origem": "primeiro-video",
+        "tipo": "video",
+        "natureza": "video",
+        "provisorio": false,
+        "loop": false,
+        "audio": false,
+        "fps": 30,
+        "duracao": 61.233,
+        "videos": [
+          {
+            "largura": 720,
+            "altura": 1280,
+            "mp4": {
+              "src": "/media/trajetoria/trajetoria-720.mp4",
+              "bytes": 12291564,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/trajetoria/trajetoria-720.webm",
+              "bytes": 13640901,
+              "crf": 35
+            }
+          },
+          {
+            "largura": 540,
+            "altura": 960,
+            "mp4": {
+              "src": "/media/trajetoria/trajetoria-540.mp4",
+              "bytes": 8336494,
+              "crf": 26
+            },
+            "webm": {
+              "src": "/media/trajetoria/trajetoria-540.webm",
+              "bytes": 9870925,
+              "crf": 35
+            }
+          }
+        ],
+        "poster": {
+          "tFonte": 39.5333,
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/trajetoria/trajetoria-poster-540.avif",
+              "bytes": 34778
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/trajetoria/trajetoria-poster-720.avif",
+              "bytes": 49893
+            }
+          ],
+          "webp": [
+            {
+              "largura": 540,
+              "altura": 960,
+              "src": "/media/trajetoria/trajetoria-poster-540.webp",
+              "bytes": 49816
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/trajetoria/trajetoria-poster-720.webp",
+              "bytes": 70666
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRlgBAABXRUJQVlA4IEwBAAAQCACdASoYACsAPu1eqE4ppKOiMBqqqTAdiWoArDNaR9DKWz/FGEWC2nTISzzowdN0LtKDHupf2Gm7MN/0EWQcMO9YAV3tWscAAPDC/IQ6Nvl3xroBvrkOE4EevzbCy8wTtD3L5iqM/CEebY35ywFpTiPk1CGsjXrvw/xLquxt/mlTB0uavB2gqqV8jmn91REmuriF/2RTpKUV2Iq3lH4U4l/EZsH4KRer4ExR/DmvVPokWIcDdrj9XID9Rbw8RAQPtq0eOTq7I06+TvluYGPdjwKhtegai7gdA57XCCoOJm+8CL9ZPqkTovChCC6O0jzeoyF1FUdpOPTJeylgU9H1yxPcYXpxO9MROs39udHoThbMszdIloUaz4qKhEdU7ovwkDti5Dw5cQcVx7RoXkWigho/gxd2jhAxpB7k7ftsRrvZ3XI9kcRKfvRAAA=="
+        }
+      }
+    },
+    "foto-toalha-quente": {
+      "chave": "7eaf5b0bc2889528434e78382b157ca42648a771faa2b43c2456eeea4a65cea9",
+      "arquivos": [
+        "foto-toalha-quente-480.avif",
+        "foto-toalha-quente-480.webp",
+        "foto-toalha-quente-800.avif",
+        "foto-toalha-quente-800.webp",
+        "foto-toalha-quente-1008.avif",
+        "foto-toalha-quente-1008.webp"
+      ],
+      "indice": {
+        "id": "foto-toalha-quente",
+        "origem": "foto-barbaterapia-toalha",
+        "tipo": "imagem",
+        "natureza": "foto",
+        "provisorio": true,
+        "exibicaoMax": {
+          "larguraCss": 504,
+          "nota": "1008 px reais: até 504 px CSS em telas 2x."
+        },
+        "imagem": {
+          "largura": 1008,
+          "altura": 756,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 360,
+              "src": "/media/foto-toalha-quente/foto-toalha-quente-480.avif",
+              "bytes": 14685
+            },
+            {
+              "largura": 800,
+              "altura": 600,
+              "src": "/media/foto-toalha-quente/foto-toalha-quente-800.avif",
+              "bytes": 33657
+            },
+            {
+              "largura": 1008,
+              "altura": 756,
+              "src": "/media/foto-toalha-quente/foto-toalha-quente-1008.avif",
+              "bytes": 48176
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 360,
+              "src": "/media/foto-toalha-quente/foto-toalha-quente-480.webp",
+              "bytes": 22214
+            },
+            {
+              "largura": 800,
+              "altura": 600,
+              "src": "/media/foto-toalha-quente/foto-toalha-quente-800.webp",
+              "bytes": 49568
+            },
+            {
+              "largura": 1008,
+              "altura": 756,
+              "src": "/media/foto-toalha-quente/foto-toalha-quente-1008.webp",
+              "bytes": 71856
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRrIAAABXRUJQVlA4IKYAAABwBACdASoYABIAPu1qr1CppaQuKAqpwB2JQBWGbIS3YNkhmQU8Sh1jsB8cAAD+8uH8aJlV/Oit1P3p7C9O3NigRS6pbKR04jph3eXR6bOh6hauM7JVqQxJkDyUPXcG9iohXaB5gtz+0Gc8cLeeM+cfxtsy8aH1/a7PXS1nEY2lowNTJDTPMvJuEvJExhGR08u/O43PzunCPv7NzP77Dfcg5UG7wAAA"
+        }
+      }
+    },
+    "foto-esfoliacao": {
+      "chave": "6b998a55946057a2e2edd33bfc0ed7bafcb382c21776ec89dffb4ef0fa336390",
+      "arquivos": [
+        "foto-esfoliacao-480.avif",
+        "foto-esfoliacao-480.webp",
+        "foto-esfoliacao-800.avif",
+        "foto-esfoliacao-800.webp",
+        "foto-esfoliacao-1008.avif",
+        "foto-esfoliacao-1008.webp"
+      ],
+      "indice": {
+        "id": "foto-esfoliacao",
+        "origem": "foto-barbaterapia-esfoliacao",
+        "tipo": "imagem",
+        "natureza": "foto",
+        "provisorio": true,
+        "exibicaoMax": {
+          "larguraCss": 504,
+          "nota": "1008 px reais: até 504 px CSS em telas 2x."
+        },
+        "imagem": {
+          "largura": 1008,
+          "altura": 756,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 360,
+              "src": "/media/foto-esfoliacao/foto-esfoliacao-480.avif",
+              "bytes": 10489
+            },
+            {
+              "largura": 800,
+              "altura": 600,
+              "src": "/media/foto-esfoliacao/foto-esfoliacao-800.avif",
+              "bytes": 23357
+            },
+            {
+              "largura": 1008,
+              "altura": 756,
+              "src": "/media/foto-esfoliacao/foto-esfoliacao-1008.avif",
+              "bytes": 33269
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 360,
+              "src": "/media/foto-esfoliacao/foto-esfoliacao-480.webp",
+              "bytes": 15088
+            },
+            {
+              "largura": 800,
+              "altura": 600,
+              "src": "/media/foto-esfoliacao/foto-esfoliacao-800.webp",
+              "bytes": 32558
+            },
+            {
+              "largura": 1008,
+              "altura": 756,
+              "src": "/media/foto-esfoliacao/foto-esfoliacao-1008.webp",
+              "bytes": 46408
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACwAwCdASoYABIAPu1kqU2ppaQiMAgBMB2JQBOgAf6iRJ5Dqg3dgAD+72IB8av3CSCwBtXs+E1IU/IFtZCEejFkTTbRrIJLyzdKJYQmtnDyvS4jCZB10G3xyiJSTUfxOa/RdMh+LNefuNlaGueHzpd+N9SbU6Mv+tO6RoQAAAA="
+        }
+      }
+    },
+    "foto-navalha": {
+      "chave": "5f6b7a0da5b7657b2fc464853bef82bc0b425beb1aa0874b6b52099a7556d768",
+      "arquivos": [
+        "foto-navalha-480.avif",
+        "foto-navalha-480.webp",
+        "foto-navalha-800.avif",
+        "foto-navalha-800.webp",
+        "foto-navalha-1008.avif",
+        "foto-navalha-1008.webp"
+      ],
+      "indice": {
+        "id": "foto-navalha",
+        "origem": "foto-barbaterapia-navalha",
+        "tipo": "imagem",
+        "natureza": "foto",
+        "provisorio": true,
+        "exibicaoMax": {
+          "larguraCss": 504,
+          "nota": "1008 px reais: até 504 px CSS em telas 2x."
+        },
+        "imagem": {
+          "largura": 1008,
+          "altura": 756,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 360,
+              "src": "/media/foto-navalha/foto-navalha-480.avif",
+              "bytes": 13904
+            },
+            {
+              "largura": 800,
+              "altura": 600,
+              "src": "/media/foto-navalha/foto-navalha-800.avif",
+              "bytes": 34471
+            },
+            {
+              "largura": 1008,
+              "altura": 756,
+              "src": "/media/foto-navalha/foto-navalha-1008.avif",
+              "bytes": 61904
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 360,
+              "src": "/media/foto-navalha/foto-navalha-480.webp",
+              "bytes": 20340
+            },
+            {
+              "largura": 800,
+              "altura": 600,
+              "src": "/media/foto-navalha/foto-navalha-800.webp",
+              "bytes": 51536
+            },
+            {
+              "largura": 1008,
+              "altura": 756,
+              "src": "/media/foto-navalha/foto-navalha-1008.webp",
+              "bytes": 96868
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAABQBgCdASoYABIAPu1ur1KppiQiqAgBMB2JagCdL4GoQZgJoEMDS2bYNDLsqEFh2mRFKakfj2myRidwgAD+0mqiMP+BKO13tPnzjVFHA0uWRXoMihETzZ3X4G0TSKL8bQTJVF0kIiZztMP5oHuowuHWwv9Z7eQD+kTRM4Itj1vOgfPqwFT5Zv0RHzdE96uaUmYtcfHi/SzNZJgei5p5e5T65OgLKMRlZ6UQ1X5TmNImNrHQ9XO2zPIRwv4JU7W5qVaKTyFM7Cy/7o2u3j4397Tbu1j+5IAVnuSAFEvReTDMHyJ1HtqXP64xb99p59ncUzepxDMoOZ3AAA=="
+        }
+      }
+    },
+    "foto-barba-finalizada": {
+      "chave": "60760e1d3710fcbd0a50ae8c26fef2798e6dbaf592f069250648e154c543707a",
+      "arquivos": [
+        "foto-barba-finalizada-480.avif",
+        "foto-barba-finalizada-480.webp",
+        "foto-barba-finalizada-800.avif",
+        "foto-barba-finalizada-800.webp",
+        "foto-barba-finalizada-1008.avif",
+        "foto-barba-finalizada-1008.webp"
+      ],
+      "indice": {
+        "id": "foto-barba-finalizada",
+        "origem": "foto-barbaterapia-finalizada",
+        "tipo": "imagem",
+        "natureza": "foto",
+        "provisorio": true,
+        "exibicaoMax": {
+          "larguraCss": 504,
+          "nota": "1008 px reais: até 504 px CSS em telas 2x."
+        },
+        "imagem": {
+          "largura": 1008,
+          "altura": 756,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 360,
+              "src": "/media/foto-barba-finalizada/foto-barba-finalizada-480.avif",
+              "bytes": 15895
+            },
+            {
+              "largura": 800,
+              "altura": 600,
+              "src": "/media/foto-barba-finalizada/foto-barba-finalizada-800.avif",
+              "bytes": 36495
+            },
+            {
+              "largura": 1008,
+              "altura": 756,
+              "src": "/media/foto-barba-finalizada/foto-barba-finalizada-1008.avif",
+              "bytes": 56712
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 360,
+              "src": "/media/foto-barba-finalizada/foto-barba-finalizada-480.webp",
+              "bytes": 22768
+            },
+            {
+              "largura": 800,
+              "altura": 600,
+              "src": "/media/foto-barba-finalizada/foto-barba-finalizada-800.webp",
+              "bytes": 52828
+            },
+            {
+              "largura": 1008,
+              "altura": 756,
+              "src": "/media/foto-barba-finalizada/foto-barba-finalizada-1008.webp",
+              "bytes": 85648
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRtwAAABXRUJQVlA4INAAAABwBQCdASoYABIAPu1orlCppaQiqAqpMB2JaACo9YyobWnJoDv3tCXo6w/Uqj1FAFKvXdewAP3NBJAE5vMomkpRsdRUY9vomy1gL4vcc5/PnWxn/jzI0+FuKi3uEjUGhjs7QUq2gpDc/tS8cAbhgL25FLp7dOK0kTZ+utgfmrEMIW4M2+AXBi4E978GtP15/Fm7wTRwm8MybfDHfFhReGS7Reke8aOBmi23QiJxeJWI0z7dCb8g3iLFCnLualKY6on5LShJX+V0xz3KVV/BEAAA"
+        }
+      }
+    },
+    "monograma": {
+      "chave": "3f43696d4ca6eedcca3b41f6f77680f65d922e254d4e7653013e1e46866cd99a",
+      "arquivos": [
+        "monograma.svg"
+      ],
+      "indice": {
+        "id": "monograma",
+        "origem": "monograma-tb",
+        "tipo": "vetor",
+        "natureza": "vetor",
+        "provisorio": false,
+        "src": "/media/monograma/monograma.svg",
+        "bytes": 4410
+      }
+    },
+    "quadro-maquina-vinho": {
+      "chave": "65372e4ccfc425c9a7847048bc9ff4c7fdd669c30c3b4e1c7a68c8f0de9819ab",
+      "arquivos": [
+        "quadro-maquina-vinho-480.avif",
+        "quadro-maquina-vinho-480.webp",
+        "quadro-maquina-vinho-720.avif",
+        "quadro-maquina-vinho-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-maquina-vinho",
+        "origem": "experiencia-babearia-verdadeira",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-maquina-vinho/quadro-maquina-vinho-480.avif",
+              "bytes": 9394
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-maquina-vinho/quadro-maquina-vinho-720.avif",
+              "bytes": 14886
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-maquina-vinho/quadro-maquina-vinho-480.webp",
+              "bytes": 11704
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-maquina-vinho/quadro-maquina-vinho-720.webp",
+              "bytes": 19294
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAACQBgCdASoYACsAPuVcqU2pJSQiMBqtUSAciUAZKbGJ0jjMBoKb/TjwdmL6HyY+abOlwDwtsJ9l/aUduGmgAP7o0FVEcTFwyLae8X2cUjXH+PKXZAhnNapKzuq4/5ybjt2kj+/uM39rSvJymybBPh+WEteAGXSmG0+htT0Zxs19mX87MdPyoPvgxto/Z9I7iIeygadTaAdJFJmY0Ris7R7HT8PNwHMWPW+5oDIusRaqxb653zrvfV16iFV0v1zeTXjcCv2U4DiHi4oAAAA="
+        },
+        "quadroFonte": 30.2333
+      }
+    },
+    "quadro-navalha": {
+      "chave": "78f82c445e0040447890caa5f470d703a1320b28d91d1173ae69469faa61d25d",
+      "arquivos": [
+        "quadro-navalha-480.avif",
+        "quadro-navalha-480.webp",
+        "quadro-navalha-720.avif",
+        "quadro-navalha-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-navalha",
+        "origem": "experiencia-babearia-verdadeira",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-navalha/quadro-navalha-480.avif",
+              "bytes": 12854
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-navalha/quadro-navalha-720.avif",
+              "bytes": 21849
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-navalha/quadro-navalha-480.webp",
+              "bytes": 15924
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-navalha/quadro-navalha-720.webp",
+              "bytes": 27864
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAABQBgCdASoYACsAPtlgpE2oJiOiNVv8AQAbCWIAuwAho/TeEdOTRzHzZf6a92nAUKclAz7r06Mn+d+tAAD+9FOpv0mz4iJAZCD3XRX7axRQ+vYvi8p5tmOSTI0By9icLidSKIavugHdIgasuZIJPLGu11gfFP2kD7wdihbgG95CkGPH4lQ6gMwLwsBp+xAqfXIZY6oEj7YJs26OVS14xmk3FK6sKEVDyfKJXh0OKwAAAA=="
+        },
+        "quadroFonte": 48.8667
+      }
+    },
+    "quadro-resultado-barba": {
+      "chave": "27283d9730959806bba4d58cae9cfa0f2bba6a6713d913ac474a5e95ed09ebae",
+      "arquivos": [
+        "quadro-resultado-barba-480.avif",
+        "quadro-resultado-barba-480.webp",
+        "quadro-resultado-barba-720.avif",
+        "quadro-resultado-barba-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-resultado-barba",
+        "origem": "experiencia-babearia-verdadeira",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-resultado-barba/quadro-resultado-barba-480.avif",
+              "bytes": 16925
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-resultado-barba/quadro-resultado-barba-720.avif",
+              "bytes": 29761
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-resultado-barba/quadro-resultado-barba-480.webp",
+              "bytes": 20832
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-resultado-barba/quadro-resultado-barba-720.webp",
+              "bytes": 39146
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRiIBAABXRUJQVlA4IBYBAAAwBwCdASoYACsAPulepU2pJSOiNVgIASAdCWQAv2tyS2+JhCkl5PtHGnrgx8wQC6kYD6DhQfZQXdVvFvrw0pGvGaAA/vxJ7CcUwuk47q3qg3Q2LOhr8BP/6M+X3g4BJQwoF9oaisfVwquwRZMKw8+rUTeIHs6Y3YyvJ4mmCipE88QjlpUJcZ7Ny4nZouechJhh68dDj50LUQw9i3QIRePBUfnERX/6SlEeAnYyYyL3FCSxsxfcDtyHVvKtuym5F0Mes90dAKll7zf8Mx9HplUYeqFgPLcV4pclcZUfOpPxMzCdDATmsrohZ1dEJXY5pJsuhxPmvd2HJoMRiBIfEfWPVSsCvqLExA3ymmM8M/xbHWUH1YHUAA=="
+        },
+        "quadroFonte": 57.6
+      }
+    },
+    "quadro-parede-verde": {
+      "chave": "38dfac141c38536870bb146731d17f81ee70ab258e755b8d0f9455e17b394c33",
+      "arquivos": [
+        "quadro-parede-verde-480.avif",
+        "quadro-parede-verde-480.webp",
+        "quadro-parede-verde-720.avif",
+        "quadro-parede-verde-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-parede-verde",
+        "origem": "corte1",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-parede-verde/quadro-parede-verde-480.avif",
+              "bytes": 29364
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-parede-verde/quadro-parede-verde-720.avif",
+              "bytes": 54073
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-parede-verde/quadro-parede-verde-480.webp",
+              "bytes": 43712
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-parede-verde/quadro-parede-verde-720.webp",
+              "bytes": 76762
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRjIBAABXRUJQVlA4ICYBAAAQBwCdASoYACsAPu1mrE8ppaQiJW5hMB2JYwAD5Mw1syiwZbXJFQeE+cGuMgn69Dotep3Xr/fcRWZ+GhC7EO9QoADd5xuFVUdp3wYLuHp6l4plw16YNw0OrQRAzz4AvfoP3yYARrF6aBGPF47JCqg6seZsP95Q65lE0CDuiENjXZiUS43mGMDb9w10zfVbMNb1KYf3bZeOxG6usBINlYyItHWjkDx/S8XghaVKJ340l/awypRMpHrMCp43N4o7Pw4j8KWzx2yYaFos0GnmsQRvdDUiEXebFsdjrWpvZkV1MA3XdRvQ4XBPRTzpBDr3HUVp4ygJkg+WWCLE1tZjZxrCb+1WiTY45uJXOZ34ZXXzA/WGRb8UyI2dR7EbOMPE6bbQ9l5GAAA="
+        },
+        "quadroFonte": 11.9
+      }
+    },
+    "quadro-pedro-concentrado": {
+      "chave": "394219f04fe27ccc32af2bd02dd45e7ff7af1a125e771ced89e1cb46eb2184e3",
+      "arquivos": [
+        "quadro-pedro-concentrado-480.avif",
+        "quadro-pedro-concentrado-480.webp",
+        "quadro-pedro-concentrado-720.avif",
+        "quadro-pedro-concentrado-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-pedro-concentrado",
+        "origem": "corte1",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-pedro-concentrado/quadro-pedro-concentrado-480.avif",
+              "bytes": 28628
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-pedro-concentrado/quadro-pedro-concentrado-720.avif",
+              "bytes": 48192
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-pedro-concentrado/quadro-pedro-concentrado-480.webp",
+              "bytes": 42998
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-pedro-concentrado/quadro-pedro-concentrado-720.webp",
+              "bytes": 70030
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRk4BAABXRUJQVlA4IEIBAABwBwCdASoYACsAPu1sqFAppiOiqqoBMB2JagCdMoAlySoF6c4JGhagmhIOp26NgtNCO4pXz3frNZjZyVPxoAhRpaTGQAD+9zgfvQpCm9oGVrlb6m+8DBpRDxnPInEjkvp8a9TquCzik0lEN9Ak/cvYWe8DIxrZvkYygNyMCYnUk0wSxOt65BrWkSIYk2t0/KHZBYdsr0Ktp7+LiOJJ5UIYu42eYdbWD8IsNZHTT2VMmoRrPfrJ0+kVGXifZHqpycGvFRo6JOKws9HY3cn7Db16i5l4nq7KZiB2qwx/ZNLuH2HCnosQbQbLpW+wP3Cja4OctI4Wj3qm7ht/4dnd5q+jN7xibDGjp1h9TpsOG1y8uvaf8rp8n8m8pO16QmJ/aurGwZz1EhIJg0untm8KIDaCbMyatQnxmcv7z9Od4PefAAAA"
+        },
+        "quadroFonte": 14.7333
+      }
+    },
+    "quadro-barbearia-geral": {
+      "chave": "8e322be4a33daef5d414d17cb74971dd9013d728b7d54fc63b3bc5950322f293",
+      "arquivos": [
+        "quadro-barbearia-geral-480.avif",
+        "quadro-barbearia-geral-480.webp",
+        "quadro-barbearia-geral-720.avif",
+        "quadro-barbearia-geral-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-barbearia-geral",
+        "origem": "bastidores",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-barbearia-geral/quadro-barbearia-geral-480.avif",
+              "bytes": 22342
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-barbearia-geral/quadro-barbearia-geral-720.avif",
+              "bytes": 38728
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-barbearia-geral/quadro-barbearia-geral-480.webp",
+              "bytes": 28028
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-barbearia-geral/quadro-barbearia-geral-720.webp",
+              "bytes": 48440
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4IAIBAADQBgCdASoYACsAPu1wrVKppiOipWsxMB2JQBjmBWjkS/vzK0l16HOUlGfTw/YaTgwT73tZ1Pl7Y5Jkh1LhgAAA/iWsD4ZuRtbN2F4gh2LRLCEc4HrfVOcJex8MV40vLafpbYWU+yd3kwovaq3vZINaAdljOKNH7KLSSOqTb27zse/slX+gLDlE+mDYkuTmoi8ETRyiGXwQ+OvNv5mUvN9Yd0Ejr3HA3A7UKaCnkdDGGLGFNy0+RaCuuz2IjQPWuBIYVbkGOcQkF0UhrQkOXqa25WrgHeBAQslKJ7qoEWLcCfk3MjWMKsWnH+tApv5GgR6bkyG/zmpdKV9U6jLuLo1qAAA="
+        },
+        "quadroFonte": 11.7333
+      }
+    },
+    "quadro-cafe-coado": {
+      "chave": "3c967ec23b57870b3dd72ee6dcd6f277e918afae47d02a74976e9d97bc2383c1",
+      "arquivos": [
+        "quadro-cafe-coado-480.avif",
+        "quadro-cafe-coado-480.webp",
+        "quadro-cafe-coado-720.avif",
+        "quadro-cafe-coado-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-cafe-coado",
+        "origem": "bastidores",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-cafe-coado/quadro-cafe-coado-480.avif",
+              "bytes": 31666
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-cafe-coado/quadro-cafe-coado-720.avif",
+              "bytes": 49811
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-cafe-coado/quadro-cafe-coado-480.webp",
+              "bytes": 41444
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-cafe-coado/quadro-cafe-coado-720.webp",
+              "bytes": 63982
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRl4BAABXRUJQVlA4IFIBAABwBwCdASoYACsAPu1mq0+ppSOiKqoBMB2JZDuAG4kdmkDoPjf+dA2ZZHOJtbRAVmf6iN7Bt7PrhA7GhhzfvkLtXWnxQAD+7DthdApjLzuam8KWh8S7ktG9ohFLzCmDp9jKW28kvMabjxwPY8zqUMuiavfetF4JgvxT9njjtsgCPdJ4fvgrFz//jMUgcroPStfmGQyqDwa6s3kETr5vhfNIhzt5mIoDpoeaeLp89+eb7Isz1kcegkXhTklEW14eQUDylrwXhciDcXqyiJN3GqYUYO772qe4pSWODtzdIFe/Li5NfUXhm3FKi8bweMf1vFaWyZQMbUEYSNxs2iJFL9UYq8Q3WaTI/ajTpnTCPymlztEUB9EK+K9QVpEIPZAwgb/erhAUYmZM3pwz1fw1VQTWPp4Sg+f98Dd8KefRj65mcdCg3+cl6lcitrBYSrMBdaAAAA=="
+        },
+        "quadroFonte": 14
+      }
+    },
+    "quadro-cafe-servido": {
+      "chave": "f8b54800756bdf2be2fe3c867e22d0bde55620a5ccea578b05c0af565989b471",
+      "arquivos": [
+        "quadro-cafe-servido-480.avif",
+        "quadro-cafe-servido-480.webp",
+        "quadro-cafe-servido-720.avif",
+        "quadro-cafe-servido-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-cafe-servido",
+        "origem": "bastidores",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-cafe-servido/quadro-cafe-servido-480.avif",
+              "bytes": 13447
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-cafe-servido/quadro-cafe-servido-720.avif",
+              "bytes": 22284
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-cafe-servido/quadro-cafe-servido-480.webp",
+              "bytes": 16658
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-cafe-servido/quadro-cafe-servido-720.webp",
+              "bytes": 27524
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRjABAABXRUJQVlA4ICQBAADQBgCdASoYACsAPu1wslKppiSipWmZMB2JQBTmquBk2k6lBFJnB82Jjd11YpxoOc+/LuTKqzLD5EuI/X/d6+AA/lOx7ldzF/BOPa41ZA9OyNWlCHf+TJY05+Z0K/LHkppmOYx6B8pGQly2toxa0Vq15e+vvcQcBP5TZbtEyNqNQ13rbEnu2KeQLR6mqmoEcnRZtRLOd4HcYXlBIZVUI2Xk9XIT/rDs4VYQpDhwnzLa/WwLQBzKmah31e2EcSHcpaMllpv/XR3BP7sWuTauXdF1t2qBUKXX4L8KTNledf3ufvOP90ohKzB4iT1tfCpxiw3BUcvDW8SboUE4yXHlt5QQDG5sk29I8Jdq95nrEj2ltOY6dOV8L5Bi4FQOhrNtAvL7gAAA"
+        },
+        "quadroFonte": 5
+      }
+    },
+    "quadro-resultado-perfil": {
+      "chave": "6ebac0f2a98bb82f58522b00c9fe95c2554946269b511d89774908bae298e2e0",
+      "arquivos": [
+        "quadro-resultado-perfil-480.avif",
+        "quadro-resultado-perfil-480.webp",
+        "quadro-resultado-perfil-720.avif",
+        "quadro-resultado-perfil-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-resultado-perfil",
+        "origem": "corte-acabamento",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-resultado-perfil/quadro-resultado-perfil-480.avif",
+              "bytes": 23725
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-resultado-perfil/quadro-resultado-perfil-720.avif",
+              "bytes": 46864
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-resultado-perfil/quadro-resultado-perfil-480.webp",
+              "bytes": 32770
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-resultado-perfil/quadro-resultado-perfil-720.webp",
+              "bytes": 65900
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRg4BAABXRUJQVlA4IAIBAABQBwCdASoYACsAPu1yrVGppyQiqrgIATAdiWMAtvvWCVWVYvTEqOf83KP+elz6nL7Su10paj+AcdX1zmHy9bwjIAhAAP6zUfp31BrIdZEr+nBDvAf8yu9PzGGEa2YNvwmxNkwV5/mi6BOwDcZxNgVaW+SVa2xPHEXYXDDEvMZnbZlG0DZGS4QzRXwSYXteES0FBBpdWnxI7y3tR8NAX42cviunAYjr/CDt5LlZctsOlvw7wJlq15S7DVeZgAEhBeTfv5NfqBFCrSdlBnn5I5WVpFSkrnuSvg5p5xDGdlUN1Le+L5ElSGk6/SLZu7SVLCrFmdMOYMNSVbrPj8E3zzfMYAA="
+        },
+        "quadroFonte": 32.1333
+      }
+    },
+    "quadro-resultado-nuca": {
+      "chave": "b52ff455c777cf22959a6edf24cd7137528e85f8c8227cb300eb14c948680303",
+      "arquivos": [
+        "quadro-resultado-nuca-480.avif",
+        "quadro-resultado-nuca-480.webp",
+        "quadro-resultado-nuca-720.avif",
+        "quadro-resultado-nuca-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-resultado-nuca",
+        "origem": "corte-acabamento",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-resultado-nuca/quadro-resultado-nuca-480.avif",
+              "bytes": 16225
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-resultado-nuca/quadro-resultado-nuca-720.avif",
+              "bytes": 31393
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-resultado-nuca/quadro-resultado-nuca-480.webp",
+              "bytes": 23024
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-resultado-nuca/quadro-resultado-nuca-720.webp",
+              "bytes": 45038
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRt4AAABXRUJQVlA4INIAAABQBgCdASoYACsAPuVYpU2pJKOiNVv4ASAciWIAqPRw7ACjTNLnuaZfSjXJDwrOh5F2HYeYMmFvpy/P7AD+058MBgkJeCLxEyEG5sc/7SrtoiEI/xlGHTOjPLyDrE+kuCF15I9cBvAS1wfYV3f/xY5r54sM6/7Fx+aE1tvTxYjLvV77CBH/I+xr7RpJTuQi4d8DYtTF1siNkLwLdl8f76+LR/6aiwNhXW3Px4c65+Cas2pcTNRBe0z1MnyMwncB1q4TnlADPOVIVUsZ97e74YuQAAA="
+        },
+        "quadroFonte": 31.4667
+      }
+    },
+    "retrato-provisorio-1": {
+      "chave": "0bd1d3b788c10a9ac9c515941130cd5be6ccf6db2235ddb1cd886544bed1756b",
+      "arquivos": [
+        "retrato-provisorio-1-480.avif",
+        "retrato-provisorio-1-480.webp",
+        "retrato-provisorio-1-720.avif",
+        "retrato-provisorio-1-720.webp"
+      ],
+      "indice": {
+        "id": "retrato-provisorio-1",
+        "origem": "experiencia-babearia-verdadeira",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": true,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/retrato-provisorio-1/retrato-provisorio-1-480.avif",
+              "bytes": 23757
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/retrato-provisorio-1/retrato-provisorio-1-720.avif",
+              "bytes": 41027
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/retrato-provisorio-1/retrato-provisorio-1-480.webp",
+              "bytes": 31700
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/retrato-provisorio-1/retrato-provisorio-1-720.webp",
+              "bytes": 54458
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRlYBAABXRUJQVlA4IEoBAABwBwCdASoYACsAPu1uslKppiSipWmZMB2JZACnR2wBc0q4ifub08DWcGed9VHeL9wD3Ti52bc1u1V7Rz+YTknS+mKwAAD+fekhlk4ckd61Rh9klZivG/FWiQkvvOx/YtXD7MNHO3pbZT0q4kNFnRJ8PpfBMMOiAk9YvZV1M3iT0MpgqjEUI4lpkdtF4PdacQWpeDq1F6/MLF0/Mg77iLNNe7NU8lSkK62cGeVV9QIl6XgmzVRpMCy8hCBEye+9b9mRgiXDsBIuACAFPKrdEnr5pqNE6eE/7BbaNSlQgXvJ5Xa4N7hKSCULPYBeJacxrsORaZQFYiCGb0SrDCxAcw1k4Q7I5ybQn0VWwJwNiVxyw01iYBzX9dAVL1CxIB+DVZVcmaiMfVSxhTJiyyo0ST+HVO9lkLEBD0BHNfLDWbvF9Z9R2b10hgxb4AA="
+        },
+        "quadroFonte": 16.2
+      }
+    },
+    "retrato-provisorio-2": {
+      "chave": "9737478a94d8b80ed35b88487e13068cd2711688d72e463431330919bcea6f96",
+      "arquivos": [
+        "retrato-provisorio-2-480.avif",
+        "retrato-provisorio-2-480.webp",
+        "retrato-provisorio-2-720.avif",
+        "retrato-provisorio-2-720.webp"
+      ],
+      "indice": {
+        "id": "retrato-provisorio-2",
+        "origem": "corte1",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": true,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/retrato-provisorio-2/retrato-provisorio-2-480.avif",
+              "bytes": 26825
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/retrato-provisorio-2/retrato-provisorio-2-720.avif",
+              "bytes": 44890
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/retrato-provisorio-2/retrato-provisorio-2-480.webp",
+              "bytes": 39902
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/retrato-provisorio-2/retrato-provisorio-2-720.webp",
+              "bytes": 66062
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRmQBAABXRUJQVlA4IFgBAADwBgCdASoYACsAPu1mrE+ppSQiKqoBMB2JaACdMoAlyCglhFJk0Z3vTC0r05jPO0cRxSEGMmBdLPAfQNL3EHAAAP703/C+DCSS+aCoR+Hz/axdVsYdiscpzVrG1H94oM86BPKut/mbq0S48tsTk/dWYKkEw/LXjBd6+ZFLa52J81QwJP7vr6V3u+a6Lwi7hW1NfvYI9k5+YGczb29iA3BHKnmAAKQCg0bAqF7r8DJdqzg6jlKjWLdzKiPYnMMDu1ZYkHFquj121SE0kpU/4fHXopHmYqKcPV2bmswfvawJ4Okv/IuWCdQc/OYtWqztEDchC9bL1D3iSxc2DY3rEwZVjIXgxN541glHIkZJMKAWUSoy3mfSPq58Hfj7dBUTGQjyf1zo0mPtVzfGdTGJhNNUfta8ZYdrOSBkIGXMbUXBl+mE9qUAnUJMkU+FNE4A5YbKu6agrNIAAA=="
+        },
+        "quadroFonte": 14.4667
+      }
+    },
+    "retrato-provisorio-3": {
+      "chave": "11e2bbf803c4d45e1e83f7f50c212d878040209a9cd9e109a2abdb03ddba815a",
+      "arquivos": [
+        "retrato-provisorio-3-480.avif",
+        "retrato-provisorio-3-480.webp",
+        "retrato-provisorio-3-720.avif",
+        "retrato-provisorio-3-720.webp"
+      ],
+      "indice": {
+        "id": "retrato-provisorio-3",
+        "origem": "qual-pomada-certa",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": true,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "720×720 reais: até 360 px CSS em telas 2x."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 720,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 480,
+              "src": "/media/retrato-provisorio-3/retrato-provisorio-3-480.avif",
+              "bytes": 20729
+            },
+            {
+              "largura": 720,
+              "altura": 720,
+              "src": "/media/retrato-provisorio-3/retrato-provisorio-3-720.avif",
+              "bytes": 38054
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 480,
+              "src": "/media/retrato-provisorio-3/retrato-provisorio-3-480.webp",
+              "bytes": 32160
+            },
+            {
+              "largura": 720,
+              "altura": 720,
+              "src": "/media/retrato-provisorio-3/retrato-provisorio-3-720.webp",
+              "bytes": 58516
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAABwBQCdASoYABgAPu1crU4ppKSiMBgMATAdiWIAvkg0b37XmpNIPPkNMrQMkxuXUCoNRv8AAP7yJdiNf4u09pMhTshFCz0S+WSzwK9gS0dadOBEpB2sFd1BEInQR12RU8AlYODSnc699KMAPBJj/Bxq9849KRwCaYixdOjb8wmCCAfhtQYQXseeI+UG5cGTcQ3BaxupuzDEzTXgeTF3ELseMdeUlLxGYMGQxkrNtbR1YSY/szzD5ap4L2w1tnL+nti+KQUTwFdMw2MFhwb1p2ytQwAAAA=="
+        },
+        "quadroFonte": 27.9333
+      }
+    },
+    "quadro-sobrancelha-navalha": {
+      "chave": "f50296b1c4cef78c0ba9d8a05bc27d029d8db2d5098348547658871a87011d30",
+      "arquivos": [
+        "quadro-sobrancelha-navalha-480.avif",
+        "quadro-sobrancelha-navalha-480.webp",
+        "quadro-sobrancelha-navalha-720.avif",
+        "quadro-sobrancelha-navalha-720.webp"
+      ],
+      "indice": {
+        "id": "quadro-sobrancelha-navalha",
+        "origem": "primeiro-video",
+        "tipo": "quadro",
+        "natureza": "quadro de vídeo",
+        "provisorio": false,
+        "exibicaoMax": {
+          "larguraCss": 360,
+          "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+        },
+        "imagem": {
+          "largura": 720,
+          "altura": 1280,
+          "avif": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-sobrancelha-navalha/quadro-sobrancelha-navalha-480.avif",
+              "bytes": 29193
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-sobrancelha-navalha/quadro-sobrancelha-navalha-720.avif",
+              "bytes": 48899
+            }
+          ],
+          "webp": [
+            {
+              "largura": 480,
+              "altura": 853,
+              "src": "/media/quadro-sobrancelha-navalha/quadro-sobrancelha-navalha-480.webp",
+              "bytes": 41930
+            },
+            {
+              "largura": 720,
+              "altura": 1280,
+              "src": "/media/quadro-sobrancelha-navalha/quadro-sobrancelha-navalha-720.webp",
+              "bytes": 69886
+            }
+          ],
+          "lqip": "data:image/webp;base64,UklGRoYBAABXRUJQVlA4IHoBAAAwCACdASoYACsAPu1ysVOppqSipWgBMB2JaACxHz23l9HhbngB3q/bi28puhx7RtDGn085mbX48dIv6z09+YRLnVcJsBs9GRc2AAD5N7P0rk2NHhXPxOeK1Skz006mmihJl/10/dqtrHxEAv1Bpr6C9dkCqxyL4Z0ZuT4Vi+aHMXy8D+eTjXAJXs1qias1PA7cpUpmP2WIP4lMPHfg3YdORbDJqePiZFYqY7NrkB0OF3NurkZDp3Jl7InQcla2EAkKXcFIky0xn9UwtdekCyOKHbSxbD3ydEmz1gpP4Rf46oqksDLs1r9EU68avuBOGBeTV+A82OA9HIIwq9hrb1EHWuGnjCbmhyA+uDjtPQQ3kkq/Gmd74ITuSGde0V7eKrxJJKqO5FOfAlR0wnE7xPQZyMhHhPWyQ7wULRXEX7h/xaTh8GRSQl29sd83IPeedN5Edz6li/0mj/wJdngMJ5fTlL9s3sb/FqY1qnEMf7EoVc06VHyjvqUAAAA="
+        },
+        "quadroFonte": 28.5667
+      }
+    }
+  }
+}

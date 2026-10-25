@@ -200,7 +200,7 @@ for (const pag of PAGINAS) {
       `CEP ${nap.cep}`,
     ];
     if (nap.salaAndar) partes.push(nap.salaAndar);
-    partes.push(nap.numero ? nap.numero : 'nº a confirmar');
+    if (nap.numero) partes.push(nap.numero);
     for (const p of partes) if (!e.includes(p)) falha(onde, `endereço visível sem "${p}": "${e}"`);
   }
   const visivel = texto(html);

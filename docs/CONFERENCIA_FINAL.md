@@ -1,8 +1,8 @@
 # Conferência final de normas e deploy
 
-25/10/2026. A única passada de normas do projeto (CDC, termos vetados, LGPD, direito de imagem, música, Google, marcas de terceiros, CNPJ), mais as travas de produção e o deploy. ✅ conferido e ok · ⚠️ conferido, com decisão ou ação do João · ⛔ trava.
+25/10/2026, atualizada com as decisões do João para a publicação de 27/10/2026. A única passada de normas do projeto (CDC, termos vetados, LGPD, direito de imagem, música, Google, marcas de terceiros, CNPJ), mais as travas de produção e o deploy. ✅ conferido e ok · ⚠️ conferido, com decisão ou ação do João · ⛔ trava.
 
-Nenhuma trava e nenhuma lista foi afrouxada nesta sessão.
+Nenhuma trava e nenhuma lista foi afrouxada. As duas travas que seguravam a produção caíram porque o João confirmou os dados (nome e endereço), não porque a regra mudou.
 
 ## 1. CDC (Código de Defesa do Consumidor)
 
@@ -21,33 +21,33 @@ Nenhuma trava e nenhuma lista foi afrouxada nesta sessão.
 - ✅ **Sem formulário, sem cadastro, sem cookie.** O montador não guarda nada; o WhatsApp é conversa direta (nada é enviado até a pessoa tocar em enviar no app). A escolha do banner fica no `localStorage` do próprio navegador.
 - ✅ **Medição:** desligada (nada é enviado). Quando ligar, é Umami na mesma origem, sem cookie e sem identificador (`docs/FUNIL.md`).
 - ✅ **Política de privacidade** em linguagem simples, coerente com o que o site faz (conferido contra o código: consentimento, mapa, vídeos próprios, nenhum player de terceiros, medição).
-- ⚠️ **Pendente na política** (selo PROVISÓRIO no preview): hospedagem e prazo de guarda dos registros técnicos (Vercel), data de publicação. Ao publicar na Vercel: citar a Vercel como hospedagem e os registros de acesso dela.
-- ⚠️ **Nomes nas avaliações:** a home mostra duas avaliações do Google com o nome dos autores ("Vinicius Farias", "Diogo Amaral"), como pedido na sessão 6. São dados públicos no Google, mas são nomes de clientes, e o projeto diz "nenhum nome de cliente aparece". **Decisão do João:** pedir autorização aos dois, ou trocar por iniciais ("Vinicius F."), ou tirar o nome. Não alterei porque contraria uma instrução explícita anterior.
+- ✅ **Política completa:** cita a Vercel como hospedagem e os registros técnicos de acesso dela; "Atualizada em: 27/10/2026".
+- ✅ **Nomes nas avaliações:** a home mostra só as iniciais dos autores ("V. F.", "D. A."), decisão do João.
 
 ## 4. Direito de imagem
 
-- ✅ **Nenhum nome de cliente** em legendas, alt, descrições ou nos vídeos publicados (fora as duas avaliações acima).
+- ✅ **Nenhum nome de cliente** em legendas, alt, descrições, vídeos publicados ou avaliações (só iniciais).
 - ✅ **Trecho da agenda removido:** o app de agenda (7,0–8,8 s do original, com possíveis nomes de clientes) foi cortado do `bastidores-site`. Conferi os quadros em volta do corte no arquivo publicado: não aparece tela de agenda.
-- ⚠️ **Lista de autorizados:** não existe uma lista nominal; existe a autorização geral do João ("o que o João mandou está autorizado", CLAUDE.md). Para fechar, o João confirma cada mídia publicada que mostra cliente:
+- ✅ **Autorizados:** o João confirmou que todos os clientes que aparecem autorizaram (mensagem de 25/10/2026: "tudo foi permitido pelos clientes, tudo pode subir de produção"). Mídias publicadas com cliente:
 
 | Mídia publicada              | Onde aparece                             | Cliente visível                    | Autorizado? |
 | ---------------------------- | ---------------------------------------- | ---------------------------------- | ----------- |
-| `loop-hero`                  | Home, hero                               | barba e parte do rosto, em close   | [ ]         |
-| `experiencia-completa`       | Home (diálogo), /barba-e-barbaterapia    | rosto, sorrindo no fim             | [ ]         |
-| `resultado-1`                | Home, /degrade-em-lages                  | cabeça de perfil e nuca            | [ ]         |
-| `resultado-2`                | Home, /degrade-em-lages                  | rosto de perfil e de frente        | [ ]         |
-| `bastidores-site`            | /sobre-pedro-tensini                     | clientes na cadeira, rosto         | [ ]         |
-| `trajetoria`                 | /sobre-pedro-tensini                     | cliente, rosto (vídeo antigo)      | [ ]         |
-| `quadro-sobrancelha-navalha` | /sobrancelha                             | rosto do cliente (do `trajetoria`) | [ ]         |
-| `retrato-provisorio-1`       | Home seção 1, /sobre                     | cliente de perfil, com barba       | [ ]         |
-| `foto-toalha-quente`         | Home seção 1½, /barba-e-barbaterapia     | rosto parcialmente coberto         | [ ]         |
-| `foto-esfoliacao`            | idem                                     | rosto, olhos fechados              | [ ]         |
-| `foto-navalha`               | idem                                     | barba em close                     | [ ]         |
-| `foto-barba-finalizada`      | idem                                     | perfil                             | [ ]         |
-| `quadro-maquina-vinho`       | só /\_estilo (página interna, noindex)   | barba em close                     | [ ]         |
-| `quadro-parede-verde`        | Home seção 3, /servicos-e-precos, imagem de compartilhamento | cliente de lado/costas | [ ] |
-| `quadro-barbearia-geral`     | /como-chegar                             | cliente de costas                  | [ ]         |
-| `loop-degrade`, `quadro-resultado-nuca` | Home, /degrade-em-lages       | só nuca (o plano do rosto foi cortado) | [ ]     |
+| `loop-hero`                  | Home, hero                               | barba e parte do rosto, em close   | ✅ (João)    |
+| `experiencia-completa`       | Home (diálogo), /barba-e-barbaterapia    | rosto, sorrindo no fim             | ✅ (João)    |
+| `resultado-1`                | Home, /degrade-em-lages                  | cabeça de perfil e nuca            | ✅ (João)    |
+| `resultado-2`                | Home, /degrade-em-lages                  | rosto de perfil e de frente        | ✅ (João)    |
+| `bastidores-site`            | /sobre-pedro-tensini                     | clientes na cadeira, rosto         | ✅ (João)    |
+| `trajetoria`                 | /sobre-pedro-tensini                     | cliente, rosto (vídeo antigo)      | ✅ (João)    |
+| `quadro-sobrancelha-navalha` | /sobrancelha                             | rosto do cliente (do `trajetoria`) | ✅ (João)    |
+| `retrato-provisorio-1`       | Home seção 1, /sobre                     | cliente de perfil, com barba       | ✅ (João)    |
+| `foto-toalha-quente`         | Home seção 1½, /barba-e-barbaterapia     | rosto parcialmente coberto         | ✅ (João)    |
+| `foto-esfoliacao`            | idem                                     | rosto, olhos fechados              | ✅ (João)    |
+| `foto-navalha`               | idem                                     | barba em close                     | ✅ (João)    |
+| `foto-barba-finalizada`      | idem                                     | perfil                             | ✅ (João)    |
+| `quadro-maquina-vinho`       | só /\_estilo (página interna, noindex)   | barba em close                     | ✅ (João)    |
+| `quadro-parede-verde`        | Home seção 3, /servicos-e-precos, imagem de compartilhamento | cliente de lado/costas | ✅ (João) |
+| `quadro-barbearia-geral`     | /como-chegar                             | cliente de costas                  | ✅ (João)    |
+| `loop-degrade`, `quadro-resultado-nuca` | Home, /degrade-em-lages       | só nuca (o plano do rosto foi cortado) | ✅ (João) |
 
 Sem cliente: `pomadas` (só o Pedro), `quadro-cafe-coado`, monograma.
 
@@ -74,42 +74,40 @@ Sem cliente: `pomadas` (só o Pedro), `quadro-cafe-coado`, monograma.
 
 `SITE_MODO=producao pnpm build`:
 
-| Trava                                    | Situação                                                                               |
-| ---------------------------------------- | -------------------------------------------------------------------------------------- |
-| WhatsApp presente e confirmado           | ✅ ok                                                                                   |
-| Número do endereço confirmado            | ⛔ **trava**: "405 ou 205 — posts dizem 205"                                            |
-| Nome canônico confirmado                 | ⛔ **trava**: "Tensini Barbieri" ainda não confirmado com o Pedro                       |
-| Nenhum termo vetado                      | ✅ ok                                                                                   |
-| Nenhuma mídia `naoUsar` referenciada     | ✅ ok                                                                                   |
-| Nenhum preço exibido sem fonte           | ✅ ok                                                                                   |
+| Trava                                    | Situação                                                                                     |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------- |
+| WhatsApp presente e confirmado           | ✅ ok                                                                                         |
+| Número do endereço confirmado            | ✅ ok: confirmado **sem número** (João: "número não importa"; o endereço é a Galeria Augusta) |
+| Nome canônico confirmado                 | ✅ ok: "Pedro Tensini Barbearia" (João)                                                       |
+| Nenhum termo vetado                      | ✅ ok                                                                                         |
+| Nenhuma mídia `naoUsar` referenciada     | ✅ ok                                                                                         |
+| Nenhum preço exibido sem fonte           | ✅ ok                                                                                         |
 
-Resultado: **produção bloqueada por 2 travas** (mais 27 pendências opcionais que não travam, em `docs/PENDENCIAS.md`). As travas ficam como estão; somem quando o João confirmar o número e o nome em `src/config/contato.ts` e `src/config/marca.ts` com `confirmado(valor, fonte)`.
+Resultado: **produção liberada** (0 travas; 26 pendências opcionais que não travam, em `docs/PENDENCIAS.md`). A trava do número continua valendo: um número pendente (`bloqueante`) volta a derrubar a build; o endereço sem número é um estado confirmado, com a fonte registrada em `src/config/contato.ts`.
 
 ## 10. Deploy
 
-**Configurado:**
+**O erro da Vercel (log do deploy `dpl_WxiMKHTkUKko1EfJ6qzWHC86qoxS`):** `[media] ffmpeg não encontrado`. A build rodava `media:prepare`, que gera os vídeos e imagens com ffmpeg; a imagem de build da Vercel não tem ffmpeg, e as mídias geradas estavam fora do git.
 
-- `vercel.json`: build `pnpm build`, saída `dist`, cabeçalhos de segurança (HSTS, Referrer-Policy, Permissions-Policy, nosniff, X-Frame-Options, COOP, CSP `frame-ancestors`), cache longo para `/_astro` e `/media?v=hash`, deploy automático por Git desligado (ver abaixo).
-- CSP por hash em cada página (`scripts/csp.mjs`, no postbuild).
-- `SITE_URL` por variável de ambiente; sem ela (e sem `SITE_MODO=producao`) todo HTML sai `noindex` e o sitemap sai vazio.
-- **Projeto na Vercel criado:** `pedro-tensini` (id `prj_ql6jJDbXoC1bltdRY7wzQnqrAlKV`, time "Joao Canonica's projects"). `SITE_MODO=producao` só no ambiente Production. A proteção de acesso da Vercel vem ligada para as URLs `*.vercel.app` (prévias fechadas, além do noindex).
-- **Workflow** `.github/workflows/deploy.yml`: o build roda no GitHub Actions (que tem ffmpeg para gerar as mídias; a imagem de build da Vercel não tem) com cache das mídias, e publica com `vercel deploy --prebuilt`. Qualquer branch vira prévia; `main` vira produção (e a build trava enquanto houver trava).
+**Correção:**
 
-**Não foi publicado ainda.** O conector da Vercel desta sessão não sobe os ~150 MB de mídia, e o deploy pela CLI precisa de um token que só o João pode criar. Para o primeiro deploy, o João:
+- As mídias geradas (`public/media/`, 148 MB) e o cache delas (`.cache/media.json`) agora vão no git. O `media:prepare` só exige ffmpeg quando alguma mídia precisa ser gerada de novo; na Vercel ele confere os originais (sha256 do manifesto) e os arquivos, e segue. Quem muda uma mídia roda `pnpm media:prepare` localmente (com ffmpeg) e commita o resultado.
+- Testado: clone limpo, sem ffmpeg, `SITE_MODO=producao pnpm build` passa (travas, auditorias e CSP).
+- `vercel.json`: deploy por Git ligado (cada push no `main` publica; outros branches viram prévia). Saiu o workflow do GitHub Actions, que dependia de token.
+- `SITE_URL`: se não for definida, a build de produção na Vercel usa o domínio de produção do projeto (`VERCEL_PROJECT_PRODUCTION_URL`). Quando o domínio próprio for ligado ao projeto, ele vira o canônico sem mexer no código.
 
-1. Cria um token em vercel.com → Account Settings → Tokens.
-2. No GitHub (`joaocanonica/pedro-tensini` → Settings → Secrets and variables → Actions), cria `VERCEL_TOKEN`, `VERCEL_ORG_ID` = `team_ekDszb9n4cvStIbnpxxVoSzv` e `VERCEL_PROJECT_ID` = `prj_ql6jJDbXoC1bltdRY7wzQnqrAlKV`.
-3. Na mesma tela, aba Variables, cria `DEPLOY_ATIVO` = `true` (sem ela o workflow não roda).
-4. Roda o workflow "deploy" (aba Actions) no branch atual: sai uma prévia `*.vercel.app` com noindex.
-5. Quando o domínio existir: em Vercel → Settings → Environment Variables, cria `SITE_URL=https://<domínio>` em Production, liga o domínio ao projeto e, com as duas travas resolvidas, faz o merge em `main`.
-6. Se quiser medição: `PUBLIC_MEDICAO_URL` e `PUBLIC_MEDICAO_SITE` em Production (`docs/FUNIL.md`).
+**Na Vercel (time "Joao Canonica's projects"):**
+
+- **No ar: https://pedrotensinibarbearia.vercel.app** (produção, aberta ao público, indexável).
+- Projeto **`pedro-tensini`** (id `prj_sVgmzVsoLCFIZiq21dvYc1qFyO5H`, o que o João importou do GitHub). `SITE_MODO=producao` em Production. `SITE_URL=https://pedrotensinibarbearia.vercel.app` em Production (trocar pelo domínio próprio quando houver).
+- Proteção da Vercel só nas **prévias**; a produção abre para qualquer pessoa.
+- O projeto antigo, sem Git, foi renomeado para `pedro-tensini-sem-git` (sem deploy; pode ser apagado).
+
+**Domínio próprio (quando houver):** Vercel → projeto → Settings → Domains → adicionar o domínio e seguir o DNS que a Vercel mostrar. Medição, se quiser: `PUBLIC_MEDICAO_URL` e `PUBLIC_MEDICAO_SITE` em Production (`docs/FUNIL.md`).
 
 ## 11. O que depende do João (resumo)
 
-1. Confirmar o **número do endereço** (405 ou 205) e o **nome canônico**: destravam a produção.
-2. Decidir os **nomes nas avaliações** da home (autorização, iniciais ou sem nome).
-3. Marcar a **lista de mídias com cliente** (seção 4).
-4. Criar o **token da Vercel** e os três segredos no GitHub; depois, domínio e `SITE_URL`.
-5. Testar no **iPhone (Safari)** e num **Android real**: tocar em "Agendar no WhatsApp" e ver o app abrir; no computador, ver o WhatsApp Web abrir.
-6. Hospedagem e data na **política de privacidade** (Vercel).
-7. O resto continua em `docs/PENDENCIAS.md` e `docs/SEO_GEO.md` (preços, fotos do caminho, ficha do Google, link de avaliação, formação).
+1. Testar no **iPhone (Safari)** e num **Android real**: tocar em "Agendar no WhatsApp" e ver o app abrir; no computador, ver o WhatsApp Web abrir.
+2. Fazer o merge do branch no `main` para o deploy automático seguir o código novo.
+3. Domínio próprio, se quiser (seção 10).
+4. O resto continua em `docs/PENDENCIAS.md` e `docs/SEO_GEO.md` (preços, fotos do caminho, ficha do Google, link de avaliação, formação, andar/sala).

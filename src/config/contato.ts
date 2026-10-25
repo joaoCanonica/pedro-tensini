@@ -1,7 +1,8 @@
-import { bloqueante, confirmado, opcional } from './tipos.ts';
+import { confirmado, opcional } from './tipos.ts';
 import type { Campo } from './tipos.ts';
 
 const FONTE_JOAO = 'João (WAXLO), 24/10/2026';
+const FONTE_JOAO_27 = 'João (WAXLO), decisão para a publicação de 27/10/2026';
 
 export const whatsapp: Campo<string> = confirmado('5549999037620', FONTE_JOAO);
 export const telefone = confirmado('(49) 99903-7620', FONTE_JOAO);
@@ -12,13 +13,20 @@ export const instagram = confirmado(
 
 export const endereco = {
   rua: confirmado('Rua Hercílio Luz', `${FONTE_JOAO}; posts; Google`),
-  numero: bloqueante('405 ou 205 — posts dizem 205') as Campo<string>,
+  // Ordem expressa do João: a barbearia fica dentro da galeria e o número não entra no site.
+  // Confirmado como "sem número" (null): o endereço é rua + Galeria Augusta.
+  numero: confirmado<string | null>(
+    null,
+    `${FONTE_JOAO_27}: "número não importa", endereço é a Galeria Augusta`,
+  ) as Campo<string | null>,
   complemento: confirmado('Galeria Augusta', `${FONTE_JOAO}; posts`),
   salaAndar: opcional<string>(undefined, 'Andar/sala dentro da Galeria Augusta'),
   bairro: confirmado('Centro', `${FONTE_JOAO}; posts`),
   cidade: confirmado('Lages', FONTE_JOAO),
   uf: confirmado('SC', FONTE_JOAO),
   cep: confirmado('88501-010', 'Dados fixos do pacote de prompts (24/10/2026)'),
+  /** Ponto de referência na rua. */
+  referencia: confirmado('ao lado da Agito', FONTE_JOAO_27),
 };
 
 export const geo = confirmado(

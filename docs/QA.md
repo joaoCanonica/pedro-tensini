@@ -1,4 +1,4 @@
-# QA — Tensini Barbieri
+# QA — Pedro Tensini Barbearia
 
 25/10/2026 · build de prévia (noindex) · Chromium 153 (Playwright 1.64) · Lighthouse 13.5 mobile (4G lento simulado, Moto G Power).
 
@@ -75,10 +75,14 @@ Limite: não houve teste com leitor de tela real (NVDA, VoiceOver, TalkBack). Co
 - **CSP por hash** em todas as páginas (`scripts/csp.mjs`, no postbuild): `script-src 'self'` mais o SHA-256 de cada script inline (28 no total), sem `unsafe-inline`. Fora: `frame-ancestors 'none'` por cabeçalho. Na bateria: 0 violações nas 13 rotas, e o mapa do Google carrega depois do "Aceitar". Prova de que bloqueia: o próprio teste não conseguiu injetar o axe por `<script>` (teve de usar o protocolo do DevTools).
 - **Cabeçalhos** (`vercel.json`): HSTS de 2 anos, Referrer-Policy `strict-origin-when-cross-origin`, Permissions-Policy fechando câmera, microfone, geolocalização, pagamento, USB e Topics, `nosniff`, `X-Frame-Options: DENY`, COOP `same-origin`.
 - **Cache:** `/_astro/*` (nomes com hash) e `/media/*?v=<hash>` por 1 ano, `immutable`; as mídias sem `?v` (favicon, mapa) por 1 dia. O `?v=` é o SHA-256 do arquivo, calculado no build: a URL muda quando a mídia muda.
-- **Hospedagem:** projeto `pedro-tensini` criado na Vercel (time "Joao Canonica's projects"), sem deploy ainda (ver `docs/CONFERENCIA_FINAL.md`, seção Deploy).
+- **Hospedagem:** projeto `pedro-tensini` na Vercel, ligado ao GitHub, build nativa (ver `docs/CONFERENCIA_FINAL.md`, seção 10).
 
 ## 5. Outras verificações desta passada
 
 - `pnpm check`: 0 erros (astro check, ESLint, Prettier, textos).
 - `pnpm test`: 47/47. `pnpm test:e2e`: 7/7. `audit-seo`: ok. `audit-compliance`: ok.
-- Build de produção: **trava** (2 travas, ver `docs/CONFERENCIA_FINAL.md`).
+- Build de produção: **liberada** (0 travas), inclusive num clone limpo sem ffmpeg.
+
+## 6. Passada de 25/10/2026 (decisões do João e deploy)
+
+- Preload da imagem do LCP no `<head>` das páginas internas (`scripts/preload-lcp.mjs`, no postbuild): a imagem é pedida junto com o começo do HTML. No Lighthouse simulado o LCP quase não mudou (o tempo vai na banda dividida entre HTML, fontes e pôster): degradê 2,03–2,10 s, pomadas 2,03–2,18 s, sobre 2,03 s, home sem a entrada 1,95 s. Continua no limite dos 2,0 s, com Desempenho 98–99.

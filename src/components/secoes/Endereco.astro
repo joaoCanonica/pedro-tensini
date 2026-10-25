@@ -1,6 +1,6 @@
 ---
-// Endereço completo a partir da config. Número não confirmado: "nº a confirmar" + selo (só preview;
-// em produção a trava não deixa publicar sem o número).
+// Endereço completo a partir da config. Número confirmado como "sem número" (null): só rua e galeria.
+// Número pendente: "nº a confirmar" + selo (só preview; em produção a trava não deixa publicar).
 import Selo from './Selo.astro';
 import { endereco } from '../../config/contato.ts';
 
@@ -12,10 +12,11 @@ const rotuloNumero = 'rotulo' in endereco.numero ? (endereco.numero.rotulo ?? ''
 ---
 
 <address class="endereco">
-  {c(endereco.rua)},{' '}
-  {numero ?? (
+  {c(endereco.rua)}
+  {numero ? `, ${numero}` : ''}
+  {endereco.numero.estado !== 'confirmado' && (
     <span>
-      nº a confirmar <Selo titulo={rotuloNumero} />
+      , nº a confirmar <Selo titulo={rotuloNumero} />
     </span>
   )}
   <br />

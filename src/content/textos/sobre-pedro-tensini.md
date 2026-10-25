@@ -1,6 +1,6 @@
 ---
 pagina: /sobre-pedro-tensini
-title: Sobre Pedro Tensini, barbeiro em Lages | Tensini Barbieri
+title: Pedro Tensini, barbeiro em Lages: quem é e como trabalha
 description: Conheça o Pedro Tensini, barbeiro da Galeria Augusta, no Centro de Lages/SC: degradê com acabamento na shaver, barba e atenção ao detalhe.
 ---
 
@@ -32,12 +32,10 @@ Em março de 2026 a barbearia ganhou cadeira nova.
 
 ## O nome
 
-{{nome}} vem do italiano: "barbieri" quer dizer barbeiros. O Pedro resume o estilo da casa assim:
+{{nome}}: o nome do Pedro na porta. No Instagram e nos vídeos a casa também aparece como Tensini Barbieri, do italiano "barbieri", barbeiros. O Pedro resume o estilo da casa assim:
 
 > "Tradição italiana e estética moderna."
 > Fonte: Instagram {{instagram}}, post "tradição italiana" (instagram.com/p/DVdluG7DRuP)
-
-[PROVISÓRIO: nome canônico da marca a confirmar com o Pedro (Barbieri ou Barbiere)]
 
 ## Formação
 

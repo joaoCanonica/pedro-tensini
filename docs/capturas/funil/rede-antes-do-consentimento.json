@@ -17,12 +17,12 @@
   {
     "pagina": "/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/HorarioCompacto.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/HorarioCompacto.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/",
@@ -32,17 +32,17 @@
   {
     "pagina": "/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Cob3p6dG.js"
   },
   {
     "pagina": "/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/",
@@ -57,7 +57,7 @@
   {
     "pagina": "/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+    "url": "http://127.0.0.1:4329/_astro/vivo.BI49Ii6w.js"
   },
   {
     "pagina": "/",
@@ -67,7 +67,7 @@
   {
     "pagina": "/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+    "url": "http://127.0.0.1:4329/_astro/horario.C3m3p1RF.js"
   },
   {
     "pagina": "/",
@@ -152,7 +152,7 @@
   {
     "pagina": "/degrade-em-lages/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/degrade-em-lages/",
@@ -182,17 +182,22 @@
   {
     "pagina": "/degrade-em-lages/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Cob3p6dG.js"
   },
   {
     "pagina": "/degrade-em-lages/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/degrade-em-lages/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
+  },
+  {
+    "pagina": "/degrade-em-lages/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.BI49Ii6w.js"
   },
   {
     "pagina": "/degrade-em-lages/",
@@ -207,22 +212,17 @@
   {
     "pagina": "/degrade-em-lages/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
-  },
-  {
-    "pagina": "/degrade-em-lages/",
-    "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
   },
   {
     "pagina": "/degrade-em-lages/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+    "url": "http://127.0.0.1:4329/_astro/horario.C3m3p1RF.js"
   },
   {
     "pagina": "/degrade-em-lages/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
   },
   {
     "pagina": "/degrade-em-lages/",
@@ -247,57 +247,12 @@
   {
     "pagina": "/barba-e-barbaterapia/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/barba-e-barbaterapia/",
     "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/BordaDegrade.astro_astro_type_script_index_0_lang.CGATeEPY.js"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "font",
-    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
-  },
-  {
-    "pagina": "/barba-e-barbaterapia/",
-    "tipo": "other",
-    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
   },
   {
     "pagina": "/barba-e-barbaterapia/",
@@ -308,6 +263,51 @@
     "pagina": "/barba-e-barbaterapia/",
     "tipo": "image",
     "url": "http://127.0.0.1:4329/media/foto-esfoliacao/foto-esfoliacao-480.avif?v=10af021a6b"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Cob3p6dG.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.BI49Ii6w.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.C3m3p1RF.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/barba-e-barbaterapia/",
+    "tipo": "other",
+    "url": "http://127.0.0.1:4329/media/monograma/monograma.svg"
   },
   {
     "pagina": "/barba-e-barbaterapia/",
@@ -337,7 +337,7 @@
   {
     "pagina": "/sobrancelha/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/sobrancelha/",
@@ -347,22 +347,22 @@
   {
     "pagina": "/sobrancelha/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Cob3p6dG.js"
   },
   {
     "pagina": "/sobrancelha/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/sobrancelha/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/sobrancelha/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+    "url": "http://127.0.0.1:4329/_astro/vivo.BI49Ii6w.js"
   },
   {
     "pagina": "/sobrancelha/",
@@ -377,7 +377,7 @@
   {
     "pagina": "/sobrancelha/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+    "url": "http://127.0.0.1:4329/_astro/horario.C3m3p1RF.js"
   },
   {
     "pagina": "/sobrancelha/",
@@ -407,7 +407,7 @@
   {
     "pagina": "/pomadas/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/pomadas/",
@@ -417,17 +417,17 @@
   {
     "pagina": "/pomadas/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Cob3p6dG.js"
   },
   {
     "pagina": "/pomadas/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/pomadas/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/pomadas/",
@@ -437,22 +437,22 @@
   {
     "pagina": "/pomadas/",
     "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.BI49Ii6w.js"
+  },
+  {
+    "pagina": "/pomadas/",
+    "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
   },
   {
     "pagina": "/pomadas/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+    "url": "http://127.0.0.1:4329/_astro/horario.C3m3p1RF.js"
   },
   {
     "pagina": "/pomadas/",
     "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
-  },
-  {
-    "pagina": "/pomadas/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
   },
   {
     "pagina": "/pomadas/",
@@ -477,7 +477,7 @@
   {
     "pagina": "/servicos-e-precos/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/servicos-e-precos/",
@@ -487,22 +487,17 @@
   {
     "pagina": "/servicos-e-precos/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Cob3p6dG.js"
   },
   {
     "pagina": "/servicos-e-precos/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/servicos-e-precos/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
-  },
-  {
-    "pagina": "/servicos-e-precos/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/servicos-e-precos/",
@@ -512,17 +507,22 @@
   {
     "pagina": "/servicos-e-precos/",
     "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/vivo.BI49Ii6w.js"
+  },
+  {
+    "pagina": "/servicos-e-precos/",
+    "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
   },
   {
     "pagina": "/servicos-e-precos/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
   },
   {
     "pagina": "/servicos-e-precos/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+    "url": "http://127.0.0.1:4329/_astro/horario.C3m3p1RF.js"
   },
   {
     "pagina": "/servicos-e-precos/",
@@ -552,12 +552,12 @@
   {
     "pagina": "/como-chegar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/como-chegar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/como-chegar/",
@@ -567,17 +567,7 @@
   {
     "pagina": "/como-chegar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
-  },
-  {
-    "pagina": "/como-chegar/",
-    "tipo": "font",
-    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
-  },
-  {
-    "pagina": "/como-chegar/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/como-chegar/",
@@ -587,12 +577,22 @@
   {
     "pagina": "/como-chegar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+    "url": "http://127.0.0.1:4329/_astro/vivo.BI49Ii6w.js"
   },
   {
     "pagina": "/como-chegar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
+    "url": "http://127.0.0.1:4329/_astro/revelar.DLG-V9oX.js"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+  },
+  {
+    "pagina": "/como-chegar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.C3m3p1RF.js"
   },
   {
     "pagina": "/como-chegar/",
@@ -622,7 +622,7 @@
   {
     "pagina": "/sobre-pedro-tensini/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/sobre-pedro-tensini/",
@@ -631,13 +631,13 @@
   },
   {
     "pagina": "/sobre-pedro-tensini/",
-    "tipo": "font",
-    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
   },
   {
     "pagina": "/sobre-pedro-tensini/",
-    "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
+    "tipo": "font",
+    "url": "http://127.0.0.1:4329/_astro/fonts/e407450b4aab5dde.woff2"
   },
   {
     "pagina": "/sobre-pedro-tensini/",
@@ -667,22 +667,27 @@
   {
     "pagina": "/agendar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Bnytheba.js"
+    "url": "http://127.0.0.1:4329/_astro/Montador.astro_astro_type_script_index_0_lang.Cob3p6dG.js"
   },
   {
     "pagina": "/agendar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/StatusAoVivo.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/agendar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.BtitphD_.js"
+    "url": "http://127.0.0.1:4329/_astro/TabelaHorario.astro_astro_type_script_index_0_lang.B5eCdHeA.js"
   },
   {
     "pagina": "/agendar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
+  },
+  {
+    "pagina": "/agendar/",
+    "tipo": "script",
+    "url": "http://127.0.0.1:4329/_astro/horario.C3m3p1RF.js"
   },
   {
     "pagina": "/agendar/",
@@ -692,17 +697,12 @@
   {
     "pagina": "/agendar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/horario.DA6S8uFZ.js"
-  },
-  {
-    "pagina": "/agendar/",
-    "tipo": "script",
     "url": "http://127.0.0.1:4329/_astro/estado.DJ7SNyAy.js"
   },
   {
     "pagina": "/agendar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/vivo.U2btBk9N.js"
+    "url": "http://127.0.0.1:4329/_astro/vivo.BI49Ii6w.js"
   },
   {
     "pagina": "/agendar/",
@@ -722,7 +722,7 @@
   {
     "pagina": "/perguntas-frequentes/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/perguntas-frequentes/",
@@ -752,7 +752,7 @@
   {
     "pagina": "/avaliar/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/avaliar/",
@@ -782,7 +782,7 @@
   {
     "pagina": "/privacidade/",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/privacidade/",
@@ -812,7 +812,7 @@
   {
     "pagina": "/404.html",
     "tipo": "script",
-    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.e2HzHGr4.js"
+    "url": "http://127.0.0.1:4329/_astro/Consentimento.astro_astro_type_script_index_0_lang.De31LXJj.js"
   },
   {
     "pagina": "/404.html",

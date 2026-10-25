@@ -1,6 +1,6 @@
 ---
 pagina: /
-title: Barbeiro em Lages: degradê e barba | Tensini Barbieri
+title: Barbeiro em Lages: degradê e barba | Pedro Tensini Barbearia
 description: Pedro Tensini faz degradê com acabamento na shaver, barba e barbaterapia na Galeria Augusta, Centro de Lages/SC. Agende pelo WhatsApp.
 ---
 
@@ -95,10 +95,10 @@ Título: O resultado fala.
 Nota no Google: {{google.nota}}, com {{google.total}} avaliações (conferido em {{google.conferidoEm}}).
 
 > "Top! Atendimento excelente de alta qualidade!"
-> Fonte: Vinicius Farias, avaliação no Google (conferida em 24/10/2026)
+> Fonte: cliente V. F., avaliação no Google (conferida em 24/10/2026)
 
 > "Atendimento de qualidade, barbeiro muito profissional"
-> Fonte: Diogo Amaral, avaliação no Google (conferida em 24/10/2026)
+> Fonte: cliente D. A., avaliação no Google (conferida em 24/10/2026)
 
 Convite: Já cortou com o Pedro? Conte como foi no Google. Leva um minuto e ajuda quem procura barbeiro em Lages.
 
