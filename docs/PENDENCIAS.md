@@ -49,6 +49,16 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 - [ ] No desktop o botão fixo "Agendar no WhatsApp" passa por cima da escala de pente de cada seção enquanto ela cruza o topo da tela (comportamento de cabeçalho fixo). Avaliar na revisão visual se vale reservar a faixa.
 - [ ] Sem JS, os vídeos de conteúdo (resultado-1/2) mostram o retângulo do navegador em vez do pôster; com JS o pôster entra perto da tela.
 
+## Páginas de serviço (sessão 7)
+
+- [ ] /degrade-em-lages: o texto "O que é a shaver" é rascunho com selo PROVISÓRIO; o Pedro reescreve com as palavras dele.
+- [ ] /pomadas: a tabela brilho × efeito × fixação só tem o que o vídeo diz (o resto aparece como "—"); o Pedro completa. "Para cada cabelo" e "Como aplicar" são rascunhos com selo PROVISÓRIO. Sem link de compra até o João confirmar se o Pedro vende pomadas.
+- [ ] /sobrancelha: o primeiro vídeo não tem plano claro da sobrancelha sendo feita; o still usado (`quadro-sobrancelha-navalha`, 28,6 s) mostra a navalha na linha do cabelo, logo acima da sobrancelha. Pedir foto ou vídeo real do serviço.
+- [ ] Preços e durações: as páginas mostram "Valores pelo WhatsApp" / "Consulte" até `src/config/servicos.ts` ter valores confirmados com fonte. Ao confirmar, a tabela e a ficha mudam sozinhas (conferido: build de produção sem nenhum "R$").
+- [ ] Montador da página de barba vem com "Barbaterapia" marcado; trocar para "Barba" se o João preferir.
+- [ ] Os selos PROVISÓRIO saem em produção, mas as frases marcadas continuam. A revisão de normas (sessão 9) confere cada uma antes do ar.
+- [ ] Links ainda sem página: `/como-chegar/`, `/perguntas-frequentes/` (404 no preview).
+
 ## Textos (sessão 5)
 
 Gerado de `src/content/textos/*.md` (marcas `[PROVISÓRIO: …]`). Cada item sai do ar ou vira texto confirmado quando o dado chegar.

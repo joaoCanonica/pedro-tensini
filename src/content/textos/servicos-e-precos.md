@@ -4,7 +4,7 @@ title: Serviços e preços | Barbeiro no Centro de Lages
 description: Corte, degradê com acabamento na shaver, barba, barbaterapia e sobrancelha com Pedro Tensini, na Galeria Augusta, Centro de Lages/SC.
 ---
 
-# Serviços e preços
+# Serviços e preços em Lages
 
 O {{pedro}} atende na Galeria Augusta, Rua Hercílio Luz, Centro de Lages/SC. Faz corte, degradê com acabamento na shaver, barba, barbaterapia e sobrancelha, e orienta sobre pomada e finalização. Você agenda pelo WhatsApp e ele confirma o horário.
 

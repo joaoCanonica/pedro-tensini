@@ -1,0 +1,88 @@
+---
+// /pomadas: guia em texto a partir do vídeo das pomadas. Os quatro tipos, brilho × efeito ×
+// fixação, para cada cabelo, como aplicar (escala de pente) e qual é a sua.
+// Sem link de compra: só entra quando o João confirmar que o Pedro vende.
+import Servico from '../layouts/Servico.astro';
+import Faixa from '../layouts/servico/Faixa.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import MolduraVideo from '../components/base/MolduraVideo.astro';
+import { faq, pagina, parte } from '../layouts/servico/pagina.ts';
+
+const p = pagina('pomadas');
+const tipos = parte(p, 'Os quatro tipos');
+const matriz = parte(p, 'Brilho, efeito e fixação');
+const cabelo = parte(p, 'Para cada cabelo');
+const aplicar = parte(p, 'Como aplicar');
+const naoSo = parte(p, 'Não é só a pomada');
+const qual = parte(p, 'Qual é a sua?');
+const video = parte(p, 'Vídeo');
+const descricao = video.blocos
+  .map((b) => (b.tipo === 'p' ? b.texto.replace(/^Descrição:\s*/, '') : ''))
+  .join(' ')
+  .trim();
+const citacoes = p.intro.blocos.filter((b) => b.tipo === 'citacao');
+const resto = p.intro.blocos.filter((b) => b.tipo !== 'citacao');
+const perguntas = [
+  faq('Qual pomada eu uso em casa?'),
+  faq('Meu cabelo não fica igual em casa. Por quê?'),
+];
+---
+
+<Servico
+  rota="/pomadas/"
+  pagina={p}
+  perguntas={perguntas}
+  tituloAgendar="Agendar e sair sabendo finalizar"
+>
+  <MolduraVideo
+    slot="midia"
+    id="pomadas"
+    prioridade
+    descricao={descricao}
+    sizes="(min-width: 60rem) 26rem, 88vw"
+  />
+
+  <Faixa id="tipos" titulo={tipos.titulo} rotulo="O guia" superficie="contraste">
+    <Blocos blocos={[...resto, ...citacoes, ...tipos.blocos]} />
+  </Faixa>
+
+  <Faixa
+    id="brilho-efeito-fixacao"
+    titulo={matriz.titulo}
+    rotulo="Lado a lado"
+    superficie="contraste"
+    provisorios={matriz.provisorios}
+  >
+    <Blocos blocos={matriz.blocos} />
+  </Faixa>
+
+  <Faixa
+    id="cada-cabelo"
+    titulo={cabelo.titulo}
+    rotulo="Seu cabelo"
+    superficie="contraste"
+    provisorios={cabelo.provisorios}
+  >
+    <Blocos blocos={cabelo.blocos} />
+  </Faixa>
+
+  <Faixa
+    id="como-aplicar"
+    titulo={aplicar.titulo}
+    rotulo="Do pente 3 ao 0"
+    superficie="contraste"
+    provisorios={aplicar.provisorios}
+  >
+    <Blocos blocos={[...aplicar.blocos, ...naoSo.blocos]} rotuloPassos="Como aplicar a pomada" />
+  </Faixa>
+
+  <Faixa
+    id="qual-e-a-sua"
+    titulo={qual.titulo}
+    rotulo="Resumo"
+    superficie="contraste"
+    provisorios={qual.provisorios}
+  >
+    <Blocos blocos={qual.blocos} />
+  </Faixa>
+</Servico>

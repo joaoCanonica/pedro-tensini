@@ -1114,6 +1114,35 @@
       "naoUsar": false
     },
     {
+      "id": "quadro-sobrancelha-navalha",
+      "origem": "primeiro-video",
+      "arquivo": "media/quadro-sobrancelha-navalha/",
+      "tipo": "quadro",
+      "natureza": "quadro de vídeo",
+      "postOrigem": {
+        "codigo": "DMdJJJdu5AW",
+        "estado": "provavel"
+      },
+      "legendaLiteral": null,
+      "uso": "Página /sobrancelha: mídia principal provisória (navalha e pente na linha do cabelo, logo acima da sobrancelha).",
+      "trechos": [],
+      "audioLiberado": false,
+      "quadro": {
+        "janelaFonte": [27.67, 29],
+        "t": 28.5667
+      },
+      "exibicaoMax": {
+        "larguraCss": 360,
+        "nota": "Quadro de vídeo 720×1280: até 360 px CSS em telas 2x (720 px CSS em 1x). Sem upscale."
+      },
+      "problemas": [
+        "Vídeo mais antigo, qualidade menor que os demais.",
+        "O vídeo não tem plano claro da sobrancelha sendo feita: a navalha aparece na linha do cabelo, acima da sobrancelha. Pedir foto ou vídeo real do serviço."
+      ],
+      "edicoes": ["Quadro mais nítido da janela, sem tratamento."],
+      "naoUsar": false
+    },
+    {
       "id": "retrato-provisorio-1",
       "origem": "experiencia-babearia-verdadeira",
       "arquivo": "media/retrato-provisorio-1/",

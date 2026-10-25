@@ -1,0 +1,173 @@
+---
+// "Como é feito" com a escala de pente: cada passo leva um número de pente, do mais amplo (3)
+// ao mais preciso (0). No desktop os passos ficam lado a lado sobre uma régua com dentes que
+// encurtam a cada passo; no mobile, empilhados com a régua na vertical.
+import Poster from '../../components/base/Poster.astro';
+import { escalaPente } from '../../config/tema.ts';
+
+interface Item {
+  nome: string;
+  texto: string;
+  midia?: { id: string; alt: string } | null;
+}
+interface Props {
+  itens: Item[];
+  rotulo: string;
+}
+const { itens, rotulo } = Astro.props;
+const n = itens.length;
+const ultimo = escalaPente.length - 1;
+// Espalha os passos pela escala, sempre de 3 a 0.
+const valores = itens.map((_, i) =>
+  n === 1 ? escalaPente[ultimo] : escalaPente[Math.round((i * ultimo) / (n - 1))],
+);
+const comMidia = itens.some((i) => i.midia !== undefined);
+---
+
+<ol class:list={['passos', { 'passos--midia': comMidia }]} aria-label={rotulo} style={`--n:${n}`}>
+  {itens.map((item, i) => (
+    <li class="passo" style={`--i:${i}`}>
+      <p class="passo__pente" aria-hidden="true">
+        <span class="passo__numero num">{valores[i]}</span>
+      </p>
+      {comMidia &&
+        (item.midia ? (
+          <Poster
+            id={item.midia.id}
+            alt={item.midia.alt}
+            sizes="(min-width: 60rem) 15rem, 80vw"
+            class="passo__foto"
+          />
+        ) : (
+          <div class="passo__foto passo__foto--tipo" aria-hidden="true">
+            <span>{item.nome}</span>
+          </div>
+        ))}
+      <h3 class="passo__nome">
+        <span class="sr-only">
+          Passo {i + 1}, pente {valores[i]}:{' '}
+        </span>
+        {item.nome}
+      </h3>
+      <p class="passo__texto">{item.texto}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .passos {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0;
+  }
+  .passo {
+    /* Dente do pente: encurta do primeiro ao último passo. */
+    --passo-dente: calc(var(--i) / max(var(--n) - 1, 1));
+    position: relative;
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    column-gap: var(--e-4);
+    align-content: start;
+    padding-block: var(--e-4) var(--e-6);
+  }
+  .passo > :not(.passo__pente) {
+    grid-column: 2;
+  }
+  .passo__pente {
+    grid-row: 1 / span 3;
+    position: relative;
+    height: 100%;
+  }
+  /* Régua vertical (mobile) com o dente de cada passo. */
+  .passo__pente::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: var(--linha);
+  }
+  .passo__pente::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: calc(3.5rem - var(--passo-dente) * 2.5rem);
+    background: var(--acento);
+  }
+  .passo__numero {
+    display: block;
+    padding: 0.55rem 0 0 0.75rem;
+    color: var(--acento-texto);
+    font-size: var(--fs-2);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .passo__nome {
+    font-size: var(--fs-3);
+  }
+  .passo__texto {
+    margin-top: var(--e-2);
+    color: var(--texto-2);
+    max-width: 40ch;
+  }
+  .passo :global(.passo__foto) {
+    margin-bottom: var(--e-4);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+  .passo :global(.passo__foto img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .passo__foto--tipo {
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--linha);
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0 6px,
+      color-mix(in srgb, var(--linha) 60%, transparent) 6px 7px
+    );
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-3);
+    text-align: center;
+    padding: var(--e-4);
+  }
+
+  @media (min-width: 60rem) {
+    .passos {
+      grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+      column-gap: var(--e-5);
+      border-top: 1px solid var(--linha);
+    }
+    .passo {
+      display: flex;
+      flex-direction: column;
+      padding-top: 0;
+    }
+    .passo__pente {
+      height: auto;
+      padding-top: var(--e-4);
+      margin-bottom: var(--e-4);
+    }
+    .passo__pente::before {
+      display: none;
+    }
+    /* Régua horizontal: o dente desce da linha e encurta a cada passo. */
+    .passo__pente::after {
+      top: -1px;
+      width: 2px;
+      height: calc(2.6rem - var(--passo-dente) * 1.9rem);
+    }
+    .passo__numero {
+      padding: 0 0 0 var(--e-4);
+      font-size: var(--fs-1);
+    }
+  }
+</style>

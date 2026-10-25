@@ -1,0 +1,100 @@
+---
+// /servicos-e-precos: todos os serviços numa tabela editorial (não cards). Preço e tempo só
+// confirmados; sem dado, "Consulte". Combos e pomada logo abaixo.
+import Servico from '../layouts/Servico.astro';
+import Faixa from '../layouts/servico/Faixa.astro';
+import Blocos from '../layouts/servico/Blocos.astro';
+import Valores from '../layouts/servico/Valores.astro';
+import Poster from '../components/base/Poster.astro';
+import { faq, pagina, parte } from '../layouts/servico/pagina.ts';
+
+const p = pagina('servicos-e-precos');
+
+// Seção do .md → serviço da config e página própria (quando existe).
+const LINHAS = [
+  { titulo: 'Corte', slug: 'corte' },
+  { titulo: 'Degradê com acabamento na shaver', slug: 'degrade', rota: '/degrade-em-lages/' },
+  { titulo: 'Barba', slug: 'barba', rota: '/barba-e-barbaterapia/' },
+  { titulo: 'Barbaterapia', slug: 'barbaterapia', rota: '/barba-e-barbaterapia/' },
+  { titulo: 'Sobrancelha', slug: 'sobrancelha', rota: '/sobrancelha/' },
+];
+const linhas = LINHAS.map((l) => {
+  const s = parte(p, l.titulo);
+  const texto = s.blocos.find((b) => b.tipo === 'p');
+  const linhasTexto = texto?.tipo === 'p' ? texto.texto.split('\n') : [];
+  // Primeira linha é a descrição; "Preço:/Tempo:" vêm da config, não do texto.
+  const link = linhasTexto.find((t) => t.startsWith('Link:'))?.replace(/^Link:\s*/, '');
+  return {
+    slug: l.slug,
+    nome: l.titulo,
+    descricao: linhasTexto[0] ?? '',
+    ...(l.rota ? { rota: l.rota } : {}),
+    ...(link ? { rotuloLink: link } : {}),
+  };
+});
+const combos = parte(p, 'Combos');
+const pomada = parte(p, 'Pomada e finalização');
+const pomadaTexto = pomada.blocos
+  .map((b) => (b.tipo === 'p' ? b.texto.split('\n')[0] : ''))
+  .filter(Boolean);
+const introTexto = p.intro.blocos;
+const perguntas = [
+  faq('Quanto custa?'),
+  faq('Quais formas de pagamento aceita?'),
+  faq('Preciso agendar ou posso ir direto?'),
+];
+---
+
+<Servico rota="/servicos-e-precos/" pagina={p} perguntas={perguntas}>
+  <figure slot="midia" class="still">
+    <Poster
+      id="quadro-parede-verde"
+      alt="O Pedro cortando o cabelo de um cliente na cadeira, com a parede verde ao fundo"
+      sizes="(min-width: 60rem) 26rem, 88vw"
+      prioridade
+    />
+  </figure>
+
+  <Faixa
+    id="tabela"
+    titulo="Todos os serviços"
+    rotulo="Tempo e valor"
+    superficie="contraste"
+    provisorios={p.intro.provisorios}
+  >
+    <Blocos blocos={introTexto} />
+    <Valores linhas={linhas} semValor="Consulte" legenda="Serviços, tempo e valor" />
+  </Faixa>
+
+  <Faixa
+    id="combos"
+    titulo={combos.titulo}
+    rotulo="No mesmo horário"
+    superficie="contraste"
+    provisorios={combos.provisorios}
+  >
+    <Blocos blocos={combos.blocos} />
+  </Faixa>
+
+  <Faixa id="pomada" titulo={pomada.titulo} rotulo="Em casa" superficie="contraste">
+    {pomadaTexto.map((t) => (
+      <p class="medida">{t}</p>
+    ))}
+    <p>
+      <a class="link" href="/pomadas/">
+        Qual pomada usar
+      </a>
+    </p>
+  </Faixa>
+</Servico>
+
+<style>
+  .still {
+    max-width: 26rem;
+  }
+  .still :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+</style>

@@ -4,7 +4,7 @@ title: Qual pomada usar no cabelo? Guia do barbeiro | Lages
 description: Pomada em pó, matte, com brilho ou extra forte: o Pedro Tensini, barbeiro no Centro de Lages, explica qual usar para cada efeito e cabelo.
 ---
 
-# Qual pomada usar
+# Qual pomada usar: o guia do barbeiro em Lages
 
 Muita gente sai da barbearia com o cabelo no lugar e, em casa, não consegue repetir. Na maioria das vezes o problema não é o corte: é a pomada. O {{pedro}}, barbeiro no Centro de Lages, explica qual usar para cada efeito.
 
@@ -28,6 +28,29 @@ Para um cabelo mais alinhado, com acabamento brilhante.
 ### Pomada extra forte: fixação para o dia inteiro
 
 Para quem precisa que o penteado dure o dia todo.
+
+## Brilho, efeito e fixação
+
+| Pomada      | Brilho | Efeito        | Fixação           |
+| ----------- | ------ | ------------- | ----------------- |
+| Em pó       | sem    | textura, seco | —                 |
+| Matte       | sem    | natural       | segura o penteado |
+| Com brilho  | com    | alinhado      | —                 |
+| Extra forte | —      | firme         | o dia inteiro     |
+
+O vídeo não fala da fixação de cada uma, nem do brilho da extra forte: onde está "—", o Pedro completa. [PROVISÓRIO: o Pedro completa a fixação e o brilho que faltam]
+
+## Para cada cabelo
+
+O tipo de cabelo muda o resultado: fio liso, ondulado ou crespo, fino ou grosso, pede quantidades e pomadas diferentes. No seu horário o Pedro olha o seu cabelo e o seu corte e indica qual usar. [PROVISÓRIO: o Pedro diz se quer uma indicação por tipo de cabelo aqui]
+
+## Como aplicar
+
+1. **Cabelo seco e direcionado.** Com escova e secador, dê antes a direção do penteado.
+2. **A quantidade certa.** Pouco produto de cada vez. A quantidade o Pedro mostra no seu horário.
+3. **Modele.** Espalhe a pomada e finalize o penteado no lugar.
+
+[PROVISÓRIO: o Pedro confirma o passo a passo de aplicação]
 
 ## Não é só a pomada
 

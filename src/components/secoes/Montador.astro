@@ -2,7 +2,16 @@
 // Montador de mensagem (ilha): serviço + dia + período + nome → wa.me com o texto pronto.
 // Nada é guardado. Sem JS: só o botão, com a mensagem padrão.
 import IconeWhatsApp from '../base/IconeWhatsApp.astro';
-import { linkWhatsApp, MENSAGEM_PADRAO } from '../../lib/whatsapp.ts';
+import { linkWhatsApp, montarMensagem } from '../../lib/whatsapp.ts';
+
+interface Props {
+  /** Serviços já marcados (páginas de serviço). Sem JS, o link já leva o serviço. */
+  servicos?: string[];
+}
+const { servicos: marcados = [] } = Astro.props;
+const juntar = (l: string[]) =>
+  l.length > 1 ? `${l.slice(0, -1).join(', ')} e ${l.at(-1)}` : (l[0] ?? '');
+const mensagemInicial = montarMensagem({ servico: juntar(marcados.map((s) => s.toLowerCase())) });
 
 const SERVICOS = ['Corte', 'Degradê', 'Barba', 'Barbaterapia', 'Sobrancelha'];
 const PERIODOS = [
@@ -21,7 +30,7 @@ const PERIODOS = [
       <div class="opcoes">
         {SERVICOS.map((s) => (
           <label class="opcao">
-            <input type="checkbox" name="servico" value={s} />
+            <input type="checkbox" name="servico" value={s} checked={marcados.includes(s)} />
             <span>{s}</span>
           </label>
         ))}
@@ -80,12 +89,12 @@ const PERIODOS = [
     <div class="previa">
       <p class="rotulo">Sua mensagem</p>
       <output class="previa__texto" data-previa>
-        {MENSAGEM_PADRAO}
+        {mensagemInicial}
       </output>
     </div>
   </form>
 
-  <a class="botao-wa" href={linkWhatsApp()} data-montador-link>
+  <a class="botao-wa" href={linkWhatsApp(mensagemInicial)} data-montador-link>
     <IconeWhatsApp />
     <span>Abrir conversa no WhatsApp</span>
   </a>

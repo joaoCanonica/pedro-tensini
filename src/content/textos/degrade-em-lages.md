@@ -27,6 +27,10 @@ O degradê é construído em fases, do comprimento maior para o menor:
 > "Na barbearia, existe um processo específico só para o acabamento na shaver… sem improviso, sem pular fase."
 > Fonte: Instagram {{instagram}}, post "acabamento na shaver" (instagram.com/p/DX7q5jxvWai)
 
+## O que é a shaver
+
+A shaver é a máquina de acabamento com lâmina de folha, a mesma ideia do barbeador elétrico: corta rente à pele, sem puxar o fio. No degradê ela entra na parte mais baixa, onde a máquina já não chega tão curto, e fecha a transição com a pele lisa. É ela que deixa o acabamento limpo e o degradê sem marca. [PROVISÓRIO: o Pedro revisa este texto com as palavras dele]
+
 ## Quanto tempo leva
 
 <!-- se:duracao.degrade -->

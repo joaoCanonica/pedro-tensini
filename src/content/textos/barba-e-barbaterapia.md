@@ -4,7 +4,7 @@ title: Barba e barbaterapia em Lages | Pedro Tensini
 description: Barba e barbaterapia em cinco tempos no Centro de Lages: toalha quente, esfoliação, creme e massagem, navalha e acabamento. Agende pelo WhatsApp.
 ---
 
-# Barba e barbaterapia
+# Barba e barbaterapia em Lages
 
 O {{pedro}} faz barba e barbaterapia na Galeria Augusta, Rua Hercílio Luz, Centro de Lages/SC. A barbaterapia é o ritual completo em cinco tempos, da toalha quente à barba finalizada na navalha. Você agenda pelo WhatsApp e ele confirma o horário.
 

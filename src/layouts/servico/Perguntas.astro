@@ -1,0 +1,66 @@
+---
+// Perguntas da página: pergunta em serifa, resposta logo abaixo, sempre aberta (o que o
+// Google e as IAs leem é o mesmo que a pessoa vê). Nada de acordeão.
+import Blocos from './Blocos.astro';
+import Selo from '../../components/secoes/Selo.astro';
+import type { Bloco } from './pagina.ts';
+
+export interface Pergunta {
+  pergunta: string;
+  blocos: Bloco[];
+  provisorios?: string[];
+}
+interface Props {
+  itens: Pergunta[];
+}
+const { itens } = Astro.props;
+---
+
+<div class="perguntas">
+  {itens.map((p) => (
+    <div class="pergunta">
+      <h3 class="pergunta__titulo">{p.pergunta}</h3>
+      {p.provisorios?.length ? <Selo titulo={p.provisorios.join(' · ')} /> : null}
+      <div class="pergunta__resposta">
+        <Blocos blocos={p.blocos} />
+      </div>
+    </div>
+  ))}
+  <p>
+    <a class="link" href="/perguntas-frequentes/">
+      Ver todas as perguntas
+    </a>
+  </p>
+</div>
+
+<style>
+  .perguntas {
+    display: grid;
+    gap: 0;
+  }
+  .pergunta {
+    display: grid;
+    justify-items: start;
+    gap: var(--e-3);
+    padding-block: var(--e-5);
+    border-bottom: 1px solid var(--linha);
+  }
+  .pergunta:first-child {
+    padding-top: 0;
+  }
+  .pergunta__titulo {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    font-size: var(--fs-3);
+    line-height: 1.15;
+    max-width: 30ch;
+  }
+  .pergunta__resposta {
+    display: grid;
+    gap: var(--e-3);
+    color: var(--texto-2);
+  }
+  .perguntas > p {
+    padding-top: var(--e-5);
+  }
+</style>

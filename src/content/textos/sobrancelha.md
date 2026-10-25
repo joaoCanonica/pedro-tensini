@@ -4,7 +4,7 @@ title: Sobrancelha masculina em Lages | Pedro Tensini
 description: Sobrancelha masculina na navalha, no Centro de Lages. O Pedro Tensini atende na Galeria Augusta, Rua Hercílio Luz. Agende pelo WhatsApp.
 ---
 
-# Sobrancelha
+# Sobrancelha masculina em Lages
 
 O {{pedro}} faz sobrancelha masculina na Galeria Augusta, Rua Hercílio Luz, Centro de Lages/SC. O acabamento é na navalha, para limpar sem mudar o desenho natural. Dá para fazer sozinha ou junto com o corte e a barba.
 

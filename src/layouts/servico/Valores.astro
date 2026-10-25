@@ -1,0 +1,171 @@
+---
+// "Quanto custa e quanto tempo": tabela editorial (linhas finas, nome em serifa, números
+// tabulares). Só mostra preço e tempo confirmados na config; sem dado, "Valores pelo WhatsApp"
+// (ou "Consulte") e, no preview, o selo PROVISÓRIO.
+import Selo from '../../components/secoes/Selo.astro';
+import { formatarPreco, precoExibivel, servicos } from '../../config/servicos.ts';
+import { minutos } from './pagina.ts';
+
+interface Linha {
+  slug: string;
+  /** Nome exibido (padrão: o da config). */
+  nome?: string;
+  descricao?: string;
+  rota?: string;
+  rotuloLink?: string;
+}
+interface Props {
+  linhas: Linha[];
+  /** Texto quando o dado não está confirmado. */
+  semValor?: string;
+  legenda: string;
+}
+const { linhas, semValor = 'Valores pelo WhatsApp', legenda } = Astro.props;
+const dados = linhas.map((l) => {
+  const s = servicos.find((x) => x.slug === l.slug);
+  if (!s) throw new Error(`Serviço "${l.slug}" não está em src/config/servicos.ts`);
+  const preco = precoExibivel(s);
+  const tempo = s.duracao.estado === 'confirmado' ? minutos(s.duracao.valor) : null;
+  return { ...l, nome: l.nome ?? s.nome, preco: preco ? formatarPreco(preco) : null, tempo };
+});
+const pendentes = dados.filter((d) => !d.preco || !d.tempo).map((d) => d.nome);
+---
+
+<div class="valores">
+  <table class="valores__tabela">
+    <caption class="sr-only">{legenda}</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="rotulo">
+          Serviço
+        </th>
+        <th scope="col" class="rotulo">
+          Tempo
+        </th>
+        <th scope="col" class="rotulo">
+          Valor
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {dados.map((d) => (
+        <tr>
+          <th scope="row">
+            <div class="valores__servico">
+              <span class="valores__nome">{d.nome}</span>
+              {d.descricao && <span class="valores__descricao pequeno">{d.descricao}</span>}
+              {d.rota && (
+                <a class="link pequeno valores__link" href={d.rota}>
+                  {d.rotuloLink ?? 'Ver o serviço'}
+                </a>
+              )}
+            </div>
+          </th>
+          <td class="num" data-rotulo="Tempo">
+            {d.tempo ?? <span class="valores__sem">{semValor}</span>}
+          </td>
+          <td class="num" data-rotulo="Valor">
+            {d.preco ?? <span class="valores__sem">{semValor}</span>}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  {pendentes.length > 0 && (
+    <p class="pequeno secundario valores__nota">
+      Você confirma com o Pedro no WhatsApp, antes de marcar.{' '}
+      <Selo titulo={`Preço e duração a confirmar: ${pendentes.join(', ')}`} />
+    </p>
+  )}
+</div>
+
+<style>
+  .valores {
+    display: grid;
+    gap: var(--e-4);
+  }
+  .valores__tabela {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .valores__tabela thead th {
+    padding-bottom: var(--e-3);
+    text-align: start;
+    color: var(--texto-2);
+    border-bottom: 1px solid var(--texto);
+  }
+  .valores__tabela tbody th,
+  .valores__tabela td {
+    padding-block: var(--e-5);
+    text-align: start;
+    vertical-align: baseline;
+    border-bottom: 1px solid var(--linha);
+  }
+  .valores__tabela tbody th {
+    font-weight: 400;
+    padding-right: var(--e-5);
+  }
+  .valores__servico {
+    display: grid;
+    gap: var(--e-1);
+    justify-items: start;
+  }
+  .valores__nome {
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-3);
+    line-height: 1.15;
+  }
+  .valores__descricao {
+    color: var(--texto-2);
+    max-width: 46ch;
+  }
+  .valores__link {
+    margin-top: var(--e-2);
+  }
+  .valores__tabela td {
+    white-space: nowrap;
+    padding-right: var(--e-4);
+    font-size: var(--fs-3);
+  }
+  .valores__sem {
+    font-size: var(--fs-pequeno);
+    color: var(--texto-2);
+    white-space: normal;
+  }
+  /* Mobile: cada serviço vira um bloco; tempo e valor lado a lado, com rótulo. */
+  @media (max-width: 39.99rem) {
+    .valores__tabela thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+    .valores__tabela tr {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--linha);
+      padding-block: var(--e-4);
+    }
+    .valores__tabela tbody th {
+      grid-column: 1 / -1;
+      padding: 0 0 var(--e-3);
+      border: 0;
+    }
+    .valores__tabela td {
+      padding: 0;
+      border: 0;
+      display: grid;
+      gap: var(--e-1);
+    }
+    .valores__tabela td::before {
+      content: attr(data-rotulo);
+      font-family: var(--fonte-texto);
+      font-size: var(--fs-rotulo);
+      font-weight: 600;
+      letter-spacing: var(--tracking-rotulo);
+      text-transform: uppercase;
+      color: var(--texto-2);
+    }
+  }
+</style>
