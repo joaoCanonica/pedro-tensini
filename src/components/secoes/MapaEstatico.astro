@@ -1,0 +1,83 @@
+---
+// Mapa estático (imagem). Usa public/media/mapa-estatico.webp quando existir (gerado com
+// atribuição do provedor). Até lá: pino sobre grade com coordenadas e Plus Code, sem inventar ruas.
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { geo, links, plusCode } from '../../config/contato.ts';
+
+const arquivo = '/media/mapa-estatico.webp';
+const temImagem = existsSync(join(process.cwd(), 'public', arquivo));
+const { lat, lng } = geo.valor;
+---
+
+<a class="mapa" href={links.googleMaps}>
+  <span class="sr-only">Abrir a localização no Google Maps: </span>
+  {temImagem ? (
+    <img
+      src={arquivo}
+      width="800"
+      height="500"
+      alt="Mapa do Centro de Lages com o ponto da Galeria Augusta, na Rua Hercílio Luz"
+      loading="lazy"
+    />
+  ) : (
+    <span
+      class="mapa__esquema"
+      role="img"
+      aria-label={`Ponto da barbearia: latitude ${lat}, longitude ${lng}`}
+    >
+      <span class="mapa__pino" aria-hidden="true" />
+      <span class="mapa__coords num pequeno">
+        {lat.toFixed(5)}, {lng.toFixed(5)}
+        <br />
+        {plusCode.valor}
+      </span>
+    </span>
+  )}
+</a>
+
+<style>
+  .mapa {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .mapa img,
+  .mapa__esquema {
+    display: block;
+    width: 100%;
+    aspect-ratio: 8 / 5;
+    border: 1px solid var(--linha);
+  }
+  .mapa__esquema {
+    position: relative;
+    background:
+      linear-gradient(var(--linha) 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(90deg, var(--linha) 1px, transparent 1px) 0 0 / 40px 40px,
+      var(--fundo);
+  }
+  .mapa__pino {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50% 50% 50% 0;
+    background: var(--acento);
+    transform: translate(-50%, -100%) rotate(-45deg);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--acento) 25%, transparent);
+  }
+  .mapa__pino::after {
+    content: '';
+    position: absolute;
+    inset: 0.42rem;
+    border-radius: 50%;
+    background: var(--fundo);
+  }
+  .mapa__coords {
+    position: absolute;
+    left: var(--e-4);
+    bottom: var(--e-3);
+    color: var(--texto-2);
+  }
+</style>

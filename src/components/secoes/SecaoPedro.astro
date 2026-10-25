@@ -1,0 +1,118 @@
+---
+// 1 · O Pedro: retrato provisório (quadro de vídeo) com selo, citação grande e três linhas.
+import Secao from './Secao.astro';
+import Poster from '../base/Poster.astro';
+import Selo from './Selo.astro';
+import { obterMidia } from '../base/midia.ts';
+import { secao, emPreview } from './textos.ts';
+
+const t = secao('1 ·');
+const citacao = t.citacoes[0];
+const provisorio = obterMidia('retrato-provisorio-1').provisorio;
+---
+
+<Secao id="pedro" superficie="contraste" valor="1" rotulo="O Pedro" titulo={t.titulo}>
+  <div class="envelope pedro">
+    <figure class="pedro__retrato">
+      <Poster
+        id="retrato-provisorio-1"
+        alt="O Pedro, de óculos e camiseta branca, trabalhando na barba de um cliente"
+        sizes="(min-width: 60rem) 24rem, 80vw"
+      />
+      {provisorio && (
+        <figcaption class="pedro__selo">
+          <Selo titulo="Retrato tirado de um vídeo; falta a foto profissional" />
+        </figcaption>
+      )}
+    </figure>
+    <div class="pedro__texto">
+      {citacao && (
+        <figure class="pedro__citacao">
+          <blockquote>
+            <p>{citacao.texto}</p>
+          </blockquote>
+          <figcaption class="rotulo">
+            Pedro Tensini <span class="pedro__fonte">· {citacao.fonte}</span>
+          </figcaption>
+        </figure>
+      )}
+      <div class="pedro__linhas">
+        {t.paragrafos.map((p) => (
+          <p>{p}</p>
+        ))}
+        {emPreview && t.provisorios.length > 0 && (
+          <p class="pequeno secundario">
+            Formação: <Selo titulo={t.provisorios[0] ?? ''} /> aguarda a confirmação do Pedro.
+          </p>
+        )}
+      </div>
+      <p>
+        <a class="link" href="/sobre-pedro-tensini/">
+          {t.links[0] ?? 'Conheça o Pedro'}
+        </a>
+      </p>
+    </div>
+  </div>
+</Secao>
+
+<style>
+  .pedro {
+    display: grid;
+    gap: var(--e-7);
+  }
+  .pedro__retrato {
+    position: relative;
+    margin: 0;
+    width: min(100%, 24rem);
+  }
+  .pedro__retrato :global(.poster) {
+    aspect-ratio: 3 / 4 !important;
+  }
+  .pedro__selo {
+    position: absolute;
+    top: var(--e-3);
+    left: var(--e-3);
+  }
+  .pedro__texto {
+    display: grid;
+    gap: var(--e-6);
+    align-content: start;
+  }
+  .pedro__citacao blockquote p {
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-1);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    max-width: 14ch;
+  }
+  .pedro__citacao blockquote p::before {
+    content: '“';
+    color: var(--acento);
+  }
+  .pedro__citacao blockquote p::after {
+    content: '”';
+    color: var(--acento);
+  }
+  .pedro__citacao figcaption {
+    margin-top: var(--e-4);
+    color: var(--acento-texto);
+  }
+  .pedro__fonte {
+    text-transform: none;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    color: var(--texto-2);
+  }
+  .pedro__linhas {
+    display: grid;
+    gap: var(--e-3);
+    max-width: 52ch;
+  }
+  @media (min-width: 60rem) {
+    .pedro {
+      grid-template-columns: 24rem minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 7rem);
+      align-items: center;
+    }
+  }
+</style>

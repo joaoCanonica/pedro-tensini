@@ -10,7 +10,8 @@ export default defineConfig({
   ...(site ? { site } : {}),
   output: 'static',
   trailingSlash: 'ignore',
-  build: { format: 'directory' },
+  // CSS embutido no HTML: sem pedido bloqueante a mais antes do primeiro quadro (LCP no 4G).
+  build: { format: 'directory', inlineStylesheets: 'always' },
   // Fontes self-hosted (OFL), subset latino, font-display swap. Escolha: docs/DESIGN_SYSTEM.md.
   fonts: [
     {
@@ -37,7 +38,7 @@ export default defineConfig({
         variants: [
           {
             src: [`${F}/schibsted-grotesk-latin-wght-normal.woff2`],
-            weight: '400 900',
+            weight: '400 700',
             style: 'normal',
           },
           {

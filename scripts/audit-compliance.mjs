@@ -82,7 +82,7 @@ for await (const arq of arquivos(dist)) {
   // Termos e preços só no HTML; mídia e WhatsApp em todo arquivo de texto.
   const achados = arq.endsWith('.html')
     ? auditarHtml(conteudo, ctx)
-    : auditarHtml(conteudo, ctx).filter(
+    : auditarHtml(conteudo, ctx, { codigo: true }).filter(
         (p) => p.trava === 'midia-nao-usar' || p.trava === 'whatsapp',
       );
   for (const p of achados) problemas.push({ arquivo: relative(dist, arq), ...p });

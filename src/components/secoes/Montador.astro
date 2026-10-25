@@ -1,0 +1,356 @@
+---
+// Montador de mensagem (ilha): serviço + dia + período + nome → wa.me com o texto pronto.
+// Nada é guardado. Sem JS: só o botão, com a mensagem padrão.
+import IconeWhatsApp from '../base/IconeWhatsApp.astro';
+import { linkWhatsApp, MENSAGEM_PADRAO } from '../../lib/whatsapp.ts';
+
+const SERVICOS = ['Corte', 'Degradê', 'Barba', 'Barbaterapia', 'Sobrancelha'];
+const PERIODOS = [
+  { id: 'manha', nome: 'Manhã', faixa: '8h30 às 12h' },
+  { id: 'tarde', nome: 'Tarde', faixa: '12h às 18h' },
+  { id: 'noite', nome: 'Noite', faixa: '18h às 20h' },
+];
+---
+
+<div class="montador" data-montador>
+  <p class="rotulo montador__titulo">Monte sua mensagem</p>
+  <form class="montador__campos" data-montador-campos hidden>
+    <fieldset>
+      <legend>O que você quer fazer?</legend>
+      <p class="pequeno secundario">Pode marcar mais de um.</p>
+      <div class="opcoes">
+        {SERVICOS.map((s) => (
+          <label class="opcao">
+            <input type="checkbox" name="servico" value={s} />
+            <span>{s}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Qual dia?</legend>
+      <div class="opcoes">
+        <label class="opcao">
+          <input type="radio" name="dia" value="hoje" />
+          <span>Hoje</span>
+        </label>
+        <label class="opcao">
+          <input type="radio" name="dia" value="amanha" />
+          <span>Amanhã</span>
+        </label>
+        <label class="opcao">
+          <input type="radio" name="dia" value="data" />
+          <span>Escolher data</span>
+        </label>
+      </div>
+      <label class="montador__data" data-montador-data hidden>
+        <span class="pequeno">Data</span>
+        <input type="date" name="data" />
+      </label>
+      <p class="aviso pequeno" data-aviso-dia aria-live="polite"></p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Qual período?</legend>
+      <div class="opcoes">
+        {PERIODOS.map((p) => (
+          <label class="opcao">
+            <input type="radio" name="periodo" value={p.id} />
+            <span>
+              {p.nome} <span class="faixa num">· {p.faixa}</span>
+            </span>
+          </label>
+        ))}
+      </div>
+      <p class="aviso pequeno" data-aviso-periodo aria-live="polite"></p>
+    </fieldset>
+
+    <label class="montador__nome">
+      <span>Seu nome (opcional)</span>
+      <input
+        type="text"
+        name="nome"
+        autocomplete="given-name"
+        maxlength="60"
+        placeholder="Como o Pedro te chama"
+      />
+    </label>
+
+    <div class="previa">
+      <p class="rotulo">Sua mensagem</p>
+      <output class="previa__texto" data-previa>
+        {MENSAGEM_PADRAO}
+      </output>
+    </div>
+  </form>
+
+  <a class="botao-wa" href={linkWhatsApp()} data-montador-link>
+    <IconeWhatsApp />
+    <span>Abrir conversa no WhatsApp</span>
+  </a>
+  <p class="pequeno">O Pedro confirma o horário com você por lá.</p>
+  <p class="pequeno secundario">Nada do que você escolhe fica salvo neste site.</p>
+</div>
+
+<script>
+  import {
+    DIAS,
+    diaLocal,
+    diaSemanaDe,
+    periodosDisponiveis,
+    somarDias,
+  } from '../../lib/horario.ts';
+  import { linkWhatsApp, montarMensagem } from '../../lib/whatsapp.ts';
+
+  const raiz = document.querySelector<HTMLElement>('[data-montador]');
+  const form = raiz?.querySelector<HTMLFormElement>('[data-montador-campos]');
+  if (raiz && form) {
+    form.hidden = false;
+    const link = raiz.querySelector<HTMLAnchorElement>('[data-montador-link]');
+    const previa = raiz.querySelector<HTMLOutputElement>('[data-previa]');
+    const caixaData = raiz.querySelector<HTMLElement>('[data-montador-data]');
+    const inputData = form.elements.namedItem('data') as HTMLInputElement;
+    const avisoDia = raiz.querySelector<HTMLElement>('[data-aviso-dia]');
+    const avisoPeriodo = raiz.querySelector<HTMLElement>('[data-aviso-periodo]');
+    const radios = (nome: string) => [
+      ...form.querySelectorAll<HTMLInputElement>(`input[name="${nome}"]`),
+    ];
+    const ddmm = (iso: string) => iso.slice(8, 10) + '/' + iso.slice(5, 7);
+
+    const agora = new Date();
+    const hoje = diaLocal(agora);
+    const amanha = somarDias(hoje, 1);
+    inputData.min = hoje;
+    inputData.max = somarDias(hoje, 60);
+
+    const abertoEm = (iso: string) => periodosDisponiveis(iso, { agora }).length > 0;
+    for (const r of radios('dia')) {
+      const iso = r.value === 'hoje' ? hoje : r.value === 'amanha' ? amanha : null;
+      if (iso && !abertoEm(iso)) {
+        r.disabled = true;
+        const span = r.nextElementSibling;
+        if (span)
+          span.textContent +=
+            r.value === 'hoje'
+              ? ' · sem horário'
+              : diaSemanaDe(iso) === 0
+                ? ' · domingo fechado'
+                : ' · fechado';
+      }
+    }
+
+    const diaEscolhido = (): { iso: string; texto: string } | null => {
+      const v = radios('dia').find((r) => r.checked)?.value;
+      if (v === 'hoje')
+        return { iso: hoje, texto: `hoje (${DIAS[diaSemanaDe(hoje)]}, ${ddmm(hoje)})` };
+      if (v === 'amanha')
+        return { iso: amanha, texto: `amanhã (${DIAS[diaSemanaDe(amanha)]}, ${ddmm(amanha)})` };
+      if (v === 'data' && inputData.value)
+        return {
+          iso: inputData.value,
+          texto: `${DIAS[diaSemanaDe(inputData.value)]}, ${ddmm(inputData.value)}`,
+        };
+      return null;
+    };
+
+    const atualizar = (): void => {
+      if (caixaData) caixaData.hidden = radios('dia').find((r) => r.checked)?.value !== 'data';
+      const dia = diaEscolhido();
+      const disponiveis = dia
+        ? periodosDisponiveis(dia.iso, { agora }).map((p) => p.id)
+        : ['manha', 'tarde', 'noite'];
+      if (avisoDia)
+        avisoDia.textContent =
+          dia && !disponiveis.length
+            ? diaSemanaDe(dia.iso) === 0
+              ? 'Domingo fechado. Escolha outro dia.'
+              : 'Fechado neste dia. Escolha outro dia.'
+            : '';
+      for (const r of radios('periodo')) {
+        r.disabled = !disponiveis.includes(r.value);
+        if (r.disabled) r.checked = false;
+      }
+      if (avisoPeriodo)
+        avisoPeriodo.textContent =
+          dia && disponiveis.length && disponiveis.length < 3
+            ? 'Só aparecem os períodos em que a barbearia está aberta nesse dia.'
+            : '';
+      const servicos = radios('servico')
+        .filter((r) => r.checked)
+        .map((r) => r.value.toLowerCase());
+      const servico =
+        servicos.length > 1
+          ? `${servicos.slice(0, -1).join(', ')} e ${servicos.at(-1)}`
+          : (servicos[0] ?? '');
+      const periodo = radios('periodo').find((r) => r.checked && !r.disabled)?.value;
+      const nomesPeriodo: Record<string, string> = {
+        manha: 'manhã',
+        tarde: 'tarde',
+        noite: 'noite',
+      };
+      const texto = montarMensagem({
+        servico,
+        ...(dia && disponiveis.length ? { dia: dia.texto } : {}),
+        ...(periodo ? { periodo: nomesPeriodo[periodo] ?? periodo } : {}),
+        nome: (form.elements.namedItem('nome') as HTMLInputElement).value,
+      });
+      if (previa) previa.value = texto;
+      if (link) link.href = linkWhatsApp(texto);
+    };
+    form.addEventListener('input', atualizar);
+    form.addEventListener('change', atualizar);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      link?.click();
+    });
+    atualizar();
+  }
+</script>
+
+<style>
+  .montador {
+    display: grid;
+    gap: var(--e-4);
+  }
+  .montador__titulo {
+    color: var(--acento-texto);
+  }
+  .montador__campos {
+    display: grid;
+    gap: var(--e-5);
+  }
+  .montador__campos[hidden] {
+    display: none;
+  }
+  fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-inline-size: 0;
+  }
+  legend {
+    padding: 0;
+    margin-bottom: var(--e-3);
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-3);
+    line-height: 1.2;
+  }
+  .opcoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2);
+    margin-top: var(--e-2);
+  }
+  .opcao {
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+  }
+  .opcao input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+  }
+  .opcao > span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--botao-2-borda);
+    border-radius: var(--raio);
+    font-weight: 500;
+  }
+  .opcao input:checked + span {
+    background: var(--texto);
+    border-color: var(--texto);
+    color: var(--fundo);
+  }
+  /* Marca de seleção que não depende só de cor. */
+  .opcao input:checked + span::before {
+    content: '✓';
+    margin-right: 0.45em;
+    color: var(--acento);
+  }
+  .opcao input:focus-visible + span {
+    outline: 2px solid var(--foco);
+    outline-offset: 3px;
+  }
+  .opcao input:disabled + span {
+    opacity: 0.55;
+    text-decoration: line-through;
+    cursor: not-allowed;
+  }
+  .opcao input:disabled {
+    cursor: not-allowed;
+  }
+  .faixa {
+    margin-left: 0.3em;
+    font-size: 0.85em;
+    color: inherit;
+    opacity: 0.8;
+  }
+  .montador__data,
+  .montador__nome {
+    display: grid;
+    gap: var(--e-2);
+    max-width: 22rem;
+    margin-top: var(--e-3);
+  }
+  .montador__data[hidden] {
+    display: none;
+  }
+  .montador__nome > span {
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-3);
+  }
+  input[type='date'],
+  input[type='text'] {
+    min-height: 2.75rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--botao-2-borda);
+    border-radius: var(--raio);
+    background: transparent;
+    color: var(--texto);
+    color-scheme: inherit;
+  }
+  input::placeholder {
+    color: var(--texto-2);
+  }
+  .aviso {
+    min-height: 1.4em;
+    margin-top: var(--e-2);
+    color: var(--acento-texto);
+  }
+  .previa {
+    padding: var(--e-4);
+    border-left: 2px solid var(--acento);
+    background: color-mix(in srgb, var(--texto) 5%, transparent);
+  }
+  .previa__texto {
+    display: block;
+    margin-top: var(--e-2);
+  }
+  .botao-wa {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+    min-height: 3.5rem;
+    padding: 0.9rem 1.4rem;
+    border-radius: var(--raio);
+    background: var(--botao-fundo);
+    color: var(--botao-texto);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  @media (min-width: 40rem) {
+    .botao-wa {
+      justify-self: start;
+    }
+  }
+</style>

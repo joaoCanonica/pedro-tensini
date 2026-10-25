@@ -1,0 +1,49 @@
+---
+// Invólucro de seção da home: superfície (alternância carvão / giz / navy), marcador da
+// escala de pente e título. Cada seção traz o próprio gesto dentro do slot.
+import EscalaPente from '../marca/EscalaPente.astro';
+import { escalaPente } from '../../config/tema.ts';
+
+interface Props {
+  id: string;
+  superficie: 'base' | 'contraste' | 'navy';
+  valor: (typeof escalaPente)[number];
+  rotulo: string;
+  titulo: string;
+  class?: string;
+}
+const { id, superficie, valor, rotulo, titulo, class: classe } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={['secao', classe]}
+  data-superficie={superficie}
+  aria-labelledby={`${id}-titulo`}
+>
+  <div class="secao__envelope">
+    <EscalaPente valor={valor} rotulo={rotulo} />
+    <h2 id={`${id}-titulo`} class="secao__titulo">
+      {titulo}
+    </h2>
+  </div>
+  <slot />
+</section>
+
+<style>
+  .secao {
+    padding-block: var(--e-8) var(--e-9);
+    overflow-x: clip;
+  }
+  .secao__envelope,
+  .secao :global(.envelope) {
+    width: min(100% - 2 * var(--margem), 80rem);
+    margin-inline: auto;
+  }
+  .secao__titulo {
+    margin-block: var(--e-5) var(--e-7);
+    max-width: 18ch;
+    font-size: var(--fs-1);
+    line-height: 1.02;
+  }
+</style>

@@ -50,9 +50,10 @@ const numeroDe = (s) => Number(s.replace(',', '.'));
  * @param {string} html
  * @param {{ precosConfirmados: Set<number>, idsAtivos: Set<string>, idsVetados: Set<string>,
  *           nomesOriginais: string[], numero: string | null }} ctx
+ * @param {{ codigo?: boolean }} [opcoes] codigo: arquivo JS/CSS (link montado em tempo de execução)
  * @returns {{ trava: string, detalhe: string }[]}
  */
-export function auditarHtml(html, ctx) {
+export function auditarHtml(html, ctx, { codigo = false } = {}) {
   const problemas = [];
   const texto = textoAuditavel(html);
 
@@ -87,6 +88,8 @@ export function auditarHtml(html, ctx) {
       problemas.push({ trava: 'midia-nao-usar', detalhe: `referência ao original ${nome}` });
 
   for (const m of html.matchAll(RE_WA)) {
+    // Em JS o número entra por concatenação ("https://wa.me/"+n): só número explícito errado conta.
+    if (codigo && m[1] === '') continue;
     if (!ctx.numero || m[1] !== ctx.numero)
       problemas.push({
         trava: 'whatsapp',

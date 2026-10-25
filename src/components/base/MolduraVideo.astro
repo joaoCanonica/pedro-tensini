@@ -29,7 +29,6 @@ if (!item.videos || !item.poster) throw new Error(`Mídia "${id}" não é vídeo
 const v720 = item.videos.find((v) => v.largura === 720) ?? item.videos[0];
 const v540 = item.videos.find((v) => v.largura === 540);
 const loop = tipo === 'loop';
-const posterAttr = item.poster.webp.at(-1)?.src;
 ---
 
 <figure class:list={['moldura', { 'moldura--loop': loop }]}>
@@ -45,16 +44,14 @@ const posterAttr = item.poster.webp.at(-1)?.src;
       class="moldura__video"
       width={v720?.largura}
       height={v720?.altura}
-      poster={posterAttr}
       playsinline
       muted
       {...(loop
         ? {
-            autoplay: true,
             loop: true,
             'aria-hidden': 'true',
             tabindex: -1,
-            preload: 'metadata',
+            preload: 'none',
             'data-loop': '',
           }
         : { controls: true, preload: 'none', 'aria-label': descricao })}
@@ -64,6 +61,12 @@ const posterAttr = item.poster.webp.at(-1)?.src;
       {v720 && <source src={v720.webm.src} type="video/webm" />}
       {v720 && <source src={v720.mp4.src} type="video/mp4" />}
     </video>
+    {loop && (
+      <button class="moldura__pausa" type="button" data-loop-pausa aria-pressed="false" hidden>
+        <span class="moldura__pausa-icone" aria-hidden="true" />
+        <span class="moldura__pausa-texto">Pausar vídeo</span>
+      </button>
+    )}
   </div>
   {(legenda || !loop) && (
     <figcaption class="moldura__legenda pequeno secundario">{legenda ?? descricao}</figcaption>
@@ -71,18 +74,79 @@ const posterAttr = item.poster.webp.at(-1)?.src;
 </figure>
 
 <script>
-  // Movimento reduzido: loop decorativo não toca (fica o pôster).
+  // Loops decorativos: só tocam visíveis na tela; nunca com movimento reduzido nem Save-Data/2g.
+  // Botão pausar visível (WCAG 2.2.2); a escolha vale para todos os loops da página.
+  type Conexao = { saveData?: boolean; effectiveType?: string };
+  const conexao = (navigator as Navigator & { connection?: Conexao }).connection;
+  const economia = Boolean(conexao?.saveData) || /(^|-)2g$/.test(conexao?.effectiveType ?? '');
   const reduzir = matchMedia('(prefers-reduced-motion: reduce)');
-  const aplicar = () => {
-    for (const v of document.querySelectorAll<HTMLVideoElement>('video[data-loop]')) {
-      if (reduzir.matches) {
-        v.pause();
-        v.removeAttribute('autoplay');
-      } else if (v.paused) void v.play().catch(() => {});
+  let pausado = economia || reduzir.matches;
+  const loops = [...document.querySelectorAll<HTMLVideoElement>('video[data-loop]')];
+  const visiveis = new Set<HTMLVideoElement>();
+
+  const rotular = () => {
+    for (const b of document.querySelectorAll<HTMLButtonElement>('[data-loop-pausa]')) {
+      b.hidden = false;
+      b.setAttribute('aria-pressed', String(pausado));
+      const t = b.querySelector('.moldura__pausa-texto');
+      if (t) t.textContent = pausado ? 'Tocar vídeo' : 'Pausar vídeo';
     }
   };
-  aplicar();
-  reduzir.addEventListener('change', aplicar);
+  const aplicar = () => {
+    for (const v of loops) {
+      if (!pausado && visiveis.has(v)) {
+        if (v.preload !== 'auto') v.preload = 'auto';
+        void v.play().catch(() => {});
+      } else v.pause();
+    }
+    rotular();
+  };
+  const io = new IntersectionObserver(
+    (entradas) => {
+      for (const e of entradas) {
+        const v = e.target as HTMLVideoElement;
+        if (e.isIntersecting) visiveis.add(v);
+        else visiveis.delete(v);
+      }
+      aplicar();
+    },
+    { rootMargin: '200px 0px' },
+  );
+  for (const v of loops) {
+    v.addEventListener('playing', () => (v.dataset['tocando'] = ''), { once: true });
+    io.observe(v);
+  }
+  for (const b of document.querySelectorAll<HTMLButtonElement>('[data-loop-pausa]'))
+    b.addEventListener('click', () => {
+      pausado = !pausado;
+      aplicar();
+    });
+  reduzir.addEventListener('change', () => {
+    pausado = reduzir.matches;
+    aplicar();
+  });
+  rotular();
+
+  // Vídeos de conteúdo: sem pôster o Chrome pinta um retângulo cinza por cima do <picture>.
+  // O pôster entra só perto da tela, reaproveitando a imagem que o <picture> já baixou.
+  const ioPoster = new IntersectionObserver(
+    (entradas) => {
+      for (const e of entradas) {
+        if (!e.isIntersecting) continue;
+        const v = e.target as HTMLVideoElement;
+        const img = v.parentElement?.querySelector('img');
+        if (img) {
+          const definir = () => (v.poster = img.currentSrc || img.src);
+          if (img.complete) definir();
+          else img.addEventListener('load', definir, { once: true });
+        }
+        ioPoster.unobserve(v);
+      }
+    },
+    { rootMargin: '300px 0px' },
+  );
+  for (const v of document.querySelectorAll<HTMLVideoElement>('.moldura__video:not([data-loop])'))
+    ioPoster.observe(v);
 </script>
 
 <style>
@@ -110,6 +174,44 @@ const posterAttr = item.poster.webp.at(-1)?.src;
   }
   .moldura__video {
     background: transparent;
+  }
+  .moldura--loop .moldura__video {
+    opacity: 0;
+    transition: opacity var(--dur-2) var(--curva);
+  }
+  .moldura--loop .moldura__video[data-tocando] {
+    opacity: 1;
+  }
+  .moldura__pausa {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    min-height: 2.75rem;
+    padding: 0 0.85rem;
+    border: 1px solid rgb(238 240 239 / 0.55);
+    border-radius: var(--raio);
+    background: rgb(18 19 22 / 0.6);
+    color: #eef0ef;
+    font: 600 0.8125rem/1 var(--fonte-texto);
+    cursor: pointer;
+  }
+  .moldura__pausa[hidden] {
+    display: none;
+  }
+  .moldura__pausa-icone {
+    width: 0.7rem;
+    height: 0.8rem;
+    border-inline: 3px solid currentColor;
+  }
+  .moldura__pausa[aria-pressed='true'] .moldura__pausa-icone {
+    width: 0;
+    height: 0;
+    border: 0;
+    border-block: 0.42rem solid transparent;
+    border-left: 0.7rem solid currentColor;
   }
   .moldura__legenda {
     margin-top: var(--e-3);

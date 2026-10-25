@@ -1,0 +1,32 @@
+---
+// Endereço completo a partir da config. Número não confirmado: "nº a confirmar" + selo (só preview;
+// em produção a trava não deixa publicar sem o número).
+import Selo from './Selo.astro';
+import { endereco } from '../../config/contato.ts';
+
+const c = <T,>(x: { estado: string; valor: T | null }) =>
+  x.estado === 'confirmado' ? x.valor : null;
+const numero = c(endereco.numero);
+const sala = c(endereco.salaAndar);
+const rotuloNumero = 'rotulo' in endereco.numero ? (endereco.numero.rotulo ?? '') : '';
+---
+
+<address class="endereco">
+  {c(endereco.rua)},{' '}
+  {numero ?? (
+    <span>
+      nº a confirmar <Selo titulo={rotuloNumero} />
+    </span>
+  )}
+  <br />
+  {c(endereco.complemento)}
+  {sala ? `, ${sala}` : ''}, {c(endereco.bairro)}
+  <br />
+  {c(endereco.cidade)}/{c(endereco.uf)} · CEP {c(endereco.cep)}
+</address>
+
+<style>
+  .endereco {
+    font-style: normal;
+  }
+</style>

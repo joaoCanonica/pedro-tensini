@@ -1,0 +1,278 @@
+---
+// 1½ · Barba e barbaterapia: os 5 tempos em sequência horizontal com rolagem nativa
+// (scroll-snap, sem JS de carrossel). "Ver a experiência completa" abre o vídeo num <dialog>.
+// Sem JS, o botão é um link direto para o vídeo.
+import Secao from './Secao.astro';
+import Poster from '../base/Poster.astro';
+import Citacao from '../base/Citacao.astro';
+import { obterMidia } from '../base/midia.ts';
+import { secao } from './textos.ts';
+
+const t = secao('1½');
+const citacao = t.citacoes[0];
+const FOTOS: Record<string, { id: string; alt: string } | null> = {
+  'Toalha quente': {
+    id: 'foto-toalha-quente',
+    alt: 'Cliente reclinado na cadeira com uma toalha quente envolvendo o rosto, segurada pelas mãos do barbeiro',
+  },
+  Esfoliação: {
+    id: 'foto-esfoliacao',
+    alt: 'Mãos de luva preta espalhando o esfoliante no rosto de um cliente de barba, de olhos fechados',
+  },
+  // Sem foto própria (o post repete a da toalha). Fica o tempo em tipografia.
+  'Creme e massagem': null,
+  Navalha: {
+    id: 'foto-navalha',
+    alt: 'Close da navalha contornando a barba, com o pente segurando a pele acima da linha',
+  },
+  'Barba finalizada': {
+    id: 'foto-barba-finalizada',
+    alt: 'Máquina finalizando a barba de um cliente deitado, de perfil, com a parede verde ao fundo',
+  },
+};
+const video = obterMidia('experiencia-completa');
+const v720 = video.videos?.find((v) => v.largura === 720);
+const v540 = video.videos?.find((v) => v.largura === 540);
+const poster = video.poster?.webp.at(-1)?.src;
+---
+
+<Secao id="barba" superficie="navy" valor="1½" rotulo="Barba e barbaterapia" titulo={t.titulo}>
+  <div class="envelope barba__intro">
+    {t.paragrafos.map((p) => (
+      <p class="medida">{p}</p>
+    ))}
+  </div>
+
+  <ol class="tempos" aria-label="Os cinco tempos da barbaterapia">
+    {t.itens.map((item, i) => {
+      const foto = FOTOS[item.nome];
+      return (
+        <li class:list={['tempo', { 'tempo--sem-foto': !foto }]}>
+          {foto ? (
+            <Poster id={foto.id} alt={foto.alt} sizes="(min-width: 60rem) 26rem, 78vw" />
+          ) : (
+            <div class="tempo__tipo" aria-hidden="true">
+              <span>{item.nome}</span>
+            </div>
+          )}
+          <p class="tempo__legenda">
+            <span class="tempo__numero num">{i + 1}</span>
+            <span class="tempo__nome rotulo">{item.nome}</span>
+          </p>
+          <p class="tempo__texto pequeno">{item.texto}</p>
+        </li>
+      );
+    })}
+  </ol>
+
+  <div class="envelope barba__fim">
+    {citacao && <Citacao texto={citacao.texto} fonte={citacao.fonte} tamanho="m" />}
+    <div class="barba__acoes">
+      <a class="barba__abrir" href={v720?.mp4.src} data-abre-dialogo="experiencia">
+        <span aria-hidden="true" class="barba__play"></span>
+        Ver a experiência completa
+      </a>
+      <a class="link" href="/barba-e-barbaterapia/">
+        {t.links[0] ?? 'Ver barba e barbaterapia'}
+      </a>
+    </div>
+  </div>
+
+  <dialog class="dialogo" id="experiencia" aria-labelledby="experiencia-titulo">
+    <div class="dialogo__topo">
+      <p id="experiencia-titulo" class="rotulo">
+        A experiência completa
+      </p>
+      <button class="dialogo__fechar" type="button" data-fecha-dialogo>
+        Fechar
+      </button>
+    </div>
+    <video
+      class="dialogo__video"
+      controls
+      playsinline
+      preload="none"
+      data-poster={poster}
+      width="720"
+      height="1280"
+      aria-label="Barba e acabamento, do começo ao fim"
+    >
+      {v540 && <source src={v540.webm.src} type="video/webm" media="(max-width: 600px)" />}
+      {v540 && <source src={v540.mp4.src} type="video/mp4" media="(max-width: 600px)" />}
+      {v720 && <source src={v720.webm.src} type="video/webm" />}
+      {v720 && <source src={v720.mp4.src} type="video/mp4" />}
+    </video>
+    <p class="pequeno secundario dialogo__descricao">
+      O cliente chega, o Pedro faz o degradê na nuca e passa a máquina vinho na barba, depois a
+      navalha e a toalha. No fim, o cliente sorri com o resultado. Sem som.
+    </p>
+  </dialog>
+</Secao>
+
+<script>
+  for (const gatilho of document.querySelectorAll<HTMLAnchorElement>('[data-abre-dialogo]')) {
+    const dialogo = document.getElementById(
+      gatilho.dataset['abreDialogo'] ?? '',
+    ) as HTMLDialogElement | null;
+    if (!dialogo) continue;
+    const video = dialogo.querySelector('video');
+    gatilho.setAttribute('role', 'button');
+    gatilho.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (video && !video.poster && video.dataset['poster']) video.poster = video.dataset['poster'];
+      dialogo.showModal();
+      void video?.play().catch(() => {});
+    });
+    dialogo.querySelector('[data-fecha-dialogo]')?.addEventListener('click', () => dialogo.close());
+    // Clique fora do conteúdo fecha.
+    dialogo.addEventListener('click', (e) => {
+      if (e.target === dialogo) dialogo.close();
+    });
+    dialogo.addEventListener('close', () => {
+      video?.pause();
+      gatilho.focus();
+    });
+  }
+</script>
+
+<style>
+  .barba__intro {
+    margin-bottom: var(--e-5);
+  }
+  .tempos {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(78vw, 26rem);
+    gap: var(--e-5);
+    margin: 0;
+    padding: var(--e-2) var(--margem) var(--e-5);
+    list-style: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--margem);
+    scrollbar-color: var(--latao) transparent;
+    scrollbar-width: thin;
+  }
+  @media (min-width: 80rem) {
+    .tempos {
+      padding-inline: max(var(--margem), calc((100vw - 80rem) / 2));
+      scroll-padding-inline: max(var(--margem), calc((100vw - 80rem) / 2));
+    }
+  }
+  .tempo {
+    scroll-snap-align: start;
+    display: grid;
+    gap: var(--e-3);
+    align-content: start;
+  }
+  .tempo :global(.poster) {
+    aspect-ratio: 4 / 3;
+  }
+  .tempo__tipo {
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--linha);
+    background:
+      repeating-linear-gradient(-45deg, rgb(238 240 239 / 0.05) 0 1px, transparent 1px 7px),
+      var(--navy);
+    font-family: var(--fonte-titulo);
+    font-size: var(--fs-2);
+    text-align: center;
+    padding: var(--e-5);
+  }
+  .tempo__legenda {
+    display: flex;
+    align-items: baseline;
+    gap: var(--e-3);
+    padding-top: var(--e-3);
+    border-top: 1px solid var(--linha);
+  }
+  .tempo__numero {
+    color: var(--acento-texto);
+    font-size: var(--fs-3);
+    font-weight: 500;
+  }
+  .tempo__texto {
+    color: var(--texto-2);
+  }
+  .barba__fim {
+    display: grid;
+    gap: var(--e-6);
+    margin-top: var(--e-6);
+  }
+  .barba__acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--e-5) var(--e-6);
+  }
+  .barba__abrir {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7em;
+    min-height: 3rem;
+    padding: 0.8rem 1.3rem;
+    border: 1px solid var(--botao-2-borda);
+    border-radius: var(--raio);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .barba__abrir:hover {
+    border-color: var(--texto);
+  }
+  .barba__play {
+    width: 0;
+    height: 0;
+    border-block: 0.4rem solid transparent;
+    border-left: 0.65rem solid var(--acento);
+  }
+  @media (min-width: 60rem) {
+    .barba__fim {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+  }
+  .dialogo {
+    width: min(92vw, 26rem);
+    max-height: 94svh;
+    padding: var(--e-4);
+    border: 1px solid rgb(255 232 200 / 0.5);
+    border-radius: var(--raio);
+    background: var(--carvao);
+    color: var(--giz);
+    box-shadow: 0 0 30px 3px rgb(255 214 160 / 0.18);
+  }
+  .dialogo::backdrop {
+    background: rgb(18 19 22 / 0.86);
+  }
+  .dialogo__topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--e-3);
+    color: var(--latao);
+  }
+  .dialogo__fechar {
+    min-height: 2.75rem;
+    padding: 0 1rem;
+    border: 1px solid rgb(238 240 239 / 0.5);
+    border-radius: var(--raio);
+    background: none;
+    color: var(--giz);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .dialogo__video {
+    width: 100%;
+    max-height: 72svh;
+    aspect-ratio: 9 / 16;
+    object-fit: contain;
+    background: #000;
+  }
+  .dialogo__descricao {
+    margin-top: var(--e-3);
+    color: #a9adb6;
+  }
+</style>

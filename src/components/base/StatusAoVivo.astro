@@ -16,6 +16,7 @@ import { resumoSemana } from './semana.ts';
     display: inline-flex;
     align-items: center;
     gap: 0.6em;
+    max-width: 100%;
     font-weight: 500;
   }
   .status__ponto {
@@ -24,6 +25,16 @@ import { resumoSemana } from './semana.ts';
     flex: none;
     border-radius: 50%;
     border: 2px solid var(--ponto-fechado);
+  }
+  /* Com JS, o resumo da semana fica numa linha até o status ao vivo chegar:
+     sem isso o texto quebra em duas linhas e o hero pula (CLS). */
+  @media (scripting: enabled) {
+    .status:not([data-aberto]) .status__texto {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
   }
   .status[data-aberto='true'] .status__ponto {
     background: var(--ponto-aberto);

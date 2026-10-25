@@ -38,6 +38,17 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 - [ ] Links do hero apontam para `/como-chegar/` e `/como-chegar/#horario`, que nascem na sessão 6C (até lá dão 404 no preview).
 - [ ] H1 provisório ("Degradê, barba e acabamento no detalhe."): a sessão 5 refina.
 
+## Home (sessão 6)
+
+- [ ] Mapa estático real (seção 0): o ambiente bloqueou os tiles (OSM/Carto 403). Hoje entra um esquema honesto (grade, pino, coordenadas, Plus Code). Gerar `public/media/mapa-estatico.webp` com atribuição num ambiente com rede ou API; o componente já usa o arquivo se ele existir.
+- [ ] Links da home que dependem da sessão 6C: `/como-chegar/`, `/degrade-em-lages/`, `/sobre-pedro-tensini/`, `/avaliar/` (404 no preview até lá).
+- [ ] "Ver no Google" usa busca no Maps por "Barbearia - Tensini barbieri, Lages". Trocar pelo link do perfil (place id) quando o João passar.
+- [ ] Favicon próprio: hoje usa o monograma SVG.
+- [ ] Seção 1: retrato provisório (`retrato-provisorio-1`) e formação com selo PROVISÓRIO até o Pedro confirmar.
+- [ ] Avaliações exibidas (Vinicius Farias, Diogo Amaral) são literais do Google, conferidas em 24/10/2026; reconferir antes da produção (sessão 9).
+- [ ] No desktop o botão fixo "Agendar no WhatsApp" passa por cima da escala de pente de cada seção enquanto ela cruza o topo da tela (comportamento de cabeçalho fixo). Avaliar na revisão visual se vale reservar a faixa.
+- [ ] Sem JS, os vídeos de conteúdo (resultado-1/2) mostram o retângulo do navegador em vez do pôster; com JS o pôster entra perto da tela.
+
 ## Textos (sessão 5)
 
 Gerado de `src/content/textos/*.md` (marcas `[PROVISÓRIO: …]`). Cada item sai do ar ou vira texto confirmado quando o dado chegar.

@@ -30,8 +30,8 @@ Na Galeria Augusta, no Centro de Lages, a barbearia do {{pedro}} tem cadeira de 
 
 O atendimento é com hora marcada pelo WhatsApp. Você chega, senta e o tempo é seu.
 
-> "Imagem e presença não são por acaso."
-> Fonte: bio do Instagram {{instagram}} (vista em 24/10/2026)
+> "Mais que um corte, uma experiência."
+> Fonte: Instagram {{instagram}}, legenda do primeiro vídeo (provável instagram.com/p/DMdJJJdu5AW)
 
 Link: Ver como chegar
 
@@ -77,8 +77,10 @@ Título: Quem cuida do seu corte.
 
 {{pedro}} é o barbeiro da casa. Atende um cliente por vez, com atenção ao que você pede e ao que combina com o seu rosto.
 
-> "Seu visual fala antes de qualquer palavra. Faça ele transmitir confiança."
-> Fonte: Instagram {{instagram}}, post fixado (reel com 4.171 visualizações em 24/10/2026)
+Faz degradê com acabamento na shaver, barba, barbaterapia e sobrancelha. E mostra como finalizar o cabelo em casa, com a pomada certa para o seu corte.
+
+> "Imagem e presença não são por acaso."
+> Fonte: bio do Instagram {{instagram}} (vista em 24/10/2026)
 
 Formação: [PROVISÓRIO: cursos e workshops vistos nos stories "Mentorias"; o Pedro confirma datas e certificados antes de ir ao ar]
 

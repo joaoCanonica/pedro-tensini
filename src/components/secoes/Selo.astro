@@ -1,0 +1,26 @@
+---
+// Selo PROVISÓRIO (só no preview).
+import { emPreview } from './textos.ts';
+interface Props {
+  titulo?: string;
+}
+const { titulo } = Astro.props;
+---
+
+{emPreview && (
+  <span class="selo" title={titulo}>
+    Provisório
+  </span>
+)}
+
+<style>
+  .selo {
+    display: inline-block;
+    padding: 0.15em 0.45em;
+    background: var(--latao);
+    color: var(--carvao);
+    font: 700 0.625rem/1.4 var(--fonte-texto);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+</style>
