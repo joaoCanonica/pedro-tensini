@@ -38,6 +38,43 @@ Itens que dependem do João ou do Pedro. Não inventar: cada campo fica pendente
 - [ ] Links do hero apontam para `/como-chegar/` e `/como-chegar/#horario`, que nascem na sessão 6C (até lá dão 404 no preview).
 - [ ] H1 provisório ("Degradê, barba e acabamento no detalhe."): a sessão 5 refina.
 
+## Textos (sessão 5)
+
+Gerado de `src/content/textos/*.md` (marcas `[PROVISÓRIO: …]`). Cada item sai do ar ou vira texto confirmado quando o dado chegar.
+
+- [ ] Link direto "escrever avaliação" do Google (place id). Até lá o botão abre a ficha no Google Maps — avaliar.md
+- [ ] Duração da barba e da barbaterapia — barba-e-barbaterapia.md
+- [ ] Tabela de preços — barba-e-barbaterapia.md, degrade-em-lages.md, perguntas-frequentes.md, sobrancelha.md
+- [ ] Andar ou sala dentro da Galeria Augusta — como-chegar.md
+- [ ] Passos com foto/vídeo e referências próximas — como-chegar.md
+- [ ] Onde estacionar perto da galeria — como-chegar.md
+- [ ] Duração do serviço — degrade-em-lages.md, sobrancelha.md
+- [ ] Intervalo de retoque que o Pedro recomenda — degrade-em-lages.md
+- [ ] Cursos e workshops vistos nos stories "Mentorias"; o Pedro confirma datas e certificados antes de ir ao ar — home.md
+- [ ] Localizar o post da frase — home.md
+- [ ] O João confirma se o crédito entra — microtextos.md
+- [ ] O Pedro confirma se faz encaixe — perguntas-frequentes.md
+- [ ] O Pedro confirma se atende sem horário marcado — perguntas-frequentes.md
+- [ ] Duração do degradê — perguntas-frequentes.md
+- [ ] Formas de pagamento (Pix, cartão, dinheiro) a confirmar com o Pedro — perguntas-frequentes.md, servicos-e-precos.md
+- [ ] Andar/sala e referências próximas — perguntas-frequentes.md
+- [ ] Estacionamento perto da galeria a confirmar com o Pedro — perguntas-frequentes.md
+- [ ] O Pedro confirma se atende criança e a partir de que idade — perguntas-frequentes.md
+- [ ] O Pedro confirma este resumo do vídeo e se vende as pomadas na barbearia — pomadas.md
+- [ ] Texto revisado na conferência de normas (sessão 9, LGPD) — privacidade.md
+- [ ] Definido na sessão 7. Se houver medição, ela será sem cookies de rastreamento e sem dados que identifiquem você — privacidade.md
+- [ ] Data da publicação — privacidade.md
+- [ ] Tabela de preços e durações — servicos-e-precos.md
+- [ ] Combos e valores — servicos-e-precos.md
+- [ ] Nome canônico da marca a confirmar com o Pedro (Barbieri ou Barbiere) — sobre-pedro-tensini.md
+- [ ] A lista abaixo foi vista nos stories do destaque "Mentorias" e só vai ao ar depois que o Pedro confirmar datas e certificados — sobre-pedro-tensini.md
+
+Também dependem de dado (blocos condicionais `<!-- se:… -->`, já com texto de reserva pronto): preço e duração de cada serviço (`{{preco.*}}`, `{{duracao.*}}`), combos, exceções de horário, passo a passo "da calçada à cadeira", estacionamento, link de avaliar e andar/sala na galeria.
+
+Citações com fonte a localizar (o texto é literal, mas falta o post exato): "Se você repara nos detalhes, já sabe onde vir." e "Precisão nos acabamentos, elegância no resultado!". A de "Mais que um corte, uma experiência." está no post provável DMdJJJdu5AW.
+
+Títulos e descrições usam "Tensini Barbieri" (nome provisório): se o nome canônico mudar, trocar em `title`/`description` de home, sobre, privacidade e 404.
+
 ## Ambiente (sessão 0)
 
 - O Astro estável atual (7.4.2) exige Node ≥ 22.23.4. O projeto foi fixado em Node 24.22.1 (LTS "Krypton"), ver `.nvmrc`.

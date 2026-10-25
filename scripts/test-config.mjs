@@ -12,7 +12,7 @@ import { encontrarTermosVetados } from '../src/config/termos.ts';
 import { bloqueante, confirmado, opcional } from '../src/config/tipos.ts';
 import { periodosDisponiveis, statusEm } from '../src/lib/horario.ts';
 import { MENSAGEM_PADRAO, linkWhatsApp, montarMensagem } from '../src/lib/whatsapp.ts';
-import { auditarHtml } from './lib/compliance.mjs';
+import { auditarHtml, auditarTextoMd } from './lib/compliance.mjs';
 
 const RAIZ = new URL('../', import.meta.url).pathname;
 const em = (s) => new Date(`${s}-03:00`);
@@ -332,5 +332,28 @@ describe('scripts de ponta a ponta', () => {
       assert.match(prod.stdout, new RegExp(trava));
       assert.equal(prev.status, 0, `${trava}: preview deveria passar`);
     }
+  });
+});
+
+describe('auditoria dos textos-fonte (.md)', () => {
+  const ctxMd = { precosConfirmados: new Set(), numero: '5549999037620' };
+  const travasMd = (md) => [...new Set(auditarTextoMd(md, ctxMd).map((p) => p.trava))];
+  const meta = '---\npagina: /x\ntitle: Título curto\ndescription: Descrição curta.\n---\n';
+  it('texto limpo com citação e fonte passa', () =>
+    assert.deepEqual(
+      travasMd(`${meta}\n> "Imagem e presença não são por acaso."\n> Fonte: bio do Instagram\n`),
+      [],
+    ));
+  it('citação sem fonte falha', () =>
+    assert.deepEqual(travasMd(`${meta}\n> "Imagem e presença não são por acaso."\n`), [
+      'citacao-sem-fonte',
+    ]));
+  it('termo vetado, preço sem fonte e title longo falham', () => {
+    assert.deepEqual(travasMd(`${meta}\nHorário garantido.`), ['termo-vetado']);
+    assert.deepEqual(travasMd(`${meta}\nCorte por R$ 45.`), ['preco-sem-fonte']);
+    assert.deepEqual(
+      travasMd(`---\npagina: /x\ntitle: ${'a'.repeat(61)}\ndescription: ok\n---\n`),
+      ['meta'],
+    );
   });
 });

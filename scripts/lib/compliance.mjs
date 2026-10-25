@@ -95,3 +95,54 @@ export function auditarHtml(html, ctx) {
   }
   return problemas;
 }
+
+/**
+ * Auditoria dos textos-fonte (src/content/textos/*.md): termos vetados, preço sem fonte,
+ * citação sem "Fonte:", link wa.me e tamanho de title (≤ 60) e description (≤ 155).
+ * @param {string} md
+ * @param {{ precosConfirmados: Set<number>, numero: string | null }} ctx
+ * @returns {{ trava: string, detalhe: string }[]}
+ */
+export function auditarTextoMd(md, ctx) {
+  const problemas = [];
+  const front = md.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? '';
+  const campo = (nome) => front.match(new RegExp(`^${nome}:\\s*(.*)$`, 'm'))?.[1]?.trim();
+  const pagina = campo('pagina') ?? '';
+  if (pagina.startsWith('/')) {
+    const title = campo('title') ?? '';
+    const description = campo('description') ?? '';
+    if (!title || title.length > 60)
+      problemas.push({
+        trava: 'meta',
+        detalhe: `title com ${title.length} caracteres (máx. 60): "${title}"`,
+      });
+    if (!description || description.length > 155)
+      problemas.push({
+        trava: 'meta',
+        detalhe: `description com ${description.length} caracteres (máx. 155)`,
+      });
+  }
+  for (const o of encontrarTermosVetados(md))
+    problemas.push({ trava: 'termo-vetado', detalhe: `"${o.termo}" em "${o.trecho}"` });
+  for (const m of md.matchAll(RE_PRECO)) {
+    const valores = [m[1], m[2]].filter(Boolean).map(numeroDe);
+    if (valores.some((v) => !ctx.precosConfirmados.has(v)))
+      problemas.push({
+        trava: 'preco-sem-fonte',
+        detalhe: `"${m[0].trim()}" sem preço confirmado na config`,
+      });
+  }
+  // Citação: cada bloco ">" precisa de uma linha "Fonte:" no mesmo bloco.
+  for (const bloco of md.match(/(?:^>.*\n?)+/gm) ?? []) {
+    if (!/^>\s*Fonte:/m.test(bloco))
+      problemas.push({ trava: 'citacao-sem-fonte', detalhe: bloco.split('\n')[0].slice(0, 80) });
+  }
+  for (const m of md.matchAll(RE_WA)) {
+    if (!ctx.numero || m[1] !== ctx.numero)
+      problemas.push({
+        trava: 'whatsapp',
+        detalhe: `link "${m[0]}" não aponta para ${ctx.numero}`,
+      });
+  }
+  return problemas;
+}
